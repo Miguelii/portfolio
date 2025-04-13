@@ -2,6 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { unstable_ViewTransition as ViewTransition } from 'react'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,8 +53,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Analytics/>
+        <SpeedInsights />
         <Header/>
-        {children}
+        <ViewTransition>
+          {children}  
+        </ViewTransition>
+        <Footer/>
       </body>
     </html>
   );

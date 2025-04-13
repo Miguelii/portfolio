@@ -11,7 +11,7 @@ export const revalidate = 60000; // 5min
 
 export default function AboutPage() {
   return (
-    <main className="container w-full mx-auto flex flex-col gap-6 md:flex-row px-5 md:px-20 mb-6 md:mb-12 lg:mb-16">
+    <main className="container w-full mx-auto flex flex-col gap-6 md:flex-row px-5 md:px-20 mb-10 md:mb-16 lg:mb-32">
       <article className="text-base font-mono flex flex-col gap-10">
         <div className="flex flex-col gap-2">
           <span>Miguel</span>

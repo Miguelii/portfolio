@@ -29,7 +29,7 @@ export default function Project({title,projectUrl,imageUrl,techStack}:ProjectPro
                 </CardItem>
 
                 <CardItem
-                as="p"
+                as="div"
                 translateZ="60"
                 className="mt-8 flex flex-row gap-3 flex-wrap"
                 >

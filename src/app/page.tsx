@@ -1,4 +1,4 @@
-import Footer from "@/components/footer";
+import ContactMeCard from "@/components/contact-me-card";
 import Project from "@/components/project";
 import { ProjectType } from "@/types/Project";
 
@@ -84,7 +84,7 @@ export default function Home() {
         })}
       </div>
 
-      <Footer />
+      <ContactMeCard />
 
     </main>
   );
