@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CardContainer, CardBody, CardItem } from "./3d-card";
 import { Badge } from "./Badge";
 import { ProjectType } from "@/types/Project";
+import { getBuildId } from "@/utils/getBuildId";
 
 type ProjectProps = ProjectType;
 
@@ -12,6 +13,9 @@ export default function Project({
   imageUrl,
   techStack,
 }: ProjectProps) {
+
+  const id = getBuildId();
+   
   return (
     <Link href={projectUrl} prefetch={false} target="_blank">
       <CardContainer
@@ -27,7 +31,7 @@ export default function Project({
           </CardItem>
           <CardItem translateZ="100" className="w-full mt-4">
             <Image
-              src={imageUrl}
+              src={`${imageUrl}?v=${id}`}
               height={240}
               width={358}
               quality={80}

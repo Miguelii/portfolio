@@ -12,6 +12,7 @@ import {
 } from "motion/react";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
+import { getBuildId } from "@/utils/getBuildId";
 
 type LinkPreviewProps = {
   children: React.ReactNode;
@@ -76,12 +77,14 @@ export const LinkPreview = ({
     x.set(offsetFromCenter);
   };
 
+   const id = getBuildId();
+   
   return (
     <>
       {isMounted ? (
         <div className="hidden">
           <Image
-            src={src}
+            src={`${src}?v=${id}`}
             width={width}
             height={height}
             quality={quality}
@@ -140,7 +143,7 @@ export const LinkPreview = ({
                   style={{ fontSize: 0 }}
                 >
                   <Image
-                    src={isStatic ? imageSrc : src}
+                    src={isStatic ? `${isStatic}?v=${id}` : `${src}?v=${id}`}
                     width={width}
                     height={height}
                     quality={quality}

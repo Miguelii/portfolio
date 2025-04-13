@@ -7,7 +7,7 @@ const PROJECTS: ProjectType[] = [
   {
     title: "EUROMAR Portal",
     projectUrl: "https://www.eu-registry.com/euromar/",
-    imageUrl: '/euromar.png?v=1',
+    imageUrl: '/euromar.png',
     techStack: [
       'Next.js',
       'Tailwind',
@@ -20,7 +20,7 @@ const PROJECTS: ProjectType[] = [
   {
     title: "Portuguese Embassies Appointments Portal",
     projectUrl: "https://agendamentos.mne.gov.pt/en/login",
-    imageUrl: '/appointments.png?v=2',
+    imageUrl: '/appointments.png',
     techStack: [
       'Next.js',
       'Tailwind',
@@ -31,7 +31,7 @@ const PROJECTS: ProjectType[] = [
   {
     title: "GasSU Contract Form",
     projectUrl: "https://www.gassu.pt/gassu/contratar/",
-    imageUrl: '/gassu.png?v=3',
+    imageUrl: '/gassu.png',
     techStack: [
       'Next.js',
       'Tailwind',
@@ -42,7 +42,7 @@ const PROJECTS: ProjectType[] = [
   {
     title: "Luisa Mendes - Makeup Portfolio ",
     projectUrl: "https://luisamendes.vercel.app",
-    imageUrl: '/luisamendes.png?v=4',
+    imageUrl: '/luisamendes.png',
     techStack: [
       'Next.js',
       'Tailwind',
@@ -54,7 +54,7 @@ const PROJECTS: ProjectType[] = [
   {
     title: "Geometrix",
     projectUrl: "https://www.hypatiamat.com/jogos/geometrixv7/index.html",
-    imageUrl: '/geometrix.png?v=5',
+    imageUrl: '/geometrix.png',
     techStack: [
       'Javascript',
       'Phaser.js',

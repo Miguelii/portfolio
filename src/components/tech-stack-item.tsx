@@ -1,3 +1,4 @@
+import { getBuildId } from "@/utils/getBuildId";
 import Image from "next/image";
 
 type SocialItemProps = {
@@ -6,12 +7,14 @@ type SocialItemProps = {
 }
 
 export const TechStackItem = ({ imageUrl, label }: SocialItemProps) => {
+  const id = getBuildId();
+  
   return (
     <div className="flex flex-row gap-3.5 items-center">
         <Image
             width={144}
             height={144}
-            src={imageUrl}
+            src={`${imageUrl}?v=${id}`}
             alt={`${label} logo`}
             className="w-8 h-8"
         />

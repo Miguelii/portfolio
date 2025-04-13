@@ -3,8 +3,12 @@ import Link from "next/link";
 import { LinkedinIcon } from "./linkedin-icon";
 import { GithubIcon } from "./github-icon";
 import { SocialItem } from "./social-item";
+import { getBuildId } from "@/utils/getBuildId";
 
 export default function ContactMeCard() {
+
+  const id = getBuildId();
+
   return (
     <section className="container mx-auto w-full py-50 items-center justify-center flex flex-col gap-12">
       <Link href={"/"} prefetch={false} className="">
@@ -12,7 +16,7 @@ export default function ContactMeCard() {
           width={160}
           height={120}
           quality={100}
-          src={"/signature2.png"}
+          src={`/signature2.png?v=${id}`}
           alt="Miguel Gonçalves Signature"
           className="w-36 h-16"
         />

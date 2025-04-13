@@ -8,6 +8,7 @@ import { MenuIcon } from "./menu-icon";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { CloseIcon } from "./close-icon";
+import { getBuildId } from "@/utils/getBuildId";
 
 type NavItem = {
   title: string;
@@ -49,6 +50,8 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const id = getBuildId();
+  
   return (
     <header className="container mx-auto items-center px-5 md:px-0 mt-5 mb-12 w-full md:my-24 lg:my-36 xl:my-36 justify-between gap-6 flex flex-row">
       <Link href={"/"} prefetch={false} className="">
@@ -56,7 +59,7 @@ export default function Header() {
           width={256}
           height={256}
           quality={100}
-          src={"/signature2.png"}
+          src={`/signature2.png?v=${id}`}
           alt="Miguel Gonçalves hearder signature"
           className="w-26 md:w-28 h-12 md:h-12 aspect-square shrink-0"
         />
