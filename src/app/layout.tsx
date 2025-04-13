@@ -26,18 +26,18 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`),
+  metadataBase: process.env.NEXT_PUBLIC_APP_HOST ? new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`) : undefined,
   title: "Miguel Gonçalves",
   description: "Miguel Gonçalves Software Engineer",
   keywords: 'Software Engineer portfolio next.js typescript react.js javascript tailwind supabase craftercms',
   creator: 'Miguel Gonçalves',
-  robots: `${process.env.NEXT_PUBLIC_APP_HOST}/robots.txt`,
+  robots: `${process.env.NEXT_PUBLIC_APP_HOST ?? ''}/robots.txt`,
   openGraph: {
     locale: 'en_US',
     siteName: "Miguel Gonçalves",
     description: "Miguel Gonçalves Software Engineer",
     type: 'website',
-    url: `${process.env.NEXT_PUBLIC_APP_HOST}`
+    url: process.env.NEXT_PUBLIC_APP_HOST ? new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`) : undefined,
   },
   twitter: {
     title: "Miguel Gonçalves",
