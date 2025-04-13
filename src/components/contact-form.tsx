@@ -6,6 +6,12 @@ import { z } from "zod"
 import { Form, FormField, FormItem, FormLabel } from "./form";
 import { Input } from "./input";
 import { cn } from "@/utils/cn";
+import { useTransition } from "react";
+import SendContact from "@/services/send-contact";
+import { useToast } from "@/utils/use-toast";
+import { CloseIcon } from "./close-icon";
+import { useRouter } from "next/navigation";
+import { Spinner } from "./spinner";
 
 const FormSchema = z.object({
     name: z.string().min(1).max(255),
@@ -19,8 +25,42 @@ export default function ContactForm() {
         resolver: zodResolver(FormSchema),
     });
 
+    const [isPending, startTransition] = useTransition()
+
+    const { toast, dismiss  } = useToast();
+
+    const router = useRouter();
+
     const onSubmit = (data: z.infer<typeof FormSchema>) => {
-        console.log({ data })
+        startTransition(async () => {
+            const res = await SendContact({
+                email: data.email,
+                name: data.name,
+                text: data.text
+            });
+
+            if(res.status === 200) {
+                toast({
+                    variant: 'default',
+                    title: "Thanks for your contact!",
+                    description: "I'll be in touch as soon as possible.",
+                    action: (
+                        <CloseIcon onClick={() => dismiss()} className="w-8 h-8"/>
+                    ),
+                });
+                form.reset({email: '', name: '', text: ''}, {keepValues: false});
+                router.refresh();
+            } else {
+                toast({
+                    title: "An error has occurred!",
+                    description: "Please try again later.",
+                    variant: 'destructive',
+                    action: (
+                        <CloseIcon onClick={() => dismiss()} className="w-8 h-8"/>
+                    ),
+                });
+            }
+        })
     }
       
     return (
@@ -62,7 +102,7 @@ export default function ContactForm() {
                         <FormLabel htmlFor='text'>
                             Message
                         </FormLabel>
-                        <Input type="string" {...field} className="w-full" maxLength={500}/>
+                        <textarea {...field} className="w-full bg-card h-[100px] focus:border-0 outline-0 rounded-none p-2" maxLength={500}/>
                     </FormItem>
                 )}
             />
@@ -73,8 +113,13 @@ export default function ContactForm() {
                     "mt-4 h-10 w-full md:w-[150px] border border-card  rounded-full cursor-pointer",
                     form.formState.isValid ? 'bg-white text-black' : 'bg-card'
                 )}
-            >
-                Submit
+            >   
+                {isPending && (
+                    <Spinner size='medium'/>
+                )}
+                {!isPending && (
+                    <>Submit</>
+                )}
             </button>
 
             </form>
