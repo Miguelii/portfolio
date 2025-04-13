@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --card: 0 0% 8%;
+  --white: #FAFAFA;
+}
+
+@theme inline {
+  --color-card: hsl(var(--card));
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-white: var(--white)
+}
+
+body {
+  @apply bg-black font-mono antialiased scroll-smooth text-white
+}
