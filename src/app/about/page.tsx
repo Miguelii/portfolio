@@ -11,12 +11,11 @@ export const revalidate = 60000; // 5min
 
 export default function AboutPage() {
   return (
-    <main className="container w-full mx-auto flex flex-col gap-6 md:flex-row px-5 md:px-20 mb-10 md:mb-16 lg:mb-32">
+    <main className="container w-full mx-auto flex flex-col gap-6 md:flex-row px-5 md:px-20 mb-16 md:mb-16 lg:mb-32">
       <article className="text-base font-mono flex flex-col gap-10">
-        <div className="flex flex-col gap-2">
-          <span>Miguel</span>
-
-          <span>Software Engineer</span>
+        <div className="flex flex-col gap-2 text-xl font-semibold">
+          <h1>Miguel</h1>
+          <h2>Software Engineer</h2>
         </div>
 
         <div className="flex flex-col gap-2">

@@ -68,7 +68,7 @@ export default function Home() {
   return (
     <main className="container w-full mx-auto px-5 md:px-20">
 
-      <h1 className="text-lg font-mono mb-10 uppercase">Checkout my latest personal and work projects:</h1>
+      <h1 className="text-lg md:text-xl font-mono font-semibold mb-10 uppercase">Checkout my latest personal and work projects:</h1>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 md:gap-x-12 md:gap-y-12">
         {PROJECTS.map((item,index) => {

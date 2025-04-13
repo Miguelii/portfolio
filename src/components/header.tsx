@@ -56,11 +56,12 @@ export default function Header() {
           width={256}
           height={256}
           quality={100}
-          src={"/signature.jpeg"}
+          src={"/signature2.png"}
           alt="Miguel Gonçalves hearder signature"
-          className="w-24 md:w-24 h-12 aspect-square shrink-0"
+          className="w-26 md:w-28 h-12 md:h-12 aspect-square shrink-0"
         />
       </Link>
+
 
       <MobileMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} nav={NAV} currPath={currPath}/>
 
