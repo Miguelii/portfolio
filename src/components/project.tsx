@@ -28,10 +28,11 @@ export default function Project({
           <CardItem translateZ="100" className="w-full mt-4">
             <Image
               src={imageUrl}
-              height="1000"
-              width="1000"
+              height={240}
+              width={358}
+              loading='lazy'
               className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-              alt="thumbnail"
+              alt="Project url preview"
             />
           </CardItem>
 
@@ -59,46 +60,5 @@ export default function Project({
         </CardBody>
       </CardContainer>
     </Link>
-  );
-
-  return (
-    <article className="p-5">
-      <div className="pb-5 md:pb-8 w-full">
-        <hr className="w-full bg-white" />
-      </div>
-
-      <div className="flex flex-col gap-8 md:flex-row md:justify-between md:pl-20">
-        <div className="flex flex-col gap-6 items-center md:items-start">
-          <div className="flex flex-col gap-4">
-            <span className="text-xl font-mono font-bold">{title}</span>
-
-            <span className="font-mono text-sm">
-              Tech Stack: Next.js | Typescript | Tailwind | Supabase |
-              CrafterCMS
-            </span>
-          </div>
-
-          <Link
-            href={projectUrl}
-            target="_blank"
-            className="h-11 w-28 border-white border items-center justify-center flex text-center mt-auto"
-          >
-            View
-          </Link>
-        </div>
-
-        <Image
-          height={200}
-          width={350}
-          className="w-[350px] h-[200px] md:w-[500px] md:h-[300px]"
-          alt="project"
-          src={imageUrl}
-        />
-      </div>
-
-      <div className="pt-5 md:pt-8 w-full">
-        <hr className="w-full bg-white" />
-      </div>
-    </article>
   );
 }

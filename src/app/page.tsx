@@ -1,6 +1,7 @@
 import ContactMeCard from "@/components/contact-me-card";
 import Project from "@/components/project";
 import { ProjectType } from "@/types/Project";
+import { Suspense } from "react";
 
 const PROJECTS: ProjectType[] = [
   {
@@ -73,13 +74,14 @@ export default function Home() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 md:gap-x-12 md:gap-y-12">
         {PROJECTS.map((item,index) => {
           return (
-            <Project 
-              key={`project-${index}`}
-              title={item.title}
-              projectUrl={item.projectUrl}
-              imageUrl={item.imageUrl}
-              techStack={item.techStack}
-            />
+            <Suspense key={`project-${index}`}>
+              <Project 
+                title={item.title}
+                projectUrl={item.projectUrl}
+                imageUrl={item.imageUrl}
+                techStack={item.techStack}
+              />  
+            </Suspense>
           )
         })}
       </div>

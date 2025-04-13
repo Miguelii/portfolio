@@ -55,7 +55,7 @@ export default function Header() {
         <Image
           width={256}
           height={256}
-          quality={100}
+          //quality={100}
           src={"/signature2.png"}
           alt="Miguel Gonçalves hearder signature"
           className="w-26 md:w-28 h-12 md:h-12 aspect-square shrink-0"
