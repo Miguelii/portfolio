@@ -26,7 +26,7 @@ export default function AboutPage() {
               url="https://www.uminho.pt/PT"
               className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
             >
-              University of Minho (Braga - Portugal)
+              University of Minho (Braga - Portugal).
             </LinkPreview>
           </span>
 

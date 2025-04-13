@@ -32,35 +32,49 @@ export default function ContactForm() {
     const router = useRouter();
 
     const onSubmit = (data: z.infer<typeof FormSchema>) => {
-        startTransition(async () => {
-            const res = await SendContact({
-                email: data.email,
-                name: data.name,
-                text: data.text
-            });
 
-            if(res.status === 200) {
-                toast({
-                    variant: 'default',
-                    title: "Thanks for your contact!",
-                    description: "I'll be in touch as soon as possible.",
-                    action: (
-                        <CloseIcon onClick={() => dismiss()} className="w-8 h-8"/>
-                    ),
+        try {
+            startTransition(async () => {
+                const res = await SendContact({
+                    email: data.email,
+                    name: data.name,
+                    text: data.text
                 });
-                form.reset({email: '', name: '', text: ''}, {keepValues: false});
-                router.refresh();
-            } else {
-                toast({
-                    title: "An error has occurred!",
-                    description: "Please try again later.",
-                    variant: 'destructive',
-                    action: (
-                        <CloseIcon onClick={() => dismiss()} className="w-8 h-8"/>
-                    ),
-                });
-            }
-        })
+
+                if(res.status === 200) {
+                    toast({
+                        variant: 'default',
+                        title: "Thanks for your contact!",
+                        description: "I'll be in touch as soon as possible.",
+                        action: (
+                            <CloseIcon onClick={() => dismiss()} className="w-8 h-8"/>
+                        ),
+                    });
+                    form.reset({email: '', name: '', text: ''}, {keepValues: false});
+                    router.refresh();
+                } else {
+                    toast({
+                        title: "An error has occurred!",
+                        description: "Please try again later.",
+                        variant: 'destructive',
+                        action: (
+                            <CloseIcon onClick={() => dismiss()} className="w-8 h-8"/>
+                        ),
+                    });
+                }
+            })
+        } catch(err) {
+            console.error({err});
+            toast({
+                title: "An error has occurred!",
+                description: "Please try again later.",
+                variant: 'destructive',
+                action: (
+                    <CloseIcon onClick={() => dismiss()} className="w-8 h-8"/>
+                ),
+            });
+        }
+        
     }
       
     return (

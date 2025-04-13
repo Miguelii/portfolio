@@ -105,9 +105,8 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
     closed: {
       opacity: 0,
       transition: {
-        staggerChildren: 0.05,
-        staggerDirection: -1,
-        when: "afterChildren",
+        ease: "easeOut",
+        duration: 0.3,
       },
     },
     open: {
