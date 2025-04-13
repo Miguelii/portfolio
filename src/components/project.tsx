@@ -30,7 +30,7 @@ export default function Project({
               src={imageUrl}
               height={240}
               width={358}
-              loading='lazy'
+              quality={80}
               className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
               alt="Project url preview"
             />
