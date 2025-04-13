@@ -50,15 +50,15 @@ export default function Header() {
   };
 
   return (
-    <header className="container mx-auto items-center px-5 mt-5 mb-12 w-full md:my-24 lg:my-36 xl:my-36 justify-between gap-6 flex flex-row">
+    <header className="container mx-auto items-center px-5 md:px-0 mt-5 mb-12 w-full md:my-24 lg:my-36 xl:my-36 justify-between gap-6 flex flex-row">
       <Link href={"/"} prefetch={false} className="">
         <Image
           width={256}
           height={256}
           quality={100}
-          src={"/signature.png"}
+          src={"/signature.jpeg"}
           alt="Miguel Gonçalves hearder signature"
-          className="w-24 md:w-26 h-16 aspect-square shrink-0"
+          className="w-24 md:w-24 h-12 aspect-square shrink-0"
         />
       </Link>
 
@@ -79,8 +79,8 @@ export default function Header() {
               prefetch={!item.external}
               target={item.external ? "_blank" : "_self"}
               className={cn(
-                "text-base font-mono uppercase font-semibold",
-                isSelected ? "text-[#FF7070]" : "text-white"
+                "text-sm font-mono uppercase font-semibold hover:text-[#FF7070]",
+                isSelected ? "text-[#7D7D7D]" : "text-white"
               )}
               key={`nav-item-${index}`}
             >
@@ -162,8 +162,8 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
                     prefetch={!item.external}
                     target={item.external ? "_blank" : "_self"}
                     className={cn(
-                      "text-4xl font-semibold transition-colors block uppercase",
-                      isSelected ? 'text-[#FF7070]' : 'text-black'
+                      "text-4xl font-semibold transition-colors block uppercase hover:text-[#FF7070]",
+                      isSelected ? 'text-[#7D7D7D]' : 'text-black'
                     )}
                     onClick={toggleMenu}
                   >

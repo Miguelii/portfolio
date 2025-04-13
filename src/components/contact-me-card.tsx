@@ -11,7 +11,7 @@ export default function ContactMeCard() {
         <Image
           width={160}
           height={120}
-          src={"/signature.png"}
+          src={"/signature.jpeg"}
           alt="Miguel Gonçalves Signature"
           className="w-40 h-30"
         />
