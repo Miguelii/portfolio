@@ -56,12 +56,13 @@ export default function Header() {
     <header className="container mx-auto items-center px-5 md:px-0 mt-5 mb-12 w-full md:my-24 lg:my-36 xl:my-36 justify-between gap-6 flex flex-row">
       <Link href={"/"} prefetch={false} className="">
         <Image
-          width={256}
-          height={256}
+          width={110}
+          height={48}
           quality={100}
-          src={`/signature2.png?v=${id}`}
+          //unoptimized
+          src={`/sig_new.png?v=${id}`}
           alt="Miguel Gonçalves hearder signature"
-          className="w-26 md:w-28 h-12 md:h-12 aspect-square shrink-0"
+          className="w-26 md:w-26 h-12 md:h-12 aspect-square shrink-0"
         />
       </Link>
 

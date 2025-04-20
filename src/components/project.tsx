@@ -34,8 +34,9 @@ export default function Project({
               src={`${imageUrl}?v=${id}`}
               height={240}
               width={358}
-              quality={80}
-              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              quality={100}
+              unoptimized
+              className="h-60 w-full object-contain object-center rounded-xl group-hover/card:shadow-xl"
               alt="Project url preview"
             />
           </CardItem>

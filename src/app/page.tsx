@@ -1,4 +1,5 @@
 import ContactMeCard from "@/components/contact-me-card";
+import { ContainerTextFlip } from "@/components/container-text-flip";
 import Project from "@/components/project";
 import { ProjectType } from "@/types/Project";
 import { Suspense } from "react";
@@ -7,87 +8,72 @@ const PROJECTS: ProjectType[] = [
   {
     title: "EUROMAR Portal",
     projectUrl: "https://www.eu-registry.com/euromar/",
-    imageUrl: '/euromar.png',
-    techStack: [
-      'Next.js',
-      'Tailwind',
-      'Typescript',
-      'Supabase',
-      'CrafterCMS'
-    ]
+    imageUrl: "/euromar.png",
+    techStack: ["Next.js", "Tailwind", "Typescript", "Supabase", "CrafterCMS"],
   },
 
   {
     title: "Portuguese Embassies Appointments Portal",
     projectUrl: "https://agendamentos.mne.gov.pt/en/login",
-    imageUrl: '/appointments.png',
-    techStack: [
-      'Next.js',
-      'Tailwind',
-      'Typescript',
-    ]
+    imageUrl: "/appointments.png",
+    techStack: ["Next.js", "Tailwind", "Typescript"],
   },
 
   {
     title: "GasSU Contract Form",
     projectUrl: "https://www.gassu.pt/gassu/contratar/",
-    imageUrl: '/gassu.png',
-    techStack: [
-      'Next.js',
-      'Tailwind',
-      'Typescript',
-    ]
+    imageUrl: "/gassu.png",
+    techStack: ["Next.js", "Tailwind", "Typescript"],
   },
 
   {
     title: "Luisa Mendes - Makeup Portfolio ",
     projectUrl: "https://luisamendes.vercel.app",
-    imageUrl: '/luisamendes.png',
-    techStack: [
-      'Next.js',
-      'Tailwind',
-      'Typescript',
-      'Framer-Motion'
-    ]
+    imageUrl: "/luisamendes.png",
+    techStack: ["Next.js", "Tailwind", "Typescript", "Framer-Motion"],
   },
 
   {
     title: "Geometrix",
     projectUrl: "https://www.hypatiamat.com/jogos/geometrixv7/index.html",
-    imageUrl: '/geometrix.png',
-    techStack: [
-      'Javascript',
-      'Phaser.js',
-    ]
-  }
-]
+    imageUrl: "/geometrix.png",
+    techStack: ["Javascript", "Phaser.js"],
+  },
+];
 
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 export const revalidate = 60000; // 5min
 
 export default function Home() {
   return (
     <main className="container w-full mx-auto px-5 md:px-20">
-
-      <h1 className="text-lg md:text-xl font-mono font-semibold mb-10 uppercase">Checkout my latest personal and work projects:</h1>
+      <div className="flex flex-row gap-1 text-base md:text-lg xl:text-xl font-mono font-semibold mb-10 uppercase text-white">
+        <h1 className="">
+          Checkout my latest
+        </h1>
+        <ContainerTextFlip
+        className="text-base md:text-lg xl:text-xl font-mono font-semibold uppercase bg-background py-0 px-0 text-white w-fit"
+          words={["personal", "work"]}
+        />
+        <span>projects:</span>
+      </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 md:gap-x-12 md:gap-y-12">
-        {PROJECTS.map((item,index) => {
+        {PROJECTS.map((item, index) => {
           return (
             <Suspense key={`project-${index}`}>
-              <Project 
+              <Project
                 title={item.title}
                 projectUrl={item.projectUrl}
                 imageUrl={item.imageUrl}
                 techStack={item.techStack}
-              />  
+              />
             </Suspense>
-          )
+          );
         })}
       </div>
 
       <ContactMeCard />
-
     </main>
   );
 }

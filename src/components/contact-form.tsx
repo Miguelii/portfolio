@@ -124,7 +124,7 @@ export default function ContactForm() {
             <button 
                 type='submit' 
                 className={cn(
-                    "mt-4 h-10 w-full md:w-[150px] border border-card  rounded-full cursor-pointer",
+                    "mt-4 h-10 w-full md:w-[150px] border border-card  rounded-none cursor-pointer",
                     form.formState.isValid ? 'bg-white text-black' : 'bg-card'
                 )}
             >   

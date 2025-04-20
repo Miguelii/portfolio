@@ -16,7 +16,7 @@ export default function ContactMeCard() {
           width={160}
           height={120}
           quality={100}
-          src={`/signature2.png?v=${id}`}
+          src={`/sig_new.png?v=${id}`}
           alt="Miguel Gonçalves Signature"
           className="w-36 h-16"
         />
@@ -25,7 +25,7 @@ export default function ContactMeCard() {
       <div className="flex flex-col gap-4">
         <Link
           href={"/contact"}
-          className="h-12 w-40 rounded-xl tex-center justify-center items-center flex border-white border hover:bg-white hover:text-black"
+          className="h-12 w-40 rounded-none tex-center justify-center items-center flex border-white border hover:bg-white hover:text-black"
         >
           CONTACT ME
         </Link>
