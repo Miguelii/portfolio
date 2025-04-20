@@ -4,6 +4,7 @@
   --card: 0 0% 8%;
   --white: #FBFBFD;
   --background: #0C0C0C;
+  --neutral: #878787;
 }
 
 @theme inline {
@@ -11,7 +12,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-white: var(--white);
-  --color-background: var(--background)
+  --color-background: var(--background);
+  --color-neutral: var(--neutral);
 }
 
 body {

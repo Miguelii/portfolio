@@ -18,7 +18,7 @@ export const TechStackItem = ({ imageUrl, label }: SocialItemProps) => {
             alt={`${label} logo`}
             className="w-8 h-8"
         />
-        <span>{label}</span>
+        <span className="text-neutral">{label}</span>
     </div>
   );
 };

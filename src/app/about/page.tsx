@@ -19,32 +19,32 @@ export default function AboutPage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <span>
+          <span className="text-neutral">
             Background in Computer Science from{" "}
             <LinkPreview
               url="https://www.uminho.pt/PT"
-              className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
+              className="font-bold bg-clip-text text-neutral"
             >
               University of Minho (Braga - Portugal).
             </LinkPreview>
           </span>
 
-          <span>
+          <span className="text-neutral">
             Specializing in full stack development, with a strong focus on
             JavaScript/TypeScript and Node.Js. Experienced in building SaaS
             applications using modern frameworks such as React and Next.Js.
           </span>
         </div>
 
-        <span>
+        <span className="text-neutral">
           Currently at{" "}
           <LinkPreview
             url="https://www.cgi.com/portugal/pt-pt"
-            className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
+            className="font-bold bg-clip-text text-neutral"
           >
-            @CGI
+            @CGI (2022 - Present)
           </LinkPreview>{" "}
-          (2022 - Present) as Software Engineer.
+          as Software Engineer.
         </span>
 
         <PortfolioTechStack />
