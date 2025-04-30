@@ -1,14 +1,12 @@
 "use client";
 
 import { cn } from "@/utils/cn";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuIcon } from "./menu-icon";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { CloseIcon } from "./close-icon";
-import { getBuildId } from "@/utils/getBuildId";
 
 type NavItem = {
   title: string;
@@ -36,7 +34,7 @@ const NAV: NavItem[] = [
   },
   {
     title: "CV",
-    url: "/CV_20250413.pdf",
+    url: "/CV_20250430.pdf",
     external: true,
   },
 ];
@@ -50,22 +48,12 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const id = getBuildId();
-  
   return (
     <header className="container mx-auto items-center px-5 md:px-0 mt-5 mb-12 w-full md:my-24 lg:my-36 xl:my-36 justify-between gap-6 flex flex-row">
-      <Link href={"/"} prefetch={false} className="">
-        <Image
-          width={110}
-          height={48}
-          quality={100}
-          //unoptimized
-          src={`/sig_new.png?v=${id}`}
-          alt="Miguel Gonçalves hearder signature"
-          className="w-26 md:w-26 h-12 md:h-12 aspect-square shrink-0"
-        />
-      </Link>
 
+      <Link href={"/"} prefetch={false} className="text-2xl font-bold">
+        MG.
+      </Link>
 
       <MobileMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} nav={NAV} currPath={currPath}/>
 
@@ -84,8 +72,8 @@ export default function Header() {
               prefetch={!item.external}
               target={item.external ? "_blank" : "_self"}
               className={cn(
-                "text-sm font-mono uppercase font-semibold hover:text-[#FF7070]",
-                isSelected ? "text-[#7D7D7D]" : "text-white"
+                "text-lg font-mono uppercase font-bold",
+                isSelected ? "text-blue" : ""
               )}
               key={`nav-item-${index}`}
             >
@@ -152,7 +140,7 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
         >
           <div className="w-full flex justify-end pt-5 pr-5">
             <CloseIcon
-              className="w-12 h-12 shrink-0 text-black"
+              className="w-12 h-12 shrink-0 text-primary"
               onClick={toggleMenu}
             />
           </div>
@@ -167,8 +155,8 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
                     prefetch={!item.external}
                     target={item.external ? "_blank" : "_self"}
                     className={cn(
-                      "text-4xl font-semibold transition-colors block uppercase hover:text-[#FF7070]",
-                      isSelected ? 'text-[#7D7D7D]' : 'text-black'
+                      "text-4xl font-semibold transition-colors block uppercase",
+                      isSelected ? 'text-blue' : 'text-primary'
                     )}
                     onClick={toggleMenu}
                   >

@@ -11,7 +11,6 @@ import SendContact from "@/services/send-contact";
 import { useToast } from "@/utils/use-toast";
 import { CloseIcon } from "./close-icon";
 import { useRouter } from "next/navigation";
-import { Spinner } from "./spinner";
 
 const FormSchema = z.object({
     name: z.string().min(1).max(255),
@@ -116,7 +115,7 @@ export default function ContactForm() {
                         <FormLabel htmlFor='text'>
                             Message
                         </FormLabel>
-                        <textarea {...field} className="w-full bg-card h-[100px] focus:border-0 outline-0 rounded-none p-2" maxLength={500}/>
+                        <textarea {...field} className="w-full rounded-md border border-neutral-600 bg-white h-[100px] outline-0 p-2" maxLength={500}/>
                     </FormItem>
                 )}
             />
@@ -124,12 +123,13 @@ export default function ContactForm() {
             <button 
                 type='submit' 
                 className={cn(
-                    "mt-4 h-10 w-full md:w-[150px] border border-card  rounded-none cursor-pointer",
-                    form.formState.isValid ? 'bg-white text-black' : 'bg-card'
-                )}
+                    "mt-4 h-10 w-full px-8 py-2 border border-card  rounded-none cursor-pointer",
+                    "w-full md:w-fit justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 group bg-primary hover:bg-primary/90 text-white  overflow-hidden relative group flex items-center",
+                    !form.formState.isValid ? 'bg-neutral-600 text-white' : 'bg-primary'
+                  )}
             >   
                 {isPending && (
-                    <Spinner size='medium'/>
+                    <>Sending...</>
                 )}
                 {!isPending && (
                     <>Submit</>

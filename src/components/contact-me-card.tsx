@@ -1,45 +1,25 @@
-import Image from "next/image";
-import Link from "next/link";
-import { LinkedinIcon } from "./linkedin-icon";
-import { GithubIcon } from "./github-icon";
-import { SocialItem } from "./social-item";
-import { getBuildId } from "@/utils/getBuildId";
+import Button from "./button";
 
 export default function ContactMeCard() {
-
-  const id = getBuildId();
-
   return (
-    <section className="container mx-auto w-full py-50 items-center justify-center flex flex-col gap-12">
-      <Link href={"/"} prefetch={false} className="">
-        <Image
-          width={160}
-          height={120}
-          quality={100}
-          src={`/sig_new.png?v=${id}`}
-          alt="Miguel Gonçalves Signature"
-          className="w-36 h-16"
-        />
-      </Link>
+    <section className="container mx-auto w-full py-50 items-center justify-center flex flex-col gap-16">
+      <div className="text-center">
+        <span className="inline-flex items-center justify-center bg-neutral-100 px-4 py-2 rounded-full text-sm font-medium mb-4 text-blue shadow-sm">
+          Let&apos;s Connect
+        </span>
 
-      <div className="flex flex-col gap-4">
-        <Link
-          href={"/contact"}
-          className="h-12 w-40 rounded-none tex-center justify-center items-center flex border-white border hover:bg-white hover:text-black"
-        >
-          CONTACT ME
-        </Link>
+        <h3 className="text-2xl font-bold text-center uppercase mb-6">
+          Get in Touch
+        </h3>
 
-        <div className="flex flex-row w-full justify-center gap-1">
-          <SocialItem href="https://www.linkedin.com/in/miguelgoncalves18/" ariaLabel="see linkedin profile">
-            <LinkedinIcon className="w-8 h-8" />
-          </SocialItem>
-          <SocialItem href="https://github.com/Miguelii" ariaLabel="see github profile">
-            <GithubIcon className="w-8 h-8" />
-          </SocialItem>
-        </div>
+        <p className="text-base max-w-2xl mx-auto">
+          Always up for new opportunities, collabs, or idea exchanges. Reach out and i&apos;ll get back to you ASAP!
+        </p>
       </div>
+
+      <Button prefetch={true} href={'/contact'} className="px-8 py-2">
+        <span className="relative z-10">Contact Me</span>
+      </Button>
     </section>
   );
 }
-

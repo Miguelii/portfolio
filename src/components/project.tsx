@@ -1,69 +1,95 @@
 import Image from "next/image";
-import Link from "next/link";
-import { CardContainer, CardBody, CardItem } from "./3d-card";
-import { Badge } from "./Badge";
 import { ProjectType } from "@/types/Project";
 import { getBuildId } from "@/utils/getBuildId";
+import Button from "./button";
+import { cn } from "@/utils/cn";
 
-type ProjectProps = ProjectType;
+type ProjectProps = ProjectType & {
+  index: number
+};
 
 export default function Project({
   title,
   projectUrl,
   imageUrl,
   techStack,
+  index,
+  description
 }: ProjectProps) {
-
   const id = getBuildId();
-   
+
+  const isEven = index % 2 !== 0;
+
   return (
-    <Link href={projectUrl} prefetch={false} target="_blank">
-      <CardContainer
-        className="inter-var w-full cursor-pointer"
-        containerClassName="w-full"
-      >
-        <CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] border-black/[0.1] w-full h-auto rounded-xl p-6 border bg-card">
-          <CardItem
-            translateZ="50"
-            className="text-xl font-bold text-white flex flex-col justify-between w-full gap-2"
-          >
-            {title}
-          </CardItem>
-          <CardItem translateZ="100" className="w-full mt-4">
-            <Image
-              src={`${imageUrl}?v=${id}`}
-              height={240}
-              width={358}
-              quality={100}
-              unoptimized
-              className="h-60 w-full object-contain object-center rounded-xl group-hover/card:shadow-xl"
-              alt="Project url preview"
-            />
-          </CardItem>
+    <div className={cn(
+      "flex flex-col bg-transparent rounded-2xl overflow-hidden shadow-2xl border border-neutral-100 group h-fit lg:h-[368px]",
+      isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'
+    )}>
+      <div className="lg:w-1/2 relative overflow-hidden">
+        <div className="aspect-video lg:aspect-auto lg:h-full">
+          <Image
+            src={`${imageUrl}?v=${id}`}
+            height={240}
+            width={358}
+            quality={100}
+            unoptimized
+            className="w-full h-full object-cover object-center"
+            alt="Project url preview"
+          />
+        </div>
+      </div>
+      <div className="lg:w-1/2 p-8 flex flex-col justify-start bg-gradient-to-br from-background to-neutral-50">
+        <div className="space-y-6 h-full justify-between">
+          <div>
+            <h3 className="text-2xl font-bold mb-3 flex items-center">
+              {title}
+              <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            </h3>
+            <p className="">
+              {description}
+            </p>
+          </div>
 
-          <CardItem
-            as="div"
-            translateZ="60"
-            className="mt-8 flex flex-row gap-3 flex-wrap"
-          >
+          <div className="flex flex-wrap gap-2 mb-6">
             {techStack.map((label, index) => {
-              return <Badge key={`tech-stack-${index}`}>{label}</Badge>;
-            })}
-          </CardItem>
-
-          {/* 
-                <div className="flex justify-between items-center mt-12">
-                <CardItem
-                    translateZ={20}
-                    as="button"
-                    className="px-4 py-2 rounded-xl bg-white text-black text-xs font-bold"
+              return (
+                <span
+                  key={`tech-stack-${index}`}
+                  className="bg-neutral-100 px-3 py-1 rounded-full text-sm font-medium text-primary shadow-sm"
                 >
-                    {title}
-                </CardItem>
-                </div>
-                */}
-        </CardBody>
-      </CardContainer>
-    </Link>
+                  {label}
+                </span>
+              );
+            })}
+          </div>
+
+          
+        </div>
+
+        <div className={cn(
+            "w-full flex mt-auto",
+            isEven ? 'justify-start' : 'justify-end'
+          )}>
+            <Button prefetch={false} href={projectUrl} target="_blank">
+              <span className="relative z-10">View Project</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-right relative z-10"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </Button>
+          </div>
+      </div>
+    </div>
   );
 }

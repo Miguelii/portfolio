@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --card: 0 0% 8%;
-  --white: #FBFBFD;
-  --background: #0C0C0C;
-  --neutral: #878787;
+  --background: #FBFBFD;
+  --primary: #0C0C0C;
+  --red: #FF7070;
+  --blue: #1F6CF9;
 }
 
 @theme inline {
-  --color-card: hsl(var(--card));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-white: var(--white);
+
   --color-background: var(--background);
-  --color-neutral: var(--neutral);
+  --color-primary: var(--primary);
+  --color-red: var(--red);
+  --color-blue: var(--blue);
 }
 
 body {
-  @apply bg-background font-mono antialiased scroll-smooth text-white
+  @apply bg-background font-mono antialiased scroll-smooth text-primary!
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 0.2s
+}
+
+::selection {
+  background: var(--primary) !important;
+  color: var(--background) !important;
 }

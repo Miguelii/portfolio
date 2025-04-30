@@ -8,7 +8,7 @@ export default function PortfolioTechStack() {
         <TechStackItem imageUrl="/js.webp" label="Javascript" />
         <TechStackItem imageUrl="/ts.webp" label="Typescript" />
         <TechStackItem imageUrl="/react.webp" label="React" />
-        <TechStackItem imageUrl="/next.webp" label="Next.js" />
+        <TechStackItem imageUrl="/nextjs-icon.png" label="Next.js" />
         <TechStackItem imageUrl="/tailwind.webp" label="Tailwind" />
       </Item>
 
@@ -18,7 +18,7 @@ export default function PortfolioTechStack() {
       </Item>
 
       <Item title="Tools:">
-        <TechStackItem imageUrl="/docker.svg" label="Docker" />
+        <TechStackItem imageUrl="/docker-icon.png" label="Docker" />
         <TechStackItem imageUrl="/supabase.svg" label="Supabase" />
         <TechStackItem imageUrl="/craftercms.png" label="CrafterCMS" />
       </Item>
