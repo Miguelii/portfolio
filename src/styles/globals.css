@@ -1,32 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FBFBFD;
-  --primary: #0C0C0C;
-  --red: #FF7070;
-  --blue: #1F6CF9;
+  --background: #fbfbfd;
+  --primary: #0c0c0c;
+  --red: #ff7070;
+  --neutral: #737373;
 }
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-
   --color-background: var(--background);
   --color-primary: var(--primary);
   --color-red: var(--red);
-  --color-blue: var(--blue);
+  --color-neutral: var(--neutral);
+}
+
+html {
+  scroll-behavior: smooth !important;
 }
 
 body {
-  @apply bg-background font-mono antialiased scroll-smooth text-primary!
+  @apply bg-background font-sans antialiased text-primary!;
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 0.2s
+  animation-duration: 0.2s;
 }
 
 ::selection {
-  background: var(--primary) !important;
-  color: var(--background) !important;
+  background: var(--neutral) !important;
+  color: white;
+}
+
+.main-container {
+  @apply container w-full mx-auto px-5 md:px-8 mb-16 md:mb-16 lg:mb-32;
 }

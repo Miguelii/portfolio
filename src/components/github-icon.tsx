@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { cn } from '@/utils/cn';
-import type { Variants } from 'motion/react';
-import { motion, useAnimation } from 'motion/react';
-import type { HTMLAttributes } from 'react';
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import { cn } from "@/utils/cn";
+import type { Variants } from "motion/react";
+import { motion, useAnimation } from "motion/react";
+import type { HTMLAttributes } from "react";
+import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface GithubIconHandle {
   startAnimation: () => void;
@@ -54,7 +54,7 @@ const tailVariants: Variants = {
     rotate: [0, -15, 15, -10, 10, -5, 5],
     transition: {
       duration: 2.5,
-      ease: 'easeInOut',
+      ease: "easeInOut",
       repeat: Infinity,
     },
   },
@@ -71,13 +71,13 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 
       return {
         startAnimation: async () => {
-          bodyControls.start('animate');
-          await tailControls.start('draw');
-          tailControls.start('wag');
+          bodyControls.start("animate");
+          await tailControls.start("draw");
+          tailControls.start("wag");
         },
         stopAnimation: () => {
-          bodyControls.start('normal');
-          tailControls.start('normal');
+          bodyControls.start("normal");
+          tailControls.start("normal");
         },
       };
     });
@@ -85,33 +85,33 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
     const handleMouseEnter = useCallback(
       async (e: React.MouseEvent<HTMLDivElement>) => {
         if (!isControlledRef.current) {
-          bodyControls.start('animate');
-          await tailControls.start('draw');
-          tailControls.start('wag');
+          bodyControls.start("animate");
+          await tailControls.start("draw");
+          tailControls.start("wag");
         } else {
           onMouseEnter?.(e);
         }
       },
-      [bodyControls, onMouseEnter, tailControls]
+      [bodyControls, onMouseEnter, tailControls],
     );
 
     const handleMouseLeave = useCallback(
       (e: React.MouseEvent<HTMLDivElement>) => {
         if (!isControlledRef.current) {
-          bodyControls.start('normal');
-          tailControls.start('normal');
+          bodyControls.start("normal");
+          tailControls.start("normal");
         } else {
           onMouseLeave?.(e);
         }
       },
-      [bodyControls, tailControls, onMouseLeave]
+      [bodyControls, tailControls, onMouseLeave],
     );
 
     return (
       <div
         className={cn(
           `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-          className
+          className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -143,9 +143,9 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
-GithubIcon.displayName = 'GithubIcon';
+GithubIcon.displayName = "GithubIcon";
 
 export { GithubIcon };

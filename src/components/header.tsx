@@ -24,17 +24,8 @@ const NAV: NavItem[] = [
     url: "/about",
   },
   {
-    title: "CONTACT",
-    url: "/contact",
-  },
-  {
     title: "linkedin",
     url: "https://www.linkedin.com/in/miguelgoncalves18/",
-    external: true,
-  },
-  {
-    title: "CV",
-    url: "/CV_20250430.pdf",
     external: true,
   },
 ];
@@ -49,13 +40,17 @@ export default function Header() {
   };
 
   return (
-    <header className="container mx-auto items-center px-5 md:px-0 mt-5 mb-12 w-full md:my-24 lg:my-36 xl:my-36 justify-between gap-6 flex flex-row">
-
-      <Link href={"/"} prefetch={false} className="text-2xl font-bold">
+    <header className="container mx-auto items-center px-5 md:px-0 mt-5 mb-12 w-full md:my-24 lg:my-24 xl:mb-36 xl:mt-24 justify-between gap-6 flex flex-row">
+      <Link href={"/"} prefetch={false} className="text-3xl font-bold">
         MG.
       </Link>
 
-      <MobileMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} nav={NAV} currPath={currPath}/>
+      <MobileMenu
+        isMenuOpen={isMenuOpen}
+        toggleMenu={toggleMenu}
+        nav={NAV}
+        currPath={currPath}
+      />
 
       <MenuIcon
         className="flex md:hidden w-12 h-12 shrink-0"
@@ -73,7 +68,7 @@ export default function Header() {
               target={item.external ? "_blank" : "_self"}
               className={cn(
                 "text-lg font-mono uppercase font-bold",
-                isSelected ? "text-blue" : ""
+                isSelected ? "text-neutral" : "",
               )}
               key={`nav-item-${index}`}
             >
@@ -92,7 +87,12 @@ type MobileMenuProps = {
   nav: NavItem[];
   currPath: string;
 };
-const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) => {
+const MobileMenu = ({
+  isMenuOpen,
+  toggleMenu,
+  nav,
+  currPath,
+}: MobileMenuProps) => {
   // Variantes de animação para o container do menu
   const menuVariants = {
     closed: {
@@ -136,6 +136,7 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
           initial="closed"
           animate="open"
           exit="closed"
+          //@ts-expect-error erro de versão
           variants={menuVariants}
         >
           <div className="w-full flex justify-end pt-5 pr-5">
@@ -149,6 +150,7 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
             {nav?.map((item, index) => {
               const isSelected = item.url === currPath;
               return (
+                //@ts-expect-error erro de versão
                 <motion.div variants={itemVariants} key={`mobile-nav-${index}`}>
                   <Link
                     href={item.url}
@@ -156,7 +158,7 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
                     target={item.external ? "_blank" : "_self"}
                     className={cn(
                       "text-4xl font-semibold transition-colors block uppercase",
-                      isSelected ? 'text-blue' : 'text-primary'
+                      isSelected ? "text-neutral" : "text-primary",
                     )}
                     onClick={toggleMenu}
                   >

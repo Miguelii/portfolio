@@ -77,8 +77,8 @@ export const LinkPreview = ({
     x.set(offsetFromCenter);
   };
 
-   const id = getBuildId();
-   
+  const id = getBuildId();
+
   return (
     <>
       {isMounted ? (
@@ -106,6 +106,7 @@ export const LinkPreview = ({
           onMouseMove={handleMouseMove}
           className={cn("", className)}
           href={url}
+          target="_blank"
         >
           {children}
         </HoverCardPrimitive.Trigger>
@@ -138,7 +139,7 @@ export const LinkPreview = ({
               >
                 <Link
                   href={url}
-                  target='_blank'
+                  target="_blank"
                   className="block p-1 bg-white border-2 border-transparent shadow rounded-xl cursor-pointer"
                   style={{ fontSize: 0 }}
                 >

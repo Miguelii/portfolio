@@ -3,9 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { unstable_ViewTransition as ViewTransition } from 'react'
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { unstable_ViewTransition as ViewTransition } from "react";
 import { Toaster } from "@/components/toaster";
 
 const geistSans = Geist({
@@ -19,32 +19,39 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  width: 'device-width',
+  colorScheme: "dark",
+  width: "device-width",
   initialScale: 1,
-  height: 'device-height'
-}
+  height: "device-height",
+};
 
 export const metadata: Metadata = {
-  metadataBase: process.env.NEXT_PUBLIC_APP_HOST ? new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`) : undefined,
-  title: "Miguel Gonçalves",
-  description: "Miguel Gonçalves Software Engineer",
-  keywords: 'Software Engineer portfolio next.js typescript react.js javascript tailwind supabase craftercms',
-  creator: 'Miguel Gonçalves',
-  robots: `${process.env.NEXT_PUBLIC_APP_HOST ?? ''}/robots.txt`,
+  metadataBase: process.env.NEXT_PUBLIC_APP_HOST
+    ? new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`)
+    : undefined,
+  title: "Miguel Gonçalves - Software Engineer",
+  description:
+    "Miguel Gonçalves Software Engineer specializing in full-stack development, with strong expertise in JavaScript, TypeScript, and Node.js.",
+  keywords:
+    "Software Engineer portfolio next.js typescript react.js javascript tailwind supabase craftercms",
+  creator: "Miguel Gonçalves",
+  robots: `${process.env.NEXT_PUBLIC_APP_HOST ?? ""}/robots.txt`,
   openGraph: {
-    locale: 'en_US',
-    siteName: "Miguel Gonçalves",
-    description: "Miguel Gonçalves Software Engineer",
-    type: 'website',
-    url: process.env.NEXT_PUBLIC_APP_HOST ? new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`) : undefined,
+    locale: "en_US",
+    siteName: "Miguel Gonçalves - Software Engineer",
+    description:
+      "Miguel Gonçalves Software Engineer specializing in full-stack development, with strong expertise in JavaScript, TypeScript, and Node.js.",
+    type: "website",
+    url: process.env.NEXT_PUBLIC_APP_HOST
+      ? new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`)
+      : undefined,
   },
   twitter: {
-    title: "Miguel Gonçalves",
-    creator: 'Miguel Gonçalves',
-    site: '@Miguel Gonçalves',
-    card: 'summary_large_image',
-  }
+    title: "Miguel Gonçalves - Software Engineer",
+    creator: "Miguel Gonçalves",
+    site: "@Miguel Gonçalves",
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -57,16 +64,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Analytics/>
+        <Analytics />
         <SpeedInsights />
-        <Toaster/>
-        <div className="min-h-screen">
-          <Header/>
-          <ViewTransition>
-            {children}  
-          </ViewTransition>  
+        <Toaster />
+        <div className="min-h-[calc(100vh-192px)] w-full">
+          <Header />
+          <ViewTransition>{children}</ViewTransition>
         </div>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

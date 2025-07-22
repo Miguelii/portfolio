@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { cn } from '@/utils/cn';
-import type { Variants } from 'motion/react';
-import { motion, useAnimation } from 'motion/react';
-import type { HTMLAttributes } from 'react';
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import { cn } from "@/utils/cn";
+import type { Variants } from "motion/react";
+import { motion, useAnimation } from "motion/react";
+import type { HTMLAttributes } from "react";
+import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface MenuIconHandle {
   startAnimation: () => void;
@@ -26,7 +26,7 @@ const lineVariants: Variants = {
     y: custom === 1 ? 6 : custom === 3 ? -6 : 0,
     opacity: custom === 2 ? 0 : 1,
     transition: {
-      type: 'spring',
+      type: "spring",
       stiffness: 260,
       damping: 20,
     },
@@ -42,8 +42,8 @@ const MenuIcon = forwardRef<MenuIconHandle, MenuIconProps>(
       isControlledRef.current = true;
 
       return {
-        startAnimation: () => controls.start('animate'),
-        stopAnimation: () => controls.start('normal'),
+        startAnimation: () => controls.start("animate"),
+        stopAnimation: () => controls.start("normal"),
       };
     });
 
@@ -51,30 +51,30 @@ const MenuIcon = forwardRef<MenuIconHandle, MenuIconProps>(
     const handleMouseEnter = useCallback(
       (e: React.MouseEvent<HTMLDivElement>) => {
         if (!isControlledRef.current) {
-          controls.start('animate');
+          controls.start("animate");
         } else {
           onMouseEnter?.(e);
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleMouseLeave = useCallback(
       (e: React.MouseEvent<HTMLDivElement>) => {
         if (!isControlledRef.current) {
-          controls.start('normal');
+          controls.start("normal");
         } else {
           onMouseLeave?.(e);
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
     return (
       <div
         className={cn(
           `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-          className
+          className,
         )}
         //onMouseEnter={handleMouseEnter}
         //onMouseLeave={handleMouseLeave}
@@ -121,9 +121,9 @@ const MenuIcon = forwardRef<MenuIconHandle, MenuIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
-MenuIcon.displayName = 'MenuIcon';
+MenuIcon.displayName = "MenuIcon";
 
 export { MenuIcon };

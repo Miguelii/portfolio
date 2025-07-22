@@ -1,0 +1,24 @@
+import Button from "@/components/button";
+
+export default function NotFound() {
+  return (
+    <main className="main-container flex flex-col gap-6 max-w-3xl">
+      <span className="block text-neutral font-normal text-base">
+        Not Found
+      </span>
+
+      <div className="flex flex-col gap-5 justify-center h-full">
+        <h1 className="text-primary text-3xl/snug xl:text-5xl/snug font-bold">
+          On no!
+        </h1>
+        <p className="text-pretty text-neutral text-lg md:text-base leading-relaxed">
+          Seems like you are lost.
+        </p>
+      </div>
+
+      <Button prefetch={true} href={"/"} className="px-8 py-2">
+        <span className="">Go back</span>
+      </Button>
+    </main>
+  );
+}

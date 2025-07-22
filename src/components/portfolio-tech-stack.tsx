@@ -32,7 +32,7 @@ type ItemProps = PropsWithChildren<{
 const Item = ({ title, children }: ItemProps) => {
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-base">{title}</h2>
+      <h2 className="text-lg font-medium text-neutral">{title}</h2>
       <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
         {children}
       </div>
