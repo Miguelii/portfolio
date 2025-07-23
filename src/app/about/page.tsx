@@ -12,7 +12,7 @@ export const revalidate = 3600; // 1h
 
 export default function AboutPage() {
   return (
-    <main className="main-container h-fit relative">
+    <main className="main-container h-fit relative mt-20">
       <AboutSection />
 
       <SectionDivider />

@@ -12,7 +12,7 @@ export function LandingSectionWithBand() {
         </span>
       </div>
 
-      <div className="hidden lg:block absolute -inset-10">
+      <div className="hidden lg:block absolute -inset-5">
         <BandCanvas />
       </div>
     </section>

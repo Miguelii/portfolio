@@ -7,6 +7,7 @@ import { MenuIcon } from "./menu-icon";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { CloseIcon } from "./close-icon";
+import { ThemeChanger } from "./theme-changer";
 
 type NavItem = {
   title: string;
@@ -40,8 +41,8 @@ export default function Header() {
   };
 
   return (
-    <header className="container mx-auto items-center px-5 md:px-0 mt-5 mb-12 w-full md:my-24 lg:my-24 xl:mb-36 xl:mt-24 justify-between gap-6 flex flex-row">
-      <Link href={"/"} prefetch={false} className="text-3xl font-bold">
+    <header className="container mx-auto items-center px-5 md:px-0 my-5 md:my-10 w-full justify-between gap-6 flex flex-row">
+      <Link href={"/"} prefetch={false} className="text-2xl font-bold">
         MG.
       </Link>
 

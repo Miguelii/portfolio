@@ -57,7 +57,7 @@ export function ExperienceSection() {
 
 function WorkExperienceItem(experience: WorkExperience) {
   return (
-    <div className="flex gap-6 md:gap-8 flex-col md:flex-row">
+    <div className="flex gap-3 md:gap-8 flex-col md:flex-row">
       <div className="w-40 flex-shrink-0 mt-1">
         <span className="text-neutral text-base md:text-lg font-medium">
           {experience.period}
@@ -65,7 +65,7 @@ function WorkExperienceItem(experience: WorkExperience) {
       </div>
 
       <div className="flex-1">
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-start md:items-center gap-2 mb-3 flex-col md:flex-row">
           <span className="text-primary font-medium text-base md:text-lg">
             {experience.jobTitle}
           </span>
