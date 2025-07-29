@@ -33,16 +33,16 @@ export const metadata: Metadata = {
       : undefined,
    title: 'Miguel Gonçalves - Software Engineer',
    description:
-      'Miguel Gonçalves Software Engineer specializing in full-stack development, with strong expertise in JavaScript, TypeScript, and Node.js.',
+      'Portfolio of Miguel Gonçalves, a full-stack software engineer focused on building modern web applications with Next.js, TypeScript, and Node.js.',
    keywords:
-      'Software Engineer portfolio next.js typescript react.js javascript tailwind supabase craftercms',
+      'Miguel Gonçalves, software engineer, full-stack developer, web developer, Next.js, TypeScript, JavaScript, React, Tailwind CSS, Supabase, CrafterCMS, portfolio',
    creator: 'Miguel Gonçalves',
-   robots: `${process.env.NEXT_PUBLIC_APP_HOST ?? ''}/robots.txt`,
+   robots: { index: true, follow: true },
    openGraph: {
       locale: 'en_US',
       siteName: 'Miguel Gonçalves - Software Engineer',
       description:
-         'Miguel Gonçalves Software Engineer specializing in full-stack development, with strong expertise in JavaScript, TypeScript, and Node.js.',
+         'Discover the portfolio of Miguel Gonçalves, showcasing real-world and personal projects built with modern web technologies.',
       type: 'website',
       url: process.env.NEXT_PUBLIC_APP_HOST
          ? new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`)
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
    },
    twitter: {
       title: 'Miguel Gonçalves - Software Engineer',
-      creator: 'Miguel Gonçalves',
-      site: '@Miguel Gonçalves',
+      creator: '@migueligoncal',
+      site: '@migueligoncal',
       card: 'summary_large_image',
    },
 }

@@ -5,7 +5,9 @@ import { SocialItem } from './social-item'
 export default function Footer() {
    return (
       <footer className="main-container mx-auto w-full my-5 md:my-10 lg:mt-32 flex flex-row justify-between items-center">
-         <span className="text-sm">&copy; {new Date().getFullYear()}. All rights reserved.</span>
+         <span className="text-base font-mono">
+            &copy; {new Date().getFullYear()}. All rights reserved.
+         </span>
 
          <div className="flex flex-row justify-center gap-2">
             <SocialItem

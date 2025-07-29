@@ -31,6 +31,7 @@ const NAV: NavItem[] = [
 ]
 
 export default function Header() {
+   'use no memo'
    const currPath = usePathname()
 
    const [isMenuOpen, setIsMenuOpen] = useState(false)
