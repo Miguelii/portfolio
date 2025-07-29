@@ -13,8 +13,7 @@ export function Project3dCard({ project }: Project3dCardProps) {
    return (
       <CardContainer className="inter-var cursor-pointer">
          <CardBody className="bg-gray-50 w-full h-full relative group/card border-primary/[0.1] rounded-xl p-6 border">
-            <Link className="contents" href={`/${project.id}`} prefetch={false}>
-               <>
+            <Link className="flex flex-col h-full w-full" href={`/${project.id}`} prefetch={true}>
                   <CardItem translateZ="50" className="text-xl font-bold text-primary">
                      {project.title}
                   </CardItem>
@@ -23,14 +22,13 @@ export function Project3dCard({ project }: Project3dCardProps) {
                      className="flex items-center gap-2 flex-wrap mt-3 justify-between w-full"
                      translateZ="50"
                   >
-                     {project.company && (
+                     {project.label && (
                         <Badge
                            className={cn(
-                              'text-xs font-medium',
-                              project.workProject ? 'bg-primary text-white' : ''
+                              'text-xs font-medium bg-primary text-white',
                            )}
                         >
-                           {project.company}
+                           {project.label}
                         </Badge>
                      )}
                      <span className="text-xs text-neutral ml-auto">{project.year}</span>
@@ -50,7 +48,7 @@ export function Project3dCard({ project }: Project3dCardProps) {
                      />
                   </CardItem>
 
-                  <CardItem className="flex flex-wrap gap-2 mt-3" translateZ={20}>
+                  <CardItem className="flex flex-wrap gap-2 mt-3 mb-12" translateZ={20}>
                      <>
                         {project?.techStack?.slice(0, 3).map((tech, index) => (
                            <Badge key={index}>{tech}</Badge>
@@ -61,7 +59,7 @@ export function Project3dCard({ project }: Project3dCardProps) {
                      </>
                   </CardItem>
 
-                  <div className="flex justify-end items-center mt-12">
+                  <div className="flex justify-end items-center mt-auto">
                      <CardItem
                         translateZ={20}
                         as="button"
@@ -70,7 +68,6 @@ export function Project3dCard({ project }: Project3dCardProps) {
                         View Project
                      </CardItem>
                   </div>
-               </>
             </Link>
          </CardBody>
       </CardContainer>

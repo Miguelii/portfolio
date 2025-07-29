@@ -7,6 +7,6 @@ export type ProjectType = {
    description: string
    longDescription: string
    techStack: string[]
-   company: string
+   label: string
    year: string
 }

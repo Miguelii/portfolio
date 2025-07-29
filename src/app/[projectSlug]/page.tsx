@@ -34,11 +34,10 @@ export default async function ProjectSlugPage(props: ProjectSlugPageProps) {
                   <div className="flex flex-col gap-2">
                      <Badge
                         className={cn(
-                           'w-fit',
-                           project.workProject ? 'bg-primary text-white' : 'border-neutral'
+                           'w-fit bg-primary text-white',
                         )}
                      >
-                        {project.company}
+                        {project.label}
                      </Badge>
                      <h1 className="text-primary text-3xl/snug xl:text-5xl/snug font-bold">
                         {project.title}
