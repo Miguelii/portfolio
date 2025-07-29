@@ -31,7 +31,7 @@ const NAV: NavItem[] = [
 ]
 
 export default function Header() {
-   const currPath = usePathname();
+   const currPath = usePathname()
 
    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -56,11 +56,7 @@ export default function Header() {
 
          <nav className="hidden md:flex flex-row gap-6">
             {NAV?.map((item, index) => {
-
-               console.log({ item })
-               console.log({ currPath })
-
-               const isSelected = item?.url === currPath;
+               const isSelected = item?.url === currPath
 
                return (
                   <Link
@@ -68,10 +64,10 @@ export default function Header() {
                      prefetch={!item.external}
                      target={item.external ? '_blank' : '_self'}
                      className={cn(
-                        'font-mono uppercase font-bold',
-                        isSelected ? 'text-neutral text-lg' : 'text-lg '
+                        'font-mono uppercase font-bold text-lg transition-colors',
+                        isSelected ? 'text-neutral' : 'text-primary'
                      )}
-                     key={`nav-item-${index}`}
+                     key={`nav-item-${item?.url}-${index}`}
                   >
                      {item.title}
                   </Link>
@@ -154,6 +150,7 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
                                  isSelected ? 'text-neutral' : 'text-primary'
                               )}
                               onClick={toggleMenu}
+                              key={`mobile-nav-item-${item?.url}-${index}`}
                            >
                               {item.title}
                            </Link>

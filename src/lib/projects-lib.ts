@@ -238,7 +238,7 @@ export const ProjectsLib: ProjectType[] = [
       `,
       description: 'A simple and educational demo showcasing how to manage background jobs.',
       imageUrl: '/projects/queue-dash.webp',
-      techStack: ['BullMQ', 'Redis',  'Node.js', 'tRPC', 'Next.js', 'Tailwind', 'Typescript'],
+      techStack: ['BullMQ', 'Redis', 'Node.js', 'tRPC', 'Next.js', 'Tailwind', 'Typescript'],
       company: 'Open Source',
       year: '2025',
       workProject: false,
