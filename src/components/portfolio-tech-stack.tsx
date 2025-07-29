@@ -1,41 +1,39 @@
-import { PropsWithChildren } from "react";
-import { TechStackItem } from "./tech-stack-item";
+import { PropsWithChildren } from 'react'
+import { TechStackItem } from './tech-stack-item'
 
 export default function PortfolioTechStack() {
-  return (
-    <>
-      <Item title="Front-End Tech Stack:">
-        <TechStackItem imageUrl="/js.webp" label="Javascript" />
-        <TechStackItem imageUrl="/ts.webp" label="Typescript" />
-        <TechStackItem imageUrl="/react.webp" label="React" />
-        <TechStackItem imageUrl="/nextjs-icon.png" label="Next.js" />
-        <TechStackItem imageUrl="/tailwind.webp" label="Tailwind" />
-      </Item>
+   return (
+      <>
+         <Item title="Front-End Tech Stack:">
+            <TechStackItem imageUrl="/tech/js.webp" label="Javascript" />
+            <TechStackItem imageUrl="/tech/ts.webp" label="Typescript" />
+            <TechStackItem imageUrl="/tech/react.webp" label="React" />
+            <TechStackItem imageUrl="/tech/nextjs-icon.png" label="Next.js" />
+            <TechStackItem imageUrl="/tech/tailwind.webp" label="Tailwind" />
+         </Item>
 
-      <Item title="Back-End Tech Stack:">
-        <TechStackItem imageUrl="/node.webp" label="Node.js" />
-        <TechStackItem imageUrl="/java.png" label="Java" />
-      </Item>
+         <Item title="Back-End Tech Stack:">
+            <TechStackItem imageUrl="/tech/node.webp" label="Node.js" />
+            <TechStackItem imageUrl="/tech/java.png" label="Java" />
+         </Item>
 
-      <Item title="Tools:">
-        <TechStackItem imageUrl="/docker-icon.png" label="Docker" />
-        <TechStackItem imageUrl="/supabase.svg" label="Supabase" />
-        <TechStackItem imageUrl="/craftercms.png" label="CrafterCMS" />
-      </Item>
-    </>
-  );
+         <Item title="Tools:">
+            <TechStackItem imageUrl="/tech/docker-icon.png" label="Docker" />
+            <TechStackItem imageUrl="/tech/supabase.svg" label="Supabase" />
+            <TechStackItem imageUrl="/tech/craftercms.png" label="CrafterCMS" />
+         </Item>
+      </>
+   )
 }
 
 type ItemProps = PropsWithChildren<{
-  title: string;
-}>;
+   title: string
+}>
 const Item = ({ title, children }: ItemProps) => {
-  return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-lg font-medium text-neutral">{title}</h2>
-      <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
-        {children}
+   return (
+      <div className="flex flex-col gap-4">
+         <h2 className="text-lg font-medium text-neutral">{title}</h2>
+         <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">{children}</div>
       </div>
-    </div>
-  );
-};
+   )
+}

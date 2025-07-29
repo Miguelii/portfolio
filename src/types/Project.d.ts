@@ -1,7 +1,12 @@
 export type ProjectType = {
-  title: string;
-  projectUrl: string;
-  imageUrl: string;
-  description: string;
-  techStack: string[];
-};
+   id: string
+   workProject: boolean
+   title: string
+   projectUrl: string
+   imageUrl: string
+   description: string
+   longDescription: string
+   techStack: string[]
+   company: string
+   year: string
+}

@@ -1,6 +1,6 @@
 export const generateCSP = () => {
-  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-  const CSPPages = `
+   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+   const CSPPages = `
     default-src 'self';
     style-src 'self' 
       'unsafe-inline'
@@ -40,24 +40,21 @@ export const generateCSP = () => {
     form-action 'self';
     frame-ancestors 'self'
     https://va.vercel-scripts.com
-`;
+`
 
-  const CSPStaticFiles = `
+   const CSPStaticFiles = `
     default-src 'self';
     block-all-mixed-content;
     upgrade-insecure-requests;
-  `;
+  `
 
-  // Replace newline characters and spaces
-  const contentSecurityPolicyPages = CSPPages.replace(/\s{2,}/g, " ").trim();
-  const contentSecurityPolicyStaticFiles = CSPStaticFiles.replace(
-    /\s{2,}/g,
-    " ",
-  ).trim();
+   // Replace newline characters and spaces
+   const contentSecurityPolicyPages = CSPPages.replace(/\s{2,}/g, ' ').trim()
+   const contentSecurityPolicyStaticFiles = CSPStaticFiles.replace(/\s{2,}/g, ' ').trim()
 
-  return {
-    nonce,
-    contentSecurityPolicyPages,
-    contentSecurityPolicyStaticFiles,
-  } as const;
-};
+   return {
+      nonce,
+      contentSecurityPolicyPages,
+      contentSecurityPolicyStaticFiles,
+   } as const
+}
