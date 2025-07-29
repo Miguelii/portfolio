@@ -236,9 +236,9 @@ export const ProjectsLib: ProjectType[] = [
       Also includes a separate <strong>Node.js</strong> serve running a <strong>BullMQ worker</strong> to process the background jobs.
       </p>
       `,
-      description: 'A simple and educational demo showcasing how to manage background.',
+      description: 'A simple and educational demo showcasing how to manage background jobs.',
       imageUrl: '/projects/queue-dash.webp',
-      techStack: ['BullMQ', 'Node.js', 'tRPC', 'Next.js', 'Tailwind', 'Typescript', 'Redis'],
+      techStack: ['BullMQ', 'Redis',  'Node.js', 'tRPC', 'Next.js', 'Tailwind', 'Typescript'],
       company: 'Open Source',
       year: '2025',
       workProject: false,
