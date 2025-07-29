@@ -32,13 +32,7 @@ export default async function ProjectSlugPage(props: ProjectSlugPageProps) {
                {/* Left side with project title and text*/}
                <div className="h-full flex flex-col gap-6">
                   <div className="flex flex-col gap-2">
-                     <Badge
-                        className={cn(
-                           'w-fit bg-primary text-white',
-                        )}
-                     >
-                        {project.label}
-                     </Badge>
+                     <Badge className={cn('w-fit bg-primary text-white')}>{project.label}</Badge>
                      <h1 className="text-primary text-3xl/snug xl:text-5xl/snug font-bold">
                         {project.title}
                      </h1>
