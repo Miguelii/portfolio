@@ -1,18 +1,19 @@
 import { ClientEnv } from '@/env/client'
+import { normalizeBaseUrl } from '@/utils/normalize-base-url'
 import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-   const BASE_URL = ClientEnv.NEXT_PUBLIC_VERCEL_URL ?? ''
+   const WEBSITE_URL = normalizeBaseUrl()
 
    return [
       {
-         url: BASE_URL,
+         url: WEBSITE_URL ?? '',
          lastModified: new Date(),
          changeFrequency: 'weekly',
          priority: 1,
       },
       {
-         url: `${BASE_URL}/about`,
+         url: `${WEBSITE_URL ?? ''}/about`,
          lastModified: new Date(),
          changeFrequency: 'monthly',
          priority: 0.9,

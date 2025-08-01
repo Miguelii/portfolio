@@ -9,6 +9,7 @@ import { unstable_ViewTransition as ViewTransition } from 'react'
 import { ThemeProvider } from 'next-themes'
 import { ReactLenis } from 'lenis/react'
 import { ClientEnv } from '@/env/client'
+import { normalizeBaseUrl } from '@/utils/normalize-base-url'
 
 const geistSans = Geist({
    variable: '--font-geist-sans',
@@ -27,10 +28,10 @@ export const viewport: Viewport = {
    height: 'device-height',
 }
 
-const BASE_URL = ClientEnv.NEXT_PUBLIC_VERCEL_URL ?? null
+const WEBSITE_URL = normalizeBaseUrl()
 
 export const metadata: Metadata = {
-   metadataBase: BASE_URL ? new URL(BASE_URL) : undefined,
+   metadataBase: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
    title: 'Miguel Gonçalves - Software Engineer',
    description:
       'Portfolio of Miguel Gonçalves, a full-stack software engineer focused on building modern web applications with Next.js, TypeScript, and Node.js.',
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
       description:
          'Discover the portfolio of Miguel Gonçalves, showcasing real-world and personal projects built with modern web technologies.',
       type: 'website',
-      url: BASE_URL ? new URL(BASE_URL) : undefined,
+      url: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
    },
    twitter: {
       title: 'Miguel Gonçalves - Software Engineer',
