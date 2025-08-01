@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useState, createContext, JSX } from 'react'
-import { motion } from 'motion/react'
+import React, { useEffect, useState, createContext, JSX, useRef } from 'react'
+import { motion, useInView } from 'motion/react'
 import { cn } from '@/utils/cn'
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from 'lucide-react'
 
@@ -92,47 +92,94 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                      itemsLength < 3 ? 'mx-0' : ''
                   )}
                >
-                  {items.map((item, index) => (
-                     <motion.div
-                        initial={{
-                           opacity: 0,
-                           y: 20,
-                        }}
-                        animate={{
-                           opacity: 1,
-                           y: 0,
-                           transition: {
-                              duration: 0.5,
-                              delay: 0.2 * index,
-                              ease: 'easeOut',
-                              //once: true,
-                           },
-                        }}
-                        key={'card' + index}
-                        className="rounded-3xl last:pr-[5%] md:last:pr-[33%]"
-                     >
-                        {item}
-                     </motion.div>
-                  ))}
+                  {items?.map((item, index) => {
+                     return <CarouselItem key={'card' + index} index={index} item={item} />
+                  })}
                </div>
             </div>
-            <div className="md:mr-0 flex justify-end gap-2">
-               <button
-                  className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-30 cursor-pointer disabled:cursor-auto text-neutral"
-                  onClick={scrollLeft}
-                  disabled={!canScrollLeft}
-               >
-                  <ArrowLeftCircleIcon className="h-6 w-6" />
-               </button>
-               <button
-                  className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-30 cursor-pointer disabled:cursor-auto text-neutral"
-                  onClick={scrollRight}
-                  disabled={!canScrollRight}
-               >
-                  <ArrowRightCircleIcon className="h-6 w-6" />
-               </button>
-            </div>
+            <CarouselButtons
+               scrollLeft={scrollLeft}
+               scrollRight={scrollRight}
+               canScrollLeft={canScrollLeft}
+               canScrollRight={canScrollRight}
+            />
          </div>
       </CarouselContext.Provider>
+   )
+}
+
+type CarouselButtonsProps = {
+   scrollLeft: () => void
+   canScrollLeft: boolean
+   scrollRight: () => void
+   canScrollRight: boolean
+}
+
+function CarouselButtons({
+   scrollLeft,
+   canScrollLeft,
+   scrollRight,
+   canScrollRight,
+}: CarouselButtonsProps) {
+   return (
+      <motion.div
+         initial={{ y: -20, opacity: 0 }}
+         whileInView={{ y: 0, opacity: 1 }}
+         transition={{ duration: 0.8, ease: 'easeOut' }}
+         viewport={{ once: true, amount: 0.4 }}
+         className="md:mr-0 flex justify-end gap-2"
+      >
+         <button
+            className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-30 cursor-pointer disabled:cursor-auto text-neutral"
+            onClick={scrollLeft}
+            disabled={!canScrollLeft}
+         >
+            <ArrowLeftCircleIcon className="h-6 w-6" />
+         </button>
+         <button
+            className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-30 cursor-pointer disabled:cursor-auto text-neutral"
+            onClick={scrollRight}
+            disabled={!canScrollRight}
+         >
+            <ArrowRightCircleIcon className="h-6 w-6" />
+         </button>
+      </motion.div>
+   )
+}
+
+type CarouselItemProps = {
+   index: number
+   item: JSX.Element
+}
+
+function CarouselItem({ index, item }: CarouselItemProps) {
+   const ref = useRef(null)
+   const isInView = useInView(ref, { once: true, amount: 0.2 })
+
+   return (
+      <motion.div
+         ref={ref}
+         initial={{
+            opacity: 0,
+            y: 20,
+         }}
+         animate={
+            isInView
+               ? {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                       duration: 0.5,
+                       delay: 0.2 * index,
+                       ease: 'easeOut',
+                    },
+                 }
+               : {}
+         }
+         key={'card' + index}
+         className="rounded-3xl last:pr-[5%] md:last:pr-[33%]"
+      >
+         {item}
+      </motion.div>
    )
 }

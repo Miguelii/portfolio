@@ -6,7 +6,7 @@ type SocialItemProps = {
    label: string
 }
 
-export const TechStackItem = ({ imageUrl, label }: SocialItemProps) => {
+export const PortfolioTechStackItem = ({ imageUrl, label }: SocialItemProps) => {
    const id = getBuildId()
 
    return (

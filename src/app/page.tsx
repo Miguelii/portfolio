@@ -6,7 +6,7 @@ import ProjectsService from '@/lib/projects-service'
 import { ProjectsSection } from '@/features/projects/projects-section'
 
 export const dynamic = 'force-static'
-export const revalidate = 3600 // 1h
+export const revalidate = 86400 // 24h
 
 export default function Home() {
    const workProjects = ProjectsService.getWorkProjects()

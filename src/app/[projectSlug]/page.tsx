@@ -9,7 +9,7 @@ import { cn } from '@/utils/cn'
 import { getBuildId } from '@/utils/get-build-id'
 
 export const dynamic = 'force-static'
-export const revalidate = 3600 // 1h
+export const revalidate = 86400 // 24h
 
 type ProjectSlugPageProps = Readonly<{
    params: Promise<{

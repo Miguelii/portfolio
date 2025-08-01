@@ -1,26 +1,27 @@
 import { PropsWithChildren } from 'react'
-import { TechStackItem } from './tech-stack-item'
+import { PortfolioTechStackItem } from './portfolio-tech-stack-item'
+import * as motion from 'motion/react-client'
 
 export default function PortfolioTechStack() {
    return (
       <>
          <Item title="Front-End Tech Stack:">
-            <TechStackItem imageUrl="/tech/js.webp" label="Javascript" />
-            <TechStackItem imageUrl="/tech/ts.webp" label="Typescript" />
-            <TechStackItem imageUrl="/tech/react.webp" label="React" />
-            <TechStackItem imageUrl="/tech/nextjs-icon.png" label="Next.js" />
-            <TechStackItem imageUrl="/tech/tailwind.webp" label="Tailwind" />
+            <PortfolioTechStackItem imageUrl="/tech/js.webp" label="Javascript" />
+            <PortfolioTechStackItem imageUrl="/tech/ts.webp" label="Typescript" />
+            <PortfolioTechStackItem imageUrl="/tech/react.webp" label="React" />
+            <PortfolioTechStackItem imageUrl="/tech/nextjs-icon.png" label="Next.js" />
+            <PortfolioTechStackItem imageUrl="/tech/tailwind.webp" label="Tailwind" />
          </Item>
 
          <Item title="Back-End Tech Stack:">
-            <TechStackItem imageUrl="/tech/node.webp" label="Node.js" />
-            <TechStackItem imageUrl="/tech/java.png" label="Java" />
+            <PortfolioTechStackItem imageUrl="/tech/node.webp" label="Node.js" />
+            <PortfolioTechStackItem imageUrl="/tech/java.png" label="Java" />
          </Item>
 
          <Item title="Tools:">
-            <TechStackItem imageUrl="/tech/docker-icon.png" label="Docker" />
-            <TechStackItem imageUrl="/tech/supabase.svg" label="Supabase" />
-            <TechStackItem imageUrl="/tech/craftercms.png" label="CrafterCMS" />
+            <PortfolioTechStackItem imageUrl="/tech/docker-icon.png" label="Docker" />
+            <PortfolioTechStackItem imageUrl="/tech/supabase.svg" label="Supabase" />
+            <PortfolioTechStackItem imageUrl="/tech/craftercms.png" label="CrafterCMS" />
          </Item>
       </>
    )
@@ -32,8 +33,24 @@ type ItemProps = PropsWithChildren<{
 const Item = ({ title, children }: ItemProps) => {
    return (
       <div className="flex flex-col gap-4">
-         <h2 className="text-lg font-medium text-neutral">{title}</h2>
-         <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">{children}</div>
+         <motion.h3
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.35 }}
+            viewport={{ once: true, amount: 0.1 }}
+            className="text-lg font-medium text-neutral"
+         >
+            {title}
+         </motion.h3>
+         <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.35 }}
+            viewport={{ once: true, amount: 0.1 }}
+            className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap"
+         >
+            {children}
+         </motion.div>
       </div>
    )
 }
