@@ -3,10 +3,10 @@
 import { cn } from '@/utils/cn'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { MenuIcon } from './menu-icon'
+import { MenuIcon } from '../icons/menu-icon'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
-import { CloseIcon } from './close-icon'
+import { CloseIcon } from '../icons/close-icon'
 
 type NavItem = {
    title: string
@@ -41,7 +41,7 @@ export default function Header() {
    }
 
    return (
-      <header className="main-container mx-auto items-center my-5 md:my-10 lg:mb-32 w-full justify-between gap-6 flex flex-row">
+      <header className="main-container mx-auto items-center my-5 md:my-10 w-full justify-between gap-6 flex flex-row">
          <Link href={'/'} prefetch={false} className="text-2xl font-bold">
             MG.
          </Link>
@@ -64,10 +64,10 @@ export default function Header() {
                      href={item.url}
                      prefetch={!item.external}
                      target={item.external ? '_blank' : '_self'}
-                     className={cn(
-                        'font-mono uppercase font-bold text-lg transition-colors',
-                        isSelected ? 'text-neutral' : 'text-primary'
-                     )}
+                     className={cn('font-mono uppercase font-bold text-lg transition-colors')}
+                     style={{
+                        color: isSelected ? 'var(--neutral)' : 'var(--primary)',
+                     }}
                      key={`nav-item-${item?.url}-${index}`}
                   >
                      {item.title}
@@ -147,9 +147,11 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
                               prefetch={!item.external}
                               target={item.external ? '_blank' : '_self'}
                               className={cn(
-                                 'text-4xl font-semibold transition-colors block uppercase',
-                                 isSelected ? 'text-neutral' : 'text-primary'
+                                 'text-4xl font-semibold transition-colors block uppercase'
                               )}
+                              style={{
+                                 color: isSelected ? 'var(--neutral)' : 'var(--primary)',
+                              }}
                               onClick={toggleMenu}
                               key={`mobile-nav-item-${item?.url}-${index}`}
                            >

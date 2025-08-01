@@ -1,7 +1,8 @@
+import { LinkPreview } from '@/components/ui/link-preview'
+import { getBuildId } from '@/lib/get-build-id'
 import { WorkExperience } from '@/types/WorkExperience'
 import { cn } from '@/utils/cn'
 import Image from 'next/image'
-import { LinkPreview } from './link-preview'
 
 export function ExperienceSection() {
    const experiences: WorkExperience[] = [
@@ -11,14 +12,14 @@ export function ExperienceSection() {
          company: 'Blip',
          logoUrl: '/logos/blip_pt_logo.webp',
          badgeColor: 'bg-slate-800 text-white',
-         previewUrl: 'https://www.linkedin.com/company/blip-pt/posts/?feedView=all',
+         previewUrl: 'https://www.instagram.com/blip.pt',
          achievements: [],
       },
       {
          period: '2022 - 2025',
          jobTitle: 'Software Engineer',
          company: 'CGI',
-         logoUrl: '/logos/cgi.jpg',
+         logoUrl: '/logos/cgi.webp',
          badgeColor: 'bg-[#8942a8] text-white',
          previewUrl: 'https://www.cgi.com/portugal/pt-pt',
          achievements: [
@@ -52,6 +53,8 @@ export function ExperienceSection() {
 }
 
 function WorkExperienceItem(experience: WorkExperience) {
+   const buildId = getBuildId()
+
    return (
       <div className="flex gap-3 md:gap-8 flex-col md:flex-row">
          <div className="w-40 flex-shrink-0 mt-1">
@@ -73,7 +76,7 @@ function WorkExperienceItem(experience: WorkExperience) {
                   )}
                >
                   <Image
-                     src={experience.logoUrl}
+                     src={`${experience.logoUrl}?v=${buildId}`}
                      alt={`${experience.company} logo`}
                      width={16}
                      height={16}

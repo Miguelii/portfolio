@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
+import Header from '@/components/misc/header'
+import Footer from '@/components/misc/footer'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { unstable_ViewTransition as ViewTransition } from 'react'
-import { Toaster } from '@/components/toaster'
 import { ThemeProvider } from 'next-themes'
 import { ReactLenis } from 'lenis/react'
+import { ClientEnv } from '@/env/client'
 
 const geistSans = Geist({
    variable: '--font-geist-sans',
@@ -27,10 +27,10 @@ export const viewport: Viewport = {
    height: 'device-height',
 }
 
+const BASE_URL = ClientEnv.NEXT_PUBLIC_VERCEL_URL ?? ''
+
 export const metadata: Metadata = {
-   metadataBase: process.env.NEXT_PUBLIC_APP_HOST
-      ? new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`)
-      : undefined,
+   metadataBase: BASE_URL ? new URL(BASE_URL) : undefined,
    title: 'Miguel Gonçalves - Software Engineer',
    description:
       'Portfolio of Miguel Gonçalves, a full-stack software engineer focused on building modern web applications with Next.js, TypeScript, and Node.js.',
@@ -44,9 +44,7 @@ export const metadata: Metadata = {
       description:
          'Discover the portfolio of Miguel Gonçalves, showcasing real-world and personal projects built with modern web technologies.',
       type: 'website',
-      url: process.env.NEXT_PUBLIC_APP_HOST
-         ? new URL(`${process.env.NEXT_PUBLIC_APP_HOST}`)
-         : undefined,
+      url: BASE_URL ? new URL(BASE_URL) : undefined,
    },
    twitter: {
       title: 'Miguel Gonçalves - Software Engineer',
@@ -75,7 +73,6 @@ export default function RootLayout({
                >
                   <Analytics />
                   <SpeedInsights />
-                  <Toaster />
                   <div className="min-h-[calc(100vh-192px)] w-full">
                      <Header />
                      <ViewTransition>{children}</ViewTransition>

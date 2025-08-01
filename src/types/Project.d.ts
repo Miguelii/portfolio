@@ -9,4 +9,5 @@ export type ProjectType = {
    techStack: string[]
    label: string
    year: string
+   nextProject?: string
 }

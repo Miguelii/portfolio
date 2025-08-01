@@ -1,9 +1,9 @@
-import { ExperienceSection } from '@/components/experience-section'
-import { LandingSectionWithBand } from '@/components/landing-section-with-band'
-import { ProjectsSection } from '@/components/projects-section'
-import { QuoteCard } from '@/components/quote-card'
-import { SectionDivider } from '@/components/section-divider'
+import { ExperienceSection } from '@/features/experience/experience-section'
+import { LandingSectionWithBand } from '@/features/landing/landing-section-with-band'
+import { QuoteCard } from '@/components/misc/quote-card'
+import { SectionDivider } from '@/components/ui/section-divider'
 import ProjectsService from '@/lib/projects-service'
+import { ProjectsSection } from '@/features/projects/projects-section'
 
 export const dynamic = 'force-static'
 export const revalidate = 3600 // 1h
@@ -14,7 +14,7 @@ export default function Home() {
    const personalProjects = ProjectsService.getPersonalProjects()
 
    return (
-      <main className="main-container">
+      <main className="main-container lg:mt-32">
          <LandingSectionWithBand />
 
          <SectionDivider />

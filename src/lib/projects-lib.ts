@@ -186,6 +186,42 @@ export const ProjectsLib: ProjectType[] = [
    },
 
    {
+      id: 'nuve',
+      title: 'Nuvē - Premium Cars',
+      projectUrl: 'https://nuve-premium.vercel.app/',
+      longDescription: `
+      <p>
+         <strong>Nuvē - Premium Cars</strong> is a test project designed as a premium digital showcase for exotic vehicles and high-performance supercars.
+      </p>
+
+      <br/>
+
+      <p>
+      A standout feature of the platform is the interactive <strong>3D showroom</strong>, where users can view selected supercar models in full 360-degree rotation.
+      </p>
+
+      <br/>
+
+      <p>
+      This immersive experience was implemented using <strong>Three.js</strong> and <strong>GLTF models</strong>.
+      </p>
+
+      <br/>
+
+      <p>
+      The project was built with <em>Next.js</em>, <em>TypeScript</em> and styled with <em>Tailwind CSS</em>.
+      </p>
+
+      `,
+      description: 'Fictional luxury platform showcasing exclusive supercars with 3D experiences.',
+      imageUrl: '/projects/nuve.webp',
+      techStack: ['Three.js', 'GLTF', 'Next.js', 'Tailwind', 'Typescript'],
+      label: 'Open Source',
+      year: '2025',
+      workProject: false,
+   },
+
+   {
       id: 'queue-dash',
       title: 'QueueDash',
       projectUrl: 'https://bullmq-redis-dash.vercel.app/',

@@ -1,6 +1,6 @@
-import { AboutSection } from '@/components/about-section'
-import PortfolioTechStack from '@/components/portfolio-tech-stack'
-import { SectionDivider } from '@/components/section-divider'
+import { AboutSection } from '@/features/about/about-section'
+import PortfolioTechStack from '@/features/about/portfolio-tech-stack'
+import { SectionDivider } from '@/components/ui/section-divider'
 import { type Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const revalidate = 3600 // 1h
 
 export default function AboutPage() {
    return (
-      <main className="main-container h-fit relative mt-20">
+      <main className="main-container h-fit relative mt-12 md:mt-14 lg:mt-16 xl:mt-24">
          <AboutSection />
 
          <SectionDivider />

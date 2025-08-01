@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { addCSPToResponse } from './utils/addCSPToResponse'
+import { addCSPToResponse } from './utils/add-csp-to-response'
 
 export async function middleware(request: NextRequest) {
    const pathname = request.nextUrl.pathname

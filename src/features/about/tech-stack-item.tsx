@@ -1,4 +1,4 @@
-import { getBuildId } from '@/utils/getBuildId'
+import { getBuildId } from '@/lib/get-build-id'
 import Image from 'next/image'
 
 type SocialItemProps = {

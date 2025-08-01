@@ -2,12 +2,17 @@ import { type ProjectType } from '@/types/Project'
 import { ProjectsLib } from './projects-lib'
 
 export default class ProjectsService {
+   static projects: ProjectType[] = ProjectsLib.map((project, index, array) => ({
+      ...project,
+      nextProject: array[(index + 1) % array.length].id,
+   }))
+
    /**
     * Retrieves all projects, sorted by year in descending order (most recent first).
     * @returns {ProjectType[]} Sorted list of all projects.
     */
    static getAllProjects(): ProjectType[] {
-      return [...ProjectsLib].sort((a, b) => Number(b.year) - Number(a.year))
+      return [...this.projects].sort((a, b) => Number(b.year) - Number(a.year))
    }
 
    /**
@@ -16,7 +21,8 @@ export default class ProjectsService {
     * @returns {ProjectType[]} Sorted list of work projects.
     */
    static getWorkProjects(): ProjectType[] {
-      const onlyWorkProjects = ProjectsLib?.filter((project) => project.workProject === true) ?? []
+      const onlyWorkProjects =
+         this.projects?.filter((project) => project.workProject === true) ?? []
 
       return onlyWorkProjects.sort((a, b) => Number(b.year) - Number(a.year))
    }
@@ -28,7 +34,7 @@ export default class ProjectsService {
     */
    static getPersonalProjects(): ProjectType[] {
       const onlyPersonalProjects =
-         ProjectsLib?.filter(
+         this.projects?.filter(
             (project) => project.workProject === false || project.workProject == null
          ) ?? []
 
@@ -41,6 +47,6 @@ export default class ProjectsService {
     * @returns {ProjectType | null} The matching project, or `null` if not found.
     */
    static getProjectById(id: ProjectType['id']): ProjectType | null {
-      return ProjectsLib.find((project) => project.id === id) ?? null
+      return this.projects.find((project) => project.id === id) ?? null
    }
 }

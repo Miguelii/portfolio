@@ -5,7 +5,7 @@
  * @returns true if pathname is a static file
  * @returns false if pathname is not a static file
  */
-export const isStaticFilesUrl = (pathname: string) => {
+export const isPathFromStaticFiler = (pathname: string) => {
    if (
       !pathname.startsWith('/_next') &&
       !pathname.startsWith('/api/') &&

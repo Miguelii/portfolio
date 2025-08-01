@@ -1,4 +1,4 @@
-import BandCanvas from './Band'
+import BandCanvas from '@/components/ui/Band'
 
 export function LandingSectionWithBand() {
    return (

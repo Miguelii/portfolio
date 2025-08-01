@@ -2,10 +2,12 @@
 
 :root {
    --background: #fbfbfd;
-   --primary: #0c0c0c;
+   --primary: #262626;
    --red: #ff7070;
    --neutral: #737373;
+   --neutral-dark: #1d1d1d;
 }
+
 
 @theme inline {
    --font-sans: var(--font-geist-sans);
@@ -14,6 +16,7 @@
    --color-primary: var(--primary);
    --color-red: var(--red);
    --color-neutral: var(--neutral);
+   --color-neutral-dark: var(--neutral-dark);
 }
 
 html {
