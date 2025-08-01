@@ -31,7 +31,7 @@ const NAV: NavItem[] = [
 ]
 
 export default function Header() {
-   const currPath = usePathname();
+   const currPath = usePathname()
 
    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -56,9 +56,11 @@ export default function Header() {
 
          <nav className="hidden md:flex flex-row gap-6">
             {NAV?.map((item, index) => {
-               console.log({ currPath });
+               const currPathNormalized = normalizePath(currPath || '/')
 
-               const isSelected = currPath === null ? true : item?.url === currPath
+               const itemPathNormalized = normalizePath(item.url)
+
+               const isSelected = itemPathNormalized === currPathNormalized
 
                return (
                   <Link
@@ -139,7 +141,12 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
 
                <nav className="flex-1 flex flex-col justify-center items-center text-center space-y-8">
                   {nav?.map((item, index) => {
-                     const isSelected = item.url === currPath
+                     const currPathNormalized = normalizePath(currPath || '/')
+
+                     const itemPathNormalized = normalizePath(item.url)
+
+                     const isSelected = itemPathNormalized === currPathNormalized
+
                      return (
                         //@ts-expect-error erro de versão
                         <motion.div variants={itemVariants} key={`mobile-nav-${index}`}>
@@ -167,3 +174,5 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
       </AnimatePresence>
    )
 }
+
+const normalizePath = (path: string) => path.replace(/\/$/, '') || '/'
