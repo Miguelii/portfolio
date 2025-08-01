@@ -27,7 +27,7 @@ export const viewport: Viewport = {
    height: 'device-height',
 }
 
-const BASE_URL = ClientEnv.NEXT_PUBLIC_VERCEL_URL ?? ''
+const BASE_URL = ClientEnv.NEXT_PUBLIC_VERCEL_URL ?? null
 
 export const metadata: Metadata = {
    metadataBase: BASE_URL ? new URL(BASE_URL) : undefined,
