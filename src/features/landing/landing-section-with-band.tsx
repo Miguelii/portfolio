@@ -3,7 +3,7 @@ import * as motion from 'motion/react-client'
 
 export function LandingSectionWithBand() {
    return (
-      <section className="h-[540px] relative mb-0 md:mb-[14%]">
+      <section className="h-[540px] relative mb-0 ">
          <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}

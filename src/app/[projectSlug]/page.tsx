@@ -6,7 +6,7 @@ import { SectionDivider } from '@/components/ui/section-divider'
 import Button from '@/components/ui/button'
 import { ProjectType } from '@/types/Project'
 import { cn } from '@/utils/cn'
-import { getBuildId } from '@/lib/get-build-id'
+import { getBuildId } from '@/utils/get-build-id'
 
 export const dynamic = 'force-static'
 export const revalidate = 3600 // 1h

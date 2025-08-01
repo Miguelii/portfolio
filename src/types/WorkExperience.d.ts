@@ -1,5 +1,5 @@
 export type WorkExperience = {
-   period: string
+   period: `${number} - ${number}` | `${number} - Present`
    jobTitle: string
    company: string
    logoUrl: string

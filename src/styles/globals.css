@@ -33,11 +33,11 @@ body {
 
 ::selection {
    background: var(--neutral) !important;
-   color: white;
+   color: var(--background) !important;
 }
 
 .main-container {
-   @apply max-w-[1358px] w-full mx-auto px-5 md:px-8 xl:px-10;
+   @apply max-w-full md:max-w-[670px] lg:max-w-[896px] xl:max-w-[1150px] 2xl:max-w-[1438px] w-full mx-auto px-5 md:px-8 xl:px-10;
 }
 
 .project-html ul {

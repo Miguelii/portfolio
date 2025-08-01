@@ -1,6 +1,6 @@
 import { type ProjectType } from '@/types/Project'
 
-export const ProjectsLib: ProjectType[] = [
+export const ProjectsData: ProjectType[] = [
    {
       id: 'euromar',
       title: 'EUROMAR Portal',

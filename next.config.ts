@@ -1,4 +1,4 @@
-import { loadEnv } from '@/lib/load-envs'
+import { loadEnv } from '@/utils/load-envs'
 import type { NextConfig } from 'next'
 
 loadEnv()

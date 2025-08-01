@@ -1,8 +1,8 @@
+import { ProjectsData } from '@/data/projects-data'
 import { type ProjectType } from '@/types/Project'
-import { ProjectsLib } from './projects-lib'
 
 export default class ProjectsService {
-   static projects: ProjectType[] = ProjectsLib.map((project, index, array) => ({
+   private static projects: ProjectType[] = ProjectsData.map((project, index, array) => ({
       ...project,
       nextProject: array[(index + 1) % array.length].id,
    }))

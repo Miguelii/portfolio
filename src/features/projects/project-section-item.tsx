@@ -3,13 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import { Badge } from '@/components/ui/badge'
-import { getBuildId } from '@/lib/get-build-id'
+import { getBuildId } from '@/utils/get-build-id'
 
 type Project3dCardProps = {
    project: ProjectType
 }
 
-export function Project3dCard({ project }: Project3dCardProps) {
+export function ProjectItemSection({ project }: Project3dCardProps) {
    const buildId = getBuildId()
 
    return (

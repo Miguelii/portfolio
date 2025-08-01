@@ -1,6 +1,6 @@
 import { ExperienceSection } from '@/features/experience/experience-section'
 import { LandingSectionWithBand } from '@/features/landing/landing-section-with-band'
-import { QuoteCard } from '@/components/misc/quote-card'
+import { QuoteCard } from '@/features/quote/quote-card'
 import { SectionDivider } from '@/components/ui/section-divider'
 import ProjectsService from '@/lib/projects-service'
 import { ProjectsSection } from '@/features/projects/projects-section'
@@ -14,7 +14,7 @@ export default function Home() {
    const personalProjects = ProjectsService.getPersonalProjects()
 
    return (
-      <main className="main-container lg:mt-32">
+      <main className="main-container lg:mt-17">
          <LandingSectionWithBand />
 
          <SectionDivider />
