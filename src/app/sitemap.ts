@@ -1,4 +1,3 @@
-import { ClientEnv } from '@/env/client'
 import { normalizeBaseUrl } from '@/utils/normalize-base-url'
 import type { MetadataRoute } from 'next'
 

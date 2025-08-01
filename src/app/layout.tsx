@@ -8,7 +8,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { unstable_ViewTransition as ViewTransition } from 'react'
 import { ThemeProvider } from 'next-themes'
 import { ReactLenis } from 'lenis/react'
-import { ClientEnv } from '@/env/client'
 import { normalizeBaseUrl } from '@/utils/normalize-base-url'
 
 const geistSans = Geist({

@@ -31,8 +31,7 @@ const NAV: NavItem[] = [
 ]
 
 export default function Header() {
-   'use no memo'
-   const currPath = usePathname()
+   const currPath = usePathname();
 
    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -57,7 +56,9 @@ export default function Header() {
 
          <nav className="hidden md:flex flex-row gap-6">
             {NAV?.map((item, index) => {
-               const isSelected = item?.url === currPath
+               console.log({ currPath });
+
+               const isSelected = currPath === null ? true : item?.url === currPath
 
                return (
                   <Link
