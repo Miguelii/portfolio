@@ -154,7 +154,7 @@ type CarouselItemProps = {
 
 function CarouselItem({ index, item }: CarouselItemProps) {
    const ref = useRef(null)
-   const isInView = useInView(ref, { once: true, amount: 0.2 })
+   const isInView = useInView(ref, { once: true, amount: 'some' })
 
    return (
       <motion.div

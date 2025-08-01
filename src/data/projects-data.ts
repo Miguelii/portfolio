@@ -45,6 +45,7 @@ export const ProjectsData: ProjectType[] = [
       label: 'Work - CGI',
       year: '2024',
       workProject: true,
+      priority: 2,
    },
    {
       id: 'agendamentos-online',
@@ -85,6 +86,7 @@ export const ProjectsData: ProjectType[] = [
       label: 'Work - CGI',
       year: '2023',
       workProject: true,
+      priority: 1,
    },
    {
       id: 'gassu-form',
@@ -219,6 +221,7 @@ export const ProjectsData: ProjectType[] = [
       label: 'Open Source',
       year: '2025',
       workProject: false,
+      priority: 1,
    },
 
    {

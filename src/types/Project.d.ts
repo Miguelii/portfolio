@@ -10,4 +10,5 @@ export type ProjectType = {
    label: string
    year: string
    nextProject?: string
+   priority?: number
 }

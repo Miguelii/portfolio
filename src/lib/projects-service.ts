@@ -7,12 +7,29 @@ export default class ProjectsService {
       nextProject: array[(index + 1) % array.length].id,
    }))
 
+   private static sortProjectsHandler(projects: ProjectType[]): ProjectType[] {
+      return projects?.sort((a, b) => {
+         const priorityA = a.priority ?? Infinity
+         const priorityB = b.priority ?? Infinity
+
+         // Sort by priority first
+         if (priorityA !== priorityB) {
+            return priorityA - priorityB
+         }
+
+         // No priority -> sort by year
+         return Number(b.year) - Number(a.year)
+      })
+   }
+
    /**
     * Retrieves all projects, sorted by year in descending order (most recent first).
     * @returns {ProjectType[]} Sorted list of all projects.
     */
    static getAllProjects(): ProjectType[] {
-      return [...this.projects].sort((a, b) => Number(b.year) - Number(a.year))
+      const allProjects = [...this.projects]
+
+      return this.sortProjectsHandler(allProjects)
    }
 
    /**
@@ -24,7 +41,7 @@ export default class ProjectsService {
       const onlyWorkProjects =
          this.projects?.filter((project) => project.workProject === true) ?? []
 
-      return onlyWorkProjects.sort((a, b) => Number(b.year) - Number(a.year))
+      return this.sortProjectsHandler(onlyWorkProjects)
    }
 
    /**
@@ -38,7 +55,7 @@ export default class ProjectsService {
             (project) => project.workProject === false || project.workProject == null
          ) ?? []
 
-      return onlyPersonalProjects.sort((a, b) => Number(b.year) - Number(a.year))
+      return this.sortProjectsHandler(onlyPersonalProjects)
    }
 
    /**
