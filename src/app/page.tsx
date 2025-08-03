@@ -9,37 +9,37 @@ export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
 
 export default function Home() {
-   const workProjects = ProjectsService.getWorkProjects()
+    const workProjects = ProjectsService.getWorkProjects()
 
-   const personalProjects = ProjectsService.getPersonalProjects()
+    const personalProjects = ProjectsService.getPersonalProjects()
 
-   return (
-      <main className="main-container lg:mt-17">
-         <LandingSectionWithBand />
+    return (
+        <main className="main-container lg:mt-17">
+            <LandingSectionWithBand />
 
-         <SectionDivider />
+            <SectionDivider />
 
-         <ExperienceSection />
+            <ExperienceSection />
 
-         <SectionDivider />
+            <SectionDivider />
 
-         <QuoteCard />
+            <QuoteCard />
 
-         <SectionDivider />
+            <SectionDivider />
 
-         <ProjectsSection
-            title="Professional Work"
-            description="Worked on 20+ projects — only the best made it here."
-            projects={workProjects ?? []}
-         />
+            <ProjectsSection
+                title="Professional Work"
+                description="Worked on 20+ projects — only the best made it here."
+                projects={workProjects ?? []}
+            />
 
-         <SectionDivider />
+            <SectionDivider />
 
-         <ProjectsSection
-            title="Personal Projects"
-            description="Built out of curiosity, learning, or just for fun."
-            projects={personalProjects ?? []}
-         />
-      </main>
-   )
+            <ProjectsSection
+                title="Personal Projects"
+                description="Built out of curiosity, learning, or just for fun."
+                projects={personalProjects ?? []}
+            />
+        </main>
+    )
 }

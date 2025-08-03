@@ -1,13 +1,13 @@
 import { type ProjectType } from '@/types/Project'
 
 export const ProjectsData: ProjectType[] = [
-   {
-      id: 'euromar',
-      title: 'EUROMAR Portal',
-      projectUrl: 'https://www.eu-registry.com/euromar/',
-      description:
-         'Developed a public website power by CrafterCMS and a private user portal with a admin backoffice.',
-      longDescription: `
+    {
+        id: 'euromar',
+        title: 'EUROMAR Portal',
+        projectUrl: 'https://www.eu-registry.com/euromar/',
+        description:
+            'Developed a public website power by CrafterCMS and a private user portal with a admin backoffice.',
+        longDescription: `
       <p>
       The <strong>EUROMAR Portal</strong> is a project i worked on at <strong>CGI</strong>, made up of two main parts: a public website and a private user portal for the EU ship registry.
       </p>
@@ -40,19 +40,20 @@ export const ProjectsData: ProjectType[] = [
       </p>
 
       `,
-      imageUrl: '/projects/euromar.webp',
-      techStack: ['React.js', 'Next.js', 'Tailwind', 'Typescript', 'Supabase', 'CrafterCMS'],
-      label: 'Work - CGI',
-      year: '2024',
-      workProject: true,
-      priority: 2,
-   },
-   {
-      id: 'agendamentos-online',
-      title: 'Portugal Embassies Appointments Portal',
-      projectUrl: 'https://agendamentos.mne.gov.pt/en/login',
-      description: 'Developed the new scheduling website for consulates and embassies of Portugal.',
-      longDescription: `
+        imageUrl: '/projects/euromar.webp',
+        techStack: ['React.js', 'Next.js', 'Tailwind', 'Typescript', 'Supabase', 'CrafterCMS'],
+        label: 'Work - CGI',
+        year: '2024',
+        workProject: true,
+        priority: 2,
+    },
+    {
+        id: 'agendamentos-online',
+        title: 'Portugal Embassies Appointments Portal',
+        projectUrl: 'https://agendamentos.mne.gov.pt/en/login',
+        description:
+            'Developed the new scheduling website for consulates and embassies of Portugal.',
+        longDescription: `
       <p>
       This platform is a project i worked on at <strong>CGI</strong>. Developed for the <strong>Portuguese Ministry of Foreign Affairs</strong> to simplify the process of scheduling appointments at consular offices worldwide.
       </p>
@@ -81,19 +82,19 @@ export const ProjectsData: ProjectType[] = [
       The project was built with <em>Next.js</em>, <em>TypeScript</em> and styled with <em>Tailwind CSS</em>.
       </p>
       `,
-      imageUrl: '/projects/appointments.webp',
-      techStack: ['Next.js', 'Tailwind', 'Typescript'],
-      label: 'Work - CGI',
-      year: '2023',
-      workProject: true,
-      priority: 1,
-   },
-   {
-      id: 'gassu-form',
-      title: 'GasSU Contract Form',
-      projectUrl: 'https://www.gassu.pt/gassu/contratar/',
-      description: 'Delevoped a contract form for new customers of GasSU.',
-      longDescription: `
+        imageUrl: '/projects/appointments.webp',
+        techStack: ['Next.js', 'Tailwind', 'Typescript'],
+        label: 'Work - CGI',
+        year: '2023',
+        workProject: true,
+        priority: 1,
+    },
+    {
+        id: 'gassu-form',
+        title: 'GasSU Contract Form',
+        projectUrl: 'https://www.gassu.pt/gassu/contratar/',
+        description: 'Delevoped a contract form for new customers of GasSU.',
+        longDescription: `
       <p>
       This is a project i worked on at <strong>CGI</strong>. Its a contract form for <strong>Gás Serviço Universal (GASSU)</strong>, where new customers can apply to get natural gas at home.
       </p>
@@ -111,17 +112,17 @@ export const ProjectsData: ProjectType[] = [
       </p>
 
       `,
-      imageUrl: '/projects/gassu.webp',
-      techStack: ['Next.js', 'Tailwind', 'Typescript'],
-      label: 'Work - CGI',
-      year: '2025',
-      workProject: true,
-   },
-   {
-      id: 'geometrix',
-      title: 'Geometrix',
-      projectUrl: 'https://www.hypatiamat.com/jogos/geometrixv7/index.html',
-      longDescription: `
+        imageUrl: '/projects/gassu.webp',
+        techStack: ['Next.js', 'Tailwind', 'Typescript'],
+        label: 'Work - CGI',
+        year: '2025',
+        workProject: true,
+    },
+    {
+        id: 'geometrix',
+        title: 'Geometrix',
+        projectUrl: 'https://www.hypatiamat.com/jogos/geometrixv7/index.html',
+        longDescription: `
       <p>
       This project was developed as part of my final university project, in collaboration with <strong>Hypatiamat</strong> — an educational platform with games for elementary school students.
       </p>
@@ -150,19 +151,19 @@ export const ProjectsData: ProjectType[] = [
       The game was built using <strong>Phaser.js</strong>, a fast, free and fun open source framework for Canvas and WebGL powered browser games.
       </p>
       `,
-      description:
-         'Developed a geometry game for Hypatiamat, a platform with various games for elementary school students.',
-      imageUrl: '/projects/geometrix.webp',
-      techStack: ['Javascript', 'Phaser.js'],
-      label: 'University - Hypatiamat',
-      year: '2022',
-      workProject: true,
-   },
-   {
-      id: 'luisa-mendes',
-      title: 'Luisa Mendes - Makeup Artist',
-      projectUrl: 'https://luisamendes.vercel.app',
-      longDescription: `
+        description:
+            'Developed a geometry game for Hypatiamat, a platform with various games for elementary school students.',
+        imageUrl: '/projects/geometrix.webp',
+        techStack: ['Javascript', 'Phaser.js'],
+        label: 'University - Hypatiamat',
+        year: '2022',
+        workProject: true,
+    },
+    {
+        id: 'luisa-mendes',
+        title: 'Luisa Mendes - Makeup Artist',
+        projectUrl: 'https://luisamendes.vercel.app',
+        longDescription: `
       <p>
       A personal portfolio I built for a makeup artist, to help showcase her work.
       </p>
@@ -179,19 +180,19 @@ export const ProjectsData: ProjectType[] = [
       The project was built with <em>Next.js</em>, <em>TypeScript</em> and styled with <em>Tailwind CSS</em>.
       </p>
       `,
-      description: 'Developed a personal portfolio showcasing the work of a makeup artist.',
-      imageUrl: '/projects/luisamendes.webp',
-      techStack: ['Next.js', 'Tailwind', 'Typescript'],
-      label: 'Private Client',
-      year: '2025',
-      workProject: true,
-   },
+        description: 'Developed a personal portfolio showcasing the work of a makeup artist.',
+        imageUrl: '/projects/luisamendes.webp',
+        techStack: ['Next.js', 'Tailwind', 'Typescript'],
+        label: 'Private Client',
+        year: '2025',
+        workProject: true,
+    },
 
-   {
-      id: 'nuve',
-      title: 'Nuvē - Premium Cars',
-      projectUrl: 'https://nuve-premium.vercel.app/',
-      longDescription: `
+    {
+        id: 'nuve',
+        title: 'Nuvē - Premium Cars',
+        projectUrl: 'https://nuve-premium.vercel.app/',
+        longDescription: `
       <p>
          <strong>Nuvē - Premium Cars</strong> is a test project designed as a premium digital showcase for exotic vehicles and high-performance supercars.
       </p>
@@ -215,20 +216,21 @@ export const ProjectsData: ProjectType[] = [
       </p>
 
       `,
-      description: 'Fictional luxury platform showcasing exclusive supercars with 3D experiences.',
-      imageUrl: '/projects/nuve.webp',
-      techStack: ['Three.js', 'GLTF', 'Next.js', 'Tailwind', 'Typescript'],
-      label: 'Open Source',
-      year: '2025',
-      workProject: false,
-      priority: 1,
-   },
+        description:
+            'Fictional luxury platform showcasing exclusive supercars with 3D experiences.',
+        imageUrl: '/projects/nuve.webp',
+        techStack: ['Three.js', 'GLTF', 'Next.js', 'Tailwind', 'Typescript'],
+        label: 'Open Source',
+        year: '2025',
+        workProject: false,
+        priority: 1,
+    },
 
-   {
-      id: 'queue-dash',
-      title: 'QueueDash',
-      projectUrl: 'https://bullmq-redis-dash.vercel.app/',
-      longDescription: `
+    {
+        id: 'queue-dash',
+        title: 'QueueDash',
+        projectUrl: 'https://bullmq-redis-dash.vercel.app/',
+        longDescription: `
       <p>
          <strong>QueueDash</strong> is a side project I built for fun and learning — a simple dashboard that shows how to handle background jobs using <strong>BullMQ</strong>, <strong>Redis</strong>, and <strong>Next.js</strong>.
       </p>
@@ -275,11 +277,11 @@ export const ProjectsData: ProjectType[] = [
       Also includes a separate <strong>Node.js</strong> serve running a <strong>BullMQ worker</strong> to process the background jobs.
       </p>
       `,
-      description: 'A simple and educational demo showcasing how to manage background jobs.',
-      imageUrl: '/projects/queue-dash.webp',
-      techStack: ['BullMQ', 'Redis', 'Node.js', 'tRPC', 'Next.js', 'Tailwind', 'Typescript'],
-      label: 'Open Source',
-      year: '2025',
-      workProject: false,
-   },
+        description: 'A simple and educational demo showcasing how to manage background jobs.',
+        imageUrl: '/projects/queue-dash.webp',
+        techStack: ['BullMQ', 'Redis', 'Node.js', 'tRPC', 'Next.js', 'Tailwind', 'Typescript'],
+        label: 'Open Source',
+        year: '2025',
+        workProject: false,
+    },
 ]

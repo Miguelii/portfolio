@@ -8,6 +8,6 @@ const __dirname = path.dirname(__filename)
 const jiti = createJiti(__filename)
 
 export function loadEnv() {
-   jiti(path.resolve(__dirname, '../env/client.ts'))
-   jiti(path.resolve(__dirname, '../env/server.ts'))
+    jiti(path.resolve(__dirname, '../env/client.ts'))
+    jiti(path.resolve(__dirname, '../env/server.ts'))
 }

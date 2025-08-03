@@ -6,15 +6,15 @@
  * @returns false if pathname is not a static file
  */
 export const isPathFromStaticFiler = (pathname: string) => {
-   if (
-      !pathname.startsWith('/_next') &&
-      !pathname.startsWith('/api/') &&
-      !pathname.startsWith('/images') &&
-      !pathname.startsWith('/favicon') &&
-      !pathname.includes('/favicon') &&
-      !pathname.includes('/script') &&
-      !pathname.includes('robots.txt')
-   ) {
-      return false
-   } else return true
+    if (
+        !pathname.startsWith('/_next') &&
+        !pathname.startsWith('/api/') &&
+        !pathname.startsWith('/images') &&
+        !pathname.startsWith('/favicon') &&
+        !pathname.includes('/favicon') &&
+        !pathname.includes('/script') &&
+        !pathname.includes('robots.txt')
+    ) {
+        return false
+    } else return true
 }

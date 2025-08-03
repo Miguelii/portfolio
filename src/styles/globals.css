@@ -1,45 +1,45 @@
 @import 'tailwindcss';
 
 :root {
-   --background: #fbfbfd;
-   --primary: #262626;
-   --red: #ff7070;
-   --neutral: #737373;
-   --neutral-dark: #1d1d1d;
+    --background: #fbfbfd;
+    --primary: #262626;
+    --red: #ff7070;
+    --neutral: #737373;
+    --neutral-dark: #1d1d1d;
 }
 
 @theme inline {
-   --font-sans: var(--font-geist-sans);
-   --font-mono: var(--font-geist-mono);
-   --color-background: var(--background);
-   --color-primary: var(--primary);
-   --color-red: var(--red);
-   --color-neutral: var(--neutral);
-   --color-neutral-dark: var(--neutral-dark);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-primary: var(--primary);
+    --color-red: var(--red);
+    --color-neutral: var(--neutral);
+    --color-neutral-dark: var(--neutral-dark);
 }
 
 html {
-   scroll-behavior: smooth !important;
+    scroll-behavior: smooth !important;
 }
 
 body {
-   @apply bg-background font-sans antialiased text-primary!;
+    @apply bg-background font-sans antialiased text-primary!;
 }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-   animation-duration: 0.2s;
+    animation-duration: 0.2s;
 }
 
 ::selection {
-   background: var(--neutral) !important;
-   color: var(--background) !important;
+    background: var(--neutral) !important;
+    color: var(--background) !important;
 }
 
 .main-container {
-   @apply max-w-full md:max-w-[670px] lg:max-w-[896px] xl:max-w-[1150px] 2xl:max-w-[1438px] w-full mx-auto px-5 md:px-8 xl:px-10;
+    @apply max-w-full md:max-w-[670px] lg:max-w-[896px] xl:max-w-[1150px] 2xl:max-w-[1438px] w-full mx-auto px-5 md:px-8 xl:px-10;
 }
 
 .project-html ul {
-   @apply list-disc list-inside m-4 space-y-2;
+    @apply list-disc list-inside m-4 space-y-2;
 }
