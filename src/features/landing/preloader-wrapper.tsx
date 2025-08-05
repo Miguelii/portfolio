@@ -27,9 +27,7 @@ export function PreloaderWrapper({ children }: PreloaderWrapperProps) {
         })()
     }, [showPreloader])
 
-    if (!showPreloader) {
-        return <>{children}</>
-    }
+    return <>{children}</>
 
     return (
         <>

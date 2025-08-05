@@ -3,9 +3,10 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MenuIcon } from '../icons/menu-icon'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, type Variants } from 'motion/react'
 import { useState } from 'react'
 import { CloseIcon } from '../icons/close-icon'
+import { cn } from '@/utils/cn'
 
 type NavItem = {
     title: string
@@ -53,32 +54,43 @@ export default function Header() {
 
             <MenuIcon className="flex md:hidden w-12 h-12 shrink-0" onClick={toggleMenu} />
 
-            <nav className="hidden md:flex flex-row gap-6">
-                {navList?.map((item, index) => {
-                    const currPathNormalized = normalizePath(currPath || '/')
-
-                    const itemPathNormalized = normalizePath(item.url)
-
-                    const isSelected = itemPathNormalized === currPathNormalized
-
-                    return (
-                        <Link
-                            href={item.url}
-                            aria-current={isSelected ? 'page' : undefined}
-                            prefetch={!item.external}
-                            target={item.external ? '_blank' : '_self'}
-                            className={
-                                'relative font-mono uppercase font-bold text-lg group transition-colors duration-300 text-primary [aria-current="page"]:text-neutral'
-                            }
-                            key={`nav-item-${item?.url}-${index}-${isSelected}`}
-                        >
-                            {item.title}
-                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>
-                        </Link>
-                    )
-                })}
-            </nav>
+            <DesktopMenu navList={navList} currPath={currPath} />
         </header>
+    )
+}
+
+type DesktopMenuProps = {
+    navList: NavItem[]
+    currPath: string
+}
+const DesktopMenu = ({ navList, currPath }: DesktopMenuProps) => {
+    return (
+        <nav className="hidden md:flex flex-row gap-6">
+            {navList?.map((item, index) => {
+                const currPathNormalized = normalizePath(currPath || '/')
+
+                const itemPathNormalized = normalizePath(item.url)
+
+                const isSelected = itemPathNormalized === currPathNormalized
+
+                return (
+                    <Link
+                        href={item.url}
+                        aria-current={isSelected ? 'page' : undefined}
+                        prefetch={!item.external}
+                        target={item.external ? '_blank' : '_self'}
+                        className={cn(
+                            'relative font-mono uppercase font-bold text-lg group transition-colors duration-300',
+                            isSelected ? '!text-neutral' : '!text-primary'
+                        )}
+                        key={`nav-item-${item?.url}-${index}-${isSelected}`}
+                    >
+                        {item.title}
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>
+                    </Link>
+                )
+            })}
+        </nav>
     )
 }
 
@@ -89,7 +101,7 @@ type MobileMenuProps = {
     currPath: string
 }
 const MobileMenu = ({ isMenuOpen, toggleMenu, navList, currPath }: MobileMenuProps) => {
-    const menuVariants = {
+    const menuVariants: Variants = {
         closed: {
             opacity: 0,
             transition: {
@@ -107,7 +119,7 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, navList, currPath }: MobileMenuPro
         },
     }
 
-    const itemVariants = {
+    const itemVariants: Variants = {
         closed: {
             opacity: 0,
             y: 20,
@@ -130,7 +142,6 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, navList, currPath }: MobileMenuPro
                     initial="closed"
                     animate="open"
                     exit="closed"
-                    //@ts-expect-error erro de versão
                     variants={menuVariants}
                 >
                     <div className="w-full flex justify-end pt-5 pr-5">
@@ -149,16 +160,16 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, navList, currPath }: MobileMenuPro
                             const isSelected = itemPathNormalized === currPathNormalized
 
                             return (
-                                //@ts-expect-error erro de versão
                                 <motion.div variants={itemVariants} key={`mobile-nav-${index}`}>
                                     <Link
                                         href={item.url}
                                         prefetch={!item.external}
                                         aria-current={isSelected ? 'page' : undefined}
                                         target={item.external ? '_blank' : '_self'}
-                                        className={
-                                            'relative text-4xl font-semibold group transition-colors duration-300 block uppercase text-primary [aria-current="page"]:text-neutral'
-                                        }
+                                        className={cn(
+                                            'relative text-4xl font-semibold group transition-colors duration-300 block uppercase text-primary [aria-current="page"]:text-neutral',
+                                            isSelected ? '!text-neutral' : '!text-primary'
+                                        )}
                                         onClick={toggleMenu}
                                         key={`mobile-nav-item-${item?.url}-${index}-${isSelected}`}
                                     >
