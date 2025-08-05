@@ -1,6 +1,5 @@
 'use client'
 
-import { cn } from '@/utils/cn'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MenuIcon } from '../icons/menu-icon'
@@ -71,7 +70,7 @@ export default function Header() {
                             className={
                                 'relative font-mono uppercase font-bold text-lg group transition-colors duration-300 text-primary aria-selected:text-neutral'
                             }
-                            key={`nav-item-${item?.url}-${index}`}
+                            key={`nav-item-${item?.url}-${index}-${isSelected}`}
                         >
                             {item.title}
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>
@@ -90,7 +89,6 @@ type MobileMenuProps = {
     currPath: string
 }
 const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) => {
-    // Variantes de animação para o container do menu
     const menuVariants = {
         closed: {
             opacity: 0,
@@ -109,7 +107,6 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
         },
     }
 
-    // Variantes de animação para os itens do menu
     const itemVariants = {
         closed: {
             opacity: 0,
@@ -163,7 +160,7 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
                                             'relative text-4xl font-semibold group transition-colors duration-300 block uppercase text-primary aria-selected:text-neutral'
                                         }
                                         onClick={toggleMenu}
-                                        key={`mobile-nav-item-${item?.url}-${index}`}
+                                        key={`mobile-nav-item-${item?.url}-${index}-${isSelected}`}
                                     >
                                         {item.title}
                                         <span className="absolute bottom-0 left-0 w-0 h-[3px] bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>

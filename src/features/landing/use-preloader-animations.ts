@@ -1,5 +1,5 @@
 import { type Variants } from 'motion'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export const usePreloaderAnimations = () => {
     const [index, setIndex] = useState(0)

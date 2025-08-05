@@ -7,7 +7,7 @@ import Image from 'next/image'
 import * as motion from 'motion/react-client'
 import { useProjectDetailAnimation } from './use-project-detail-animation'
 import type { Variants } from 'motion'
-import { LineDivider } from '../line-bezier-curve/line-divider'
+import { LineDivider } from '../../components/ui/line-divider'
 
 type ProjectDetailProps = {
     project: ProjectType

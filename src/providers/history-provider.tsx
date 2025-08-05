@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, useLayoutEffect, PropsWithChildren } from 'react'
+import { createContext, useState, useLayoutEffect, PropsWithChildren } from 'react'
 import { usePathname } from 'next/navigation'
 import { useIsMounted } from '@/hooks/use-is-mounted'
 

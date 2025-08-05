@@ -25,7 +25,7 @@ export function PreloaderWrapper({ children }: PreloaderWrapperProps) {
                 window.scrollTo(0, 0)
             }, 2000)
         })()
-    }, [])
+    }, [showPreloader])
 
     if (!showPreloader) {
         return <>{children}</>

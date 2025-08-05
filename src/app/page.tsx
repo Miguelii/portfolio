@@ -4,7 +4,7 @@ import { QuoteCard } from '@/features/quote/quote-card'
 import ProjectsService from '@/services/projects-service'
 import { ProjectsSection } from '@/features/projects/projects-section'
 import { PreloaderWrapper } from '@/features/landing/preloader-wrapper'
-import { LineDivider } from '@/features/line-bezier-curve/line-divider'
+import { LineDivider } from '@/components/ui/line-divider'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h

@@ -12,6 +12,7 @@ export default function Preloader() {
 
     useEffect(() => {
         setDimension({ width: window.innerWidth, height: window.innerHeight })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -22,6 +23,7 @@ export default function Preloader() {
             },
             index == 0 ? 1000 : 150
         )
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [index])
 
     return (
