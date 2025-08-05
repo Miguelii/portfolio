@@ -1,4 +1,4 @@
-import ProjectsService from '@/lib/projects-service'
+import ProjectsService from '@/services/projects-service'
 import { notFound } from 'next/navigation'
 import { ProjectType } from '@/types/Project'
 import ProjectDetail from '@/features/projects/project-detail'

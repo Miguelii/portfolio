@@ -270,7 +270,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 
 const BandCanvas = () => {
     return (
-        <Canvas camera={{ fov: 25, position: [0, 0, 16] }}>
+        <Canvas camera={{ fov: 25, position: [0, 0, 16] }} className="z-[900]">
             <Physics colliders={false} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
                 <Band />
             </Physics>

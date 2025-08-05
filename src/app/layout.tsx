@@ -1,14 +1,13 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import Header from '@/components/misc/header'
-import Footer from '@/components/misc/footer'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import { unstable_ViewTransition as ViewTransition } from 'react'
-import { ThemeProvider } from 'next-themes'
+import Header from '@/components/base/header'
+import Footer from '@/components/base/footer'
+import { type PropsWithChildren, unstable_ViewTransition as ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
 import { normalizeBaseUrl } from '@/utils/normalize-base-url'
+import ProvidersWrapper from '@/providers/providers-wrapper'
+import { VercelAnalytics } from '@/analytics/vercel-analytics'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -54,31 +53,21 @@ export const metadata: Metadata = {
     },
 }
 
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode
-}>) {
+type RootLayoutProps = Readonly<PropsWithChildren>
+
+export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
             <ReactLenis root>
                 <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-                    <ThemeProvider
-                        defaultTheme="light"
-                        attribute="class"
-                        enableSystem={false}
-                        themes={['light', 'dark']}
-                        storageKey="miguel-goncalves-dev-theme"
-                        forcedTheme={'light'}
-                    >
-                        <Analytics />
-                        <SpeedInsights />
-                        <div className="min-h-[calc(100vh-192px)] w-full">
+                    <ProvidersWrapper>
+                        <VercelAnalytics />
+                        <div className="min-h-[calc(100vh-240px)] w-full">
                             <Header />
                             <ViewTransition>{children}</ViewTransition>
                         </div>
                         <Footer />
-                    </ThemeProvider>
+                    </ProvidersWrapper>
                 </body>
             </ReactLenis>
         </html>

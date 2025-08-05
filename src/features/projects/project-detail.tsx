@@ -1,6 +1,5 @@
 import { Badge } from '@/components/ui/badge'
 import Button from '@/components/ui/button'
-import { SectionDivider } from '@/components/ui/section-divider'
 import { type ProjectType } from '@/types/Project'
 import { cn } from '@/utils/cn'
 import { getBuildId } from '@/utils/get-build-id'
@@ -8,6 +7,7 @@ import Image from 'next/image'
 import * as motion from 'motion/react-client'
 import { useProjectDetailAnimation } from './use-project-detail-animation'
 import type { Variants } from 'motion'
+import { LineDivider } from '../line-bezier-curve/line-divider'
 
 type ProjectDetailProps = {
     project: ProjectType
@@ -38,7 +38,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
                 {/* Right Side Image (desktop) */}
                 <motion.div
-                    className="relative hidden md:flex"
+                    className="relative hidden md:flex w-full"
                     initial={{ opacity: 0, x: 40 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -47,7 +47,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 </motion.div>
             </motion.section>
 
-            <SectionDivider />
+            <LineDivider />
 
             <TechnologiesSection project={project} />
         </>
@@ -140,7 +140,7 @@ function ProjectImage({ project }: ProjectDetailProps) {
     const buildId = getBuildId()
 
     return (
-        <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl">
+        <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl w-full h-full">
             <Image
                 src={`${project.imageUrl}?v=${buildId}`}
                 alt={`${project.title} project preview`}

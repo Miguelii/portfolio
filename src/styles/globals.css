@@ -43,3 +43,12 @@ body {
 .project-html ul {
     @apply list-disc list-inside m-4 space-y-2;
 }
+
+.full-margin {
+    width: 100vw;
+    position: relative;
+    left: 49%;
+    right: 49%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}

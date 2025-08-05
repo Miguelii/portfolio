@@ -65,12 +65,12 @@ export default function Header() {
                     return (
                         <Link
                             href={item.url}
+                            aria-selected={isSelected}
                             prefetch={!item.external}
                             target={item.external ? '_blank' : '_self'}
-                            className={cn(
-                                'relative font-mono uppercase font-bold text-lg group transition-colors duration-300',
-                                isSelected ? '!text-neutral' : '!text-primary'
-                            )}
+                            className={
+                                'relative font-mono uppercase font-bold text-lg group transition-colors duration-300 text-primary aria-selected:text-neutral'
+                            }
                             key={`nav-item-${item?.url}-${index}`}
                         >
                             {item.title}
@@ -157,11 +157,11 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, nav, currPath }: MobileMenuProps) 
                                     <Link
                                         href={item.url}
                                         prefetch={!item.external}
+                                        aria-selected={isSelected}
                                         target={item.external ? '_blank' : '_self'}
-                                        className={cn(
-                                            'relative text-4xl font-semibold group transition-colors duration-300 block uppercase',
-                                            isSelected ? '!text-neutral' : '!text-primary'
-                                        )}
+                                        className={
+                                            'relative text-4xl font-semibold group transition-colors duration-300 block uppercase text-primary aria-selected:text-neutral'
+                                        }
                                         onClick={toggleMenu}
                                         key={`mobile-nav-item-${item?.url}-${index}`}
                                     >

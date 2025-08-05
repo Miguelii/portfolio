@@ -1,5 +1,5 @@
 import * as motion from 'motion/react-client'
-import ExperienceService from '@/lib/experience-service'
+import ExperienceService from '@/services/experience-service'
 import { WorkExperienceItem } from './experience-section-item'
 import { useExperienceSectionAnimations } from './use-experience-section-animations'
 
