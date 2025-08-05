@@ -133,6 +133,8 @@ function CarouselButtons({
                 className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-30 cursor-pointer disabled:cursor-auto text-neutral"
                 onClick={scrollLeft}
                 disabled={!canScrollLeft}
+                aria-label="Scroll to previous item"
+                title="Previous item"
             >
                 <ArrowLeftCircleIcon className="h-6 w-6" />
             </button>
@@ -140,6 +142,8 @@ function CarouselButtons({
                 className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-30 cursor-pointer disabled:cursor-auto text-neutral"
                 onClick={scrollRight}
                 disabled={!canScrollRight}
+                aria-label="Scroll to next item"
+                title="Next item"
             >
                 <ArrowRightCircleIcon className="h-6 w-6" />
             </button>
