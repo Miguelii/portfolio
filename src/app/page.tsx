@@ -29,6 +29,7 @@ export default function Home() {
 
                 <LineDivider />
 
+                {/* 
                 <ProjectsSection
                     title="Professional Work"
                     description="Worked on 20+ projects — only the best made it here."
@@ -36,6 +37,7 @@ export default function Home() {
                 />
 
                 <LineDivider />
+                */}
 
                 <ProjectsSection
                     title="Personal Projects"
