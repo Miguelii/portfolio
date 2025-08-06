@@ -14,7 +14,7 @@ export function LandingSectionWithBand() {
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-4xl md:text-5xl font-bold text-start w-full leading-snug"
+                    className="text-4xl md:text-5xl lg:text-[3.625rem] font-bold text-start w-full leading-snug"
                 >
                     Crafting Experiences, Delivering Results
                 </motion.h1>
@@ -23,7 +23,7 @@ export function LandingSectionWithBand() {
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
-                    className="text-lg font-medium text-neutral leading-relaxed"
+                    className="text-xl lg:text-2xl font-medium text-neutral leading-relaxed"
                 >
                     Delivered products that have reached over a million users worldwide.
                 </motion.p>

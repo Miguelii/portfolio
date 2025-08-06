@@ -2,123 +2,6 @@ import { type ProjectType } from '@/types/Project'
 
 export const ProjectsData: ProjectType[] = [
     {
-        id: 'euromar',
-        title: 'EUROMAR Portal',
-        projectUrl: 'https://www.eu-registry.com/euromar/',
-        description:
-            'Developed a public website power by CrafterCMS and a private user portal with a admin backoffice.',
-        longDescription: `
-      <p>
-      The <strong>EUROMAR Portal</strong> is a project i worked on at <strong>CGI</strong>, made up of two main parts: a public website and a private user portal for the EU ship registry.
-      </p>
-
-      <br/>
-
-      <p>
-      The public site was built with CrafterCMS as content manager, to allow easy dynamic content updates by the client. 
-      </p>
-
-      <br/>
-
-      <p>
-      The private portal has two sections:
-      </p>
-
-      <ul>
-         <li>
-         <strong>Admin BackOffice</strong> — where admins can manage and approve users, and create dynamic forms to be filled by users.
-         </li>
-         <li>
-         <strong>User Area</strong> — where logged-in users can access and submit those forms including managing their account.
-         </li>
-      </ul>
-
-      <br/>
-
-      <p>
-      The project was built with <em>Next.js</em>, <em>TypeScript</em>, <em>Supabase</em> for auth and database and styled with <em>Tailwind CSS</em>.
-      </p>
-
-      `,
-        imageUrl: '/projects/euromar.webp',
-        techStack: ['React.js', 'Next.js', 'Tailwind', 'Typescript', 'Supabase', 'CrafterCMS'],
-        label: 'Work - CGI',
-        year: '2024',
-        workProject: true,
-        priority: 2,
-    },
-    {
-        id: 'agendamentos-online',
-        title: 'Portugal Embassies Appointments Portal',
-        projectUrl: 'https://agendamentos.mne.gov.pt/en/login',
-        description:
-            'Developed the new scheduling website for consulates and embassies of Portugal.',
-        longDescription: `
-      <p>
-      This platform is a project i worked on at <strong>CGI</strong>. Developed for the <strong>Portuguese Ministry of Foreign Affairs</strong> to simplify the process of scheduling appointments at consular offices worldwide.
-      </p>
-
-      <br/>
-
-      <p>
-      Used by Portuguese citizens and foreign residents to book in-person appointments.
-      </p>
-
-      <br/>
-
-      <p>
-      Built with a focus on usability, performance, and accessibility for a wide range of users.
-      </p>
-
-      <br/>
-
-      <p>
-      This was a <strong>high-impact</strong> public service platform, helping reduce in-person wait times and making the scheduling process more efficient.
-      </p>
-
-      <br/>
-
-      <p>
-      The project was built with <em>Next.js</em>, <em>TypeScript</em> and styled with <em>Tailwind CSS</em>.
-      </p>
-      `,
-        imageUrl: '/projects/appointments.webp',
-        techStack: ['Next.js', 'Tailwind', 'Typescript'],
-        label: 'Work - CGI',
-        year: '2023',
-        workProject: true,
-        priority: 1,
-    },
-    {
-        id: 'gassu-form',
-        title: 'GasSU Contract Form',
-        projectUrl: 'https://www.gassu.pt/gassu/contratar/',
-        description: 'Delevoped a contract form for new customers of GasSU.',
-        longDescription: `
-      <p>
-      This is a project i worked on at <strong>CGI</strong>. Its a contract form for <strong>Gás Serviço Universal (GASSU)</strong>, where new customers can apply to get natural gas at home.
-      </p>
-
-      <br/>
-
-      <p>
-      Simple and designed to make the contracting process easier for new clients.
-      </p>
-
-      <br/>
-
-      <p>
-      The project was built with <em>Next.js</em>, <em>TypeScript</em> and styled with <em>Tailwind CSS</em>.
-      </p>
-
-      `,
-        imageUrl: '/projects/gassu.webp',
-        techStack: ['Next.js', 'Tailwind', 'Typescript'],
-        label: 'Work - CGI',
-        year: '2025',
-        workProject: true,
-    },
-    {
         id: 'geometrix',
         title: 'Geometrix',
         projectUrl: 'https://www.hypatiamat.com/jogos/geometrixv7/index.html',
@@ -157,7 +40,7 @@ export const ProjectsData: ProjectType[] = [
         techStack: ['Javascript', 'Phaser.js'],
         label: 'University - Hypatiamat',
         year: '2022',
-        workProject: true,
+        workProject: false,
     },
     {
         id: 'luisa-mendes',
@@ -185,7 +68,7 @@ export const ProjectsData: ProjectType[] = [
         techStack: ['Next.js', 'Tailwind', 'Typescript'],
         label: 'Private Client',
         year: '2025',
-        workProject: true,
+        workProject: false,
     },
 
     {

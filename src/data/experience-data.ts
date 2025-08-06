@@ -1,4 +1,7 @@
 import { type WorkExperience } from '@/types/WorkExperience'
+import { normalizeBaseUrl } from '@/utils/normalize-base-url'
+
+const WEBSITE_URL = normalizeBaseUrl()
 
 export const ExperiencesData: WorkExperience[] = [
     {
@@ -7,7 +10,7 @@ export const ExperiencesData: WorkExperience[] = [
         company: 'Blip',
         logoUrl: '/logos/blip_pt_logo.webp',
         badgeColor: 'bg-slate-800 text-white',
-        previewUrl: 'https://www.instagram.com/blip.pt',
+        previewUrl: `${WEBSITE_URL}/assets/blip_web.webp`,
         achievements: [],
     },
     {

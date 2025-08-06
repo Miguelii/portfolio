@@ -10,8 +10,6 @@ export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
 
 export default function Home() {
-    const workProjects = ProjectsService.getWorkProjects()
-
     const personalProjects = ProjectsService.getPersonalProjects()
 
     return (
@@ -29,18 +27,8 @@ export default function Home() {
 
                 <LineDivider />
 
-                {/* 
                 <ProjectsSection
-                    title="Professional Work"
-                    description="Worked on 20+ projects — only the best made it here."
-                    projects={workProjects ?? []}
-                />
-
-                <LineDivider />
-                */}
-
-                <ProjectsSection
-                    title="Personal Projects"
+                    title="Projects"
                     description="Built out of curiosity, learning, or just for fun."
                     projects={personalProjects ?? []}
                 />
