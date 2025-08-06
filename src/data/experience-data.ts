@@ -6,7 +6,7 @@ const WEBSITE_URL = normalizeBaseUrl()
 export const ExperiencesData: WorkExperience[] = [
     {
         period: '2025 - Present',
-        jobTitle: 'Associate Software Engineer',
+        jobTitle: 'Associate Software Engineer | Frontend Developer',
         company: 'Blip',
         logoUrl: '/logos/blip_pt_logo.webp',
         badgeColor: 'bg-slate-800 text-white',
@@ -15,7 +15,7 @@ export const ExperiencesData: WorkExperience[] = [
     },
     {
         period: '2022 - 2025',
-        jobTitle: 'Software Engineer',
+        jobTitle: 'Software Engineer | Full Stack Developer',
         company: 'CGI',
         logoUrl: '/logos/cgi.webp',
         badgeColor: 'bg-[#8942a8] text-white',
@@ -23,7 +23,9 @@ export const ExperiencesData: WorkExperience[] = [
         achievements: [
             'Lead developer for the Web Team, specializing in full-stack development.',
             'Developed and maintained multiple full-stack applications.',
-            'Responsible for the architecture, good practices, security and development of scalable web applications.',
+            'Responsible for applications architecture, good practices and technical decisions.',
+            'Expert in React, Next.js, and TypeScript, with a strong focus on performance and best practices.',
+            'Provided technical mentorship to junior developers, including code reviews and pair programming.',
         ],
     },
     {
