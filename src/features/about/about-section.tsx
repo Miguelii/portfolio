@@ -37,9 +37,8 @@ export function AboutSection() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 * i, ease: 'easeOut' }}
                         className="text-pretty text-neutral text-lg leading-relaxed"
-                        dangerouslySetInnerHTML={{__html: text}}
-                    >
-                    </motion.p>
+                        dangerouslySetInnerHTML={{ __html: text }}
+                    ></motion.p>
                 ))}
             </div>
         </div>

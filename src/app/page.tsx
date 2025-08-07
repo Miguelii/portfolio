@@ -12,6 +12,8 @@ export const revalidate = 86400 // 24h
 export default function Home() {
     const personalProjects = ProjectsService.getPersonalProjects()
 
+    const workProjects = ProjectsService.getWorkProjects()
+
     return (
         <main className="main-container lg:mt-17">
             <PreloaderWrapper>
@@ -28,7 +30,15 @@ export default function Home() {
                 <LineDivider />
 
                 <ProjectsSection
-                    title="Projects"
+                    title="Professional Work"
+                    description="Worked on 20+ projects — while most are under NDA, here’s a glimpse at some of the most impactful ones."
+                    projects={workProjects ?? []}
+                />
+
+                <LineDivider />
+
+                <ProjectsSection
+                    title="Personal Projects"
                     description="Built out of curiosity, learning, or just for fun."
                     projects={personalProjects ?? []}
                 />

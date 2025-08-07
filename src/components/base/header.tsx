@@ -37,6 +37,11 @@ export default function Header() {
             url: 'https://www.linkedin.com/in/miguelgoncalves18/',
             external: true,
         },
+        {
+            title: 'github',
+            url: 'https://github.com/Miguelii',
+            external: true,
+        },
     ]
 
     return (

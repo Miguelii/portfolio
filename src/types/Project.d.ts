@@ -3,7 +3,7 @@ export type ProjectType = {
     workProject: boolean
     title: string
     projectUrl: string
-    imageUrl: string
+    imageUrl: string | null
     description: string
     longDescription: string
     techStack: string[]
@@ -11,4 +11,5 @@ export type ProjectType = {
     year: string
     nextProject?: string
     priority?: number
+    disableLink?: boolean
 }

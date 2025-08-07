@@ -29,22 +29,27 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     <ProjectTitleAndDescription project={project} fadeInUp={fadeInUp} />
 
                     {/* Mobile Image */}
-                    <motion.div variants={fadeInUp} className="relative flex md:hidden">
-                        <ProjectImage project={project} />
-                    </motion.div>
-
-                    <ProjectDetailButtons project={project} fadeInUp={fadeInUp} />
+                    {project.imageUrl && (
+                        <motion.div variants={fadeInUp} className="relative flex md:hidden">
+                            <ProjectImage project={project} />
+                        </motion.div>
+                    )}
+                    {!project.disableLink && (
+                        <ProjectDetailButtons project={project} fadeInUp={fadeInUp} />
+                    )}
                 </motion.div>
 
                 {/* Right Side Image (desktop) */}
-                <motion.div
-                    className="relative hidden md:flex w-full"
-                    initial={{ opacity: 0, x: 40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
-                >
-                    <ProjectImage project={project} />
-                </motion.div>
+                {project.imageUrl && (
+                    <motion.div
+                        className="relative hidden md:flex w-full"
+                        initial={{ opacity: 0, x: 40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    >
+                        <ProjectImage project={project} />
+                    </motion.div>
+                )}
             </motion.section>
 
             <LineDivider />
