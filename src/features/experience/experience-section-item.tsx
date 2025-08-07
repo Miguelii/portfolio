@@ -21,7 +21,8 @@ export function WorkExperienceItem(experience: WorkExperience) {
                         {experience.jobTitle}
                     </span>
                     <LinkPreview
-                        url={experience.previewUrl}
+                        url={experience.url ?? experience.previewUrl}
+                        imageSrc={experience.previewUrl}
                         className={cn(
                             'flex items-center gap-3 px-2.5 py-0.5 rounded-lg text-base font-medium',
                             experience.badgeColor

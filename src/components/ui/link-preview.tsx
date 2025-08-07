@@ -11,12 +11,13 @@ import { cn } from '@/utils/cn'
 type LinkPreviewProps = {
     children: React.ReactNode
     url: string
+    imageSrc: string
     className?: string
     width?: number
     height?: number
     quality?: number
     layout?: string
-} & ({ isStatic: true; imageSrc: string } | { isStatic?: false; imageSrc?: never })
+}
 
 export const LinkPreview = ({
     children,
@@ -26,26 +27,21 @@ export const LinkPreview = ({
     height = 125,
     quality = 50,
     layout = 'fixed',
-    isStatic = false,
-    imageSrc = '',
+    imageSrc,
 }: LinkPreviewProps) => {
-    let src
-    if (!isStatic) {
-        const params = encode({
-            url,
-            screenshot: true,
-            meta: false,
-            embed: 'screenshot.url',
-            colorScheme: 'dark',
-            'viewport.isMobile': true,
-            'viewport.deviceScaleFactor': 1,
-            'viewport.width': width * 3,
-            'viewport.height': height * 3,
-        })
-        src = `https://api.microlink.io/?${params}`
-    } else {
-        src = imageSrc
-    }
+    const params = encode({
+        url: imageSrc,
+        screenshot: true,
+        meta: false,
+        embed: 'screenshot.url',
+        colorScheme: 'light',
+        'viewport.isMobile': true,
+        'viewport.deviceScaleFactor': 1,
+        'viewport.width': width * 3,
+        'viewport.height': height * 3,
+    })
+
+    const src = `https://api.microlink.io/?${params}`
 
     const [isOpen, setOpen] = React.useState(false)
 
@@ -129,11 +125,11 @@ export const LinkPreview = ({
                                 <Link
                                     href={url}
                                     target="_blank"
-                                    className="block p-1 bg-white border-2 border-transparent shadow rounded-xl cursor-pointer"
+                                    className="block p-1 bg-background border-2 border-transparent shadow rounded-xl cursor-pointer"
                                     style={{ fontSize: 0 }}
                                 >
                                     <Image
-                                        src={isStatic ? `${isStatic}` : `${src}`}
+                                        src={`${src}`}
                                         width={width}
                                         height={height}
                                         quality={quality}

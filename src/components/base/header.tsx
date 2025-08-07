@@ -75,6 +75,7 @@ const DesktopMenu = ({ navList, currPath }: DesktopMenuProps) => {
 
                 return (
                     <Link
+                        key={`nav-item-${itemPathNormalized}-${item.title}-${index}`}
                         href={item.url}
                         aria-current={isSelected ? 'page' : undefined}
                         prefetch={!item.external}
@@ -83,7 +84,6 @@ const DesktopMenu = ({ navList, currPath }: DesktopMenuProps) => {
                             'relative font-mono uppercase font-bold text-lg group transition-colors duration-300',
                             isSelected ? '!text-neutral' : '!text-primary'
                         )}
-                        key={`nav-item-${item?.url}-${index}-${isSelected}`}
                     >
                         {item.title}
                         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>
@@ -162,6 +162,7 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, navList, currPath }: MobileMenuPro
                             return (
                                 <motion.div variants={itemVariants} key={`mobile-nav-${index}`}>
                                     <Link
+                                        key={`mobile-nav-item-${itemPathNormalized}-${index}-${isSelected}`}
                                         href={item.url}
                                         prefetch={!item.external}
                                         aria-current={isSelected ? 'page' : undefined}
@@ -171,7 +172,6 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, navList, currPath }: MobileMenuPro
                                             isSelected ? '!text-neutral' : '!text-primary'
                                         )}
                                         onClick={toggleMenu}
-                                        key={`mobile-nav-item-${item?.url}-${index}-${isSelected}`}
                                     >
                                         {item.title}
                                         <span className="absolute bottom-0 left-0 w-0 h-[3px] bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>

@@ -4,6 +4,7 @@ export type WorkExperience = {
     company: string
     logoUrl: string
     badgeColor: string
+    url?: string
     previewUrl: string
     achievements: string[]
 }

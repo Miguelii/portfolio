@@ -30,7 +30,9 @@ export function LandingSectionWithBand() {
             </motion.div>
 
             <div className="hidden lg:block absolute -inset-5">
-                <BandCanvas />
+                <div className="relative w-full h-[700px]">
+                    <BandCanvas />
+                </div>
             </div>
         </section>
     )

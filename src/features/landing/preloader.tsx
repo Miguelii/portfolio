@@ -28,6 +28,7 @@ export default function Preloader() {
 
     return (
         <motion.div
+            aria-hidden="true"
             variants={slideUp}
             initial="initial"
             exit="exit"
@@ -40,6 +41,7 @@ export default function Preloader() {
                         variants={opacity}
                         initial="initial"
                         animate="enter"
+                        aria-hidden="true"
                     >
                         <span className="mr-2 block h-[10px] w-[10px] rounded-full bg-background"></span>
                         {words[index]}
@@ -47,6 +49,7 @@ export default function Preloader() {
                     <svg
                         className="absolute top-0 h-[calc(100%+300px)] w-full"
                         color="currentColor"
+                        aria-hidden="true"
                     >
                         <motion.path
                             fill={'var(--neutral-dark)'}

@@ -10,6 +10,7 @@ export const ExperiencesData: WorkExperience[] = [
         company: 'Blip',
         logoUrl: '/logos/blip_pt_logo.webp',
         badgeColor: 'bg-slate-800 text-white',
+        url: 'https://www.blip.pt/',
         previewUrl: `${WEBSITE_URL}/assets/blip_web.webp`,
         achievements: [],
     },

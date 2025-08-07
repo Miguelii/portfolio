@@ -32,8 +32,8 @@ export function PreloaderWrapper({ children }: PreloaderWrapperProps) {
     }
     return (
         <>
-            <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence>
             {!isLoading && <>{children}</>}
+            <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence>
         </>
     )
 }
