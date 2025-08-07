@@ -22,10 +22,9 @@ export const ExperiencesData: WorkExperience[] = [
         badgeColor: 'bg-[#8942a8] text-white',
         previewUrl: 'https://www.cgi.com/portugal/pt-pt',
         achievements: [
-            'Lead developer for the Web Team, specializing in full-stack development.',
-            'Developed and maintained multiple full-stack applications.',
+            'Lead Developer for the Web Team, specializing in full-stack development.',
+            'Developed and maintained several full-stack applications, mainly using React, Next.js, and TypeScript.',
             'Responsible for applications architecture, good practices and technical decisions.',
-            'Expert in React, Next.js, and TypeScript, with a strong focus on performance and best practices.',
             'Provided technical mentorship to junior developers, including code reviews and pair programming.',
         ],
     },

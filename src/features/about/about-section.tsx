@@ -2,9 +2,11 @@ import * as motion from 'motion/react-client'
 
 export function AboutSection() {
     const paragraphs = [
-        'Software Engineer specializing in full-stack development, with strong expertise in JavaScript, TypeScript, and Node.js.',
+        'Software Engineer specializing in <strong>full-stack development</strong>.',
+        'Expert in <strong>React, Next.js and TypeScript</strong>, with a strong focus on performance and best practices.',
+        'I&apos;m passionate about creating products that positively impact people’s lives through clean, thoughtful code.',
         'Passionate about creating new products that improve the lives of others through code.',
-        'Background in Computer Science from University of Minho (Braga - Portugal).',
+        'Background in <strong>Computer Science</strong> from University of Minho (Braga - Portugal).',
     ]
 
     return (
@@ -35,8 +37,8 @@ export function AboutSection() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 * i, ease: 'easeOut' }}
                         className="text-pretty text-neutral text-lg leading-relaxed"
+                        dangerouslySetInnerHTML={{__html: text}}
                     >
-                        {text}
                     </motion.p>
                 ))}
             </div>
