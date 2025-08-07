@@ -255,12 +255,12 @@ export const ProjectsData: ProjectType[] = [
   <br/>
 
   <p>
-    As Lead Developer and Tech Lead, I was responsible for the overall architecture, database design, technical decision-making, and team organization.
+    As Lead Developer, i was responsible for the overall architecture, database design, technical decision-making, and team organization.
   </p>
     `,
         imageUrl: null,
         techStack: [],
-        label: 'Lead Delevoper | Tech Lead - NDA',
+        label: 'Lead Delevoper - NDA',
         year: '',
         workProject: true,
         disableLink: true,
