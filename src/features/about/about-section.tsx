@@ -1,8 +1,12 @@
 import * as motion from 'motion/react-client'
 
 export function AboutSection() {
+    const startYear = 2022
+    const currentYear = new Date().getFullYear()
+    const yearDiff = currentYear - startYear
+
     const paragraphs = [
-        'Software Engineer specializing in <strong>full-stack development</strong>.',
+        `Mid Software Engineer with ${yearDiff} years of experience, specializing in <strong>full-stack development</strong>.`,
         'Expert in <strong>React, Next.js and TypeScript</strong>, with a strong focus on performance and best practices.',
         'I&apos;m passionate about creating products that positively impact people’s lives through clean, thoughtful code.',
         'Passionate about creating new products that improve the lives of others through code.',

@@ -34,9 +34,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                             <ProjectImage project={project} />
                         </motion.div>
                     )}
-                    {!project.disableLink && (
-                        <ProjectDetailButtons project={project} fadeInUp={fadeInUp} />
-                    )}
+                    <ProjectDetailButtons project={project} fadeInUp={fadeInUp} />
                 </motion.div>
 
                 {/* Right Side Image (desktop) */}
@@ -52,9 +50,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 )}
             </motion.section>
 
-            <LineDivider />
+            {project.techStack.length > 0 && (
+                <>
+                    <LineDivider />
 
-            <TechnologiesSection project={project} />
+                    <TechnologiesSection project={project} />
+                </>
+            )}
         </>
     )
 }
@@ -105,12 +107,13 @@ function ProjectDetailButtons({ project, fadeInUp }: ProjectDetailButtonsProps) 
                     </Button>
                 </motion.div>
             )}
-
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                <Button href={project.projectUrl} target="_blank">
-                    Open Project
-                </Button>
-            </motion.div>
+            {project.projectUrl && (
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                    <Button href={project.projectUrl!} target="_blank">
+                        Open Project
+                    </Button>
+                </motion.div>
+            )}
         </motion.div>
     )
 }

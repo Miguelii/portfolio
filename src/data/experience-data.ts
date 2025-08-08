@@ -7,7 +7,7 @@ export const ExperiencesData: WorkExperience[] = [
     {
         period: '2025 - Present',
         jobTitle: 'Associate Software Engineer | Frontend Developer',
-        company: 'Blip',
+        company: 'Blip - Portugal',
         logoUrl: '/logos/blip_pt_logo.webp',
         badgeColor: 'bg-slate-800 text-white',
         url: 'https://www.blip.pt/',
@@ -17,7 +17,7 @@ export const ExperiencesData: WorkExperience[] = [
     {
         period: '2022 - 2025',
         jobTitle: 'Software Engineer | Full Stack Developer',
-        company: 'CGI',
+        company: 'CGI - Portugal',
         logoUrl: '/logos/cgi.webp',
         badgeColor: 'bg-[#8942a8] text-white',
         previewUrl: 'https://www.cgi.com/portugal/pt-pt',
@@ -31,7 +31,7 @@ export const ExperiencesData: WorkExperience[] = [
     {
         period: '2018 - 2022',
         jobTitle: 'BSc in Computer Science Engineering',
-        company: 'University of Minho',
+        company: 'University of Minho - Portugal',
         logoUrl: '/logos/Universitaet_Minho.webp',
         badgeColor: 'bg-neutral-100 text-neutral-800',
         previewUrl: 'https://www.uminho.pt/PT',

@@ -169,11 +169,13 @@ export const ProjectsData: ProjectType[] = [
     },
 
     {
-        id: 'nda-01',
+        id: 'booking-platform',
+        nda: true,
         title: 'Online Booking Platform',
-        projectUrl: '',
-        longDescription: '',
-        description: `
+        projectUrl: null,
+        description:
+            '<p><strong>Lead developer</strong> for a booking platform serving <strong>1M+ users</strong>, cutting phone wait times by over 90% and improving service efficiency.</p>',
+        longDescription: `
       <p>
       Public service platform designed to simplify appointment scheduling and reduce in-person wait times. With a focus on accessibility and user experience.
       </p>
@@ -181,7 +183,7 @@ export const ProjectsData: ProjectType[] = [
       <br/>
 
       <p>
-        Serving <strong>1M+ users worldwide</strong>, the platform reduced phone line wait times by <strong>over 80%</strong>, freeing up staff and improving overall service efficiency.
+        Serving <strong>1M+ users worldwide</strong>, the platform reduced phone line wait times by <strong>over 90%</strong>, freeing up staff and improving overall service efficiency.
       </p>
 
       <br/>
@@ -195,16 +197,17 @@ export const ProjectsData: ProjectType[] = [
         label: 'Lead Delevoper - NDA',
         year: '',
         workProject: true,
-        disableLink: true,
         priority: 2,
     },
 
     {
-        id: 'nda-02',
+        id: 'cms-portal',
+        nda: true,
         title: 'CMS‑Powered Website & Portal',
-        projectUrl: '',
-        longDescription: '',
-        description: `
+        projectUrl: null,
+        description:
+            '<p><strong>Lead developer</strong> responsible for full-stack development of a public website, private portal, and admin back office powered by a headless CMS for dynamic content and workflows.</p>',
+        longDescription: `
       <p>
       Platform composed of a public website, a private user portal and a administrative backoffice.
   </p>
@@ -232,16 +235,17 @@ export const ProjectsData: ProjectType[] = [
         label: 'Lead Delevoper - NDA',
         year: '',
         workProject: true,
-        disableLink: true,
         priority: 3,
     },
 
     {
-        id: 'nda-03',
+        id: 'saas-portal',
+        nda: true,
         title: 'Multi-Tenant Client Portal for Utilities',
-        projectUrl: '',
-        longDescription: '',
-        description: `
+        projectUrl: null,
+        description:
+            '<p><strong>Lead developer</strong> for a multi-tenant SaaS client portal in the utilities sector, serving <strong>1.5M+ users</strong> and integrated with a headless CMS.</p>',
+        longDescription: `
 <p>
     Multi-tenant SaaS platform serving as a private client portal for companies in the utilities sector, covering electricity and gas services, serving <strong>1.5M+ users in Portugal</strong> .
   </p>
@@ -263,7 +267,6 @@ export const ProjectsData: ProjectType[] = [
         label: 'Lead Delevoper - NDA',
         year: '',
         workProject: true,
-        disableLink: true,
         priority: 1,
     },
 ]

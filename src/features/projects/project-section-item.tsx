@@ -30,7 +30,7 @@ export function ProjectItemSection({ project }: Project3dCardProps) {
                 <span
                     className={cn(
                         'text-sm max-w-sm mt-3 text-neutral flex tracking-wide leading-snug flex-col',
-                        !project.disableLink ? 'line-clamp-2 md:line-clamp-3' : ''
+                        project.projectUrl ? 'line-clamp-2 md:line-clamp-3' : ''
                     )}
                     dangerouslySetInnerHTML={{ __html: project.description }}
                 />
@@ -44,6 +44,11 @@ export function ProjectItemSection({ project }: Project3dCardProps) {
                             height={240}
                             className="h-60 w-full object-cover rounded-xl"
                         />
+                    )}
+                    {project.nda && (
+                        <div className="h-[180px] md:h-[200px] lg:h-[220px] w-full object-cover rounded-xl bg-neutral-100 flex justify-center items-center">
+                            <span className="font-bold text-xl">NDA</span>
+                        </div>
                     )}
                 </div>
 
@@ -59,13 +64,11 @@ export function ProjectItemSection({ project }: Project3dCardProps) {
                </>
             </div>
             */}
-                {!project.disableLink && (
-                    <div className="flex justify-end items-center mt-auto">
-                        <span className="px-4 py-2 rounded-xl bg-primary text-background text-xs font-bold cursor-pointer">
-                            View Project
-                        </span>
-                    </div>
-                )}
+                <div className="flex justify-end items-center mt-auto">
+                    <span className="px-4 py-2 rounded-xl bg-primary text-background text-xs font-bold cursor-pointer">
+                        View more details
+                    </span>
+                </div>
             </LinkWrapper>
         </article>
     )
@@ -76,10 +79,6 @@ type LinkWrapperProps = PropsWithChildren<{
 }>
 
 function LinkWrapper({ children, project }: LinkWrapperProps) {
-    if (project.disableLink) {
-        return children
-    }
-
     return (
         <Link
             className={'flex flex-col h-full w-full'}
