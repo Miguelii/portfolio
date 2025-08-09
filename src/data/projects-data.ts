@@ -177,7 +177,7 @@ export const ProjectsData: ProjectType[] = [
             '<p><strong>Lead developer</strong> for a booking platform serving <strong>1M+ users</strong>, cutting phone wait times by over 90% and improving service efficiency.</p>',
         longDescription: `
       <p>
-      Public service platform designed to simplify appointment scheduling and reduce in-person wait times. With a focus on accessibility and user experience.
+      Online booking platform designed to simplify appointment scheduling and reduce in-person wait times. With a focus on accessibility and user experience.
       </p>
 
       <br/>
@@ -194,7 +194,7 @@ export const ProjectsData: ProjectType[] = [
     `,
         imageUrl: null,
         techStack: [],
-        label: 'Lead Delevoper - NDA',
+        label: 'Lead Delevoper',
         year: '',
         workProject: true,
         priority: 2,
@@ -206,7 +206,7 @@ export const ProjectsData: ProjectType[] = [
         title: 'CMS‑Powered Website & Portal',
         projectUrl: null,
         description:
-            '<p><strong>Lead developer</strong> responsible for full-stack development of a public website, private portal, and admin back office powered by a headless CMS for dynamic content and workflows.</p>',
+            '<p><strong>Lead developer</strong> responsible for full-stack development of a public website (powered by a headless CMS), private portal, and admin back office</p>',
         longDescription: `
       <p>
       Platform composed of a public website, a private user portal and a administrative backoffice.
@@ -232,7 +232,7 @@ export const ProjectsData: ProjectType[] = [
     `,
         imageUrl: null,
         techStack: [],
-        label: 'Lead Delevoper - NDA',
+        label: 'Lead Delevoper',
         year: '',
         workProject: true,
         priority: 3,
@@ -241,13 +241,13 @@ export const ProjectsData: ProjectType[] = [
     {
         id: 'saas-portal',
         nda: true,
-        title: 'Multi-Tenant Client Portal for Utilities',
+        title: 'Multi-Tenant Client Portal',
         projectUrl: null,
         description:
             '<p><strong>Lead developer</strong> for a multi-tenant SaaS client portal in the utilities sector, serving <strong>1.5M+ users</strong> and integrated with a headless CMS.</p>',
         longDescription: `
 <p>
-    Multi-tenant SaaS platform serving as a private client portal for companies in the utilities sector, covering electricity and gas services, serving <strong>1.5M+ users in Portugal</strong> .
+    Multi-tenant SaaS platform serving as a private client portal for companies in the utilities sector, covering electricity and gas services, serving <strong>1.5M+ users</strong> .
   </p>
 
   <br/>
@@ -259,12 +259,12 @@ export const ProjectsData: ProjectType[] = [
   <br/>
 
   <p>
-    As Lead Developer, i was responsible for the overall architecture, database design, technical decision-making, and team organization.
+    As Lead Developer, i was responsible for the architecture, database design, technical decisions and team organization. As well as collaborating closely with project managers, UX teams, and QA teams.
   </p>
     `,
         imageUrl: null,
         techStack: [],
-        label: 'Lead Delevoper - NDA',
+        label: 'Lead Delevoper',
         year: '',
         workProject: true,
         priority: 1,
