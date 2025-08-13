@@ -85,6 +85,7 @@ const DesktopMenu = ({ navList, currPath }: DesktopMenuProps) => {
                         aria-current={isSelected ? 'page' : undefined}
                         prefetch={!item.external}
                         target={item.external ? '_blank' : '_self'}
+                        rel={item.external ? 'noreferrer' : undefined}
                         className={cn(
                             'relative font-mono uppercase font-bold text-lg group transition-colors duration-300',
                             isSelected ? '!text-neutral' : '!text-primary'
@@ -172,6 +173,7 @@ const MobileMenu = ({ isMenuOpen, toggleMenu, navList, currPath }: MobileMenuPro
                                         prefetch={!item.external}
                                         aria-current={isSelected ? 'page' : undefined}
                                         target={item.external ? '_blank' : '_self'}
+                                        rel={item.external ? 'noreferrer' : undefined}
                                         className={cn(
                                             'relative text-4xl font-semibold group transition-colors duration-300 block uppercase text-primary [aria-current="page"]:text-neutral',
                                             isSelected ? '!text-neutral' : '!text-primary'

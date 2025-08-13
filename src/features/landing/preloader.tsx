@@ -36,7 +36,7 @@ export default function Preloader() {
         >
             {dimension.width > 0 && (
                 <>
-                    <motion.p
+                    <motion.h1
                         className="absolute z-[1] flex items-center text-background text-[42px]"
                         variants={opacity}
                         initial="initial"
@@ -45,7 +45,7 @@ export default function Preloader() {
                     >
                         <span className="mr-2 block h-[10px] w-[10px] rounded-full bg-background"></span>
                         {words[index]}
-                    </motion.p>
+                    </motion.h1>
                     <svg
                         className="absolute top-0 h-[calc(100%+300px)] w-full"
                         color="currentColor"
