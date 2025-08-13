@@ -2,6 +2,8 @@ import ProjectsService from '@/services/projects-service'
 import { notFound } from 'next/navigation'
 import { ProjectType } from '@/types/Project'
 import ProjectDetail from '@/features/projects/project-detail'
+import Link from 'next/link'
+import { ChevronLeftIcon } from 'lucide-react'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
@@ -38,7 +40,15 @@ export default async function ProjectSlugPage(props: ProjectSlugPageProps) {
     if (!project) return notFound()
 
     return (
-        <main className="main-container h-fit relative mt-12 md:mt-14 lg:mt-16 xl:mt-24">
+        <main className="main-container h-fit relative mt-12 md:mt-14 lg:mt-16 xl:mt-24 flex flex-col gap-8 md:gap-9">
+            <Link
+                href={'/'}
+                prefetch={false}
+                className="flex flex-row gap-1 items-center text-base font-semibold text-neutral-dark hover:text-neutral"
+            >
+                <ChevronLeftIcon className="w-4 h-4" />
+                Back
+            </Link>
             <ProjectDetail project={project} />
         </main>
     )

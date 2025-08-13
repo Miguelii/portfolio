@@ -25,7 +25,8 @@ export const ExperiencesData: WorkExperience[] = [
             'Lead Developer for the Web Team, specializing in full-stack development.',
             'Developed and maintained several full-stack applications, mainly using React, Next.js, and TypeScript.',
             'Responsible for applications architecture, good practices and technical decisions.',
-            'Provided technical mentorship to junior developers, including code reviews and pair programming.',
+            'Engaged with clients through meetings and delivering training sessions on the applications we developed and delivered.',
+            'Mentored junior developers through code reviews and pair programming.',
         ],
     },
     {
