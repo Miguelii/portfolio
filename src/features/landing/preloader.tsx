@@ -46,7 +46,7 @@ export default function Preloader() {
                     >
                         <span className="mr-2 block h-[10px] w-[10px] rounded-full bg-background"></span>
                         {words[index]}
-                    </motion.h1>
+                    </motion.p>
                     <svg
                         className="absolute top-0 h-[calc(100%+300px)] w-full"
                         color="currentColor"
