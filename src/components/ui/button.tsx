@@ -32,6 +32,7 @@ export default function Button({
         <Link
             href={href}
             target={target}
+            rel={target === '_blank' ? 'noreferrer' : undefined}
             prefetch={prefetch}
             className={cn(
                 'z-5 w-full md:w-fit justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 group overflow-hidden relative group flex items-center',

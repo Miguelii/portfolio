@@ -28,25 +28,28 @@ export const viewport: Viewport = {
 
 const WEBSITE_URL = normalizeBaseUrl()
 
+const META_DESCRIPTION =
+    'Miguel Gonçalves, Full-Stack Software Engineer, builds modern SaaS apps using React, Next, JavaScript, TypeScript, and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
+
+const META_TITLE = 'Miguel Gonçalves - Software Engineer'
+
 export const metadata: Metadata = {
     metadataBase: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
-    title: 'Miguel Gonçalves - Software Engineer',
-    description:
-        'Portfolio of Miguel Gonçalves, a full-stack software engineer focused on building modern web applications with Next.js, TypeScript, and Node.js.',
+    title: META_TITLE,
+    description: META_DESCRIPTION,
     keywords:
-        'Miguel Gonçalves, software engineer, full-stack developer, web developer, Next.js, TypeScript, JavaScript, React, Tailwind CSS, Supabase, CrafterCMS, portfolio',
+        'Miguel Gonçalves, software engineer and full-stack web developer, builds modern apps with Next.js, TypeScript, JavaScript, React, Tailwind CSS, Supabase, and CrafterCMS. See portfolio on LinkedIn and GitHub. All rights reserved.',
     creator: 'Miguel Gonçalves',
     robots: { index: true, follow: true },
     openGraph: {
         locale: 'en_US',
-        siteName: 'Miguel Gonçalves - Software Engineer',
-        description:
-            'Discover the portfolio of Miguel Gonçalves, showcasing real-world and personal projects built with modern web technologies.',
+        siteName: META_TITLE,
+        description: META_DESCRIPTION,
         type: 'website',
         url: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
     },
     twitter: {
-        title: 'Miguel Gonçalves - Software Engineer',
+        title: META_TITLE,
         creator: '@migueligoncal',
         site: '@migueligoncal',
         card: 'summary_large_image',

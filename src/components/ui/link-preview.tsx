@@ -93,6 +93,7 @@ export const LinkPreview = ({
                     className={cn('', className)}
                     href={url}
                     target="_blank"
+                    rel="noreferrer"
                 >
                     {children}
                 </HoverCardPrimitive.Trigger>
@@ -126,6 +127,7 @@ export const LinkPreview = ({
                                 <Link
                                     href={url}
                                     target="_blank"
+                                    rel="noreferrer"
                                     className="block p-1 bg-background border-2 border-transparent shadow rounded-xl cursor-pointer"
                                     style={{ fontSize: 0 }}
                                 >

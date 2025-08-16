@@ -7,7 +7,6 @@ import Image from 'next/image'
 import * as motion from 'motion/react-client'
 import { useProjectDetailAnimation } from './use-project-detail-animation'
 import type { Variants } from 'motion'
-import { LineDivider } from '../../components/ui/line-divider'
 
 type ProjectDetailProps = {
     project: ProjectType
@@ -17,47 +16,37 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
     const { container, fadeInUp } = useProjectDetailAnimation()
 
     return (
-        <>
-            <motion.section
-                className="grid lg:grid-cols-2 gap-12 items-center"
-                variants={container}
-                initial="hidden"
-                animate="show"
-            >
-                {/* Left Side */}
-                <motion.div className="h-full flex flex-col gap-6" variants={container}>
-                    <ProjectTitleAndDescription project={project} fadeInUp={fadeInUp} />
+        <motion.section
+            className="grid lg:grid-cols-2 gap-12 items-center"
+            variants={container}
+            initial="hidden"
+            animate="show"
+        >
+            {/* Left Side */}
+            <motion.div className="h-full flex flex-col gap-6" variants={container}>
+                <ProjectTitleAndDescription project={project} fadeInUp={fadeInUp} />
 
-                    {/* Mobile Image */}
-                    {project.imageUrl && (
-                        <motion.div variants={fadeInUp} className="relative flex md:hidden">
-                            <ProjectImage project={project} />
-                        </motion.div>
-                    )}
-                    <ProjectDetailButtons project={project} fadeInUp={fadeInUp} />
-                </motion.div>
-
-                {/* Right Side Image (desktop) */}
+                {/* Mobile Image */}
                 {project.imageUrl && (
-                    <motion.div
-                        className="relative hidden md:flex w-full"
-                        initial={{ opacity: 0, x: 40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
-                    >
+                    <motion.div variants={fadeInUp} className="relative flex md:hidden">
                         <ProjectImage project={project} />
                     </motion.div>
                 )}
-            </motion.section>
+                <ProjectDetailButtons project={project} fadeInUp={fadeInUp} />
+            </motion.div>
 
-            {project.techStack.length > 0 && (
-                <>
-                    <LineDivider />
-
-                    <TechnologiesSection project={project} />
-                </>
+            {/* Right Side Image (desktop) */}
+            {project.imageUrl && (
+                <motion.div
+                    className="relative hidden md:flex w-full"
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
+                >
+                    <ProjectImage project={project} />
+                </motion.div>
             )}
-        </>
+        </motion.section>
     )
 }
 
@@ -86,6 +75,20 @@ function ProjectTitleAndDescription({ project, fadeInUp }: ProjectTitleAndDescri
                 className="text-base text-neutral leading-relaxed project-html"
                 dangerouslySetInnerHTML={{ __html: project.longDescription }}
             />
+
+            <div className="flex flex-wrap gap-3">
+                {project?.techStack?.map((tech, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.05 * index, duration: 0.4 }}
+                        whileHover={{ scale: 1.05 }}
+                    >
+                        <Badge className="px-4 py-2 text-[14px] leading-snug">{tech}</Badge>
+                    </motion.div>
+                ))}
+            </div>
         </>
     )
 }
@@ -97,7 +100,7 @@ type ProjectDetailButtonsProps = ProjectDetailProps & {
 function ProjectDetailButtons({ project, fadeInUp }: ProjectDetailButtonsProps) {
     return (
         <motion.div
-            className="mt-auto w-full justify-between py-12 flex flex-col-reverse md:flex-row gap-8"
+            className="mt-auto w-full justify-between pt-6 md:pt-12 flex flex-col-reverse md:flex-row gap-8"
             variants={fadeInUp}
         >
             {project.nextProject && (
@@ -115,32 +118,6 @@ function ProjectDetailButtons({ project, fadeInUp }: ProjectDetailButtonsProps) 
                 </motion.div>
             )}
         </motion.div>
-    )
-}
-
-function TechnologiesSection({ project }: ProjectDetailProps) {
-    return (
-        <motion.section
-            className="flex flex-col gap-8"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-        >
-            <h2 className="text-3xl font-bold">Technologies Used</h2>
-            <div className="flex flex-wrap gap-3">
-                {project?.techStack?.map((tech, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.05 * index, duration: 0.4 }}
-                        whileHover={{ scale: 1.05 }}
-                    >
-                        <Badge className="px-4 py-2 text-[14px] leading-snug">{tech}</Badge>
-                    </motion.div>
-                ))}
-            </div>
-        </motion.section>
     )
 }
 
