@@ -30,6 +30,7 @@ export function PreloaderWrapper({ children }: PreloaderWrapperProps) {
     if (!showPreloader) {
         return <>{children}</>
     }
+
     return (
         <>
             {!isLoading && <>{children}</>}

@@ -29,6 +29,7 @@ export function ProjectsSection({ title, description, projects }: ProjectsSectio
                 transition={{ duration: 0.8, ease: 'easeOut' }}
                 viewport={{ once: true, amount: 0.4 }}
                 className="flex flex-col gap-2"
+                style={{ willChange: 'transform' }}
             >
                 <motion.h1
                     initial={{ x: -50, opacity: 0 }}

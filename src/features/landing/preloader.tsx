@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 import { motion } from 'framer-motion'
 import { usePreloaderAnimations } from './use-preloader-animations'
 
@@ -10,7 +10,7 @@ export default function Preloader() {
     const { slideUp, opacity, setDimension, setIndex, index, dimension, curve } =
         usePreloaderAnimations()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setDimension({ width: window.innerWidth, height: window.innerHeight })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -37,6 +37,7 @@ export default function Preloader() {
             {dimension.width > 0 && (
                 <>
                     <motion.p
+                        style={{ minHeight: '63px' }}
                         className="absolute z-[1] flex items-center text-background text-[42px]"
                         variants={opacity}
                         initial="initial"

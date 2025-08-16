@@ -3,6 +3,7 @@ import * as motion from 'motion/react-client'
 export function QuoteCard() {
     return (
         <motion.section
+            style={{ willChange: 'transform' }}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}

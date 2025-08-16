@@ -5,13 +5,16 @@ export function LandingSectionWithBand() {
     return (
         <section className="h-[540px] relative mb-0 ">
             <motion.div
-                initial={{ x: -100, opacity: 0 }}
+                initial={{ x: -100, opacity: 1 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
                 className="flex flex-col w-full max-w-[615px] gap-4 justify-center h-full"
             >
                 <motion.h1
-                    initial={{ x: -50, opacity: 0 }}
+                    role="presentation"
+                    aria-hidden="true"
+                    style={{ willChange: 'transform' }}
+                    initial={{ x: -50 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="text-4xl md:text-5xl lg:text-[3.625rem] font-bold text-start w-full leading-snug"

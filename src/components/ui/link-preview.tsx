@@ -76,6 +76,7 @@ export const LinkPreview = ({
                         layout={layout}
                         priority={true}
                         alt="hidden image"
+                        loading="lazy"
                     />
                 </div>
             ) : null}

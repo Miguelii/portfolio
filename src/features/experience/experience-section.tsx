@@ -16,11 +16,13 @@ export function ExperienceSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 viewport={{ once: true, amount: 0.6 }}
+                style={{ willChange: 'transform' }}
             >
                 Work Experience
             </motion.h2>
 
             <motion.div
+                style={{ willChange: 'transform' }}
                 className="space-y-6"
                 variants={container}
                 initial="hidden"
