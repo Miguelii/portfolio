@@ -14,7 +14,7 @@ export function ProjectItemSection({ project }: Project3dCardProps) {
     const buildId = getBuildId()
 
     return (
-        <article className="bg-gray-50 w-full h-full relative group/card border-primary/[0.1] rounded-3xl p-6 border">
+        <article className="bg-neutral-light w-full h-full relative group/card border-primary/[0.1] rounded-3xl p-6 border">
             <LinkWrapper project={project}>
                 <span className="text-xl font-bold text-primary">{project.title}</span>
 

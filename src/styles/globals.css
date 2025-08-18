@@ -6,6 +6,7 @@
     --red: #ff7070;
     --neutral: #737373;
     --neutral-dark: #1d1d1d;
+    --neutral-light: #fafafa;
 }
 
 @theme inline {
@@ -15,6 +16,7 @@
     --color-primary: var(--primary);
     --color-red: var(--red);
     --color-neutral: var(--neutral);
+    --color-neutral-light: var(--neutral-light);
     --color-neutral-dark: var(--neutral-dark);
 }
 
@@ -24,11 +26,6 @@ html {
 
 body {
     @apply bg-background font-sans antialiased text-primary!;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation-duration: 0.2s;
 }
 
 ::selection {
@@ -51,4 +48,9 @@ body {
     right: 49%;
     margin-left: -50vw;
     margin-right: -50vw;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.2s;
 }
