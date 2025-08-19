@@ -7,7 +7,7 @@ export const ProjectsData: ProjectType[] = [
         title: 'Online Booking Platform',
         projectUrl: null,
         description:
-            '<p><strong>Lead developer</strong> for a worldwide appointment scheduling booking platform.</p>',
+            '<p><strong>Lead developer</strong> for a worldwide appointment scheduling booking platform in the public sector.</p>',
         longDescription: `
       <p>
       Online booking platform designed to simplify appointment scheduling and reduce in-person wait times. With a focus on accessibility and user experience.
