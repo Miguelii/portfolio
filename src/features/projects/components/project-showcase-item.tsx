@@ -2,18 +2,29 @@ import Button from '@/shared/components/ui/button'
 import { type ProjectType } from '@/shared/types/Project'
 import { getBuildId } from '@/shared/utils/get-build-id'
 import Image from 'next/image'
+import * as motion from 'motion/react-client'
 
 type ProjectsShowcaseItemProps = {
     project: ProjectType
+    index: number
 }
 
-export default function ProjectsShowcaseItem({ project }: ProjectsShowcaseItemProps) {
+export default function ProjectsShowcaseItem({ project, index }: ProjectsShowcaseItemProps) {
     const buildId = getBuildId()
 
     const showProjectShowcase = (project?.showcaseFeatures?.length ?? 0) > 0
 
     return (
-        <article className="p-6 md:p-10 flex flex-col-reverse md:flex-row gap-6 lg:gap-12 border border-neutral-200 not-last:border-b-0">
+        <motion.article
+            className="p-6 md:p-10 flex flex-col-reverse md:flex-row gap-6 lg:gap-12 border border-neutral-200 not-last:border-b-0"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{
+                duration: 0.4,
+                delay: index * 0.2,
+            }}
+        >
             <div className="flex flex-col gap-6 flex-1">
                 <div className="flex flex-col gap-2">
                     <h2 className="text-pretty text-primary text-2xl/tight font-bold">
@@ -68,6 +79,6 @@ export default function ProjectsShowcaseItem({ project }: ProjectsShowcaseItemPr
                     </div>
                 )}
             </div>
-        </article>
+        </motion.article>
     )
 }
