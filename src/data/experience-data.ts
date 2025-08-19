@@ -1,5 +1,5 @@
-import { type WorkExperience } from '@/types/WorkExperience'
-import { normalizeBaseUrl } from '@/utils/normalize-base-url'
+import { type WorkExperience } from '@/shared/types/WorkExperience'
+import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
 
 const WEBSITE_URL = normalizeBaseUrl()
 

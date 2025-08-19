@@ -8,7 +8,7 @@ export function QuoteCard() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             viewport={{ once: true, amount: 0.4 }}
-            className="p-8 md:p-14 flex flex-col gap-4 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-2xl shadow-xl"
+            className="p-8 md:p-14 flex flex-col gap-4 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-none shadow-xl"
         >
             <motion.h2
                 initial={{ opacity: 0, y: 20 }}

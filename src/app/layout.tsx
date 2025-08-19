@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import Header from '@/components/base/header'
-import Footer from '@/components/base/footer'
 import { type PropsWithChildren, unstable_ViewTransition as ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
-import { normalizeBaseUrl } from '@/utils/normalize-base-url'
-import ProvidersWrapper from '@/providers/providers-wrapper'
-import { VercelAnalytics } from '@/analytics/vercel-analytics'
+import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
+import ProvidersWrapper from '@/shared/providers/providers-wrapper'
+import { VercelAnalytics } from '@/shared/analytics/vercel-analytics'
+import Header from '@/shared/components/base/header'
+import Footer from '@/shared/components/base/footer'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',

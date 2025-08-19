@@ -5,32 +5,32 @@ import * as motion from 'motion/react-client'
 export default function PortfolioTechStack() {
     return (
         <>
-            <Item title="Front-End Tech Stack:">
+            <SectionItem title="Front-End Tech Stack:">
                 <PortfolioTechStackItem imageUrl="/tech/js.webp" label="Javascript" />
                 <PortfolioTechStackItem imageUrl="/tech/ts.webp" label="Typescript" />
                 <PortfolioTechStackItem imageUrl="/tech/react.webp" label="React" />
                 <PortfolioTechStackItem imageUrl="/tech/nextjs-icon.png" label="Next.js" />
                 <PortfolioTechStackItem imageUrl="/tech/tailwind.webp" label="Tailwind" />
-            </Item>
+            </SectionItem>
 
-            <Item title="Back-End Tech Stack:">
+            <SectionItem title="Back-End Tech Stack:">
                 <PortfolioTechStackItem imageUrl="/tech/node.webp" label="Node.js" />
                 <PortfolioTechStackItem imageUrl="/tech/java.png" label="Java" />
-            </Item>
+            </SectionItem>
 
-            <Item title="Tools:">
+            <SectionItem title="Tools:">
                 <PortfolioTechStackItem imageUrl="/tech/docker-icon.png" label="Docker" />
                 <PortfolioTechStackItem imageUrl="/tech/supabase.svg" label="Supabase" />
                 <PortfolioTechStackItem imageUrl="/tech/craftercms.png" label="CrafterCMS" />
-            </Item>
+            </SectionItem>
         </>
     )
 }
 
-type ItemProps = PropsWithChildren<{
+type SectionItemProps = PropsWithChildren<{
     title: string
 }>
-const Item = ({ title, children }: ItemProps) => {
+const SectionItem = ({ title, children }: SectionItemProps) => {
     return (
         <div className="flex flex-col gap-4">
             <motion.h3

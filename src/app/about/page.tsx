@@ -1,7 +1,7 @@
 import { AboutSection } from '@/features/about/about-section'
 import { type Metadata } from 'next'
 import { TechStackSection } from '@/features/about/tech-stack-section'
-import { LineDivider } from '@/components/ui/line-divider'
+import { LineDivider } from '@/shared/components/ui/line-divider'
 
 export const metadata: Metadata = {
     title: 'About - Miguel Gonçalves',

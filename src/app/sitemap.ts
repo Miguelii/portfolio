@@ -1,4 +1,4 @@
-import { normalizeBaseUrl } from '@/utils/normalize-base-url'
+import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
 import type { MetadataRoute } from 'next'
 
 export const dynamic = 'force-static'

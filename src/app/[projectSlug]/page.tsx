@@ -1,7 +1,7 @@
-import ProjectsService from '@/services/projects-service'
+import ProjectsService from '@/shared/services/projects-service'
 import { notFound } from 'next/navigation'
-import { ProjectType } from '@/types/Project'
-import ProjectDetail from '@/features/projects/project-detail'
+import { ProjectType } from '@/shared/types/Project'
+import ProjectDetail from '@/features/projects/components/project-detail'
 import Link from 'next/link'
 import { ChevronLeftIcon } from 'lucide-react'
 
@@ -24,7 +24,7 @@ export async function generateStaticParams() {
     const projectsData = ProjectsService.getAllProjects()
 
     const paths = projectsData?.map((item) => {
-        return { showroomId: item.id }
+        return { projectSlug: item.id }
     })
 
     return paths

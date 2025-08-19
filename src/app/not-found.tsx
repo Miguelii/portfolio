@@ -1,4 +1,4 @@
-import Button from '@/components/ui/button'
+import Button from '@/shared/components/ui/button'
 
 export default function NotFound() {
     return (
@@ -12,9 +12,7 @@ export default function NotFound() {
                 </p>
             </div>
 
-            <Button prefetch={true} href={'/'} className="px-8 py-2">
-                <span className="">Go back</span>
-            </Button>
+            <Button label="Go back" href={'/'} variant="primary" />
         </main>
     )
 }
