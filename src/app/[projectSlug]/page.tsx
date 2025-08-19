@@ -40,7 +40,7 @@ export default async function ProjectSlugPage(props: ProjectSlugPageProps) {
     if (!project) return notFound()
 
     return (
-        <main className="main-container h-fit relative mt-12 md:mt-14 lg:mt-16 xl:mt-24 flex flex-col gap-8 md:gap-9">
+        <main className="main-container h-fit relative mt-12 md:mt-14 lg:mt-16 xl:mt-20 flex flex-col gap-8 md:gap-9">
             <Link
                 href={'/'}
                 prefetch={false}

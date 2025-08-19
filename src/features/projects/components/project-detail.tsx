@@ -14,7 +14,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
     return (
         <motion.section
-            className="grid lg:grid-cols-2 gap-12 items-center"
+            className="grid lg:grid-cols-[60%_40%] gap-12 items-center"
             variants={container}
             initial="hidden"
             animate="show"
