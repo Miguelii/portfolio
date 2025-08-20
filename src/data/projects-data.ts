@@ -16,7 +16,7 @@ export const ProjectsData: ProjectType[] = [
       <br/>
 
       <p>
-        Serving <strong>1M+ users worldwide</strong>, the platform reduced phone line wait times by <strong>over 90%</strong>, freeing up staff and improving overall service efficiency.
+        Serving <strong>3M+ users worldwide</strong>, the platform reduced phone line wait times by <strong>over 90%</strong>, freeing up staff and improving overall service efficiency.
       </p>
 
       <br/>
@@ -33,7 +33,7 @@ export const ProjectsData: ProjectType[] = [
         priority: 2,
         showcaseFeatures: [
             {
-                value: '2M+',
+                value: '3M+',
                 label: 'Users worldwide',
             },
             {
@@ -113,7 +113,7 @@ export const ProjectsData: ProjectType[] = [
         priority: 1,
         showcaseFeatures: [
             {
-                value: '1M+',
+                value: '1.5M+',
                 label: 'Users nationwide',
             },
         ],
