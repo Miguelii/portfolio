@@ -40,18 +40,11 @@ export function ProjectsShowcase({ title, description, projects }: ProjectsShowc
 
             <div className="flex flex-col">
                 {projects?.map((item, index) => (
-                    <motion.div
+                    <ProjectsShowcaseItem
+                        project={item}
+                        index={index}
                         key={`project-showcase-${item.title}-${index}`}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.4 }}
-                        transition={{
-                            duration: 0.4,
-                            delay: index * 0.2,
-                        }}
-                    >
-                        <ProjectsShowcaseItem project={item} />
-                    </motion.div>
+                    />
                 ))}
             </div>
         </section>

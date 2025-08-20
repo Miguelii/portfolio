@@ -12,7 +12,7 @@ export const revalidate = 86400 // 24h
 
 export default function AboutPage() {
     return (
-        <main className="main-container h-fit relative mt-12 md:mt-14 lg:mt-16 xl:mt-24">
+        <main className="main-container h-fit relative mt-12 md:mt-14 lg:mt-16 xl:mt-20">
             <AboutSection />
             <LineDivider />
             <TechStackSection />
