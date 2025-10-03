@@ -4,8 +4,8 @@ import { SocialItem } from '../ui/social-item'
 
 export default function Footer() {
     return (
-        <div className="mt-32">
-            <footer className="main-container mx-auto w-full my-5 md:my-10 flex flex-row justify-between items-center">
+        <section className="border-t border-t-divider w-full flex">
+            <footer className="main-container mx-auto w-full h-16 border-x border-x-divider px-5 md:px-10 flex flex-row justify-between items-center">
                 <span className="text-base font-mono">
                     &copy; {new Date().getFullYear()}. All rights reserved.
                 </span>
@@ -27,6 +27,7 @@ export default function Footer() {
                     </SocialItem>
                 </div>
             </footer>
-        </div>
+        </section>
     )
+    return <div className="mt-32"></div>
 }

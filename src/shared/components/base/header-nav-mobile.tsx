@@ -60,10 +60,11 @@ export default function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Hea
                     exit="closed"
                     variants={menuVariants}
                 >
-                    <div className="w-full flex justify-end pt-5 pr-5">
+                    <div className="w-full flex justify-end pt-2 pr-6">
                         <CloseIcon
                             className="w-12 h-12 shrink-0 text-primary"
                             onClick={toggleMenu}
+                            size={24}
                         />
                     </div>
 

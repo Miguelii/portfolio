@@ -9,7 +9,7 @@ export function ExperienceSection() {
     const { container, item } = useExperienceSectionAnimations()
 
     return (
-        <section className="flex flex-col gap-12">
+        <section className="flex flex-col gap-12 container-padding">
             <motion.h2
                 className="text-3xl font-bold"
                 initial={{ opacity: 0, y: -20 }}

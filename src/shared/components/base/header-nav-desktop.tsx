@@ -14,7 +14,7 @@ export default function HeaderNavDesktop({ navList }: HeaderNavDesktopProps) {
     const currPath = usePathname()
 
     return (
-        <nav className="hidden md:flex flex-row gap-6">
+        <nav className="hidden md:flex flex-row gap-5">
             {navList?.map((item, index) => {
                 const currPathNormalized = normalizePath(currPath || '/')
 
@@ -31,7 +31,7 @@ export default function HeaderNavDesktop({ navList }: HeaderNavDesktopProps) {
                         target={item.external ? '_blank' : '_self'}
                         rel={item.external ? 'noreferrer' : undefined}
                         className={cn(
-                            'relative font-mono uppercase font-bold text-lg group transition-colors duration-300',
+                            'relative font-mono uppercase font-semibold text-base group transition-colors duration-300',
                             isSelected ? '!text-neutral' : '!text-primary'
                         )}
                     >

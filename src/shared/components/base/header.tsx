@@ -20,10 +20,6 @@ export default function Header() {
             url: '/',
         },
         {
-            title: 'ABOUT',
-            url: '/about',
-        },
-        {
             title: 'linkedin',
             url: 'https://www.linkedin.com/in/miguelgoncalves18/',
             external: true,
@@ -35,6 +31,31 @@ export default function Header() {
         },
     ]
 
+    return (
+        <section className="border-b border-b-divider w-full flex">
+            <header className="w-full flex-1 mx-auto main-container border-x border-x-divider px-5 md:px-10">
+                <nav className="flex justify-between items-center h-16">
+                    <Link href={'/'} prefetch={false} className="text-base font-semibold">
+                        MG.
+                    </Link>
+
+                    <HeaderNavMobile
+                        isMenuOpen={isMenuOpen}
+                        toggleMenu={toggleMenu}
+                        navList={navList}
+                    />
+
+                    <MenuIcon
+                        className="flex md:hidden w-12 h-12 shrink-0"
+                        size={24}
+                        onClick={toggleMenu}
+                    />
+
+                    <HeaderNavDesktop navList={navList} />
+                </nav>
+            </header>
+        </section>
+    )
     return (
         <header className="main-container mx-auto items-center my-5 md:my-10 w-full justify-between gap-6 flex flex-row">
             <Link href={'/'} prefetch={false} className="text-2xl font-bold">

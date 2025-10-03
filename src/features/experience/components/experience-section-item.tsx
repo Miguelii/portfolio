@@ -8,7 +8,7 @@ export function WorkExperienceItem(experience: WorkExperience) {
     const buildId = getBuildId()
 
     return (
-        <div className="flex gap-3 md:gap-8 flex-col md:flex-row">
+        <div className="flex gap-3 md:gap-8 flex-col lg:flex-row">
             <div className="w-40 flex-shrink-0 mt-1">
                 <span className="text-neutral text-base md:text-lg font-medium">
                     {experience.period}

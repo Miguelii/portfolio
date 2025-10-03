@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 const WEBSITE_URL = normalizeBaseUrl()
 
 const META_DESCRIPTION =
-    'Miguel Gonçalves, Full-Stack Software Engineer, builds modern SaaS apps using React, Next, JavaScript, TypeScript, and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
+    'Miguel Gonçalves, Full-Stack Software Engineer, builds modern SaaS apps using React.js, Next.js, Remix, JavaScript, TypeScript, and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
 
 const META_TITLE = 'Miguel Gonçalves - Software Engineer'
 
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: META_TITLE,
     description: META_DESCRIPTION,
     keywords:
-        'Miguel Gonçalves, software engineer and full-stack web developer, builds modern apps with Next.js, TypeScript, JavaScript, React, Tailwind CSS, Supabase, and CrafterCMS. See portfolio on LinkedIn and GitHub. All rights reserved.',
+        'Miguel Gonçalves, software engineer and full-stack web developer, builds modern apps with Next.js, TypeScript, JavaScript, React.js, Remix, Tailwind CSS, Supabase, and CrafterCMS. See portfolio on LinkedIn and GitHub. All rights reserved.',
     creator: 'Miguel Gonçalves',
     robots: { index: true, follow: true },
     openGraph: {

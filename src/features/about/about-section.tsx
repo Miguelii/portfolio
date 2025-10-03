@@ -6,33 +6,25 @@ export function AboutSection() {
     const yearDiff = currentYear - startYear
 
     const paragraphs = [
-        `Software Engineer with ${yearDiff} years of experience, specializing in <strong>full-stack development</strong>.`,
-        'Expert in <strong>React, Next.js and TypeScript</strong>, with a strong focus on performance and best practices.',
+        `Software Engineer with ${yearDiff + 1} years of experience, specializing in <strong>full-stack development</strong>.`,
+        'Expert in <strong>React.js, Next.js and TypeScript</strong>, with a strong focus on performance and best practices.',
         'I&apos;m passionate about creating products that positively impact people’s lives through code.',
-        'Background in <strong>Computer Science Engineering</strong> from University of Minho (Braga - Portugal).',
     ]
 
     return (
-        <div className="flex flex-col gap-4 max-w-3xl">
-            <motion.label
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.45 }}
-                className="block text-neutral font-normal text-base"
+        <section className="flex flex-col gap-12 container-padding border-b border-b-divider">
+            <motion.h2
+                className="text-3xl font-bold"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.6 }}
+                style={{ willChange: 'transform' }}
             >
                 About
-            </motion.label>
+            </motion.h2>
 
-            <div className="flex flex-col gap-5 justify-center h-full">
-                <motion.h1
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease: 'easeOut' }}
-                    className="text-primary text-3xl/snug xl:text-5xl/snug font-bold"
-                >
-                    A little about myself
-                </motion.h1>
-
+            <div className="flex flex-col gap-3">
                 {paragraphs?.map((text, i) => (
                     <motion.p
                         key={i}
@@ -44,6 +36,6 @@ export function AboutSection() {
                     ></motion.p>
                 ))}
             </div>
-        </div>
+        </section>
     )
 }
