@@ -39,7 +39,7 @@ export function LandingSectionWithBand({ hideBand = false }: LandingSectionWithB
 
                 {!hideBand && (
                     <div className="hidden lg:block absolute -inset-10">
-                        <div className="relative w-full h-[700px]">
+                        <div className="relative w-full h-[620px]">
                             <BandCanvas />
                         </div>
                     </div>
