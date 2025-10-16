@@ -12,7 +12,9 @@ export const ExperiencesData: WorkExperience[] = [
         badgeColor: 'bg-slate-800 text-white',
         url: 'https://www.blip.pt/',
         previewUrl: `${WEBSITE_URL}/assets/blip_web.webp`,
-        achievements: [],
+        achievements: [
+            'Currently at FanDuel, building cool stuff for the sports betting world.'
+        ],
     },
     {
         period: '2022 - 2025',
@@ -22,7 +24,7 @@ export const ExperiencesData: WorkExperience[] = [
         badgeColor: 'bg-[#8942a8] text-white',
         previewUrl: 'https://www.cgi.com/portugal/pt-pt',
         achievements: [
-            'Lead Developer for the Web Team, specializing in full-stack development, mainly using React.js, Next.js and TypeScript',
+            'Lead Developer for the Web Team, specializing in full-stack development, mainly using React.js, Next.js and TypeScript.',
             'Responsible for applications architecture, good practices and technical decisions.',
             'Mentored junior developers through code reviews and pair programming.',
         ],
