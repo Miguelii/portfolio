@@ -43,19 +43,6 @@ body {
     @apply max-w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-[1440px] w-full mx-auto;
 }
 
-.project-html ul {
-    @apply list-disc list-inside m-4 space-y-2;
-}
-
-.full-margin {
-    width: 100vw;
-    position: relative;
-    left: 49%;
-    right: 49%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-}
-
 ::view-transition-old(root),
 ::view-transition-new(root) {
     animation-duration: 0.2s;

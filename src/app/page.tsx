@@ -1,7 +1,8 @@
 import { AboutSection } from '@/features/about/about-section'
-import { ExperienceSection } from '@/features/experience/components/experience-section'
-import { LandingSectionWithBand } from '@/features/landing/components/landing-section-with-band'
-import { PreloaderWrapper } from '@/features/landing/components/preloader-wrapper'
+import { ExperienceSection } from '@/features/experience/experience-section'
+import { LandingSectionWithBand } from '@/features/landing/landing-section-with-band'
+import { PreloaderWrapper } from '@/features/landing/preloader-wrapper'
+import { ProjectsSection } from '@/features/projects/projects-section'
 import { QuoteCard } from '@/features/quote/quote-card'
 
 export const dynamic = 'force-static'
@@ -13,8 +14,9 @@ export default function Home() {
             <PreloaderWrapper>
                 <LandingSectionWithBand />
                 <AboutSection />
-                <QuoteCard />
                 <ExperienceSection />
+                <QuoteCard />
+                <ProjectsSection />
             </PreloaderWrapper>
         </main>
     )

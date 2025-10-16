@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect } from 'react'
 import { motion } from 'framer-motion'
-import { usePreloaderAnimations } from '../hooks/use-preloader-animations'
+import { usePreloaderAnimations } from './use-preloader-animations'
 
 const words = ['Hello', 'Bonjour', 'Ciao', 'やあ', 'Hallå', 'Guten tag', 'Hallo', 'Olá']
 

@@ -1,6 +1,6 @@
 import * as motion from 'motion/react-client'
 import ExperienceService from '@/shared/services/experience-service'
-import { useExperienceSectionAnimations } from '../hooks/use-experience-section-animations'
+import { useExperienceSectionAnimations } from './use-experience-section-animations'
 import { WorkExperienceItem } from './experience-section-item'
 
 export function ExperienceSection() {
@@ -9,7 +9,7 @@ export function ExperienceSection() {
     const { container, item } = useExperienceSectionAnimations()
 
     return (
-        <section className="flex flex-col gap-12 container-padding">
+        <section className="flex flex-col gap-12 container-padding border-b border-b-divider">
             <motion.h2
                 className="text-3xl font-bold"
                 initial={{ opacity: 0, y: -20 }}
