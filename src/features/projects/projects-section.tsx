@@ -29,7 +29,7 @@ export function ProjectsSection() {
                     viewport={{ once: true, amount: 0.6 }}
                     style={{ willChange: 'transform' }}
                 >
-                    Some of the projects I’m proud to have architected, developed and delivered.
+                    Some of the work projects I’m proud to have architected, developed and delivered.
                 </motion.span>
             </div>
 

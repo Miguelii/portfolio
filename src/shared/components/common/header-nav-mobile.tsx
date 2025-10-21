@@ -1,6 +1,6 @@
 'use client'
 
-import { type NavItem } from '@/shared/types/NavItem'
+import { type NavItem } from '@/types/NavItem'
 import { normalizePath } from '@/shared/utils/normalize-path'
 import { AnimatePresence, motion, type Variants } from 'motion/react'
 import { usePathname } from 'next/navigation'

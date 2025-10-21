@@ -1,5 +1,5 @@
 import { LinkPreview } from '@/shared/components/ui/link-preview'
-import { WorkExperience } from '@/shared/types/WorkExperience'
+import { WorkExperience } from '@/types/WorkExperience'
 import { cn } from '@/shared/utils/cn'
 import { getBuildId } from '@/shared/utils/get-build-id'
 import Image from 'next/image'
@@ -46,7 +46,7 @@ export function WorkExperienceItem(experience: WorkExperience) {
                             className="flex items-center gap-2 text-neutral text-base md:text-lg"
                         >
                             <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
-                            <span>{achievement}</span>
+                            <span dangerouslySetInnerHTML={{ __html: achievement }}/>
                         </li>
                     ))}
                 </ul>

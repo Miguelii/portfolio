@@ -1,4 +1,4 @@
-import { ProjectType } from '@/shared/types/Project'
+import { ProjectType } from '@/types/Project'
 
 export function ProjectsSectionItem(project: ProjectType) {
     return (

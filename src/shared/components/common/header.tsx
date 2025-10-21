@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { MenuIcon } from '../icons/menu-icon'
 import { useState } from 'react'
-import { NavItem } from '@/shared/types/NavItem'
+import { NavItem } from '@/types/NavItem'
 import HeaderNavDesktop from './header-nav-desktop'
 import HeaderNavMobile from './header-nav-mobile'
 

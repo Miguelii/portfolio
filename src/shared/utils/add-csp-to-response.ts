@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 import { generateCSP } from './generate-csp'
-import { isPathFromStaticFiler } from './is-path-from-static-files.ts'
+import { isPathFromStaticFiles } from './is-path-from-static-files.ts'
 
 export const addCSPToResponse = (response: NextResponse<unknown>, pathname: string) => {
     const csp = generateCSP()
 
-    if (isPathFromStaticFiler(pathname)) {
+    if (isPathFromStaticFiles(pathname)) {
         response.headers.set('Content-Security-Policy', csp.contentSecurityPolicyStaticFiles)
     } else {
         response.headers.set('Content-Security-Policy', csp.contentSecurityPolicyPages)
