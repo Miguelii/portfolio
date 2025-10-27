@@ -3,13 +3,13 @@ import { useProjectsSectionAnimations } from './use-projects-section-animations'
 import { ProjectsSectionItem } from './projects-section-item'
 import ProjectService from '@/shared/services/project-service'
 
-export function ProjectsSection() {
+export function ClientsSection() {
     const { container, item } = useProjectsSectionAnimations()
 
-    const projects = ProjectService.getAllWorkProjects()
+    const projects = ProjectService.getAllSideProjects()
 
     return (
-        <section className="flex flex-col gap-12 container-padding">
+        <section className="flex flex-col gap-12 container-padding border-b border-b-divider">
             <div className="flex flex-col gap-2">
                 <motion.h2
                     className="text-3xl font-bold"
@@ -19,7 +19,7 @@ export function ProjectsSection() {
                     viewport={{ once: true, amount: 0.6 }}
                     style={{ willChange: 'transform' }}
                 >
-                    Projects, Projects, Projects
+                    Clients, Clients, Clients
                 </motion.h2>
                 <motion.span
                     className="text-lg text-neutral"
@@ -29,7 +29,7 @@ export function ProjectsSection() {
                     viewport={{ once: true, amount: 0.6 }}
                     style={{ willChange: 'transform' }}
                 >
-                    Some of the work projects I’m proud to have architected, developed and delivered.
+                    Some of the freelance projects I’ve worked on.
                 </motion.span>
             </div>
 

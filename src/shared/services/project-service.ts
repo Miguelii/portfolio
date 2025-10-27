@@ -5,12 +5,24 @@ export default class ProjectService {
     private static experience: ProjectType[] = ProjectsData
 
     /**
-     * Retrieves all projects, sorted by order param.
+     * Retrieves all work projects, sorted by order param.
      * @returns {ProjectType[]} Sorted list of all projects.
      */
-    static getAllProjects(): ProjectType[] {
+    static getAllWorkProjects(): ProjectType[] {
         const data = this?.experience ?? []
-        return data.sort((a, b) => {
+        return data.filter((e) => e.work).sort((a, b) => {
+            return a.order - b.order
+        })
+    }
+
+
+    /**
+     * Retrieves all side projects, sorted by order param.
+     * @returns {ProjectType[]} Sorted list of all projects.
+     */
+    static getAllSideProjects(): ProjectType[] {
+        const data = this?.experience ?? []
+        return data.filter((e) => !e.work).sort((a, b) => {
             return a.order - b.order
         })
     }

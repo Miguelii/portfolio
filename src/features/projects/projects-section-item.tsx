@@ -1,9 +1,48 @@
 import { ProjectType } from '@/types/Project'
+import Image from 'next/image'
+import Link from 'next/link'
+import { PropsWithChildren } from 'react'
 
 export function ProjectsSectionItem(project: ProjectType) {
+    const Wrapper = (props: PropsWithChildren) => {
+        if (project.link) {
+            return (
+                <Link
+                    href={project.link}
+                    prefetch={false}
+                    target="_blank"
+                    className="flex flex-col p-4 border gap-4 border-divider h-full hover:shadow-xl"
+                >
+                    {props.children}
+                </Link>
+            )
+        }
+
+        return (
+            <div className="flex flex-col p-4 border gap-4 border-divider h-full">
+                {props.children}
+            </div>
+        )
+    }
+
     return (
-        <div className="flex flex-col p-4 border gap-4 border-divider h-full">
-            <div className="w-full h-40 bg-divider flex items-center justify-center">NDA</div>
+        <Wrapper>
+            {project.img && (
+                <div className="w-full h-40 bg-divider">
+                    <Image
+                        className="w-full h-full object-scale-down"
+                        height={160}
+                        width={312}
+                        src={project.img}
+                        alt={`Project ${project.title} Preview`}
+                    />
+                </div>
+            )}
+            {!project.img && (
+                <div className="w-full h-40 bg-divider flex items-center justify-center font-semibold">
+                    NDA
+                </div>
+            )}
 
             <div className="flex flex-col gap-2">
                 <span className="block text-primary font-semibold md:text-lg text-base">
@@ -27,6 +66,6 @@ export function ProjectsSectionItem(project: ProjectType) {
                     )
                 })}
             </div>
-        </div>
+        </Wrapper>
     )
 }
