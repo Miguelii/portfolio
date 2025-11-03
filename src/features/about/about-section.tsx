@@ -6,8 +6,8 @@ export function AboutSection() {
     const yearDiff = currentYear - startYear
 
     const paragraphs = [
-        `Software Engineer | <strong>${yearDiff + 1}+ years</strong> of experience building scalable SaaS applications, specializing in <strong>Full-Stack development</strong>.`,
-        `Expert in <strong>JavaScript | TypeScript | React.js | Next.js | Node.js</strong> with a strong focus on performance and best practices.`,
+        `Software Engineer | <strong>${yearDiff + 1}+ years</strong> of experience building scalable SaaS applications, specializing in <strong>Front-End development</strong>.`,
+        `Expert in <strong>JavaScript | TypeScript | React.js | Next.js</strong> with a strong focus on performance and best practices.`,
         `Background in Computer Science Engineering.`,
         'I&apos;m passionate about creating products that positively impact people’s lives through code.',
     ]
