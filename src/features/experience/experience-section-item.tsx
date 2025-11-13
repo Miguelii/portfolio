@@ -9,10 +9,13 @@ export function WorkExperienceItem(experience: WorkExperience) {
 
     return (
         <div className="flex gap-3 md:gap-8 flex-col lg:flex-row">
-            <div className="w-40 flex-shrink-0 mt-1">
+            <div className="w-full sm:w-40 flex-shrink-0 mt-1 flex flex-row sm:flex-col sm:gap-2 items-center sm:justify-start sm:items-start gap-10 justify-between">
                 <span className="text-neutral text-base md:text-lg font-medium">
                     {experience.period}
                 </span>
+                {experience.periodTime && (
+                    <span className='text-xs text-neutral md:text-base font-medium'>{experience.periodTime}</span>    
+                )}
             </div>
 
             <div className="flex-1">
@@ -46,7 +49,7 @@ export function WorkExperienceItem(experience: WorkExperience) {
                             className="flex items-center gap-2 text-neutral text-base md:text-lg"
                         >
                             <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
-                            <span dangerouslySetInnerHTML={{ __html: achievement }}/>
+                            <span className="text-base" dangerouslySetInnerHTML={{ __html: achievement }}/>
                         </li>
                     ))}
                 </ul>

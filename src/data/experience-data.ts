@@ -18,6 +18,7 @@ export const ExperiencesData: WorkExperience[] = [
     },
     {
         period: '2022 - 2025',
+        periodTime: '(3yrs 1mo)',
         jobTitle: 'Software Engineer | Full-Stack',
         company: 'CGI - Portugal',
         logoUrl: '/logos/cgi.webp',
@@ -25,10 +26,10 @@ export const ExperiencesData: WorkExperience[] = [
         previewUrl: 'https://www.cgi.com/portugal/pt-pt',
         achievements: [
             'Lead Developer for the Web Team, specializing in building client portals and public websites.',
-            'Delivered products that have reached over <b>million users worldwide</b>, primarily using <b>React.js, Next.js and TypeScript.</b>',
+            'Delivered products that have reached over million users worldwide, primarily using <b>React.js, Next.js and TypeScript.</b>',
             'Responsible for applications architecture, good practices and technical decisions.',
             'Engaged directly with clients through meetings and delivered training sessions on the products we developed.',
-            'Provided technical mentorship to junior developers, including code reviews and pair programming.',
+            'Mentored junior developers through code reviews and pair programming.',
         ],
     },
     /*
