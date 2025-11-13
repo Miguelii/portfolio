@@ -49,7 +49,7 @@ export function WorkExperienceItem(experience: WorkExperience) {
                             className="flex items-center gap-2 text-neutral text-base md:text-lg"
                         >
                             <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
-                            <span className="text-base" dangerouslySetInnerHTML={{ __html: achievement }}/>
+                            <span className="text-sm/normal md:text-base/normal" dangerouslySetInnerHTML={{ __html: achievement }}/>
                         </li>
                     ))}
                 </ul>
