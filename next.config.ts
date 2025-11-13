@@ -12,9 +12,9 @@ const nextConfig: NextConfig = {
             },
         },
     },
+    reactCompiler: true,
     experimental: {
         viewTransition: true,
-        reactCompiler: true,
         webpackBuildWorker: true,
     },
     images: {
@@ -23,8 +23,19 @@ const nextConfig: NextConfig = {
                 hostname: 'api.microlink.io',
             },
         ],
+        localPatterns: [
+            {
+                pathname: '/logos/**',
+            },
+            {
+                pathname: '/assets/**',
+            },
+            {
+                pathname: '/models/**',
+            },
+        ],
     },
-    poweredByHeader: false,
+    poweredByHeader: true,
     webpack: (config, { webpack }) => {
         const buildDate = new Date()
 

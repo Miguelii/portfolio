@@ -25,9 +25,10 @@ export const ExperiencesData: WorkExperience[] = [
         previewUrl: 'https://www.cgi.com/portugal/pt-pt',
         achievements: [
             'Lead Developer for the Web Team, specializing in building client portals and public websites.',
-            'Developed and maintained several applications primarily using <b>React.js, Next.js and TypeScript.</b>',
+            'Delivered products that have reached over <b>million users worldwide</b>, primarily using <b>React.js, Next.js and TypeScript.</b>',
             'Responsible for applications architecture, good practices and technical decisions.',
-            'Mentored junior developers through code reviews and pair programming.',
+            'Engaged directly with clients through meetings and delivered training sessions on the products we developed.',
+            'Provided technical mentorship to junior developers, including code reviews and pair programming.',
         ],
     },
     /*

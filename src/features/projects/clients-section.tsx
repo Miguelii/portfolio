@@ -1,11 +1,8 @@
 import * as motion from 'motion/react-client'
-import { useProjectsSectionAnimations } from './use-projects-section-animations'
 import { ProjectsSectionItem } from './projects-section-item'
 import ProjectService from '@/shared/services/project-service'
 
 export function ClientsSection() {
-    const { container, item } = useProjectsSectionAnimations()
-
     const projects = ProjectService.getAllSideProjects()
 
     return (
@@ -34,17 +31,15 @@ export function ClientsSection() {
             </div>
 
             <motion.div
+                className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8 md:gap-4"
+                initial={{ opacity: 0, x: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.2 }}
                 style={{ willChange: 'transform' }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-4"
-                variants={container}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.8 }}
             >
                 {projects?.map((project, index) => (
-                    <motion.div key={`project-${project.id}-${index}`} variants={item}>
-                        <ProjectsSectionItem {...project} />
-                    </motion.div>
+                    <ProjectsSectionItem {...project} key={`project-${project.id}-${index}`} />
                 ))}
             </motion.div>
         </section>

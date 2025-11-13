@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import { type PropsWithChildren, unstable_ViewTransition as ViewTransition } from 'react'
+import { type PropsWithChildren, ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
 import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
 import ProvidersWrapper from '@/shared/providers/providers-wrapper'

@@ -8,7 +8,8 @@ export const ProjectsData: ProjectType[] = [
             '<p><strong>Lead developer</strong> for a worldwide appointment scheduling booking platform in the public sector. <br/>Serving <strong>3M+ users worldwide</strong>, the app reduces phone line wait times by <strong>over 90%.</strong></p>',
         techStack: ['#next.js', '#react.js', '#typescript', '#tailwind'],
         order: 1,
-        work: true
+        work: true,
+        label: "Web App"
     },
     {
         id: 'nda-02',
@@ -24,7 +25,8 @@ export const ProjectsData: ProjectType[] = [
             '#craftercms',
         ],
         order: 2,
-        work: true
+        work: true,
+        label: "Web App"
     },
     {
         id: 'nda-03',
@@ -40,7 +42,8 @@ export const ProjectsData: ProjectType[] = [
             '#craftercms',
         ],
         order: 3,
-        work: true
+        work: true,
+        label: "Web App"
     },
 
     {
@@ -57,7 +60,8 @@ export const ProjectsData: ProjectType[] = [
         order: 1,
         work: false,
         img: "/logos/feedxboost.webp",
-        link: "https://feedxboost.com/"
+        link: "https://feedxboost.com/",
+        label: "Web App"
     },
     {
         id: 'dinis-cunha',
@@ -72,7 +76,8 @@ export const ProjectsData: ProjectType[] = [
         order: 2,
         work: false,
         img: "/logos/dinis.webp",
-        link: "https://www.dinis-cunha.pt/en"
+        link: "https://www.dinis-cunha.pt/en",
+        label: "Web App"
     },
     {
         id: 'luisa-mendes',
@@ -87,6 +92,7 @@ export const ProjectsData: ProjectType[] = [
         order: 3,
         work: false,
         img: "/logos/luisa.webp",
-        link: "https://luisamendes.vercel.app/"
+        link: "https://luisamendes.vercel.app/",
+        label: "Web App"
     },
 ]

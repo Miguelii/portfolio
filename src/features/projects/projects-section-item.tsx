@@ -11,7 +11,7 @@ export function ProjectsSectionItem(project: ProjectType) {
                     href={project.link}
                     prefetch={false}
                     target="_blank"
-                    className="flex flex-col p-4 border gap-4 border-divider h-full hover:shadow-xl"
+                    className="flex flex-col p-6 sm:p-10 border gap-4 border-divider h-full hover:shadow-xl"
                 >
                     {props.children}
                 </Link>
@@ -19,7 +19,7 @@ export function ProjectsSectionItem(project: ProjectType) {
         }
 
         return (
-            <div className="flex flex-col p-4 border gap-4 border-divider h-full">
+            <div className="flex flex-col p-6 sm:p-10 border gap-4 border-divider h-full">
                 {props.children}
             </div>
         )
@@ -27,44 +27,54 @@ export function ProjectsSectionItem(project: ProjectType) {
 
     return (
         <Wrapper>
-            {project.img && (
-                <div className="w-full h-40 bg-divider">
-                    <Image
-                        className="w-full h-full object-scale-down"
-                        height={160}
-                        width={312}
-                        src={project.img}
-                        alt={`Project ${project.title} Preview`}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                {/* Left Column: Content */}
+                <div className="flex flex-col justify-center h-full">
+                    {/* Category Label */}
+                    <span className="text-xs font-semibold tracking-widest text-neutral uppercase mb-4">
+                        {project.label}
+                    </span>
+
+                    {/* Title */}
+                    <h3 className="text-primary font-semibold text-xl md:text-2xl mb-4 text-balance">
+                        {project.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p
+                        className="text-pretty text-neutral font-text text-sm/normal md:text-base/normal mb-6"
+                        dangerouslySetInnerHTML={{ __html: project.description }}
                     />
-                </div>
-            )}
-            {!project.img && (
-                <div className="w-full h-40 bg-divider flex items-center justify-center font-semibold">
-                    NDA
-                </div>
-            )}
 
-            <div className="flex flex-col gap-2">
-                <span className="block text-primary font-semibold md:text-lg text-base">
-                    {project.title}
-                </span>
-                <p
-                    className="text-pretty text-neutral font-text text-xs/normal md:text-sm/normal"
-                    dangerouslySetInnerHTML={{ __html: project.description }}
-                />
-            </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-8 mt-auto">
+                        {project.techStack?.map((item, index) => {
+                            return (
+                                <span
+                                    key={`project-${project.id}-techStack-${index}`}
+                                    className="block text-neutral font-normal font-mono md:text-sm text-xs"
+                                >
+                                    {item}
+                                </span>
+                            )
+                        })}
+                    </div>
+                </div>
 
-            <div className="flex gap-2 mt-auto flex-wrap">
-                {project.techStack?.map((item, index) => {
-                    return (
-                        <span
-                            key={`project-${project.id}-techStack-${index}`}
-                            className="block text-neutral font-normal font-mono md:text-sm text-xs"
-                        >
-                            {item}
-                        </span>
-                    )
-                })}
+                {/* Right Column: Image Showcase */}
+                <div className="relative h-80 rounded-none overflow-hidden shadow-xl w-full">
+                    {project.img && (
+                        <Image
+                            src={project.img}
+                            alt={`Project ${project.title} Preview`}
+                            fill
+                            className="object-cover"
+                        />
+                    )}
+                    {!project.img && (
+                        <span className='text-primary font-semibold text-xl md:text-2xl flex justify-center items-center h-full w-full'>NDA</span>
+                    )}
+                </div>
             </div>
         </Wrapper>
     )
