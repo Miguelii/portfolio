@@ -77,7 +77,7 @@ export const ProjectsData: ProjectType[] = [
         work: false,
         img: "/logos/dinis.webp",
         link: "https://www.dinis-cunha.pt/en",
-        label: "Web App"
+        label: "Website"
     },
     {
         id: 'luisa-mendes',
@@ -93,6 +93,6 @@ export const ProjectsData: ProjectType[] = [
         work: false,
         img: "/logos/luisa.webp",
         link: "https://luisamendes.vercel.app/",
-        label: "Web App"
+        label: "Website"
     },
 ]
