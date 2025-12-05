@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import * as motion from 'motion/react-client'
 import ProjectService from '@/shared/services/project-service'
 import { ProjectsSectionItem } from '@/features/projects/projects-section-item'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
     title: 'Miguel Gonçalves - Clients',
@@ -16,11 +17,15 @@ export default function ClientsPage() {
                 Clients, Clients, Clients
             </span>
 
-            <div className="flex flex-col gap-5 justify-center h-full mb-4">
+            <div className="flex flex-col gap-5 justify-center h-full">
                 <h1 className="text-primary text-xl/snug md:text-2xl/snug xl:text-3xl/snug font-bold">
                     Some of the freelance projects I’ve worked on.
                 </h1>
             </div>
+
+            <span className="block text-neutral font-normal text-base mb-4">
+                Interested in working together? React out at <Link className='underline font-bold' prefetch={false} href={'mailto:miguelgoncalves18@hotmail.com'}>miguelgoncalves18@hotmail.com</Link>
+            </span>
 
             <section className="flex flex-col gap-12 ">
                 <motion.div
