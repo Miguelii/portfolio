@@ -10,10 +10,12 @@ export const revalidate = 86400 // 24h
 export default function Home() {
     return (
         <main className="main-container border-x border-x-divider pb-14">
+            <PreloaderWrapper>
                 <LandingSectionWithBand />
                 <AboutSection />
                 <QuoteCard />
                 <ExperienceSection />
+            </PreloaderWrapper>
         </main>
     )
 }
