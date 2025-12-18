@@ -14,13 +14,12 @@ export const NavList: NavItem[] = [
         url: '/clients',
     },
     {
+        title: 'Labs',
+        url: '/labs',
+    },
+    {
         title: 'linkedin',
         url: 'https://www.linkedin.com/in/miguelgoncalves18/',
         external: true,
     },
-    /* {
-            title: 'github',
-            url: 'https://github.com/Miguelii',
-            external: true,
-        }, */
 ]

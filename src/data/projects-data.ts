@@ -8,7 +8,7 @@ export const ProjectsData: ProjectType[] = [
             '<p><strong>Lead developer</strong> for a worldwide appointment scheduling booking platform in the public sector. <br/>Serving <strong>3M+ users worldwide</strong>, the app reduces phone line wait times by <strong>over 90%.</strong></p>',
         techStack: ['#next.js', '#react.js', '#typescript', '#tailwind'],
         order: 1,
-        work: true,
+        type: "work",
         label: "Web App"
     },
     {
@@ -25,7 +25,7 @@ export const ProjectsData: ProjectType[] = [
             '#craftercms',
         ],
         order: 2,
-        work: true,
+        type: "work",
         label: "Web App"
     },
     {
@@ -42,7 +42,7 @@ export const ProjectsData: ProjectType[] = [
             '#craftercms',
         ],
         order: 3,
-        work: true,
+        type: "work",
         label: "Web App"
     },
 
@@ -58,7 +58,7 @@ export const ProjectsData: ProjectType[] = [
             '#supabase',
         ],
         order: 1,
-        work: false,
+        type: "client",
         img: "/logos/feedxboost.webp",
         link: "https://feedxboost.com/",
         label: "Web App"
@@ -74,7 +74,7 @@ export const ProjectsData: ProjectType[] = [
             '#tailwind',
         ],
         order: 2,
-        work: false,
+        type: "client",
         img: "/logos/dinis.webp",
         link: "https://www.dinis-cunha.pt/en",
         label: "Website"
@@ -90,9 +90,27 @@ export const ProjectsData: ProjectType[] = [
             '#tailwind',
         ],
         order: 3,
-        work: false,
+        type: "client",
         img: "/logos/luisa.webp",
         link: "https://luisamendes.vercel.app/",
+        label: "Website"
+    },
+
+    {
+        id: 'Nuvē',
+        title: 'Nuvē - Premium Cars',
+        description: 'Test project designed as a premium digital showcase for exotic vehicles and high-performance supercars.',
+        techStack: [
+            '#next.js',
+            '#react.js',
+            '#typescript',
+            '#tailwind',
+            '#motion'
+        ],
+        order: 1,
+        type: "labs",
+        img: "/logos/nuve.webp",
+        link: "https://nuve-cars.vercel.app",
         label: "Website"
     },
 ]

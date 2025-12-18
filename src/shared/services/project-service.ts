@@ -10,19 +10,31 @@ export default class ProjectService {
      */
     static getAllWorkProjects(): ProjectType[] {
         const data = this?.experience ?? []
-        return data.filter((e) => e.work).sort((a, b) => {
+        return data.filter((e) => e.type === 'work').sort((a, b) => {
             return a.order - b.order
         })
     }
 
 
     /**
-     * Retrieves all side projects, sorted by order param.
+     * Retrieves all clients projects, sorted by order param.
      * @returns {ProjectType[]} Sorted list of all projects.
      */
-    static getAllSideProjects(): ProjectType[] {
+    static getAllClientsProjects(): ProjectType[] {
         const data = this?.experience ?? []
-        return data.filter((e) => !e.work).sort((a, b) => {
+        return data.filter((e) => e.type === 'client').sort((a, b) => {
+            return a.order - b.order
+        })
+    }
+
+
+    /**
+     * Retrieves all labs projects, sorted by order param.
+     * @returns {ProjectType[]} Sorted list of all projects.
+     */
+    static getAllLabsProjects(): ProjectType[] {
+        const data = this?.experience ?? []
+        return data.filter((e) => e.type === 'labs').sort((a, b) => {
             return a.order - b.order
         })
     }

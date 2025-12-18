@@ -2,33 +2,34 @@ import type { Metadata } from 'next'
 import * as motion from 'motion/react-client'
 import ProjectService from '@/shared/services/project-service'
 import { ProjectsSectionItem } from '@/features/projects/projects-section-item'
+import Link from 'next/link'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
 
+
 export const metadata: Metadata = {
-    title: 'Miguel Gonçalves - Work',
+    title: 'Miguel Gonçalves - Labs',
 }
 
-export default function WorkPage() {
-    const projects = ProjectService.getAllWorkProjects()
-
+export default function LabsPage() {
+    const projects = ProjectService.getAllLabsProjects()
+    
     return (
         <main className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding">
             <span className="block text-neutral font-normal text-base">
-                Projects
+                Labs
             </span>
 
-            <div className="flex flex-col gap-5 justify-center h-full mb-4">
+            <div className="flex flex-col gap-5 justify-center h-full">
                 <h1 className="text-primary text-xl/snug md:text-2xl/snug xl:text-3xl/snug font-bold">
-                Some of the work projects I’m proud to have architected, developed and
-                delivered.
+                    Some side projects created to explore ideas and technologies.
                 </h1>
             </div>
 
             <section className="flex flex-col gap-12 ">
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8 md:gap-4"
+                    className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-8 md:gap-4"
                     initial={{ opacity: 0, x: 0 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: 'easeOut' }}
