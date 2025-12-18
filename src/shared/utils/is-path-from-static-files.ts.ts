@@ -9,10 +9,14 @@ export const isPathFromStaticFiles = (pathname: string) => {
     if (
         !pathname.startsWith('/_next') &&
         !pathname.startsWith('/api/') &&
-        !pathname.startsWith('/images') &&
         !pathname.startsWith('/favicon') &&
         !pathname.includes('/favicon') &&
         !pathname.includes('/script') &&
+
+        // Paths of public folder
+        !pathname.startsWith('/assets') &&
+        !pathname.startsWith('/logos') &&
+        !pathname.startsWith('/models') &&
         !pathname.includes('robots.txt')
     ) {
         return false
