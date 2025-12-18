@@ -4,6 +4,10 @@ import ProjectService from '@/shared/services/project-service'
 import { ProjectsSectionItem } from '@/features/projects/projects-section-item'
 import Link from 'next/link'
 
+export const dynamic = 'force-static'
+export const revalidate = 86400 // 24h
+
+
 export const metadata: Metadata = {
     title: 'Miguel Gonçalves - Clients',
 }

@@ -1,6 +1,6 @@
-import { GithubIcon } from '../icons/github-icon'
-import { LinkedinIcon } from '../icons/linkedin-icon'
-import { SocialItem } from '../ui/social-item'
+import { GithubIcon } from "./icons/github-icon"
+import { LinkedinIcon } from "./icons/linkedin-icon"
+import { SocialItem } from "./ui/social-item"
 
 export default function Footer() {
     return (
@@ -29,5 +29,4 @@ export default function Footer() {
             </footer>
         </section>
     )
-    return <div className="mt-32"></div>
 }

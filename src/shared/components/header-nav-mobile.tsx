@@ -2,11 +2,12 @@
 
 import { type NavItem } from '@/types/NavItem'
 import { normalizePath } from '@/shared/utils/normalize-path'
-import { AnimatePresence, motion, type Variants } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
-import { CloseIcon } from '../icons/close-icon'
 import { cn } from '@/shared/utils/cn'
 import Link from 'next/link'
+import { CloseIcon } from './icons/close-icon'
+import { useHeaderNavMobileAnimations } from '../hooks/use-header-nav-mobile-animations'
 
 type HeaderNavMobileProps = {
     isMenuOpen: boolean
@@ -17,38 +18,7 @@ type HeaderNavMobileProps = {
 export default function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: HeaderNavMobileProps) {
     const currPath = usePathname()
 
-    const menuVariants: Variants = {
-        closed: {
-            opacity: 0,
-            transition: {
-                ease: 'easeOut',
-                duration: 0.3,
-            },
-        },
-        open: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2,
-                when: 'beforeChildren',
-            },
-        },
-    }
-
-    const itemVariants: Variants = {
-        closed: {
-            opacity: 0,
-            y: 20,
-        },
-        open: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                ease: 'easeOut',
-                duration: 0.6,
-            },
-        },
-    }
+    const { menuVariants, itemVariants } = useHeaderNavMobileAnimations()
 
     return (
         <AnimatePresence>

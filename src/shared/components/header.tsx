@@ -1,11 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { MenuIcon } from '../icons/menu-icon'
 import { useState } from 'react'
-import { NavItem } from '@/types/NavItem'
 import HeaderNavDesktop from './header-nav-desktop'
 import HeaderNavMobile from './header-nav-mobile'
+import { MenuIcon } from './icons/menu-icon'
+import { NavList } from '../utils/constants'
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,31 +13,6 @@ export default function Header() {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
     }
-
-    const navList: NavItem[] = [
-        {
-            title: 'OO',
-            url: '/',
-        },
-        {
-            title: 'Work',
-            url: '/work',
-        },
-        {
-            title: 'Clients',
-            url: '/clients',
-        },
-        {
-            title: 'linkedin',
-            url: 'https://www.linkedin.com/in/miguelgoncalves18/',
-            external: true,
-        },
-        /* {
-            title: 'github',
-            url: 'https://github.com/Miguelii',
-            external: true,
-        }, */
-    ]
 
     return (
         <section className="border-b border-b-divider w-full flex">
@@ -50,7 +25,7 @@ export default function Header() {
                     <HeaderNavMobile
                         isMenuOpen={isMenuOpen}
                         toggleMenu={toggleMenu}
-                        navList={navList}
+                        navList={NavList}
                     />
 
                     <MenuIcon
@@ -59,7 +34,7 @@ export default function Header() {
                         onClick={toggleMenu}
                     />
 
-                    <HeaderNavDesktop navList={navList} />
+                    <HeaderNavDesktop navList={NavList} />
                 </nav>
             </header>
         </section>

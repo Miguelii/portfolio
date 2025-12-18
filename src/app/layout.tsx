@@ -5,9 +5,9 @@ import { type PropsWithChildren, ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
 import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
 import ProvidersWrapper from '@/shared/providers/providers-wrapper'
-import { VercelAnalytics } from '@/shared/components/common/vercel-analytics'
-import Header from '@/shared/components/common/header'
-import Footer from '@/shared/components/common/footer'
+import Footer from '@/shared/components/footer'
+import Header from '@/shared/components/header'
+import { VercelAnalytics } from '@/shared/components/vercel-analytics'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',

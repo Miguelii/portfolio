@@ -1,10 +1,13 @@
 import { cn } from '@/shared/utils/cn'
+import { getBuildId } from '@/shared/utils/get-build-id'
 import { ProjectType } from '@/types/Project'
 import Image from 'next/image'
 import Link from 'next/link'
 import { PropsWithChildren } from 'react'
 
 export function ProjectsSectionItem(project: ProjectType) {
+    const buildId = getBuildId()
+    
     const Wrapper = (props: PropsWithChildren) => {
         if (project.link) {
             return (
@@ -32,25 +35,22 @@ export function ProjectsSectionItem(project: ProjectType) {
                 "grid grid-cols-1 gap-8 md:gap-12 items-center justify-between w-full",
                 project.img ? 'md:grid-cols-2' : 'md:grid-cols-1'
             )}>
-                {/* Left Column: Content */}
+                {/* Left Column: Title/Text */}
                 <div className="flex flex-col justify-center h-full w-full">
-                    {/* Category Label */}
+
                     <span className="text-xs font-semibold tracking-widest text-neutral uppercase mb-4">
                         {project.label}
                     </span>
 
-                    {/* Title */}
                     <h3 className="text-primary font-semibold text-xl md:text-2xl mb-4 text-balance">
                         {project.title}
                     </h3>
 
-                    {/* Description */}
                     <p
                         className="text-pretty text-neutral font-text text-sm/normal md:text-base/normal mb-6"
                         dangerouslySetInnerHTML={{ __html: project.description }}
                     />
 
-                    {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-8 mt-auto">
                         {project.techStack?.map((item, index) => {
                             return (
@@ -65,13 +65,13 @@ export function ProjectsSectionItem(project: ProjectType) {
                     </div>
                 </div>
 
-                {/* Right Column: Image Showcase */}
+                {/* Right Column: Image */}
                 {project.img && (
                     <div className="flex w-full justify-end">
                         <div className="flex relative h-[200px] w-[300px] rounded-none overflow-hidden shadow-xl">
                             {project.img && (
                                 <Image
-                                    src={project.img}
+                                    src={`${project.img}?v=${buildId}`}
                                     alt={`Project ${project.title} Preview`}
                                     fill
                                     className="object-cover"
