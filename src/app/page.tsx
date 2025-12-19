@@ -12,9 +12,9 @@ export default function Home() {
         <main className="main-container border-x border-x-divider pb-14">
             <PreloaderWrapper>
                 <LandingSectionWithBand />
-                <AboutSection />
-                <QuoteCard />
                 <ExperienceSection />
+                <QuoteCard />
+                <AboutSection />
             </PreloaderWrapper>
         </main>
     )

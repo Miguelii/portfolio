@@ -47,3 +47,7 @@ body {
 ::view-transition-new(root) {
     animation-duration: 0.2s;
 }
+
+.project-section-grid {
+    @apply grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-4
+}

@@ -5,10 +5,10 @@ export const NavList: NavItem[] = [
         title: 'OO',
         url: '/',
     },
-    {
+    /* {
         title: 'Work',
         url: '/work',
-    },
+    }, */
     {
         title: 'Clients',
         url: '/clients',

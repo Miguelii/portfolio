@@ -29,7 +29,7 @@ export default function LabsPage() {
 
             <section className="flex flex-col gap-12 ">
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-8 md:gap-4"
+                    className="project-section-grid"
                     initial={{ opacity: 0, x: 0 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: 'easeOut' }}

@@ -33,7 +33,7 @@ export function ProjectsSectionItem(project: ProjectType) {
         <Wrapper>
             <div className={cn(
                 "grid grid-cols-1 gap-8 md:gap-12 items-center justify-between w-full",
-                project.img ? 'md:grid-cols-2' : 'md:grid-cols-1'
+                //project.img ? 'md:grid-cols-2' : 'md:grid-cols-1'
             )}>
                 {/* Left Column: Title/Text */}
                 <div className="flex flex-col justify-center h-full w-full">
@@ -67,8 +67,8 @@ export function ProjectsSectionItem(project: ProjectType) {
 
                 {/* Right Column: Image */}
                 {project.img && (
-                    <div className="flex w-full justify-end">
-                        <div className="flex relative h-[200px] w-[300px] rounded-none overflow-hidden shadow-xl">
+                    <div className="flex w-full justify-end px-5">
+                        <div className="flex relative h-[200px] w-full rounded-none overflow-hidden shadow-xl">
                             {project.img && (
                                 <Image
                                     src={`${project.img}?v=${buildId}`}
