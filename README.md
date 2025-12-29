@@ -6,9 +6,9 @@
 
 - **`/app`** – Regular Next.js App folder.
 - **`/data`** – Stores static data (like a DB).
-- **`/env`** – Folder for T3 Env. 
-- **`/features`** – Each subfolder represents a *feature* (e.g., `/about`, `/experience`), containing its own components, hooks, and logic.  
-- **`/shared`** – Common and reusable code across features: UI components, generic hooks, utils, services, etc.  
+- **`/env`** – Folder for T3 Env.
+- **`/features`** – Each subfolder represents a _feature_ (e.g., `/about`, `/experience`), containing its own components, hooks, and logic.
+- **`/shared`** – Common and reusable code across features: UI components, generic hooks, utils, services, etc.
 - **`/styles`** – Stores all styling files.
 - **`/types`** – Stores all TypeScript definitions.
 

@@ -7,7 +7,7 @@ import { PropsWithChildren } from 'react'
 
 export function ProjectsSectionItem(project: ProjectType) {
     const buildId = getBuildId()
-    
+
     const Wrapper = (props: PropsWithChildren) => {
         if (project.link) {
             return (
@@ -31,13 +31,14 @@ export function ProjectsSectionItem(project: ProjectType) {
 
     return (
         <Wrapper>
-            <div className={cn(
-                "grid grid-cols-1 gap-8 md:gap-12 items-center justify-between w-full",
-                //project.img ? 'md:grid-cols-2' : 'md:grid-cols-1'
-            )}>
+            <div
+                className={cn(
+                    'grid grid-cols-1 gap-8 md:gap-12 items-center justify-between w-full'
+                    //project.img ? 'md:grid-cols-2' : 'md:grid-cols-1'
+                )}
+            >
                 {/* Left Column: Title/Text */}
                 <div className="flex flex-col justify-center h-full w-full">
-
                     <span className="text-xs font-semibold tracking-widest text-neutral uppercase mb-4">
                         {project.label}
                     </span>
@@ -72,7 +73,7 @@ export function ProjectsSectionItem(project: ProjectType) {
                             {project.img && (
                                 <Image
                                     src={`${project.img}?v=${buildId}`}
-                                    alt={`Project ${project.title} Preview`}
+                                    alt={`${project.title} - ${project.label} screenshot`}
                                     fill
                                     className="object-cover"
                                 />

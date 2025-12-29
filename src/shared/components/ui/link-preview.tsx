@@ -75,7 +75,7 @@ export const LinkPreview = ({
                         quality={quality}
                         layout={layout}
                         //priority={true}
-                        alt="hidden image"
+                        alt={`Preview of ${url}`}
                         loading="lazy"
                     />
                 </div>
@@ -139,7 +139,7 @@ export const LinkPreview = ({
                                         layout={layout}
                                         //priority={true}
                                         className="rounded-lg"
-                                        alt="preview image"
+                                        alt={`Website preview of ${url}`}
                                         loading="lazy"
                                     />
                                 </Link>

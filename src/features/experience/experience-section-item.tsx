@@ -14,7 +14,9 @@ export function WorkExperienceItem(experience: WorkExperience) {
                     {experience.period}
                 </span>
                 {experience.periodTime && (
-                    <span className='text-xs text-neutral md:text-base font-medium'>{experience.periodTime}</span>    
+                    <span className="text-xs text-neutral md:text-base font-medium">
+                        {experience.periodTime}
+                    </span>
                 )}
             </div>
 
@@ -49,7 +51,10 @@ export function WorkExperienceItem(experience: WorkExperience) {
                             className="flex items-center gap-2 text-neutral text-base md:text-lg"
                         >
                             <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
-                            <span className="text-sm/normal md:text-base/normal" dangerouslySetInnerHTML={{ __html: achievement }}/>
+                            <span
+                                className="text-sm/normal md:text-base/normal"
+                                dangerouslySetInnerHTML={{ __html: achievement }}
+                            />
                         </li>
                     ))}
                 </ul>

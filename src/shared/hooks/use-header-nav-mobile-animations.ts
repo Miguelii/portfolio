@@ -1,4 +1,4 @@
-import { type Variants } from "motion/react"
+import { type Variants } from 'motion/react'
 
 type Return = {
     menuVariants: Variants
@@ -6,7 +6,6 @@ type Return = {
 }
 
 export const useHeaderNavMobileAnimations = (): Return => {
-
     const menuVariants: Variants = {
         closed: {
             opacity: 0,

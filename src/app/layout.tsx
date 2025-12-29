@@ -8,6 +8,7 @@ import ProvidersWrapper from '@/shared/providers/providers-wrapper'
 import Footer from '@/shared/components/footer'
 import Header from '@/shared/components/header'
 import { VercelAnalytics } from '@/shared/components/vercel-analytics'
+import { PersonSchema, WebSiteSchema } from '@/shared/components/structured-data'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -40,16 +41,22 @@ export const metadata: Metadata = {
     keywords:
         'Miguel Gonçalves, software engineer and full-stack web developer, builds modern apps with Next.js, TypeScript, JavaScript, React.js, Remix, Tailwind CSS, Supabase, and CrafterCMS. See portfolio on LinkedIn and GitHub. All rights reserved.',
     creator: 'Miguel Gonçalves',
+    authors: [{ name: 'Miguel Gonçalves', url: WEBSITE_URL }],
     robots: { index: true, follow: true },
+    alternates: {
+        canonical: WEBSITE_URL,
+    },
     openGraph: {
         locale: 'en_US',
         siteName: META_TITLE,
+        title: META_TITLE,
         description: META_DESCRIPTION,
         type: 'website',
         url: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
     },
     twitter: {
         title: META_TITLE,
+        description: META_DESCRIPTION,
         creator: '@migueligoncal',
         site: '@migueligoncal',
         card: 'summary_large_image',
@@ -61,6 +68,10 @@ type RootLayoutProps = Readonly<PropsWithChildren>
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                <PersonSchema />
+                <WebSiteSchema />
+            </head>
             <ReactLenis root>
                 <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                     <ProvidersWrapper>

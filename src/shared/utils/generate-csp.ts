@@ -36,7 +36,8 @@ export const generateCSP = () => {
     connect-src 'self' 
       blob:
       https://*.googletagmanager.com
-      https://accounts.google.com;
+      https://accounts.google.com
+      https://va.vercel-scripts.com;
     form-action 'self';
     frame-ancestors 'self'
     https://va.vercel-scripts.com

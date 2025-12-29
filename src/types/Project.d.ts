@@ -5,7 +5,7 @@ export type ProjectType = {
     description: string
     techStack: string[]
     order: number
-    type: "work" | "client" | "labs";
-    img?: string;
-    link?: string;
+    type: 'work' | 'client' | 'labs'
+    img?: string
+    link?: string
 }

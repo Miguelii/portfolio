@@ -10,11 +10,12 @@ export default class ProjectService {
      */
     static getAllWorkProjects(): ProjectType[] {
         const data = this?.experience ?? []
-        return data.filter((e) => e.type === 'work').sort((a, b) => {
-            return a.order - b.order
-        })
+        return data
+            .filter((e) => e.type === 'work')
+            .sort((a, b) => {
+                return a.order - b.order
+            })
     }
-
 
     /**
      * Retrieves all clients projects, sorted by order param.
@@ -22,11 +23,12 @@ export default class ProjectService {
      */
     static getAllClientsProjects(): ProjectType[] {
         const data = this?.experience ?? []
-        return data.filter((e) => e.type === 'client').sort((a, b) => {
-            return a.order - b.order
-        })
+        return data
+            .filter((e) => e.type === 'client')
+            .sort((a, b) => {
+                return a.order - b.order
+            })
     }
-
 
     /**
      * Retrieves all labs projects, sorted by order param.
@@ -34,8 +36,10 @@ export default class ProjectService {
      */
     static getAllLabsProjects(): ProjectType[] {
         const data = this?.experience ?? []
-        return data.filter((e) => e.type === 'labs').sort((a, b) => {
-            return a.order - b.order
-        })
+        return data
+            .filter((e) => e.type === 'labs')
+            .sort((a, b) => {
+                return a.order - b.order
+            })
     }
 }

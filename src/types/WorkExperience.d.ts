@@ -8,5 +8,4 @@ export type WorkExperience = {
     url?: string
     previewUrl: string
     achievements: string[]
-
 }

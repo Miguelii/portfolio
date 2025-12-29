@@ -12,7 +12,6 @@ export const isPathFromStaticFiles = (pathname: string) => {
         !pathname.startsWith('/favicon') &&
         !pathname.includes('/favicon') &&
         !pathname.includes('/script') &&
-
         // Paths of public folder
         !pathname.startsWith('/assets') &&
         !pathname.startsWith('/logos') &&
