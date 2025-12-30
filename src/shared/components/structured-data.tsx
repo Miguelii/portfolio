@@ -1,6 +1,6 @@
-import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
+import { ClientEnv } from '@/env/client'
 
-const WEBSITE_URL = normalizeBaseUrl()
+const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
 export function PersonSchema() {
     const personSchema = {
@@ -33,6 +33,7 @@ export function PersonSchema() {
 
     return (
         <script
+            id='person-schema'
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
@@ -56,6 +57,7 @@ export function WebSiteSchema() {
 
     return (
         <script
+            id='website-schema'
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
@@ -76,6 +78,7 @@ export function BreadcrumbSchema({ items }: { items: Array<{ name: string; url: 
 
     return (
         <script
+            id='breadcrumb-schema'
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
@@ -96,6 +99,7 @@ export function ProfilePageSchema() {
 
     return (
         <script
+            id='profile-schema'
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }}
         />

@@ -22,4 +22,6 @@ export const NavList: NavItem[] = [
         url: 'https://www.linkedin.com/in/miguelgoncalves18/',
         external: true,
     },
-]
+] as const;
+
+export const GTM_ID = 'G-GRCH01BRT9' as const;

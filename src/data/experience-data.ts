@@ -1,7 +1,7 @@
+import { ClientEnv } from '@/env/client'
 import { type WorkExperience } from '@/types/WorkExperience'
-import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
 
-const WEBSITE_URL = normalizeBaseUrl()
+const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
 export const ExperiencesData: WorkExperience[] = [
     {

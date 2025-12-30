@@ -96,7 +96,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 
     useFrame((state, delta) => {
         if (dragged) {
-            vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
+            vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera as any)
             dir.copy(vec).sub(state.camera.position).normalize()
             vec.add(dir.multiplyScalar(state.camera.position.length()))
             ;[card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp())
@@ -231,18 +231,18 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
                         onPointerDown={(e) => handleReleaseCard(e)}
                     >
                         <mesh
-                            geometry={nodes.clip.geometry}
-                            material={materials.metal}
+                            geometry={nodes.clip.geometry as any}
+                            material={materials.metal as any}
                             material-roughness={0.3}
                         />
                         <mesh
-                            geometry={nodes.clamp.geometry}
-                            material={materials.metal}
+                            geometry={nodes.clamp.geometry as any}
+                            material={materials.metal as any}
                             material-roughness={0.3}
                         />
-                        <mesh geometry={nodes.card.geometry}>
+                        <mesh geometry={nodes.card.geometry as any}>
                             <meshPhysicalMaterial
-                                map={materials.texture.map}
+                                map={materials.texture.map as any}
                                 map-anisotropy={16}
                                 clearcoat={1}
                                 clearcoatRoughness={0.15}
@@ -261,7 +261,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
                     color={'black'}
                     depthTest={false}
                     lineWidth={1.5}
-                    args={[{ resolution: new THREE.Vector2(width, height) }]}
+                    args={[{ resolution: new THREE.Vector2(width, height) as any }]}
                 />
             </mesh>
         </>

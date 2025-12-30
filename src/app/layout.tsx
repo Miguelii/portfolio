@@ -3,13 +3,13 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
 import { type PropsWithChildren, ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
-import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
 import ProvidersWrapper from '@/shared/providers/providers-wrapper'
 import Footer from '@/shared/components/footer'
 import Header from '@/shared/components/header'
-import { VercelAnalytics } from '@/shared/components/vercel-analytics'
 import { PersonSchema, WebSiteSchema } from '@/shared/components/structured-data'
-
+import { WebAnalytics } from '@/shared/components/web-analytics'
+import { ClientEnv } from '@/env/client'
+ 
 const geistSans = Geist({
     variable: '--font-geist-sans',
     subsets: ['latin'],
@@ -27,7 +27,7 @@ export const viewport: Viewport = {
     height: 'device-height',
 }
 
-const WEBSITE_URL = normalizeBaseUrl()
+const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
 const META_DESCRIPTION =
     'Miguel Gonçalves, Full-Stack Software Engineer, builds modern SaaS apps using React.js, Next.js, Remix, JavaScript, TypeScript, and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
@@ -72,10 +72,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <PersonSchema />
                 <WebSiteSchema />
             </head>
+            <WebAnalytics />
             <ReactLenis root>
                 <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                     <ProvidersWrapper>
-                        <VercelAnalytics />
                         <div className="min-h-[calc(100vh-240px)] w-full">
                             <Header />
                             <ViewTransition>{children}</ViewTransition>

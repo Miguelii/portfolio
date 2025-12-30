@@ -15,6 +15,7 @@ export const generateCSP = () => {
   https://*.googletagmanager.com 
   https://*.google-analytics.com
   https://accounts.google.com
+  https://www.googletagmanager.com
   https://va.vercel-scripts.com
   'unsafe-inline' 'unsafe-eval';
     img-src 'self' 
@@ -37,6 +38,7 @@ export const generateCSP = () => {
       blob:
       https://*.googletagmanager.com
       https://accounts.google.com
+      https://www.googletagmanager.com
       https://va.vercel-scripts.com;
     form-action 'self';
     frame-ancestors 'self'

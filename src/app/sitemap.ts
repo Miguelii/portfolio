@@ -1,15 +1,15 @@
-import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
+import { ClientEnv } from '@/env/client'
 import type { MetadataRoute } from 'next'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const WEBSITE_URL = normalizeBaseUrl()
+    const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
     return [
         {
-            url: WEBSITE_URL ?? '',
+            url: WEBSITE_URL,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 1,

@@ -3,12 +3,12 @@ import * as motion from 'motion/react-client'
 import ProjectService from '@/shared/services/project-service'
 import { ProjectsSectionItem } from '@/features/projects/projects-section-item'
 import { BreadcrumbSchema } from '@/shared/components/structured-data'
-import { normalizeBaseUrl } from '@/shared/utils/normalize-base-url'
+import { ClientEnv } from '@/env/client'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
 
-const WEBSITE_URL = normalizeBaseUrl()
+const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
 const META_TITLE = 'Labs | Miguel Gonçalves - Software Engineer'
 
@@ -41,7 +41,7 @@ export default function LabsPage() {
         <>
             <BreadcrumbSchema
                 items={[
-                    { name: 'Home', url: WEBSITE_URL ?? '' },
+                    { name: 'Home', url: WEBSITE_URL },
                     { name: 'Labs', url: `${WEBSITE_URL}/labs` },
                 ]}
             />
