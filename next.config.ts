@@ -3,6 +3,8 @@ import type { NextConfig } from 'next'
 
 loadEnv()
 
+const buildTimestamp = Date.now().toString()
+
 const nextConfig: NextConfig = {
     turbopack: {
         rules: {
@@ -18,6 +20,7 @@ const nextConfig: NextConfig = {
         webpackBuildWorker: true,
     },
     images: {
+        qualities: [25, 50, 75, 100],
         remotePatterns: [
             {
                 hostname: 'api.microlink.io',
@@ -36,20 +39,8 @@ const nextConfig: NextConfig = {
         ],
     },
     poweredByHeader: true,
-    webpack: (config, { webpack }) => {
-        const buildDate = new Date()
-
-        const timeStamp = buildDate.getTime()
-
-        config.plugins.push(
-            new webpack.DefinePlugin({
-                'process.env.NEXT_PUBLIC_BUILD_TIMESTAMP': timeStamp
-                    ? JSON.stringify(String(timeStamp))
-                    : null,
-            })
-        )
-
-        return config
+    env: {
+        NEXT_PUBLIC_BUILD_TIMESTAMP: buildTimestamp,
     },
 }
 

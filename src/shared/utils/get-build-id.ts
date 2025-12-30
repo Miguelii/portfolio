@@ -1,5 +1,4 @@
-import { ClientEnv } from '@/env/client'
 
 export const getBuildId = () => {
-    return !ClientEnv.NEXT_PUBLIC_BUILD_TIMESTAMP ? '' : ClientEnv.NEXT_PUBLIC_BUILD_TIMESTAMP
+    return process.env.NEXT_PUBLIC_BUILD_TIMESTAMP ?? ''
 }

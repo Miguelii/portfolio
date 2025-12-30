@@ -16,7 +16,6 @@ type LinkPreviewProps = {
     width?: number
     height?: number
     quality?: number
-    layout?: string
 }
 
 export const LinkPreview = ({
@@ -26,7 +25,6 @@ export const LinkPreview = ({
     width = 200,
     height = 125,
     quality = 50,
-    layout = 'fixed',
     imageSrc,
 }: LinkPreviewProps) => {
     const params = encode({
@@ -73,8 +71,6 @@ export const LinkPreview = ({
                         width={width}
                         height={height}
                         quality={quality}
-                        layout={layout}
-                        //priority={true}
                         alt={`Preview of ${url}`}
                         loading="lazy"
                     />
@@ -136,8 +132,6 @@ export const LinkPreview = ({
                                         width={width}
                                         height={height}
                                         quality={quality}
-                                        layout={layout}
-                                        //priority={true}
                                         className="rounded-lg"
                                         alt={`Website preview of ${url}`}
                                         loading="lazy"
