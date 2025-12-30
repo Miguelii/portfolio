@@ -10,7 +10,7 @@ export const ClientEnv = createEnv({
     runtimeEnv: {
         NEXT_PUBLIC_VERCEL_URL: process?.env?.NEXT_PUBLIC_VERCEL_URL ?? undefined,
         NEXT_PUBLIC_BUILD_TIMESTAMP: process?.env?.NEXT_PUBLIC_BUILD_TIMESTAMP ?? undefined,
-        NEXT_PUBLIC_WEBSITE_URL: normalizeWebsiteUrl(process?.env?.NEXT_PUBLIC_BUILD_TIMESTAMP ?? undefined)
+        NEXT_PUBLIC_WEBSITE_URL: normalizeWebsiteUrl(process?.env?.NEXT_PUBLIC_VERCEL_URL ?? undefined)
     },
 })
 
