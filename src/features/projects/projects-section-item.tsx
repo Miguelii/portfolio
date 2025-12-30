@@ -34,7 +34,6 @@ export function ProjectsSectionItem(project: ProjectType) {
             <div
                 className={cn(
                     'grid grid-cols-1 gap-5 md:gap-8 items-center justify-between w-full'
-                    //project.img ? 'md:grid-cols-2' : 'md:grid-cols-1'
                 )}
             >
                 {/* Left Column: Title/Text */}
@@ -69,13 +68,13 @@ export function ProjectsSectionItem(project: ProjectType) {
                 {/* Right Column: Image */}
                 {project.img && (
                     <div className="flex w-full justify-end px-3">
-                        <div className="flex relative h-[160px] md:h-[180px] w-full rounded-none overflow-hidden shadow-xl">
+                        <div className="flex relative h-[160px] md:h-[180px] w-[80%] mx-auto rounded-none overflow-hidden shadow-xl">
                             {project.img && (
                                 <Image
                                     src={`${project.img}?v=${buildId}`}
                                     alt={`${project.title} - ${project.label} screenshot`}
                                     fill
-                                    className="object-cover"
+                                    className="object-cover bg-transparent"
                                 />
                             )}
                         </div>
