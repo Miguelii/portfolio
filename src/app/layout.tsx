@@ -67,7 +67,7 @@ type RootLayoutProps = Readonly<PropsWithChildren>
 
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
             <head>
                 <PersonSchema />
                 <WebSiteSchema />
