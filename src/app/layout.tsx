@@ -75,6 +75,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <WebAnalytics />
             <ReactLenis root>
                 <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+                    <a
+                        tabIndex={0}
+                        aria-label='Skip to content'
+                        className="sr-only sr-only-focusable"
+                        id="acessibilitynav"
+                        href="#main"
+                    >
+                        Skip to content
+                    </a>
                     <ProvidersWrapper>
                         <div className="min-h-[calc(100vh-240px)] w-full">
                             <Header />
