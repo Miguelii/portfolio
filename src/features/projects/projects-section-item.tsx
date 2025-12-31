@@ -1,36 +1,14 @@
 import { cn } from '@/shared/utils/cn'
 import { getBuildId } from '@/shared/utils/get-build-id'
-import { ProjectType } from '@/types/Project'
+import type { ProjectType } from '@/types/Project'
 import Image from 'next/image'
-import Link from 'next/link'
-import { PropsWithChildren } from 'react'
+import ProjectsSectionItemWrapper from './projects-section-item-wrapper'
 
 export function ProjectsSectionItem(project: ProjectType) {
     const buildId = getBuildId()
 
-    const Wrapper = (props: PropsWithChildren) => {
-        if (project.link) {
-            return (
-                <Link
-                    href={project.link}
-                    prefetch={false}
-                    target="_blank"
-                    className="flex flex-col p-5 sm:p-6 md:p-8 border gap-3 border-divider h-full hover:shadow-xl"
-                >
-                    {props.children}
-                </Link>
-            )
-        }
-
-        return (
-            <div className="flex flex-col p-5 sm:p-6 md:p-8 border gap-3 border-divider h-full">
-                {props.children}
-            </div>
-        )
-    }
-
     return (
-        <Wrapper>
+        <ProjectsSectionItemWrapper project={project}>
             <div
                 className={cn(
                     'grid grid-cols-1 gap-5 md:gap-8 items-center justify-between w-full'
@@ -81,6 +59,6 @@ export function ProjectsSectionItem(project: ProjectType) {
                     </div>
                 )}
             </div>
-        </Wrapper>
+        </ProjectsSectionItemWrapper>
     )
 }

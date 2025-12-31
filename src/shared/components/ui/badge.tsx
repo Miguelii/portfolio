@@ -1,5 +1,5 @@
 import { cn } from '@/shared/utils/cn'
-import { PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 
 type BadgeProps = PropsWithChildren<{
     className?: string

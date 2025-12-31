@@ -1,11 +1,11 @@
 'use client'
 
 import * as THREE from 'three'
-import { Canvas, extend, ThreeElement, ThreeEvent, useFrame, useThree } from '@react-three/fiber'
+import { Canvas, extend, type ThreeElement, type ThreeEvent, useFrame, useThree } from '@react-three/fiber'
 import { Environment, Lightformer, useGLTF } from '@react-three/drei'
 import { MeshLineGeometry, MeshLineMaterial, raycast } from 'meshline'
 import { useEffect, useRef, useState } from 'react'
-import { GLTF } from 'three-stdlib'
+import { type GLTF } from 'three-stdlib'
 import {
     BallCollider,
     CuboidCollider,

@@ -33,7 +33,7 @@ export function PersonSchema() {
 
     return (
         <script
-            id='person-schema'
+            id="person-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
@@ -57,7 +57,7 @@ export function WebSiteSchema() {
 
     return (
         <script
-            id='website-schema'
+            id="website-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
@@ -78,7 +78,7 @@ export function BreadcrumbSchema({ items }: { items: Array<{ name: string; url: 
 
     return (
         <script
-            id='breadcrumb-schema'
+            id="breadcrumb-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
@@ -99,7 +99,7 @@ export function ProfilePageSchema() {
 
     return (
         <script
-            id='profile-schema'
+            id="profile-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }}
         />

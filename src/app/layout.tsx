@@ -9,7 +9,7 @@ import Header from '@/shared/components/header'
 import { PersonSchema, WebSiteSchema } from '@/shared/components/structured-data'
 import { WebAnalytics } from '@/shared/components/web-analytics'
 import { ClientEnv } from '@/env/client'
- 
+
 const geistSans = Geist({
     variable: '--font-geist-sans',
     subsets: ['latin'],

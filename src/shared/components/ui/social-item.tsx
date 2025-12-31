@@ -1,13 +1,24 @@
+'use client'
+
 import { cn } from '@/shared/utils/cn'
+import { sendGTMEvent } from '@next/third-parties/google'
 import Link from 'next/link'
-import { PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 
 type SocialItemProps = PropsWithChildren<{
     href: string
     ariaLabel: string
     className?: string
+    eventName?: string
 }>
-export const SocialItem = ({ href, children, ariaLabel, className }: SocialItemProps) => {
+
+export const SocialItem = ({
+    href,
+    children,
+    ariaLabel,
+    className,
+    eventName,
+}: SocialItemProps) => {
     return (
         <Link
             href={href}
@@ -19,6 +30,9 @@ export const SocialItem = ({ href, children, ariaLabel, className }: SocialItemP
                 'w-12 h-12 flex justify-center items-center hover:bg-card cursor-pointer rounded-xl',
                 className
             )}
+            onClick={() => {
+                if (eventName) sendGTMEvent({ event: 'buttonClicked', value: eventName })
+            }}
         >
             {children}
         </Link>

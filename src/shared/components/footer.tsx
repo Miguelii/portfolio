@@ -15,6 +15,7 @@ export default function Footer() {
                         href="https://www.linkedin.com/in/miguelgoncalves18/"
                         ariaLabel="see linkedin profile"
                         className="w-8 h-8"
+                        eventName="footer_social_linkedin"
                     >
                         <LinkedinIcon className="w-8 h-8" />
                     </SocialItem>
@@ -22,6 +23,7 @@ export default function Footer() {
                         href="https://github.com/Miguelii"
                         ariaLabel="see github profile"
                         className="w-8 h-8"
+                        eventName="footer_social_github"
                     >
                         <GithubIcon className="w-8 h-8" />
                     </SocialItem>

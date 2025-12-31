@@ -1,5 +1,5 @@
 import { LinkPreview } from '@/shared/components/ui/link-preview'
-import { WorkExperience } from '@/types/WorkExperience'
+import type { WorkExperience } from '@/types/WorkExperience'
 import { cn } from '@/shared/utils/cn'
 import { getBuildId } from '@/shared/utils/get-build-id'
 import Image from 'next/image'

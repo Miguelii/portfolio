@@ -6,6 +6,7 @@ import HeaderNavDesktop from './header-nav-desktop'
 import HeaderNavMobile from './header-nav-mobile'
 import { MenuIcon } from './icons/menu-icon'
 import { NavList } from '../utils/constants'
+import { sendGTMEvent } from '@next/third-parties/google'
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -18,7 +19,12 @@ export default function Header() {
         <section className="border-b border-b-divider w-full flex">
             <header className="w-full flex-1 mx-auto main-container border-x border-x-divider px-5 md:px-10">
                 <nav className="flex justify-between items-center h-16">
-                    <Link href={'/'} prefetch={false} className="text-base font-semibold">
+                    <Link
+                        href={'/'}
+                        prefetch={false}
+                        className="text-base font-semibold"
+                        onClick={() => sendGTMEvent({ event: 'buttonClicked', value: 'logo' })}
+                    >
                         MG.
                     </Link>
 
@@ -31,7 +37,13 @@ export default function Header() {
                     <MenuIcon
                         className="flex md:hidden w-12 h-12 shrink-0"
                         size={24}
-                        onClick={toggleMenu}
+                        onClick={() => {
+                            toggleMenu()
+                            sendGTMEvent({
+                                event: 'buttonClicked',
+                                value: 'header_mobile_open_menu',
+                            })
+                        }}
                     />
 
                     <HeaderNavDesktop navList={NavList} />
