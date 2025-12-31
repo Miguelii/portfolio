@@ -39,7 +39,7 @@ export default function Button({
             scroll={scroll}
             href={href}
             target={target}
-            rel={target === '_blank' ? 'noreferrer' : undefined}
+            rel={target === '_blank' ? 'noopener noreferrer' : undefined}
             prefetch={prefetch ?? false}
             className={cn(
                 'relative px-4 w-full h-14 md:h-12 min-w-32 md:w-fit cursor-pointer',

@@ -23,6 +23,7 @@ export default function ProjectsSectionItemWrapper({ children, project }: Props)
                 onClick={() =>
                     sendGTMEvent({ event: 'projectClicked', value: `project_${project.title}` })
                 }
+                rel='noopener'
             >
                 {children}
             </Link>

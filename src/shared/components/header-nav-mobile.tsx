@@ -61,7 +61,7 @@ export default function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Hea
                                         prefetch={!item.external}
                                         aria-current={isSelected ? 'page' : undefined}
                                         target={item.external ? '_blank' : '_self'}
-                                        rel={item.external ? 'noreferrer' : undefined}
+                                        rel={item.external ? 'noopener noreferrer' : undefined}
                                         className={cn(
                                             'relative text-4xl font-semibold group transition-colors duration-300 block uppercase text-primary [aria-current="page"]:text-neutral',
                                             isSelected ? '!text-neutral' : '!text-primary'

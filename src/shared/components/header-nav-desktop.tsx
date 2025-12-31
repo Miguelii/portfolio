@@ -30,7 +30,7 @@ export default function HeaderNavDesktop({ navList }: HeaderNavDesktopProps) {
                         aria-current={isSelected ? 'page' : undefined}
                         prefetch={!item.external}
                         target={item.external ? '_blank' : '_self'}
-                        rel={item.external ? 'noreferrer' : undefined}
+                        rel={item.external ? 'noopener noreferrer' : undefined}
                         className={cn(
                             'relative font-mono uppercase font-semibold text-base group transition-colors duration-300',
                             isSelected ? '!text-neutral' : '!text-primary'
