@@ -16,7 +16,7 @@ export const generateCSP = () => {
   https://*.google-analytics.com
   https://accounts.google.com
   https://www.googletagmanager.com
-  https://va.vercel-scripts.com
+  https://*.vercel-scripts.com
   'unsafe-inline' 'unsafe-eval';
     img-src 'self' 
       https://avatar.vercel.sh
@@ -39,10 +39,10 @@ export const generateCSP = () => {
       https://*.googletagmanager.com
       https://accounts.google.com
       https://www.googletagmanager.com
-      https://va.vercel-scripts.com;
+      https://*.vercel-scripts.com;
     form-action 'self';
     frame-ancestors 'self'
-    https://va.vercel-scripts.com
+    https://*.vercel-scripts.com;
 `
 
     const CSPStaticFiles = `

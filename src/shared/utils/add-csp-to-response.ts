@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import type { NextResponse } from 'next/server'
 import { generateCSP } from './generate-csp'
 import { isPathFromStaticFiles } from './is-path-from-static-files.ts'
 

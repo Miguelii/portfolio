@@ -1,7 +1,14 @@
 'use client'
 
 import * as THREE from 'three'
-import { Canvas, extend, type ThreeElement, type ThreeEvent, useFrame, useThree } from '@react-three/fiber'
+import {
+    Canvas,
+    extend,
+    type ThreeElement,
+    type ThreeEvent,
+    useFrame,
+    useThree,
+} from '@react-three/fiber'
 import { Environment, Lightformer, useGLTF } from '@react-three/drei'
 import { MeshLineGeometry, MeshLineMaterial, raycast } from 'meshline'
 import { useEffect, useRef, useState } from 'react'
@@ -10,7 +17,7 @@ import {
     BallCollider,
     CuboidCollider,
     Physics,
-    RapierRigidBody,
+    type RapierRigidBody,
     RigidBody,
     useRopeJoint,
     useSphericalJoint,
@@ -83,20 +90,21 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
         [0, 1.4, 0],
     ])
 
-    // A Catmull-Rom curve
-    const [curve] = useState(
-        () =>
-            new THREE.CatmullRomCurve3([
-                new THREE.Vector3(),
-                new THREE.Vector3(),
-                new THREE.Vector3(),
-                new THREE.Vector3(),
-            ])
-    )
+    const [curve] = useState(() => {
+        const c = new THREE.CatmullRomCurve3([
+            new THREE.Vector3(),
+            new THREE.Vector3(),
+            new THREE.Vector3(),
+            new THREE.Vector3(),
+        ])
+
+        c.curveType = 'chordal'
+        return c
+    })
 
     useFrame((state, delta) => {
         if (dragged) {
-            vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera as any)
+            vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
             dir.copy(vec).sub(state.camera.position).normalize()
             vec.add(dir.multiplyScalar(state.camera.position.length()))
             ;[card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp())
@@ -162,8 +170,6 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
             drag(new THREE.Vector3().copy(e.point).sub(vec.copy(newCardLoc)))
         )
     }
-
-    curve.curveType = 'chordal'
 
     return (
         <>
@@ -231,18 +237,18 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
                         onPointerDown={(e) => handleReleaseCard(e)}
                     >
                         <mesh
-                            geometry={nodes.clip.geometry as any}
-                            material={materials.metal as any}
+                            geometry={nodes.clip.geometry}
+                            material={materials.metal}
                             material-roughness={0.3}
                         />
                         <mesh
-                            geometry={nodes.clamp.geometry as any}
-                            material={materials.metal as any}
+                            geometry={nodes.clamp.geometry}
+                            material={materials.metal}
                             material-roughness={0.3}
                         />
-                        <mesh geometry={nodes.card.geometry as any}>
+                        <mesh geometry={nodes.card.geometry}>
                             <meshPhysicalMaterial
-                                map={materials.texture.map as any}
+                                map={materials.texture.map}
                                 map-anisotropy={16}
                                 clearcoat={1}
                                 clearcoatRoughness={0.15}
@@ -261,7 +267,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
                     color={'black'}
                     depthTest={false}
                     lineWidth={1.5}
-                    args={[{ resolution: new THREE.Vector2(width, height) as any }]}
+                    args={[{ resolution: new THREE.Vector2(width, height) }]}
                 />
             </mesh>
         </>
