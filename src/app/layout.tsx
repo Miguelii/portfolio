@@ -27,36 +27,69 @@ export const viewport: Viewport = {
     height: 'device-height',
 }
 
+export const DEFAULT_META_TITLE = 'Miguel Gonçalves - FullStack Software Engineer'
+
+export const DEFAULT_META_DESCRIPTION = 
+    'Miguel Gonçalves, Full-Stack Software Engineer, specializing in high-performance SaaS applications with React.js, Next.js, Remix, JavaScript, TypeScript and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
+
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
-
-const META_DESCRIPTION =
-    'Miguel Gonçalves, Full-Stack Software Engineer, builds modern SaaS apps using React.js, Next.js, Remix, JavaScript, TypeScript, and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
-
-const META_TITLE = 'Miguel Gonçalves - Software Engineer'
 
 export const metadata: Metadata = {
     metadataBase: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
-    title: META_TITLE,
-    description: META_DESCRIPTION,
-    keywords:
-        'Miguel Gonçalves, software engineer and full-stack web developer, builds modern apps with Next.js, TypeScript, JavaScript, React.js, Remix, Tailwind CSS, Supabase, and CrafterCMS. See portfolio on LinkedIn and GitHub. All rights reserved.',
+    title: {
+        default: DEFAULT_META_TITLE,
+        template: `%s | ${DEFAULT_META_TITLE}`
+    },
+    description: DEFAULT_META_DESCRIPTION,
+    keywords: [
+        'Miguel Gonçalves',
+        'BLIP',
+        'CGI',
+        'Full-Stack Engineer',
+        'Software Developer',
+        'React',
+        'Next.js',
+        'TypeScript',
+        'SaaS Development',
+        'Remix',
+        'Node.js',
+        'Tailwind CSS'
+    ],
     creator: 'Miguel Gonçalves',
     authors: [{ name: 'Miguel Gonçalves', url: WEBSITE_URL }],
-    robots: { index: true, follow: true },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
     alternates: {
         canonical: WEBSITE_URL,
     },
     openGraph: {
         locale: 'en_US',
-        siteName: META_TITLE,
-        title: META_TITLE,
-        description: META_DESCRIPTION,
+        siteName: DEFAULT_META_TITLE,
+        title: DEFAULT_META_TITLE,
+        description: DEFAULT_META_DESCRIPTION,
         type: 'website',
         url: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
+        images: [
+            {
+                url: '/opengraph-image.png',
+                width: 1200,
+                height: 630,
+                alt: DEFAULT_META_TITLE,
+            },
+        ],
     },
     twitter: {
-        title: META_TITLE,
-        description: META_DESCRIPTION,
+        title: DEFAULT_META_TITLE,
+        description: DEFAULT_META_DESCRIPTION,
         creator: '@migueligoncal',
         site: '@migueligoncal',
         card: 'summary_large_image',
@@ -77,7 +110,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                     <a
                         tabIndex={0}
-                        aria-label='Skip to content'
+                        aria-label="Skip to content"
                         className="sr-only sr-only-focusable"
                         id="acessibilitynav"
                         href="#main"

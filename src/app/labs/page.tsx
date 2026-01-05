@@ -10,7 +10,7 @@ export const revalidate = 86400 // 24h
 
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
-const META_TITLE = 'Labs | Miguel Gonçalves - Software Engineer'
+const META_TITLE = `Labs`
 
 const META_DESCRIPTION =
     'Explore experimental side projects and technology explorations by Miguel Gonçalves. Innovative web applications built with Next.js, React, and TypeScript.'
