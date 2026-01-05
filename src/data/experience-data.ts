@@ -12,7 +12,7 @@ export const ExperiencesData: WorkExperience[] = [
         badgeColor: 'bg-slate-800 text-white',
         url: 'https://www.blip.pt/',
         previewUrl: `${WEBSITE_URL}/assets/blip_web.webp`,
-        achievements: ['Currently at FanDuel, building cool stuff for the sports betting world.'],
+        achievements: ['Currently at FanDuel, building cool, innovative and high-impact products for the sports betting world.'],
     },
     {
         period: '2022 - 2025',
