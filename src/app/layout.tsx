@@ -96,9 +96,9 @@ export const metadata: Metadata = {
     },
 }
 
-type RootLayoutProps = Readonly<PropsWithChildren>
+type Props = LayoutProps<"/">
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: Props) {
     return (
         <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
             <head>
