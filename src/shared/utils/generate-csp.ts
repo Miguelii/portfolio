@@ -36,12 +36,12 @@ export const generateCSP = () => {
     media-src *;
     base-uri 'self';
     connect-src 'self' 
-      https://fundingchoicesmessages.google.com
       https://*.vercel-scripts.com
       https://*.adtrafficquality.google
       https://www.googletagmanager.com
       https://*.analytics.google.com
       https://*.google-analytics.com
+      https://stats.g.doubleclick.net
       blob:
       https://*.googletagmanager.com
       https://accounts.google.com;
