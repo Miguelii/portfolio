@@ -8,6 +8,7 @@ import Footer from '@/shared/components/footer'
 import Header from '@/shared/components/header'
 import { WebAnalytics } from '@/shared/components/web-analytics'
 import { ClientEnv } from '@/env/client'
+import { getBuildId } from '@/shared/utils/get-build-id'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -32,6 +33,8 @@ export const DEFAULT_META_DESCRIPTION =
     'Miguel Gonçalves, Full-Stack Software Engineer, specializing in high-performance SaaS applications with React.js, Next.js, Remix, JavaScript, TypeScript and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
 
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
+
+const buildId = getBuildId()
 
 export const metadata: Metadata = {
     metadataBase: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
@@ -79,7 +82,7 @@ export const metadata: Metadata = {
         url: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
         images: [
             {
-                url: '/opengraph-image.png',
+                url: `/opengraph-image.png?v=${buildId}`,
                 width: 1200,
                 height: 630,
                 alt: DEFAULT_META_TITLE,
@@ -92,6 +95,7 @@ export const metadata: Metadata = {
         creator: '@migueligoncal',
         site: '@migueligoncal',
         card: 'summary_large_image',
+        images: `/twitter-image.png?v=${buildId}`,
     },
 }
 
