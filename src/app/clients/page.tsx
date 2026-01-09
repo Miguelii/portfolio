@@ -46,7 +46,10 @@ export default function ClientsPage() {
                     { name: 'Clients', url: `${WEBSITE_URL}/clients` },
                 ]}
             />
-            <main id="main" className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding">
+            <main
+                id="main"
+                className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
+            >
                 <span className="block text-neutral font-normal text-base">Clients</span>
 
                 <div className="flex flex-col gap-5 justify-center h-full">

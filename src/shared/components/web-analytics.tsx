@@ -9,6 +9,7 @@ export function WebAnalytics() {
 
     return (
         <>
+            {/* eslint-disable-next-line @next/next/no-head-element */}
             <head>
                 <PersonSchema />
                 <WebSiteSchema />
@@ -34,8 +35,8 @@ export function WebAnalytics() {
 						gtag('js', new Date());
 
                         gtag('consent', 'default', {
-                            'ad_storage': 'granted',
-                            'analytics_storage': 'granted',
+                            'ad_storage': 'denied',
+                            'analytics_storage': 'denied',
                         });
 
                         gtag('config', '${GTM_ID}', { 

@@ -2,25 +2,31 @@ import { cn } from '@/shared/utils/cn'
 import Link from 'next/link'
 import type { HTMLAttributeAnchorTarget } from 'react'
 
-type ButtonProps = {
+type BaseProps = {
+    label: string
+    variant?: VARIANT
+    className?: string
+}
+
+type LinkProps = BaseProps & {
+    as?: 'link' // default
     href: string
     prefetch?: boolean
-    target?: HTMLAttributeAnchorTarget | undefined
-    variant?: VARIANT
-    label: string
-    scroll?: boolean | undefined
+    target?: HTMLAttributeAnchorTarget
+    scroll?: boolean
 }
+
+type ActionButtonProps = BaseProps & {
+    as: 'button'
+    onClick: React.MouseEventHandler<HTMLButtonElement>
+    type?: 'button' | 'submit' | 'reset'
+}
+
+type ButtonProps = LinkProps | ActionButtonProps
 
 type VARIANT = 'primary' | 'secondary'
 
-export default function Button({
-    href,
-    prefetch = true,
-    target,
-    variant = 'primary',
-    label,
-    scroll,
-}: ButtonProps) {
+export default function Button(props: ButtonProps) {
     const VARIANTS = {
         primary: {
             inner: 'bg-neutral text-white/0',
@@ -32,20 +38,12 @@ export default function Button({
         },
     }
 
+    const { label, variant = 'primary', className } = props
+
     const currVariant = VARIANTS[variant]
 
-    return (
-        <Link
-            scroll={scroll}
-            href={href}
-            target={target}
-            rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-            prefetch={prefetch ?? false}
-            className={cn(
-                'relative px-4 w-full h-14 md:h-12 min-w-32 md:w-fit cursor-pointer',
-                currVariant.inner
-            )}
-        >
+    const content = (
+        <>
             {label}
             <div
                 className={cn(
@@ -55,6 +53,44 @@ export default function Button({
             >
                 {label}
             </div>
+        </>
+    )
+
+    if (props.as === 'button') {
+        const { onClick, type = 'button' } = props
+
+        return (
+            <button
+                type={type}
+                onClick={onClick}
+                className={cn(
+                    'relative px-4 w-full h-10 min-w-32 md:w-fit cursor-pointer',
+                    currVariant.inner,
+                    className
+                )}
+            >
+                {content}
+            </button>
+        )
+    }
+
+    // default: link
+    const { href, prefetch, target, scroll } = props
+
+    return (
+        <Link
+            href={href}
+            prefetch={prefetch ?? false}
+            target={target}
+            scroll={scroll}
+            rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+            className={cn(
+                'relative px-4 w-full h-10 min-w-32 md:w-fit cursor-pointer',
+                currVariant.inner,
+                className
+            )}
+        >
+            {content}
         </Link>
     )
 }

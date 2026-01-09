@@ -9,6 +9,7 @@ import Header from '@/shared/components/header'
 import { WebAnalytics } from '@/shared/components/web-analytics'
 import { ClientEnv } from '@/env/client'
 import { getBuildId } from '@/shared/utils/get-build-id'
+import { CookieConsent } from '@/shared/components/cookie-consent'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -29,7 +30,7 @@ export const viewport: Viewport = {
 
 export const DEFAULT_META_TITLE = 'Miguel Gonçalves - FullStack Software Engineer'
 
-export const DEFAULT_META_DESCRIPTION = 
+export const DEFAULT_META_DESCRIPTION =
     'Miguel Gonçalves, Full-Stack Software Engineer, specializing in high-performance SaaS applications with React.js, Next.js, Remix, JavaScript, TypeScript and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
 
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     metadataBase: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
     title: {
         default: DEFAULT_META_TITLE,
-        template: `%s | ${DEFAULT_META_TITLE}`
+        template: `%s | ${DEFAULT_META_TITLE}`,
     },
     description: DEFAULT_META_DESCRIPTION,
     keywords: [
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
         'SaaS Development',
         'Remix',
         'Node.js',
-        'Tailwind CSS'
+        'Tailwind CSS',
     ],
     creator: 'Miguel Gonçalves',
     authors: [{ name: 'Miguel Gonçalves', url: WEBSITE_URL }],
@@ -93,13 +94,13 @@ export const metadata: Metadata = {
         title: DEFAULT_META_TITLE,
         description: DEFAULT_META_DESCRIPTION,
         creator: '@migueligoncal',
-        site: '@migueligoncal',
+        site: WEBSITE_URL,
         card: 'summary_large_image',
         images: `/twitter-image.png?v=${buildId}`,
     },
 }
 
-type Props = LayoutProps<"/">
+type Props = LayoutProps<'/'>
 
 export default function RootLayout({ children }: Props) {
     return (
@@ -117,6 +118,7 @@ export default function RootLayout({ children }: Props) {
                         Skip to content
                     </a>
                     <ProvidersWrapper>
+                        <CookieConsent />
                         <div className="min-h-[calc(100vh-240px)] w-full">
                             <Header />
                             <ViewTransition>{children}</ViewTransition>
