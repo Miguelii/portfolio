@@ -23,7 +23,6 @@ export function CookieConsent() {
     const handler = (allow: boolean) => {
         startTransition(async () => {
             setIsOpen(false)
-            await createCookieConsentAction({ allowAnalytics: allow })
 
             if (allow) {
                 window.gtag('consent', 'update', {
@@ -32,9 +31,11 @@ export function CookieConsent() {
                 })
             }
 
-            router.refresh()
             setIsOpen(false)
             setHide(true)
+
+            await createCookieConsentAction({ allowAnalytics: allow })
+            router.refresh()
         })
     }
 
