@@ -20,6 +20,7 @@ export const generateCSP = () => {
   'unsafe-inline' 'unsafe-eval';
     img-src 'self' 
       https://avatar.vercel.sh
+      https://www.google.pt
       blob: data: 
       https://*.googletagmanager.com;
     font-src 'self'
@@ -35,11 +36,15 @@ export const generateCSP = () => {
     media-src *;
     base-uri 'self';
     connect-src 'self' 
+      https://fundingchoicesmessages.google.com
+      https://*.vercel-scripts.com
+      https://*.adtrafficquality.google
+      https://www.googletagmanager.com
+      https://*.analytics.google.com
+      https://*.google-analytics.com
       blob:
       https://*.googletagmanager.com
-      https://accounts.google.com
-      https://www.googletagmanager.com
-      https://*.vercel-scripts.com;
+      https://accounts.google.com;
     form-action 'self';
     frame-ancestors 'self'
     https://*.vercel-scripts.com;

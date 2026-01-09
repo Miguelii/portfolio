@@ -1,12 +1,11 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import { type PropsWithChildren, ViewTransition } from 'react'
+import { ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
 import ProvidersWrapper from '@/shared/providers/providers-wrapper'
 import Footer from '@/shared/components/footer'
 import Header from '@/shared/components/header'
-import { PersonSchema, WebSiteSchema } from '@/shared/components/structured-data'
 import { WebAnalytics } from '@/shared/components/web-analytics'
 import { ClientEnv } from '@/env/client'
 
@@ -101,10 +100,6 @@ type Props = LayoutProps<"/">
 export default function RootLayout({ children }: Props) {
     return (
         <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
-            <head>
-                <PersonSchema />
-                <WebSiteSchema />
-            </head>
             <WebAnalytics />
             <ReactLenis root>
                 <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
