@@ -21,11 +21,9 @@ export function CookieConsent() {
     const consentCookie = CookieConsentManager.getCookieConsent()
 
     const handler = (allow: boolean) => {
-        startTransition(async () => {
+        startTransition(() => {
             setIsOpen(false)
             setHide(true)
-
-            createCookieConsentAction({ allowAnalytics: allow })
 
             if (allow) {
                 window.gtag('consent', 'update', {
@@ -33,6 +31,8 @@ export function CookieConsent() {
                     analytics_storage: 'granted',
                 })
             }
+
+            createCookieConsentAction({ allowAnalytics: allow })
 
             router.refresh()
         })
