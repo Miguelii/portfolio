@@ -32,7 +32,7 @@ export default function HeaderNavDesktop({ navList }: HeaderNavDesktopProps) {
                         target={item.external ? '_blank' : '_self'}
                         rel={item.external ? 'noopener noreferrer' : undefined}
                         className={cn(
-                            'relative font-mono uppercase font-semibold text-p-smallgroup transition-colors duration-300',
+                            'relative font-mono uppercase font-semibold text-p-small group transition-colors duration-300',
                             isSelected ? '!text-neutral' : '!text-primary'
                         )}
                         onClick={() =>
