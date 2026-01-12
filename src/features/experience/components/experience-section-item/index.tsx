@@ -10,11 +10,11 @@ export function WorkExperienceItem(experience: WorkExperience) {
     return (
         <div className="flex gap-3 md:gap-8 flex-col lg:flex-row">
             <div className="w-full sm:w-40 flex-shrink-0 mt-1 flex flex-row sm:flex-col sm:gap-2 items-center sm:justify-start sm:items-start gap-10 justify-between">
-                <span className="text-neutral text-base md:text-lg font-medium">
+                <span className="text-neutral text-p-regular font-medium">
                     {experience.period}
                 </span>
                 {experience.periodTime && (
-                    <span className="text-xs text-neutral md:text-base font-medium">
+                    <span className="text-neutral text-p-regular font-medium">
                         {experience.periodTime}
                     </span>
                 )}
@@ -22,7 +22,7 @@ export function WorkExperienceItem(experience: WorkExperience) {
 
             <div className="flex-1">
                 <div className="flex items-start md:items-center gap-2 mb-3 flex-col md:flex-row">
-                    <span className="text-primary font-medium text-base md:text-lg">
+                    <span className="text-primary font-medium text-p-large">
                         {experience.jobTitle}
                     </span>
                     <LinkPreview
@@ -48,11 +48,10 @@ export function WorkExperienceItem(experience: WorkExperience) {
                     {experience.achievements.map((achievement, index) => (
                         <li
                             key={index}
-                            className="flex items-center gap-2 text-neutral text-base md:text-lg"
+                            className="flex items-center gap-2 text-neutral text-p-regular"
                         >
                             <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
                             <span
-                                className="text-sm/normal md:text-base/normal"
                                 dangerouslySetInnerHTML={{ __html: achievement }}
                             />
                         </li>

@@ -49,10 +49,10 @@ export default function WorkPage() {
                 id="main"
                 className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
             >
-                <span className="block text-neutral font-normal text-base">Projects</span>
+                <span className="block text-neutral font-normal text-p-small">Projects</span>
 
                 <div className="flex flex-col gap-5 justify-center h-full mb-4">
-                    <h1 className="text-primary text-xl/snug md:text-2xl/snug xl:text-3xl/snug font-bold">
+                    <h1 className="text-primary text-h1">
                         Some of the work projects I’m proud to have architected, developed and
                         delivered.
                     </h1>

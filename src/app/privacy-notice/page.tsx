@@ -47,7 +47,7 @@ export default function PrivacyNoticePage() {
                 className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
             >
                 <div className="flex flex-col gap-5 justify-center h-full">
-                    <h1 className="text-primary text-xl/snug md:text-2xl/snug xl:text-3xl/snug font-bold">
+                    <h1 className="text-primary text-h1">
                         Privacy Notice
                     </h1>
                 </div>
@@ -57,7 +57,7 @@ export default function PrivacyNoticePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 }}
-                    className="flex flex-col gap-2  text-neutral max-w-[1000px] items-start"
+                    className="flex flex-col gap-2  text-neutral max-w-[1000px] items-start text-p-regular"
                 >
                     <p>
                         We fully respect the privacy of visitors to this website. We do not collect,

@@ -50,15 +50,15 @@ export default function ClientsPage() {
                 id="main"
                 className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
             >
-                <span className="block text-neutral font-normal text-base">Clients</span>
+                <span className="block text-neutral font-normal text-p-small">Clients</span>
 
                 <div className="flex flex-col gap-5 justify-center h-full">
-                    <h1 className="text-primary text-xl/snug md:text-2xl/snug xl:text-3xl/snug font-bold">
+                    <h1 className="text-primary text-h1">
                         Some of the freelance projects I’ve worked on.
                     </h1>
                 </div>
 
-                <span className="block text-neutral font-normal text-base mb-4">
+                <span className="block text-neutral font-normal text-p-small mb-4">
                     Interested in working together? React out at{' '}
                     <Link
                         className="underline font-bold"

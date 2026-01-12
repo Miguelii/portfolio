@@ -11,11 +11,11 @@ export function ExperienceSection() {
     return (
         <section className="flex flex-col gap-12 container-padding border-b border-b-divider">
             <motion.h2
-                className="text-3xl font-bold"
+                className="text-h2"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
-                viewport={{ once: true, amount: 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
                 style={{ willChange: 'transform' }}
             >
                 Work Experience

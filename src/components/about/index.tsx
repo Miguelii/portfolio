@@ -15,7 +15,7 @@ export function AboutSection() {
     return (
         <section className="flex flex-col gap-12 container-padding border-b-0 border-b-divider">
             <motion.h2
-                className="text-3xl font-bold"
+                className="text-h2"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -32,7 +32,7 @@ export function AboutSection() {
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 * i, ease: 'easeOut' }}
-                        className="text-pretty text-neutral text-base/normal md:text-lg/normal leading-relaxed"
+                        className="text-pretty text-neutral text-p-regular"
                         dangerouslySetInnerHTML={{ __html: text }}
                     ></motion.p>
                 ))}

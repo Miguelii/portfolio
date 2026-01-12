@@ -16,7 +16,7 @@ export function QuoteCard() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
                     viewport={{ once: true, amount: 0.4 }}
-                    className="text-white/85 text-2xl/snug xl:text-3xl/snug font-bold"
+                    className="text-background/85 text-h2 leading-snug font-bold"
                 >
                     &quot;First, solve the problem. Then, write the code.&quot;
                 </motion.h2>

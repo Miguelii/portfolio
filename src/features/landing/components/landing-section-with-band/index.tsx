@@ -22,7 +22,7 @@ export function LandingSectionWithBand({ hideBand = false }: LandingSectionWithB
                         initial={{ x: -0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="text-3xl/snug xl:text-5xl/snug 2xl:text-[3.625rem] font-bold text-start w-full leading-snug"
+                        className="text-hero text-start w-full"
                     >
                         Crafting Experiences, Delivering Results
                     </motion.h1>
@@ -31,7 +31,7 @@ export function LandingSectionWithBand({ hideBand = false }: LandingSectionWithB
                         initial={{ x: -30, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.8 }}
-                        className="text-base/relaxed md:text-lg/relaxed 2xl:text-2xl/relaxed font-medium text-neutral"
+                        className="text-p-large font-medium text-neutral leading-relaxed"
                     >
                         Delivered products that have reached over a million users worldwide.
                     </motion.p>

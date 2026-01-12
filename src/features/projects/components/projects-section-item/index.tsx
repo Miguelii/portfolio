@@ -20,12 +20,12 @@ export function ProjectsSectionItem(project: ProjectType) {
                         {project.label}
                     </span>
 
-                    <h3 className="text-primary font-semibold text-lg md:text-xl mb-3 text-balance">
+                    <h3 className="text-primary font-semibold text-h3 mb-3 text-balance">
                         {project.title}
                     </h3>
 
                     <p
-                        className="text-pretty text-neutral font-text text-sm/normal md:text-base/normal mb-4"
+                        className="text-pretty text-neutral text-p-small mb-4"
                         dangerouslySetInnerHTML={{ __html: project.description }}
                     />
 
@@ -34,7 +34,7 @@ export function ProjectsSectionItem(project: ProjectType) {
                             return (
                                 <span
                                     key={`project-${project.id}-techStack-${index}`}
-                                    className="block text-neutral font-normal font-mono md:text-sm text-xs"
+                                    className="block text-neutral font-normal font-mono text-p-small"
                                 >
                                     {item}
                                 </span>
