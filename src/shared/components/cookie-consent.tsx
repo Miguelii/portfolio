@@ -8,10 +8,12 @@ import CookieConsentManager from '../services/cookie-consent-manager'
 import { createCookieConsentAction } from '../actions/create-cookie-consent-action'
 import { cn } from '../utils/cn'
 import Button from './ui/button'
+import { tryCatch } from '../utils/try-catch'
+import { sendGTMEvent } from '@next/third-parties/google'
 
 export function CookieConsent() {
     const [isOpen, setIsOpen] = useState(false)
-    const [hide, setHide] = useState(false)
+    const [hide, setHideState] = useState(false)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isPending, startTransition] = useTransition()
     const router = useRouter()
@@ -21,19 +23,21 @@ export function CookieConsent() {
     const consentCookie = CookieConsentManager.getCookieConsent()
 
     const handler = (allow: boolean) => {
-        startTransition(() => {
-            setIsOpen(false)
-            setHide(true)
+        setIsOpen(false)
+        setHideState(true)
 
-            if (allow) {
-                window.gtag('consent', 'update', {
-                    ad_storage: 'granted',
-                    analytics_storage: 'granted',
+        startTransition(async () => {
+            await tryCatch(async () => {
+                window?.gtag('consent', 'update', {
+                    ad_storage: allow ? 'granted' : 'denied',
+                    analytics_storage: allow ? 'granted' : 'denied',
                 })
-            }
-
-            createCookieConsentAction({ allowAnalytics: allow })
-
+                sendGTMEvent({
+                    event: 'consentUpdated',
+                    value: allow ? 'granted' : 'denied',
+                })
+            })
+            await createCookieConsentAction({ allowAnalytics: allow })
             router.refresh()
         })
     }
@@ -47,7 +51,7 @@ export function CookieConsent() {
                 if (hasCookieConsent) {
                     setIsOpen(false)
                     setTimeout(() => {
-                        setHide(true)
+                        setHideState(true)
                     }, 700)
                 }
             },
