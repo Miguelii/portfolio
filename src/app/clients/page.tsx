@@ -48,7 +48,7 @@ export default function ClientsPage() {
             />
             <main
                 id="main"
-                className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
+                className="main-bottom-padding main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
             >
                 <span className="block text-neutral font-normal text-p-small">Clients</span>
 

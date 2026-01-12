@@ -11,14 +11,14 @@ export const useHeaderNavMobileAnimations = (): Return => {
             opacity: 0,
             transition: {
                 ease: 'easeOut',
-                duration: 0.3,
+                duration: 0.2,
             },
         },
         open: {
             opacity: 1,
             transition: {
                 staggerChildren: 0.1,
-                delayChildren: 0.2,
+                delayChildren: 0.1,
                 when: 'beforeChildren',
             },
         },
@@ -34,7 +34,7 @@ export const useHeaderNavMobileAnimations = (): Return => {
             y: 0,
             transition: {
                 ease: 'easeOut',
-                duration: 0.6,
+                duration: 0.2,
             },
         },
     }

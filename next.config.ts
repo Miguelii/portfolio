@@ -28,9 +28,6 @@ const nextConfig: NextConfig = {
         ],
         localPatterns: [
             {
-                pathname: '/logos/**',
-            },
-            {
                 pathname: '/assets/**',
             },
             {

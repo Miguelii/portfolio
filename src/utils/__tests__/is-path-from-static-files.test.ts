@@ -29,10 +29,6 @@ describe('isPathFromStaticFiles', () => {
             expect(isPathFromStaticFiles('/assets/image.png')).toBe(true)
         })
 
-        it('should return true for /logos routes', () => {
-            expect(isPathFromStaticFiles('/logos/logo.svg')).toBe(true)
-        })
-
         it('should return true for /models routes', () => {
             expect(isPathFromStaticFiles('/models/model.glb')).toBe(true)
         })

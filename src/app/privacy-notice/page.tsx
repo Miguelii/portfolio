@@ -44,7 +44,7 @@ export default function PrivacyNoticePage() {
 
             <main
                 id="main"
-                className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
+                className="main-bottom-padding main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
             >
                 <div className="flex flex-col gap-5 justify-center h-full">
                     <h1 className="text-primary text-h1">

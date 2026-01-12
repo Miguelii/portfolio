@@ -7,6 +7,8 @@ import { MenuIcon } from 'lucide-react'
 import HeaderNavDesktop from './header-nav-desktop'
 import HeaderNavMobile from './header-nav-mobile'
 import { NavList } from './constants'
+import Image from 'next/image'
+import { getBuildId } from '@/utils/get-build-id'
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -15,6 +17,8 @@ export default function Header() {
         setIsMenuOpen(!isMenuOpen)
     }
 
+    const buildId = getBuildId()
+    
     return (
         <section className="border-b border-b-divider w-full flex h-16">
             <header className="w-full flex-1 mx-auto main-container border-x border-x-divider px-5 md:px-10">
@@ -22,10 +26,16 @@ export default function Header() {
                     <Link
                         href={'/'}
                         prefetch={false}
-                        className="text-base font-semibold"
                         onClick={() => sendGTMEvent({ event: 'buttonClicked', value: 'logo' })}
                     >
-                        MG.
+                        <Image
+                            src={`/assets/signature.webp?v=${buildId}`}
+                            alt="Miguel Goncalves signature logo"
+                            width={96}
+                            height={64}
+                            className="w-24 h-16 object-contain"
+                            quality={100}
+                        />
                     </Link>
 
                     <HeaderNavMobile
@@ -34,8 +44,8 @@ export default function Header() {
                         navList={NavList}
                     />
 
-                    <button 
-                        className='w-12 h-12 items-center justify-center flex md:hidden flex-shrink-0'
+                    <button
+                        className="w-12 h-12 items-center justify-center flex md:hidden flex-shrink-0"
                         onClick={() => {
                             toggleMenu()
                             sendGTMEvent({
@@ -47,9 +57,7 @@ export default function Header() {
                         aria-expanded={isMenuOpen}
                         aria-controls="mobile-nav-menu"
                     >
-                        <MenuIcon
-                            className="w-6 h-6 shrink-0"
-                        />
+                        <MenuIcon className="w-6 h-6 shrink-0" />
                     </button>
 
                     <HeaderNavDesktop navList={NavList} />

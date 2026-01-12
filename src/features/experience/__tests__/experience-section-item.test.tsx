@@ -21,7 +21,7 @@ describe('WorkExperienceItem', () => {
         period: '2023 - 2024',
         periodTime: '(3yrs)',
         url: 'https://techcompany.com',
-        logoUrl: '/logos/tech-company.png',
+        logoUrl: '/assets/tech-company.png',
         previewUrl: 'https://techcompany.com/preview.jpg',
         badgeColor: 'bg-blue-500',
         achievements: [
