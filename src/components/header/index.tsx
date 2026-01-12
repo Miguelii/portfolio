@@ -34,9 +34,8 @@ export default function Header() {
                         navList={NavList}
                     />
 
-                    <MenuIcon
-                        className="flex md:hidden w-12 h-12 shrink-0"
-                        size={24}
+                    <button 
+                        className='w-12 h-12 items-center justify-center flex md:hidden'
                         onClick={() => {
                             toggleMenu()
                             sendGTMEvent({
@@ -44,7 +43,14 @@ export default function Header() {
                                 value: 'header_mobile_open_menu',
                             })
                         }}
-                    />
+                        aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-nav-menu"
+                    >
+                        <MenuIcon
+                            className="w-6 h-6 shrink-0"
+                        />
+                    </button>
 
                     <HeaderNavDesktop navList={NavList} />
                 </nav>
