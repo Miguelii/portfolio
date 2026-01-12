@@ -36,6 +36,8 @@ export function WorkExperienceItem(experience: WorkExperience) {
                     const isFirst = index === 0
                     const isLast = index === positionsLength - 1
 
+                    const hasAchievements = (pos?.achievements?.length ?? 0) > 0
+
                     return (
                         <div key={index} className="flex gap-3 sm:gap-6 relative">
                             <div className="flex flex-col items-center w-13 shrink-0 relative">
@@ -67,23 +69,27 @@ export function WorkExperienceItem(experience: WorkExperience) {
                                     {pos.timeLabel && (
                                         <span className="text-neutral text-p-small font-medium">
                                             {pos.timeLabel}
-                                        </span>    
+                                        </span>
                                     )}
                                 </div>
 
-                                <ul className="space-y-2">
-                                    {pos?.achievements?.map((achievement, i) => (
-                                        <li
-                                            key={i}
-                                            className="flex items-center gap-2 text-neutral text-p-regular"
-                                        >
-                                            <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
-                                            <span
-                                                dangerouslySetInnerHTML={{ __html: achievement }}
-                                            />
-                                        </li>
-                                    ))}
-                                </ul>
+                                {hasAchievements && (
+                                    <ul className="space-y-2">
+                                        {pos?.achievements?.map((achievement, i) => (
+                                            <li
+                                                key={i}
+                                                className="flex items-center gap-2 text-neutral text-p-regular"
+                                            >
+                                                <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
+                                                <span
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: achievement,
+                                                    }}
+                                                />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </div>
                         </div>
                     )
