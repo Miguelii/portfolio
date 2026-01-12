@@ -1,5 +1,5 @@
 import { ClientEnv } from '@/env/client'
-import { type WorkExperience } from '@/types/WorkExperience'
+import type { WorkExperience } from '@/types/WorkExperience'
 
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 

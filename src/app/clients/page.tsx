@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import * as motion from 'motion/react-client'
-import ProjectService from '@/shared/services/project-service'
-import { ProjectsSectionItem } from '@/features/projects/projects-section-item'
+import ProjectService from '@/services/project-service'
 import Link from 'next/link'
-import { BreadcrumbSchema } from '@/shared/components/structured-data'
+import { BreadcrumbSchema } from '@/components/structured-data'
 import { ClientEnv } from '@/env/client'
+import { ProjectsSectionItem } from '@/features/projects/components/projects-section-item'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h

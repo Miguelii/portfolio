@@ -1,6 +1,6 @@
 export type WorkExperience = {
     period: `${number} - ${number}` | `${number} - Present`
-    periodTime?: `(${number}yrs ${number}mo)`
+    periodTime?: `(${number}yrs ${number}mo)` | `(${number}yrs)` | `(${number}mo)`
     jobTitle: string
     company: string
     logoUrl: string

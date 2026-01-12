@@ -1,5 +1,5 @@
 import { ClientEnv } from '@/env/client'
-import { BreadcrumbSchema } from '@/shared/components/structured-data'
+import { BreadcrumbSchema } from '@/components/structured-data'
 import type { Metadata } from 'next'
 import * as motion from 'motion/react-client'
 
