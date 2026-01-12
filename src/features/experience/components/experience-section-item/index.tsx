@@ -64,9 +64,11 @@ export function WorkExperienceItem(experience: WorkExperience) {
                                     <span className="text-primary font-semibold text-p-large">
                                         {pos.jobTitle}
                                     </span>
-                                    <span className="text-neutral text-p-small font-medium">
-                                        {pos.timeLabel}
-                                    </span>
+                                    {pos.timeLabel && (
+                                        <span className="text-neutral text-p-small font-medium">
+                                            {pos.timeLabel}
+                                        </span>    
+                                    )}
                                 </div>
 
                                 <ul className="space-y-2">
