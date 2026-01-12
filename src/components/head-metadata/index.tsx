@@ -1,16 +1,22 @@
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
-import { SpeedInsights as VercelSpeedInsights } from '@vercel/speed-insights/next'
 import { PersonSchema, WebSiteSchema } from '../structured-data'
 import { getBuildId } from '../../utils/get-build-id'
 import { GTM_ID } from '../../utils/constants'
 
-export function WebAnalytics() {
+export function HeadMetadata() {
     const buildId = getBuildId()
 
     return (
         <>
             {/* eslint-disable-next-line @next/next/no-head-element */}
             <head>
+                <link
+                    id="preload-card-model"
+                    rel="preload"
+                    as="fetch"
+                    href="/models/card.glb"
+                    crossOrigin="anonymous"
+                    fetchPriority="high"
+                />
                 <PersonSchema />
                 <WebSiteSchema />
                 <link
@@ -47,9 +53,6 @@ export function WebAnalytics() {
                     }}
                 />
             </head>
-
-            <VercelAnalytics />
-            <VercelSpeedInsights />
         </>
     )
 }

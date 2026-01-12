@@ -1,18 +1,10 @@
 'use client'
 
 import * as THREE from 'three'
-import {
-    Canvas,
-    extend,
-    type ThreeElement,
-    type ThreeEvent,
-    useFrame,
-    useThree,
-} from '@react-three/fiber'
-import { Environment, Lightformer, useGLTF } from '@react-three/drei'
+import { Canvas, extend, type ThreeEvent, useFrame, useThree } from '@react-three/fiber'
+import { useGLTF } from '@react-three/drei'
 import { MeshLineGeometry, MeshLineMaterial, raycast } from 'meshline'
-import { useEffect, useRef, useState } from 'react'
-import { type GLTF } from 'three-stdlib'
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
     BallCollider,
     CuboidCollider,
@@ -22,31 +14,27 @@ import {
     useRopeJoint,
     useSphericalJoint,
 } from '@react-three/rapier'
+import type { GLTFResult } from '@/types/GLTFResult'
+import { BandLighting } from './band-lighting'
+import type { BandProps } from './types'
 
-// type for GLTF loader
-type GLTFResult = GLTF & {
-    nodes: {
-        card: THREE.Mesh
-        clamp: THREE.Mesh
-        clip: THREE.Mesh
-    }
-    materials: {
-        texture: THREE.MeshStandardMaterial
-        metal: THREE.MeshStandardMaterial
-    }
-}
+useGLTF.preload('/models/card.glb')
 
-// Type support for mesh line
-declare module '@react-three/fiber' {
-    interface ThreeElements {
-        meshLineGeometry: ThreeElement<typeof MeshLineGeometry>
-        meshLineMaterial: ThreeElement<typeof MeshLineMaterial>
-    }
-}
 extend({ MeshLineGeometry, MeshLineMaterial })
 
+const BandCanvas = memo(function BandCanvas() {
+    return (
+        <Canvas camera={{ fov: 25, position: [0, 0, 16] }} className="z-[900]">
+            <Physics colliders={false} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+                <Band />
+            </Physics>
+            <BandLighting />
+        </Canvas>
+    )
+})
+
 // Main Component
-function Band({ maxSpeed = 50, minSpeed = 10 }) {
+const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
     // 3d Model geometry and materials
     const { nodes, materials } = useGLTF('/models/card.glb') as unknown as GLTFResult
 
@@ -69,10 +57,16 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
     }, [hovered, dragged])
 
     // vectors
-    const ang = new THREE.Vector3(),
-        rot = new THREE.Vector3(),
-        vec = new THREE.Vector3(),
-        dir = new THREE.Vector3()
+    const vectors = useMemo(
+        () => ({
+            ang: new THREE.Vector3(),
+            rot: new THREE.Vector3(),
+            vec: new THREE.Vector3(),
+            dir: new THREE.Vector3(),
+        }),
+        []
+    )
+    const { ang, rot, vec, dir } = vectors
 
     // for resolution
     const { width, height } = useThree((state) => state.size)
@@ -156,20 +150,28 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
         }
     })
 
-    function handleGrabCard(e: ThreeEvent<PointerEvent>) {
+    const handleGrabCard = useCallback((e: ThreeEvent<PointerEvent>) => {
         const target = e.target as HTMLElement
         target.releasePointerCapture(e.pointerId)
         drag(false)
-    }
+    }, [])
 
-    function handleReleaseCard(e: ThreeEvent<PointerEvent>) {
-        const target = e.target as HTMLElement
-        const newCardLoc = card.current ? card.current.translation() : new THREE.Vector3(0, 0, 0)
-        return (
-            target.setPointerCapture(e.pointerId),
+    const handleReleaseCard = useCallback(
+        (e: ThreeEvent<PointerEvent>) => {
+            const target = e.target as HTMLElement
+
+            // Verifica a posição atual do card via ref
+            const newCardLoc = card.current
+                ? card.current.translation()
+                : new THREE.Vector3(0, 0, 0)
+
+            target.setPointerCapture(e.pointerId)
+
+            // Executa a função drag
             drag(new THREE.Vector3().copy(e.point).sub(vec.copy(newCardLoc)))
-        )
-    }
+        },
+        [vec]
+    )
 
     return (
         <>
@@ -272,48 +274,6 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
             </mesh>
         </>
     )
-}
-
-const BandCanvas = () => {
-    return (
-        <Canvas camera={{ fov: 25, position: [0, 0, 16] }} className="z-[900]">
-            <Physics colliders={false} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-                <Band />
-            </Physics>
-            <Environment blur={0.75}>
-                <Lightformer
-                    intensity={2}
-                    color="white"
-                    position={[0, -1, 5]}
-                    rotation={[0, 0, Math.PI / 3]}
-                    scale={[100, 0.1, 1]}
-                />
-                <Lightformer
-                    intensity={3}
-                    color="white"
-                    position={[-1, -1, 1]}
-                    rotation={[0, 0, Math.PI / 3]}
-                    scale={[100, 0.1, 1]}
-                />
-                <Lightformer
-                    intensity={3}
-                    color="white"
-                    position={[1, 1, 1]}
-                    rotation={[0, 0, Math.PI / 3]}
-                    scale={[100, 0.1, 1]}
-                />
-                <Lightformer
-                    intensity={10}
-                    color="white"
-                    position={[-10, 0, 14]}
-                    rotation={[0, Math.PI / 2, Math.PI / 3]}
-                    scale={[100, 10, 1]}
-                />
-            </Environment>
-        </Canvas>
-    )
-}
-
-useGLTF.preload('/models/card.glb')
+})
 
 export default BandCanvas

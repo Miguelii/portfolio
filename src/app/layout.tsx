@@ -5,11 +5,13 @@ import { ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
 import ProvidersWrapper from '@/providers/providers-wrapper'
 import Header from '@/components/header'
-import { WebAnalytics } from '@/components/web-analytics'
 import { ClientEnv } from '@/env/client'
 import { getBuildId } from '@/utils/get-build-id'
 import { CookieConsent } from '@/components/cookie-consent'
 import Footer from '@/components/footer'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
+import { SpeedInsights as VercelSpeedInsights } from '@vercel/speed-insights/next'
+import { HeadMetadata } from '@/components/head-metadata'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -105,7 +107,9 @@ type Props = LayoutProps<'/'>
 export default function RootLayout({ children }: Props) {
     return (
         <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
-            <WebAnalytics />
+            <HeadMetadata />
+            <VercelAnalytics />
+            <VercelSpeedInsights />
             <ReactLenis root>
                 <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                     <a
