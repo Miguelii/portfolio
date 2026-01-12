@@ -29,6 +29,11 @@ html {
 
 body {
     @apply bg-background font-sans antialiased text-primary!;
+    /* Prevents CLS from animations */
+    &.no-scroll {
+        overflow: hidden;
+        height: 100vh;
+    }
 }
 
 ::selection {

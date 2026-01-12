@@ -16,7 +16,7 @@ export default function Header() {
     }
 
     return (
-        <section className="border-b border-b-divider w-full flex">
+        <section className="border-b border-b-divider w-full flex h-16">
             <header className="w-full flex-1 mx-auto main-container border-x border-x-divider px-5 md:px-10">
                 <nav className="flex justify-between items-center h-16">
                     <Link
@@ -35,7 +35,7 @@ export default function Header() {
                     />
 
                     <button 
-                        className='w-12 h-12 items-center justify-center flex md:hidden'
+                        className='w-12 h-12 items-center justify-center flex md:hidden flex-shrink-0'
                         onClick={() => {
                             toggleMenu()
                             sendGTMEvent({

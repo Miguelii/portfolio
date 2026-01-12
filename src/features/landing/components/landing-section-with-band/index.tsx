@@ -8,12 +8,12 @@ type LandingSectionWithBandProps = {
 export function LandingSectionWithBand({ hideBand = false }: LandingSectionWithBandProps) {
     return (
         <div className="w-full flex-1 mx-auto p-5 md:p-8 lg:p-10 border-b border-b-divider">
-            <section className="h-[540px] relative">
+            <section className="h-[540px] relative flex flex-col justify-center">
                 <motion.div
                     initial={{ x: -25, opacity: 1 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8, ease: 'easeOut' }}
-                    className="flex flex-col w-full max-w-lg 2xl:max-w-2xl gap-4 justify-center h-full"
+                    className="flex flex-col w-full max-w-lg 2xl:max-w-2xl gap-4 justify-center"
                 >
                     <motion.h1
                         role="presentation"
