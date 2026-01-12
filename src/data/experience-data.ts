@@ -8,7 +8,6 @@ export const ExperiencesData: WorkExperience[] = [
         totalTime: 'Sep 2025 - Present',
         company: 'Blip - Portugal',
         logoUrl: '/assets/blip_pt_logo.webp',
-        badgeColor: 'bg-slate-800 text-white',
         url: 'https://www.blip.pt/',
         previewUrl: `${WEBSITE_URL}/assets/blip_web.webp`,
         positions: [
@@ -24,7 +23,6 @@ export const ExperiencesData: WorkExperience[] = [
         company: 'CGI - Portugal',
         totalTime: 'Sep 2022 - Set 2025 · 3 yrs 2 mos',
         logoUrl: '/assets/cgi.webp',
-        badgeColor: 'bg-[#8942a8] text-white',
         previewUrl: 'https://www.cgi.com/portugal/pt-pt',
         positions: [
             {

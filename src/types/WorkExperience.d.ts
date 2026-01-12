@@ -1,7 +1,6 @@
 export type WorkExperience = {
     company: string
     logoUrl: string
-    badgeColor: string
     url?: string
     previewUrl: string
     totalTime: string
