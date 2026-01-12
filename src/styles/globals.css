@@ -64,29 +64,29 @@ body {
 
 /* Text Design System */
 .text-hero {
-    @apply text-3xl/snug xl:text-5xl/snug 2xl:text-[3.625rem] font-bold leading-snug
+    @apply text-3xl/snug xl:text-5xl/snug 2xl:text-[3.625rem] font-bold leading-snug;
 }
 
 .text-h1 {
-    @apply text-xl md:text-2xl xl:text-3xl font-bold leading-snug
+    @apply text-xl md:text-2xl xl:text-3xl font-bold leading-snug;
 }
 
 .text-h2 {
-    @apply text-3xl font-bold
+    @apply text-3xl font-bold;
 }
 
 .text-h3 {
-    @apply text-lg md:text-xl 
+    @apply text-lg md:text-xl;
 }
 
 .text-p-large {
-    @apply text-lg md:text-lg 2xl:text-2xl
+    @apply text-lg md:text-lg 2xl:text-2xl;
 }
 
 .text-p-regular {
-    @apply text-base md:text-lg
+    @apply text-base md:text-lg;
 }
 
 .text-p-small {
-    @apply text-base
+    @apply text-base;
 }

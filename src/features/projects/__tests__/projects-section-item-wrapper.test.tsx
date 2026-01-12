@@ -8,7 +8,6 @@ vi.mock('@next/third-parties/google', () => ({
 }))
 
 describe('ProjectsSectionItemWrapper', () => {
-
     //@ts-expect-error no need to mock everthing
     const mockProject: ProjectType = {
         id: '1',

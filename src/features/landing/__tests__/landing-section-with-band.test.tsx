@@ -8,7 +8,7 @@ vi.mock('@/components/ui/band', () => ({
 }))
 
 vi.mock('motion/react-client', async (importOriginal) => {
-    const actual = await importOriginal() as Record<string, PropsWithChildren>
+    const actual = (await importOriginal()) as Record<string, PropsWithChildren>
     return {
         ...actual,
         default: {

@@ -12,7 +12,10 @@ export default function Home() {
     return (
         <>
             <ProfilePageSchema />
-            <main id="main" className="main-bottom-padding main-container border-x border-x-divider">
+            <main
+                id="main"
+                className="main-bottom-padding main-container border-x border-x-divider"
+            >
                 <PreloaderWrapper>
                     <LandingSectionWithBand />
                     <ExperienceSection />

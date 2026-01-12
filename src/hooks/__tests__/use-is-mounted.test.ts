@@ -23,7 +23,6 @@ describe('useIsMounted', () => {
         expect(result.current()).toBe(false)
     })
 
-
     it('should return consistent state in multiple calls', () => {
         const { result } = renderHook(() => useIsMounted())
 

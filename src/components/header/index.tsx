@@ -18,7 +18,7 @@ export default function Header() {
     }
 
     const buildId = getBuildId()
-    
+
     return (
         <section className="border-b border-b-divider w-full flex h-16">
             <header className="w-full flex-1 mx-auto main-container border-x border-x-divider px-5 md:px-10">

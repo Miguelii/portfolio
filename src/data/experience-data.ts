@@ -5,42 +5,43 @@ const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
 export const ExperiencesData: WorkExperience[] = [
     {
-        period: '2025 - Present',
-        jobTitle: 'Software Engineer | Front-End',
+        totalTime: 'Sep 2025 - Present',
         company: 'Blip - Portugal',
         logoUrl: '/assets/blip_pt_logo.webp',
         badgeColor: 'bg-slate-800 text-white',
         url: 'https://www.blip.pt/',
         previewUrl: `${WEBSITE_URL}/assets/blip_web.webp`,
-        achievements: [
-            'Currently at FanDuel, building cool, innovative and high-impact products for the sports betting world.',
+        positions: [
+            {
+                jobTitle: 'Associate Software Engineer | Front-End',
+                achievements: [
+                    'Currently at FanDuel, building cool, innovative and high-impact products for the sports betting world.',
+                ],
+            },
         ],
     },
     {
-        period: '2022 - 2025',
-        periodTime: '(3yrs 1mo)',
-        jobTitle: 'Software Engineer | Full-Stack',
         company: 'CGI - Portugal',
+        totalTime: 'Sep 2022 - Set 2025 · 3 yrs 2 mos',
         logoUrl: '/assets/cgi.webp',
         badgeColor: 'bg-[#8942a8] text-white',
         previewUrl: 'https://www.cgi.com/portugal/pt-pt',
-        achievements: [
-            'Lead Developer for the Web Team, specializing in building client portals and public websites.',
-            'Delivered products that have reached over million users worldwide, primarily using <b>React.js, Next.js and TypeScript.</b>',
-            'Responsible for applications architecture, good practices and technical decisions.',
-            'Engaged directly with clients through meetings and delivered training sessions on the products we developed.',
-            'Mentored junior developers through code reviews and pair programming.',
+        positions: [
+            {
+                jobTitle: 'Software Engineer | Full-Stack',
+                timeLabel: 'Sep 2023 - Set 2025 · 2 yrs 8 mos',
+                achievements: [
+                    'Lead Developer for the Web Team, specializing in building client portals and public websites.',
+                    'Delivered products that have reached over million users worldwide, primarily using <b>React.js, Next.js and TypeScript.</b>',
+                    'Responsible for applications architecture, good practices and technical decisions.',
+                    'Engaged directly with clients through meetings and delivered training sessions on the products we developed.',
+                    'Mentored junior developers through code reviews and pair programming.',
+                ],
+            },
+            {
+                jobTitle: 'Junior Software Engineer | Front-End',
+                timeLabel: 'Sep 2022 - Fev 2023 · 6 mos',
+            },
         ],
     },
-    /*
-    {
-        period: '2018 - 2022',
-        jobTitle: 'BSc in Computer Science Engineering',
-        company: 'University of Minho - Portugal',
-        logoUrl: '/assets/Universitaet_Minho.webp',
-        badgeColor: 'bg-neutral-100 text-neutral-800',
-        previewUrl: 'https://www.uminho.pt/PT',
-        achievements: [],
-    },
-    */
 ]

@@ -15,13 +15,13 @@ vi.mock('../components/projects-section-item-wrapper', () => ({
 }))
 
 describe('ProjectsSectionItem', () => {
-
     //@ts-expect-error no need to mock everthing
     const mockProject: ProjectType = {
         id: '1',
         label: 'E-Commerce Platform',
         title: 'Modern Shopping Experience',
-        description: 'A full-featured e-commerce platform with <strong>React</strong> and <strong>Node.js</strong>',
+        description:
+            'A full-featured e-commerce platform with <strong>React</strong> and <strong>Node.js</strong>',
         techStack: ['React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL'],
         img: '/assets/ecommerce.png',
         link: 'https://example.com/project',
@@ -47,7 +47,10 @@ describe('ProjectsSectionItem', () => {
         render(<ProjectsSectionItem {...mockProject} />)
         const image = screen.getByTestId('project-image')
         expect(image).toBeInTheDocument()
-        expect(image).toHaveAttribute('alt', 'Modern Shopping Experience - E-Commerce Platform screenshot')
+        expect(image).toHaveAttribute(
+            'alt',
+            'Modern Shopping Experience - E-Commerce Platform screenshot'
+        )
     })
 
     it('should not render image when img is not provided', () => {

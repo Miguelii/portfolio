@@ -23,11 +23,11 @@ export function ExperienceSection() {
 
             <motion.div
                 style={{ willChange: 'transform' }}
-                className="space-y-6"
+                className="flex flex-col gap-10"
                 variants={container}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.8 }}
+                viewport={{ once: true, amount: 0.1 }}
             >
                 {workExperienceData?.map((itemData, index) => (
                     <motion.div

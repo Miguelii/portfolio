@@ -10,14 +10,6 @@ export default class ExperienceService {
      */
     static getAllWorkExperience(): WorkExperience[] {
         const data = this?.experience ?? []
-
-        return data.sort((a, b) => {
-            const getEndYear = (period: string): number => {
-                const end = period?.split(' - ')[1]
-                return end === 'Present' ? new Date().getFullYear() : parseInt(end)
-            }
-
-            return getEndYear(b.period) - getEndYear(a.period)
-        })
+        return data
     }
 }

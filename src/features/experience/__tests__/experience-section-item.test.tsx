@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { WorkExperienceItem } from '../components/experience-section-item'
 import type { WorkExperience } from '@/types/WorkExperience'
+import { ClientEnv } from '@/env/client'
 
 vi.mock('next/image', () => ({
     default: ({ src, alt }: { src: string; alt: string }) => (
@@ -15,46 +16,31 @@ vi.mock('@/components/ui/link-preview', () => ({
 }))
 
 describe('WorkExperienceItem', () => {
+    const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
+
     const mockExperience: WorkExperience = {
-        company: 'Tech Company',
-        jobTitle: 'Senior Developer',
-        period: '2023 - 2024',
-        periodTime: '(3yrs)',
-        url: 'https://techcompany.com',
-        logoUrl: '/assets/tech-company.png',
-        previewUrl: 'https://techcompany.com/preview.jpg',
-        badgeColor: 'bg-blue-500',
-        achievements: [
-            'Led development of new features',
-            'Improved performance by <strong>40%</strong>',
-            'Mentored junior developers',
+        totalTime: 'Sep 2025 - Present',
+        company: 'Blip - Portugal',
+        logoUrl: '/assets/blip_pt_logo.webp',
+        badgeColor: 'bg-slate-800 text-white',
+        url: 'https://www.blip.pt/',
+        previewUrl: `${WEBSITE_URL}/assets/blip_web.webp`,
+        positions: [
+            {
+                jobTitle: 'Software Engineer | Front-End',
+                achievements: ['Led development of new features', 'Mentored junior developers'],
+            },
         ],
     }
 
-    it('should render job title', () => {
-        render(<WorkExperienceItem {...mockExperience} />)
-        expect(screen.getByText('Senior Developer')).toBeInTheDocument()
-    })
-
     it('should render company name', () => {
         render(<WorkExperienceItem {...mockExperience} />)
-        expect(screen.getByText('Tech Company')).toBeInTheDocument()
+        expect(screen.getByText(mockExperience.company)).toBeInTheDocument()
     })
 
-    it('should render period information', () => {
+    it('should render totalTime information', () => {
         render(<WorkExperienceItem {...mockExperience} />)
-        expect(screen.getByText('2023 - 2024')).toBeInTheDocument()
-    })
-
-    it('should render period time when provided', () => {
-        render(<WorkExperienceItem {...mockExperience} />)
-        expect(screen.getByText('(3yrs)')).toBeInTheDocument()
-    })
-
-    it('should not render period time when not provided', () => {
-        const experience = { ...mockExperience, periodTime: undefined }
-        render(<WorkExperienceItem {...experience} />)
-        expect(screen.queryByText('(3yrs)')).not.toBeInTheDocument()
+        expect(screen.getByText(mockExperience.totalTime)).toBeInTheDocument()
     })
 
     it('should render all achievements', () => {
@@ -66,6 +52,6 @@ describe('WorkExperienceItem', () => {
     it('should render logo image', () => {
         render(<WorkExperienceItem {...mockExperience} />)
         const logo = screen.getByTestId('experience-logo')
-        expect(logo).toHaveAttribute('alt', 'Tech Company logo')
+        expect(logo).toHaveAttribute('alt', `${mockExperience.company} logo`)
     })
 })

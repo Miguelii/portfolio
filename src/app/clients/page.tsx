@@ -58,7 +58,7 @@ export default function ClientsPage() {
                     </h1>
                 </div>
 
-                <span className="block text-neutral font-normal text-p-small mb-4">
+                <span className="block text-neutral font-normal text-p-regular mb-4">
                     Interested in working together? React out at{' '}
                     <Link
                         className="underline font-bold"
