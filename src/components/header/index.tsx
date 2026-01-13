@@ -33,7 +33,7 @@ export default function Header() {
                             alt="Miguel Goncalves signature logo"
                             width={96}
                             height={64}
-                            className="w-24 h-16 object-contain"
+                            className="h-14 w-24 sm:h-16 object-contain"
                             quality={100}
                         />
                     </Link>

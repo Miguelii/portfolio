@@ -63,7 +63,7 @@ export function WorkExperienceItem(experience: WorkExperience) {
 
                             <div className={cn('flex flex-col gap-2', !isLast && 'pb-8')}>
                                 <div className="flex flex-col gap-1">
-                                    <span className="text-primary font-semibold text-p-large">
+                                    <span className="text-primary font-semibold text-p-regular">
                                         {pos.jobTitle}
                                     </span>
                                     {pos.timeLabel && (
