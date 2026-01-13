@@ -37,7 +37,7 @@ export const ExperiencesData: WorkExperience[] = [
                 ],
             },
             {
-                jobTitle: 'Junior Software Engineer | Front-End',
+                jobTitle: 'Junior Software Engineer | Full-Stack',
                 timeLabel: 'Sep 2022 - Fev 2023 · 6 mos',
             },
         ],
