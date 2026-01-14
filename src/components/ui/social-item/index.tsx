@@ -12,13 +12,7 @@ type Props = PropsWithChildren<{
     eventName?: string
 }>
 
-export const SocialItem = ({
-    href,
-    children,
-    ariaLabel,
-    className,
-    eventName,
-}: Props) => {
+export const SocialItem = ({ href, children, ariaLabel, className, eventName }: Props) => {
     return (
         <Link
             href={href}

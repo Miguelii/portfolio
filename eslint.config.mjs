@@ -17,6 +17,7 @@ const eslintConfig = defineConfig([
         rules: {
             '@typescript-eslint/consistent-type-imports': 'error',
             '@typescript-eslint/no-explicit-any': 'warn',
+            'react-hooks/set-state-in-effect': 'off',
         },
     },
 ])

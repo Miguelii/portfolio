@@ -3,7 +3,7 @@ import { LandingSectionWithBand } from '@/features/landing/components/landing-se
 import { ProfilePageSchema } from '@/components/structured-data'
 import { AboutSection } from '@/components/about'
 import { QuoteCard } from '@/components/quote'
-import { PreloaderWrapper } from '@/features/landing/components/preloader-wrapper'
+import { PreloaderContent } from '@/features/landing/components/preloader/preloader-content'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
@@ -16,12 +16,11 @@ export default function Home() {
                 id="main"
                 className="main-bottom-padding main-container border-x border-x-divider"
             >
-                <PreloaderWrapper>
-                    <LandingSectionWithBand />
-                    <ExperienceSection />
-                    <QuoteCard />
-                    <AboutSection />
-                </PreloaderWrapper>
+                <PreloaderContent />
+                <LandingSectionWithBand />
+                <ExperienceSection />
+                <QuoteCard />
+                <AboutSection />
             </main>
         </>
     )

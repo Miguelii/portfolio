@@ -38,7 +38,7 @@ export function CookieConsent() {
                         value: allow ? 'granted' : 'denied',
                     })
                 }),
-                createCookieConsentAction({ allowAnalytics: allow })
+                createCookieConsentAction({ allowAnalytics: allow }),
             ])
             router.refresh()
         })

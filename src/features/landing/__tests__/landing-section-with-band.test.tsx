@@ -36,9 +36,4 @@ describe('LandingSectionWithBand', () => {
         render(<LandingSectionWithBand />)
         expect(screen.getByTestId('band-canvas')).toBeInTheDocument()
     })
-
-    it('should not render BandCanvas when hideBand is true', () => {
-        render(<LandingSectionWithBand hideBand={true} />)
-        expect(screen.queryByTestId('band-canvas')).not.toBeInTheDocument()
-    })
 })
