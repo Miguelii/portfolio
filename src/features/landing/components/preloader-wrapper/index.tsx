@@ -6,9 +6,9 @@ import { use, useEffect, useState, type PropsWithChildren } from 'react'
 import Preloader from '../preloader'
 import { LandingSectionWithBand } from '../landing-section-with-band'
 
-type PreloaderWrapperProps = PropsWithChildren
+type Props = PropsWithChildren
 
-export function PreloaderWrapper({ children }: PreloaderWrapperProps) {
+export function PreloaderWrapper({ children }: Props) {
     const { history } = use(HistoryContext)
 
     // We only show the preloader if the history is empty, which means it's the first visit

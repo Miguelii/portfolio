@@ -10,13 +10,13 @@ import { CloseIcon } from '../icons/close-icon'
 import { useHeaderNavMobileAnimations } from './use-header-nav-mobile-animations'
 import { sendGTMEvent } from '@next/third-parties/google'
 
-type HeaderNavMobileProps = {
+type Props = {
     isMenuOpen: boolean
     toggleMenu: () => void
     navList: NavItem[]
 }
 
-export default function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: HeaderNavMobileProps) {
+export default function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Props) {
     const currPath = usePathname()
 
     const { menuVariants, itemVariants } = useHeaderNavMobileAnimations()

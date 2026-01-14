@@ -5,7 +5,7 @@ import { sendGTMEvent } from '@next/third-parties/google'
 import Link from 'next/link'
 import type { PropsWithChildren } from 'react'
 
-type SocialItemProps = PropsWithChildren<{
+type Props = PropsWithChildren<{
     href: string
     ariaLabel: string
     className?: string
@@ -18,7 +18,7 @@ export const SocialItem = ({
     ariaLabel,
     className,
     eventName,
-}: SocialItemProps) => {
+}: Props) => {
     return (
         <Link
             href={href}

@@ -10,14 +10,14 @@ import { NavList } from './constants'
 import Image from 'next/image'
 import { getBuildId } from '@/utils/get-build-id'
 
+const buildId = getBuildId()
+
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
     }
-
-    const buildId = getBuildId()
 
     return (
         <section className="border-b border-b-divider w-full flex h-16">

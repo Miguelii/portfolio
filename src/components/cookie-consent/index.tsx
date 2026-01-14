@@ -27,17 +27,19 @@ export function CookieConsent() {
         setHideState(true)
 
         startTransition(async () => {
-            await tryCatch(async () => {
-                window?.gtag('consent', 'update', {
-                    ad_storage: allow ? 'granted' : 'denied',
-                    analytics_storage: allow ? 'granted' : 'denied',
-                })
-                sendGTMEvent({
-                    event: 'consentUpdated',
-                    value: allow ? 'granted' : 'denied',
-                })
-            })
-            await createCookieConsentAction({ allowAnalytics: allow })
+            Promise.all([
+                tryCatch(async () => {
+                    window?.gtag('consent', 'update', {
+                        ad_storage: allow ? 'granted' : 'denied',
+                        analytics_storage: allow ? 'granted' : 'denied',
+                    })
+                    sendGTMEvent({
+                        event: 'consentUpdated',
+                        value: allow ? 'granted' : 'denied',
+                    })
+                }),
+                createCookieConsentAction({ allowAnalytics: allow })
+            ])
             router.refresh()
         })
     }

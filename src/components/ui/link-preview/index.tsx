@@ -8,7 +8,7 @@ import { AnimatePresence, motion, useMotionValue, useSpring } from 'motion/react
 import Link from 'next/link'
 import { cn } from '@/utils/cn'
 
-type LinkPreviewProps = {
+type Props = {
     children: React.ReactNode
     url: string
     imageSrc: string
@@ -26,7 +26,7 @@ export const LinkPreview = ({
     height = 125,
     quality = 50,
     imageSrc,
-}: LinkPreviewProps) => {
+}: Props) => {
     const params = encode({
         url: imageSrc,
         screenshot: true,

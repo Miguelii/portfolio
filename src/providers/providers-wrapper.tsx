@@ -1,8 +1,8 @@
 import type { PropsWithChildren } from 'react'
 import { HistoryProvider } from './history-provider'
 
-type ProvidersWrapperProps = PropsWithChildren
+type Props = PropsWithChildren
 
-export default function ProvidersWrapper({ children }: ProvidersWrapperProps) {
+export default function ProvidersWrapper({ children }: Props) {
     return <HistoryProvider>{children}</HistoryProvider>
 }

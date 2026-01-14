@@ -8,10 +8,9 @@
         "start": "next start",
         "lint": "eslint",
         "prettier": "npx prettier . --write",
-        "errors": "npx tsc --noEmit",
+        "typecheck": "npx tsc --noEmit",
         "test": "vitest",
-        "test:ui": "vitest --ui",
-        "test:coverage": "vitest --coverage"
+        "check": "npm run lint && npm run typecheck && npm run test"
     },
     "dependencies": {
         "@next/third-parties": "^16.1.1",

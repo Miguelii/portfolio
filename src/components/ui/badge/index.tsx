@@ -1,11 +1,11 @@
 import { cn } from '@/utils/cn'
 import type { PropsWithChildren } from 'react'
 
-type BadgeProps = PropsWithChildren<{
+type Props = PropsWithChildren<{
     className?: string
 }>
 
-export function Badge({ children, className }: BadgeProps) {
+export function Badge({ children, className }: Props) {
     return (
         <div
             className={cn(

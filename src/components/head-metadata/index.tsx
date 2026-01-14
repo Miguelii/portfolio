@@ -2,9 +2,9 @@ import { PersonSchema, WebSiteSchema } from '../structured-data'
 import { getBuildId } from '../../utils/get-build-id'
 import { GTM_ID } from '../../utils/constants'
 
-export function HeadMetadata() {
-    const buildId = getBuildId()
+const buildId = getBuildId()
 
+export function HeadMetadata() {
     return (
         <>
             {/* eslint-disable-next-line @next/next/no-head-element */}

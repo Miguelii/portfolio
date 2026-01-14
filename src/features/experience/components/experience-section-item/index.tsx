@@ -3,10 +3,11 @@ import type { WorkExperience } from '@/types/WorkExperience'
 import { cn } from '@/utils/cn'
 import { getBuildId } from '@/utils/get-build-id'
 import Image from 'next/image'
+import { memo } from 'react'
 
-export function WorkExperienceItem(experience: WorkExperience) {
-    const buildId = getBuildId()
+const buildId = getBuildId()
 
+export const WorkExperienceItem = memo(function WorkExperienceItem(experience: WorkExperience) {
     return (
         <div className="flex flex-col gap-5">
             <LinkPreview
@@ -97,4 +98,4 @@ export function WorkExperienceItem(experience: WorkExperience) {
             </div>
         </div>
     )
-}
+})

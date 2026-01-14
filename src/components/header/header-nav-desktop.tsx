@@ -7,11 +7,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { sendGTMEvent } from '@next/third-parties/google'
 
-type HeaderNavDesktopProps = {
+type Props = {
     navList: NavItem[]
 }
 
-export default function HeaderNavDesktop({ navList }: HeaderNavDesktopProps) {
+export default function HeaderNavDesktop({ navList }: Props) {
     const currPath = usePathname()
 
     return (

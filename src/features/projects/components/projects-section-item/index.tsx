@@ -3,10 +3,11 @@ import { getBuildId } from '@/utils/get-build-id'
 import type { ProjectType } from '@/types/Project'
 import Image from 'next/image'
 import ProjectsSectionItemWrapper from '../projects-section-item-wrapper'
+import { memo } from 'react'
 
-export function ProjectsSectionItem(project: ProjectType) {
-    const buildId = getBuildId()
+const buildId = getBuildId()
 
+export const ProjectsSectionItem = memo(function ProjectsSectionItem(project: ProjectType) {
     return (
         <ProjectsSectionItemWrapper project={project}>
             <div
@@ -61,4 +62,4 @@ export function ProjectsSectionItem(project: ProjectType) {
             </div>
         </ProjectsSectionItemWrapper>
     )
-}
+})

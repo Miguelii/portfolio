@@ -1,11 +1,11 @@
 import BandCanvas from '@/components/ui/band'
 import * as motion from 'motion/react-client'
 
-type LandingSectionWithBandProps = {
+type Props = {
     hideBand?: boolean
 }
 
-export function LandingSectionWithBand({ hideBand = false }: LandingSectionWithBandProps) {
+export function LandingSectionWithBand({ hideBand = false }: Props) {
     return (
         <div className="w-full flex-1 mx-auto p-5 md:p-8 lg:p-10 border-b border-b-divider">
             <section className="h-[540px] relative flex flex-col justify-center">
