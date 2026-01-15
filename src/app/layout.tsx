@@ -17,14 +17,12 @@ const geistSans = Geist({
     variable: '--font-geist-sans',
     subsets: ['latin'],
     display: 'swap',
-    adjustFontFallback: false,
 })
 
 const geistMono = Geist_Mono({
     variable: '--font-geist-mono',
     subsets: ['latin'],
     display: 'swap',
-    adjustFontFallback: false,
 })
 
 export const viewport: Viewport = {
