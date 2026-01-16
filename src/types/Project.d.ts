@@ -1,4 +1,4 @@
-import type { ProjectType } from "./ProjectTypeEnum"
+import type { ProjectType } from './ProjectTypeEnum'
 
 export type Project = {
     id: string

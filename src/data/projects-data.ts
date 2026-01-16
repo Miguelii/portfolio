@@ -1,5 +1,5 @@
-import type { Project } from "@/types/Project";
-import { ProjectType } from "@/types/ProjectTypeEnum";
+import type { Project } from '@/types/Project'
+import { ProjectType } from '@/types/ProjectTypeEnum'
 
 export const ProjectsData: Project[] = [
     {

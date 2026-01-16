@@ -4,12 +4,12 @@ import { CookieIcon } from 'lucide-react'
 import { useEffect, useEffectEvent, useState, useTransition } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import CookieConsentManager from '../../services/cookie-consent-manager'
-import { createCookieConsentAction } from '../../actions/create-cookie-consent-action'
+import { createCookieConsentAction } from '@/actions/create-cookie-consent-action'
 import { cn } from '../../utils/cn'
 import Button from '../ui/button'
 import { tryCatch } from '../../utils/try-catch'
 import { sendGTMEvent } from '@next/third-parties/google'
+import CookieConsentManager from '@/utils/cookie-consent-manager'
 
 export function CookieConsent() {
     const [isOpen, setIsOpen] = useState(false)
@@ -22,6 +22,8 @@ export function CookieConsent() {
 
     const consentCookie = CookieConsentManager.getCookieConsent()
 
+    const isHomePage = currPath === '/'
+
     const handler = (allow: boolean) => {
         setIsOpen(false)
         setHideState(true)
@@ -29,16 +31,21 @@ export function CookieConsent() {
         startTransition(async () => {
             Promise.all([
                 tryCatch(async () => {
+                    // 1. updates google dataLayer analytics values
                     window?.gtag('consent', 'update', {
                         ad_storage: allow ? 'granted' : 'denied',
                         analytics_storage: allow ? 'granted' : 'denied',
                     })
+
+                    // 2. sends event google analytics
                     sendGTMEvent({
                         event: 'consentUpdated',
                         value: allow ? 'granted' : 'denied',
                     })
+
+                    // 3. Create cookie
+                    createCookieConsentAction({ allowAnalytics: allow })
                 }),
-                createCookieConsentAction({ allowAnalytics: allow }),
             ])
             router.refresh()
         })
@@ -57,7 +64,8 @@ export function CookieConsent() {
                     }, 700)
                 }
             },
-            currPath === '/' ? 3500 : 700
+            // If its the home page we add a bit more delay so the banner displays after the preloader
+            isHomePage ? 3500 : 700
         )
     })
 
