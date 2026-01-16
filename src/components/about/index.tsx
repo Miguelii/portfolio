@@ -28,7 +28,7 @@ export function AboutSection() {
             <div className="flex flex-col gap-3">
                 {paragraphs?.map((text, i) => (
                     <motion.p
-                        key={i}
+                        key={`about-text-${i}`}
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 * i, ease: 'easeOut' }}

@@ -78,7 +78,7 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(experience: W
                                     <ul className="space-y-2">
                                         {pos?.achievements?.map((achievement, i) => (
                                             <li
-                                                key={i}
+                                                key={`achievement-${i}`}
                                                 className="flex items-center gap-2 text-neutral text-p-regular"
                                             >
                                                 <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>

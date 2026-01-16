@@ -102,7 +102,7 @@ export function CookieConsent() {
                             <br />
                             <span className="text-xs items-center ">
                                 By clicking <span className="font-normal text-primary">Accept</span>
-                                , you agree to our use of cookies.
+                                ,you agree to our use of cookies.
                             </span>
                         </p>
                     </div>

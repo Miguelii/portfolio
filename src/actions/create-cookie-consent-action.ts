@@ -22,7 +22,7 @@ export async function createCookieConsentAction({ allowAnalytics }: Props) {
             httpOnly: false,
             secure: true,
             sameSite: 'lax',
-            expires: new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000), // 1 year
+            expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 year
         })
 
         if (!allowAnalytics) {

@@ -57,8 +57,8 @@ export const generateCSP = () => {
   `
 
     // Replace newline characters and spaces
-    const contentSecurityPolicyPages = CSPPages.replace(/\s{2,}/g, ' ').trim()
-    const contentSecurityPolicyStaticFiles = CSPStaticFiles.replace(/\s{2,}/g, ' ').trim()
+    const contentSecurityPolicyPages = CSPPages.replaceAll(/\s{2,}/g, ' ').trim()
+    const contentSecurityPolicyStaticFiles = CSPStaticFiles.replaceAll(/\s{2,}/g, ' ').trim()
 
     return {
         nonce,
