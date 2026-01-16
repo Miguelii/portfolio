@@ -1,17 +1,18 @@
 import { ProjectsData } from '@/data/projects-data'
-import type { ProjectType } from '@/types/Project'
+import type { Project } from '@/types/Project'
+import { ProjectType } from '@/types/ProjectTypeEnum'
 
 export default class ProjectService {
-    private static experience: ProjectType[] = ProjectsData
+    private static experience: Project[] = ProjectsData
 
     /**
      * Retrieves all work projects, sorted by order param.
-     * @returns {ProjectType[]} Sorted list of all projects.
+     * @returns {Project[]} Sorted list of all projects.
      */
-    static getAllWorkProjects(): ProjectType[] {
+    static getAllWorkProjects(): Project[] {
         const data = this?.experience ?? []
         return data
-            .filter((e) => e.type === 'work')
+            .filter((e) => e.type === ProjectType.WORK)
             .sort((a, b) => {
                 return a.order - b.order
             })
@@ -19,12 +20,12 @@ export default class ProjectService {
 
     /**
      * Retrieves all clients projects, sorted by order param.
-     * @returns {ProjectType[]} Sorted list of all projects.
+     * @returns {Project[]} Sorted list of all projects.
      */
-    static getAllClientsProjects(): ProjectType[] {
+    static getAllClientsProjects(): Project[] {
         const data = this?.experience ?? []
         return data
-            .filter((e) => e.type === 'client')
+            .filter((e) => e.type === ProjectType.CLIENT)
             .sort((a, b) => {
                 return a.order - b.order
             })
@@ -32,12 +33,12 @@ export default class ProjectService {
 
     /**
      * Retrieves all labs projects, sorted by order param.
-     * @returns {ProjectType[]} Sorted list of all projects.
+     * @returns {Project[]} Sorted list of all projects.
      */
-    static getAllLabsProjects(): ProjectType[] {
+    static getAllLabsProjects(): Project[] {
         const data = this?.experience ?? []
         return data
-            .filter((e) => e.type === 'labs')
+            .filter((e) => e.type === ProjectType.LABS)
             .sort((a, b) => {
                 return a.order - b.order
             })

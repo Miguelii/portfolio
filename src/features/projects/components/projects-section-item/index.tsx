@@ -1,13 +1,13 @@
 import { cn } from '@/utils/cn'
 import { getBuildId } from '@/utils/get-build-id'
-import type { ProjectType } from '@/types/Project'
+import type { Project } from '@/types/Project'
 import Image from 'next/image'
 import ProjectsSectionItemWrapper from '../projects-section-item-wrapper'
 import { memo } from 'react'
 
 const buildId = getBuildId()
 
-export const ProjectsSectionItem = memo(function ProjectsSectionItem(project: ProjectType) {
+export const ProjectsSectionItem = memo(function ProjectsSectionItem(project: Project) {
     return (
         <ProjectsSectionItemWrapper project={project}>
             <div

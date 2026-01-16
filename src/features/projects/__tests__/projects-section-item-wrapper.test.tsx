@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import ProjectsSectionItemWrapper from '../components/projects-section-item-wrapper'
-import type { ProjectType } from '@/types/Project'
+import type { Project } from '@/types/Project'
 
 vi.mock('@next/third-parties/google', () => ({
     sendGTMEvent: vi.fn(),
@@ -9,7 +9,7 @@ vi.mock('@next/third-parties/google', () => ({
 
 describe('ProjectsSectionItemWrapper', () => {
     //@ts-expect-error no need to mock everthing
-    const mockProject: ProjectType = {
+    const mockProject: Project = {
         id: '1',
         label: 'Project',
         title: 'Test Project',
@@ -18,7 +18,7 @@ describe('ProjectsSectionItemWrapper', () => {
     }
 
     //@ts-expect-error no need to mock everthing
-    const mockProjectWithoutLink: ProjectType = {
+    const mockProjectWithoutLink: Project = {
         id: '2',
         label: 'Project',
         title: 'Test Project',

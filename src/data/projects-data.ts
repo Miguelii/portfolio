@@ -1,6 +1,7 @@
-import type { ProjectType } from '@/types/Project'
+import type { Project } from "@/types/Project";
+import { ProjectType } from "@/types/ProjectTypeEnum";
 
-export const ProjectsData: ProjectType[] = [
+export const ProjectsData: Project[] = [
     {
         id: 'nda-01',
         title: 'Online Booking Platform - Lead',
@@ -8,7 +9,7 @@ export const ProjectsData: ProjectType[] = [
             '<p><strong>Lead developer</strong> for a worldwide appointment scheduling booking platform in the public sector. <br/>Serving <strong>3M+ users worldwide</strong>, the app reduces phone line wait times by <strong>over 90%.</strong></p>',
         techStack: ['#next.js', '#react.js', '#typescript', '#tailwind'],
         order: 1,
-        type: 'work',
+        type: ProjectType.WORK,
         label: 'Web App',
     },
     {
@@ -25,7 +26,7 @@ export const ProjectsData: ProjectType[] = [
             '#craftercms',
         ],
         order: 2,
-        type: 'work',
+        type: ProjectType.WORK,
         label: 'Web App',
     },
     {
@@ -42,7 +43,7 @@ export const ProjectsData: ProjectType[] = [
             '#craftercms',
         ],
         order: 3,
-        type: 'work',
+        type: ProjectType.WORK,
         label: 'Web App',
     },
 
@@ -53,7 +54,7 @@ export const ProjectsData: ProjectType[] = [
             'Founder and lead developer of an AI-powered platform designed to help teachers evaluate their students, with detailed performance analytics and growth insights.',
         techStack: ['#next.js', '#react.js', '#typescript', '#tailwind', '#supabase'],
         order: 1,
-        type: 'client',
+        type: ProjectType.CLIENT,
         img: '/assets/feed_x_boost.webp',
         link: 'https://feedxboost.com/',
         label: 'Web App',
@@ -65,7 +66,7 @@ export const ProjectsData: ProjectType[] = [
             'Designed and developed a website for a plumbing service company based in the Algarve. The main focus was on <b>SEO optimization</b> and <b>local discoverability</b>.',
         techStack: ['#next.js', '#react.js', '#typescript', '#tailwind'],
         order: 2,
-        type: 'client',
+        type: ProjectType.CLIENT,
         img: '/assets/dinis.webp',
         link: 'https://www.dinis-cunha.pt/en',
         label: 'Website',
@@ -77,7 +78,7 @@ export const ProjectsData: ProjectType[] = [
             'Designed and developed a personal portfolio website, with a minimal design, to showcase the client makeup work.',
         techStack: ['#next.js', '#react.js', '#typescript', '#tailwind'],
         order: 3,
-        type: 'client',
+        type: ProjectType.CLIENT,
         img: '/assets/luis_mendes.webp',
         link: 'https://luisamendes.vercel.app/',
         label: 'Website',
@@ -90,7 +91,7 @@ export const ProjectsData: ProjectType[] = [
             'Test project designed as a premium digital showcase for exotic vehicles and high-performance supercars.',
         techStack: ['#next.js', '#react.js', '#typescript', '#tailwind', '#motion'],
         order: 1,
-        type: 'labs',
+        type: ProjectType.LABS,
         img: '/assets/nuve_cars.webp',
         link: 'https://nuve-cars.vercel.app',
         label: 'Website',

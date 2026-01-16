@@ -1,11 +1,13 @@
-export type ProjectType = {
+import type { ProjectType } from "./ProjectTypeEnum"
+
+export type Project = {
     id: string
     title: string
     label: string
     description: string
     techStack: string[]
     order: number
-    type: 'work' | 'client' | 'labs'
+    type: ProjectType
     img?: string
     link?: string
 }

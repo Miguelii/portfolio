@@ -1,6 +1,6 @@
 'use client'
 
-import type { ProjectType } from '@/types/Project'
+import type { Project } from '@/types/Project'
 import { sendGTMEvent } from '@next/third-parties/google'
 import Link from 'next/link'
 import type { PropsWithChildren } from 'react'
@@ -9,7 +9,7 @@ import type { PropsWithChildren } from 'react'
 // and we don't force the entire component to be client
 
 type Props = PropsWithChildren<{
-    project: ProjectType
+    project: Project
 }>
 
 export default function ProjectsSectionItemWrapper({ children, project }: Props) {

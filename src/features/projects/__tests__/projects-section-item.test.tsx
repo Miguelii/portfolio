@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { ProjectsSectionItem } from '../components/projects-section-item'
-import type { ProjectType } from '@/types/Project'
+import type { Project } from '@/types/Project'
 
 vi.mock('next/image', () => ({
     default: ({ src, alt }: { src: string; alt: string }) => (
@@ -16,7 +16,7 @@ vi.mock('../components/projects-section-item-wrapper', () => ({
 
 describe('ProjectsSectionItem', () => {
     //@ts-expect-error no need to mock everthing
-    const mockProject: ProjectType = {
+    const mockProject: Project = {
         id: '1',
         label: 'E-Commerce Platform',
         title: 'Modern Shopping Experience',
