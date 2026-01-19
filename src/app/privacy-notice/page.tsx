@@ -72,7 +72,9 @@ export default function PrivacyNoticePage() {
                         policy will be updated to reflect the new privacy practices.
                     </p>
                     <p>If you have any questions about this notice, please contact us.</p>
-                    <p className='mt-2'><span className='font-bold'>Last update: </span>19/01/2025</p>
+                    <p className="mt-2">
+                        <span className="font-bold">Last update: </span>19/01/2025
+                    </p>
                 </motion.div>
             </main>
         </>

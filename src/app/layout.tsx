@@ -32,7 +32,7 @@ export const viewport: Viewport = {
     height: 'device-height',
 }
 
-export const DEFAULT_META_TITLE = 'Miguel Gonçalves - FullStack Software Engineer'
+export const DEFAULT_META_TITLE = 'Miguel Gonçalves - Software Engineer (Full-Stack)'
 
 export const DEFAULT_META_DESCRIPTION =
     'Miguel Gonçalves, Full-Stack Software Engineer, specializing in high-performance SaaS applications with React.js, Next.js, Remix, JavaScript, TypeScript and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'

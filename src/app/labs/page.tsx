@@ -13,7 +13,7 @@ const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 const META_TITLE = `Labs`
 
 const META_DESCRIPTION =
-    'Explore experimental side projects and technology explorations by Miguel Gonçalves. Innovative web applications built with Next.js, React, and TypeScript.'
+    'Explore ideas, experiments, and unfinished thoughts. Explorations web applications built with Next.js, React, and TypeScript.'
 
 export const metadata: Metadata = {
     title: META_TITLE,
@@ -53,7 +53,7 @@ export default function LabsPage() {
 
                 <div className="flex flex-col gap-5 justify-center h-full">
                     <h1 className="text-primary text-h1">
-                        Some side projects created to explore ideas and technologies.
+                        Ideas, experiments, and unfinished thoughts
                     </h1>
                 </div>
 
