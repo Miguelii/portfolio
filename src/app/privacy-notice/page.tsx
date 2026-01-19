@@ -62,11 +62,10 @@ export default function PrivacyNoticePage() {
                         store, or share any personal data.
                     </p>
                     <p>
-                        This website is for informational purposes only and is intended to present
-                        our plumbing services in the Algarve. We only use Google analytical cookies
-                        for statistical purposes, namely to analyze traffic and improve the user
-                        experience. No personal data is collected for commercial or marketing
-                        purposes.
+                        This website is for informational purposes only. We only use Google
+                        analytical cookies for statistical purposes, namely to analyze traffic and
+                        improve the user experience. No personal data is collected for commercial or
+                        marketing purposes.
                     </p>
                     <p>
                         If, in the future, features are added that involve data collection, this
