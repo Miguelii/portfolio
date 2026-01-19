@@ -59,7 +59,7 @@ body {
 }
 
 .project-section-grid {
-    @apply grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-4;
+    @apply grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8 md:gap-4;
 }
 
 /* Text Design System */

@@ -54,7 +54,7 @@ export default function ClientsPage() {
 
                 <div className="flex flex-col gap-5 justify-center h-full">
                     <h1 className="text-primary text-h1">
-                        Some of the freelance projects I’ve worked on.
+                        Helping brands to standout in the digital era
                     </h1>
                 </div>
 

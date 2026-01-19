@@ -10,16 +10,17 @@ import type { PropsWithChildren } from 'react'
 
 type Props = PropsWithChildren<{
     project: Project
+    className?: string
 }>
 
-export default function ProjectsSectionItemWrapper({ children, project }: Props) {
+export default function ProjectsSectionItemWrapper({ children, project, className }: Props) {
     if (project.link) {
         return (
             <Link
                 href={project.link}
                 prefetch={false}
                 target="_blank"
-                className="flex flex-col p-5 sm:p-6 md:p-8 border gap-3 border-divider h-full hover:shadow-xl"
+                className={className}
                 onClick={() =>
                     sendGTMEvent({ event: 'projectClicked', value: `project_${project.title}` })
                 }
@@ -30,9 +31,5 @@ export default function ProjectsSectionItemWrapper({ children, project }: Props)
         )
     }
 
-    return (
-        <div className="flex flex-col p-5 sm:p-6 md:p-8 border gap-3 border-divider h-full">
-            {children}
-        </div>
-    )
+    return <div className={className}>{children}</div>
 }

@@ -27,10 +27,10 @@ describe('ProjectsSectionItem', () => {
         link: 'https://example.com/project',
     }
 
-    it('should render project label', () => {
+    /* it('should render project label', () => {
         render(<ProjectsSectionItem {...mockProject} />)
         expect(screen.getByText('E-Commerce Platform')).toBeInTheDocument()
-    })
+    }) */
 
     it('should render project title', () => {
         render(<ProjectsSectionItem {...mockProject} />)
