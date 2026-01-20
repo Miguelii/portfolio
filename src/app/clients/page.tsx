@@ -58,7 +58,7 @@ export default function ClientsPage() {
                     </h1>
                 </div>
 
-                <span className="block text-neutral font-normal text-p-regular mb-4">
+                {/* <span className="block text-neutral font-normal text-p-regular mb-4">
                     Interested in working together? React out at{' '}
                     <Link
                         className="underline font-bold"
@@ -67,7 +67,7 @@ export default function ClientsPage() {
                     >
                         miguelgoncalves18@hotmail.com
                     </Link>
-                </span>
+                </span> */}
 
                 <section className="flex flex-col gap-12 ">
                     <motion.div

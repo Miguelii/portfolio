@@ -14,7 +14,7 @@ export const ExperiencesData: WorkExperience[] = [
             {
                 jobTitle: 'Associate Software Engineer | Front-End',
                 achievements: [
-                    'Currently at FanDuel, building cool, innovative and high-impact products for the sports betting world.',
+                    'Currently at FanDuel, building cool, innovative and high-impact products for the sports betting / finance world.',
                 ],
             },
         ],
