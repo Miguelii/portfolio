@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import * as motion from 'motion/react-client'
 import ProjectService from '@/services/project-service'
-import Link from 'next/link'
 import { BreadcrumbSchema } from '@/components/structured-data'
 import { ClientEnv } from '@/env/client'
 import { ProjectsSectionItem } from '@/features/projects/components/projects-section-item'

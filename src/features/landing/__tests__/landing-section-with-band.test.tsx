@@ -3,8 +3,12 @@ import { describe, expect, it, vi } from 'vitest'
 import { LandingSectionWithBand } from '../components/landing-section-with-band'
 import type { PropsWithChildren } from 'react'
 
-vi.mock('@/components/ui/band', () => ({
-    default: () => <div data-testid="band-canvas">Band Canvas</div>,
+vi.mock('next/dynamic', () => ({
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    default: (fn: () => Promise<unknown>) => {
+        const Component = () => <div data-testid="band-canvas">Band Canvas</div>
+        return Component
+    },
 }))
 
 vi.mock('motion/react-client', async (importOriginal) => {

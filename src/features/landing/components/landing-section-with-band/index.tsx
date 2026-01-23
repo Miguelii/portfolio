@@ -1,9 +1,14 @@
 'use client'
 
-import BandCanvas from '@/components/ui/band'
 import { PreloaderContext } from '@/providers/preloader-provider'
 import * as motion from 'motion/react-client'
+import dynamic from 'next/dynamic'
 import { use, useEffect, useState } from 'react'
+
+const BandCanvas = dynamic(() => import('@/components/ui/band'), {
+    ssr: false,
+    loading: () => <div className='w-full canvas-h'/>
+})
 
 export function LandingSectionWithBand() {
     const context = use(PreloaderContext)
@@ -59,7 +64,7 @@ export function LandingSectionWithBand() {
                             delay: !shouldAnimate || !showPreloader ? 0 : 0.8,
                         }}
                     >
-                        <div className="relative w-full h-[620px]">
+                        <div className="relative w-full canvas-h">
                             <BandCanvas />
                         </div>
                     </motion.div>

@@ -34,7 +34,7 @@ export default function Header() {
                             width={96}
                             height={64}
                             className="h-14 w-24 sm:h-16 object-contain"
-                            quality={100}
+                            priority
                         />
                     </Link>
 

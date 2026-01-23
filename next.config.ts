@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
     experimental: {
         viewTransition: true,
         webpackBuildWorker: true,
+        optimizePackageImports: ['motion']
     },
     images: {
         qualities: [25, 50, 75, 100],

@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, use, useEffect, useState, type PropsWithChildren } from 'react'
+import { createContext, use, useEffect, useMemo, useState, type PropsWithChildren } from 'react'
 import { HistoryContext } from './history-provider'
 import { usePathname } from 'next/navigation'
 
@@ -20,22 +20,26 @@ export function PreloaderProvider({ children }: PropsWithChildren) {
 
     const showPreloader = historyIsEmpty && currPath !== '/' ? false : historyIsEmpty
 
-    const [isLoading, setIsLoading] = useState(showPreloader ? true : false)
+    const [isLoading, setIsLoading] = useState(showPreloader)
 
     useEffect(() => {
-        ;(async () => {
-            if (!showPreloader) return
+        if (!showPreloader) return
 
-            setTimeout(() => {
-                setIsLoading(false)
-                document.body.style.cursor = 'default'
-                window.scrollTo(0, 0)
-            }, 2000)
-        })()
+        const timer = setTimeout(() => {
+            setIsLoading(false)
+            document.body.style.cursor = 'default'
+            window.scrollTo(0, 0)
+        }, 2000)
+
+        return () => clearTimeout(timer)
     }, [showPreloader])
 
+    const value: Props = useMemo(() => (
+        { isLoading, setIsLoading, showPreloader}
+    ), [isLoading,setIsLoading,showPreloader])
+
     return (
-        <PreloaderContext.Provider value={{ isLoading, setIsLoading, showPreloader }}>
+        <PreloaderContext.Provider value={value}>
             {children}
         </PreloaderContext.Provider>
     )

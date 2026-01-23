@@ -4,6 +4,7 @@ import { ProfilePageSchema } from '@/components/structured-data'
 import { AboutSection } from '@/components/about'
 import { QuoteCard } from '@/components/quote'
 import { PreloaderContent } from '@/features/landing/components/preloader/preloader-content'
+import { Suspense } from 'react'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
@@ -17,7 +18,9 @@ export default function Home() {
                 className="main-bottom-padding main-container border-x border-x-divider"
             >
                 <PreloaderContent />
-                <LandingSectionWithBand />
+                <Suspense fallback={<div className='w-full canvas-h'/>}>
+                    <LandingSectionWithBand />
+                </Suspense>
                 <ExperienceSection />
                 <QuoteCard />
                 <AboutSection />
