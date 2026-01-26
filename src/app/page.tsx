@@ -18,12 +18,11 @@ export default function Home() {
                 className="main-bottom-padding main-container border-x border-x-divider"
             >
                 <PreloaderContent />
-                <Suspense fallback={<div className='w-full canvas-h'/>}>
+                <Suspense fallback={<div className="w-full canvas-h" />}>
                     <LandingSectionWithBand />
                 </Suspense>
-                <ExperienceSection />
-                <QuoteCard />
                 <AboutSection />
+                <ExperienceSection />
             </main>
         </>
     )

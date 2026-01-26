@@ -7,7 +7,7 @@ import { use, useEffect, useState } from 'react'
 
 const BandCanvas = dynamic(() => import('@/components/ui/band'), {
     ssr: false,
-    loading: () => <div className='w-full canvas-h'/>
+    loading: () => <div className="w-full canvas-h" />,
 })
 
 export function LandingSectionWithBand() {

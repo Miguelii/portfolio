@@ -9,14 +9,14 @@ export const NavList: NavItem[] = [
         title: 'Work',
         url: '/work',
     }, */
-    {
+    /* {
         title: 'Clients',
         url: '/clients',
-    },
-    {
+    }, */
+    /* {
         title: 'Labs',
         url: '/labs',
-    },
+    }, */
     {
         title: 'linkedin',
         url: 'https://www.linkedin.com/in/miguelgoncalves18/',

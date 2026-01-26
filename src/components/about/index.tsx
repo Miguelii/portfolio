@@ -6,14 +6,13 @@ export function AboutSection() {
     const yearDiff = currentYear - startYear
 
     const paragraphs = [
-        `Full-Stack Software Engineer with background in Computer Science Engineering.`,
-        `<strong>${yearDiff}+ years</strong> of experience in the tech industry, building SaaS products that have reached millions of users worldwide.`,
-        `Expert in <strong>JavaScript | TypeScript | React.js | Next.js</strong> with a strong focus on performance and best practices.`,
-        'I&apos;m passionate about creating products that positively impact people’s lives through code.',
+        `Software Engineer (Front-End) with a background in <strong>Computer Science Engineering</strong> and over <strong>${yearDiff}+ years</strong> of experience building SaaS products used by millions of users worldwide.`,
+        `Specialized in <strong>JavaScript</strong> and <strong>TypeScript</strong>, with strong expertise in <strong>React.js</strong> and <strong>Next.js</strong>, always focused on performance, clean architecture, and best practices.`,
+        'I&apos;m passionate about creating products that make a real impact on people’s lives through code.',
     ]
 
     return (
-        <section className="flex flex-col gap-12 container-padding border-b-0 border-b-divider">
+        <section className="flex flex-col gap-12 container-padding border-b border-b-divider">
             <motion.h2
                 className="text-h2"
                 initial={{ opacity: 0, y: -20 }}

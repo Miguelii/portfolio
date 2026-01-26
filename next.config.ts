@@ -17,8 +17,14 @@ const nextConfig: NextConfig = {
     reactCompiler: true,
     experimental: {
         viewTransition: true,
-        webpackBuildWorker: true,
-        optimizePackageImports: ['motion']
+        optimizePackageImports: [
+            'motion',
+            'three',
+            '@react-three/drei',
+            '@react-three/fiber',
+            '@react-three/rapier',
+            'meshline',
+        ],
     },
     images: {
         qualities: [25, 50, 75, 100],
@@ -36,7 +42,6 @@ const nextConfig: NextConfig = {
             },
         ],
     },
-    poweredByHeader: true,
     env: {
         NEXT_PUBLIC_BUILD_TIMESTAMP: buildTimestamp,
     },

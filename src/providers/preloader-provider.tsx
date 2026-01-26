@@ -34,13 +34,10 @@ export function PreloaderProvider({ children }: PropsWithChildren) {
         return () => clearTimeout(timer)
     }, [showPreloader])
 
-    const value: Props = useMemo(() => (
-        { isLoading, setIsLoading, showPreloader}
-    ), [isLoading,setIsLoading,showPreloader])
-
-    return (
-        <PreloaderContext.Provider value={value}>
-            {children}
-        </PreloaderContext.Provider>
+    const value: Props = useMemo(
+        () => ({ isLoading, setIsLoading, showPreloader }),
+        [isLoading, setIsLoading, showPreloader]
     )
+
+    return <PreloaderContext.Provider value={value}>{children}</PreloaderContext.Provider>
 }
