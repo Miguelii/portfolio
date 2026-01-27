@@ -9,6 +9,8 @@ export function HeadMetadata() {
         <>
             {/* eslint-disable-next-line @next/next/no-head-element */}
             <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link
                     id="preload-card-model"
                     rel="preload"

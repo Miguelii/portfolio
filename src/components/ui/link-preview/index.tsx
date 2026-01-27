@@ -73,6 +73,7 @@ export const LinkPreview = ({
                         quality={quality}
                         alt={`Preview of ${url}`}
                         loading="lazy"
+                        sizes={`(max-width: 768px) ${width}px, ${width}px`}
                     />
                 </div>
             ) : null}
@@ -135,6 +136,7 @@ export const LinkPreview = ({
                                         className="rounded-lg"
                                         alt={`Website preview of ${url}`}
                                         loading="lazy"
+                                        sizes={`${width}px`}
                                     />
                                 </Link>
                             </motion.div>

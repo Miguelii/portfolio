@@ -53,6 +53,7 @@ export const ProjectsSectionItem = memo(function ProjectsSectionItem(project: Pr
                                 width={800}
                                 height={150}
                                 className="object-cover bg-transparent h-[150px] md:h-[150px] w-full md:w-[250px] lg:h-[180px] lg:w-[350px] shrink-0 flex"
+                                sizes={`(max-width: 768px) 100vw, (max-width: 1024px) 250px, 350px`}
                             />
                         )}
                     </div>

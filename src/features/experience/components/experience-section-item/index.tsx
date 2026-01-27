@@ -21,6 +21,7 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(experience: W
                     width={52}
                     height={52}
                     className="w-13 h-13 object-contain"
+                    sizes="52px"
                 />
                 <div className="flex flex-col gap-1">
                     <span className="font-bold text-p-regular">{experience.company}</span>

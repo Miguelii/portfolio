@@ -2,9 +2,8 @@ import { ExperienceSection } from '@/features/experience/components/experience-s
 import { LandingSectionWithBand } from '@/features/landing/components/landing-section-with-band'
 import { ProfilePageSchema } from '@/components/structured-data'
 import { AboutSection } from '@/components/about'
-import { QuoteCard } from '@/components/quote'
-import { PreloaderContent } from '@/features/landing/components/preloader/preloader-content'
 import { Suspense } from 'react'
+import { Preloader } from '@/features/landing/components/preloader'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
@@ -17,7 +16,7 @@ export default function Home() {
                 id="main"
                 className="main-bottom-padding main-container border-x border-x-divider"
             >
-                <PreloaderContent />
+                <Preloader />
                 <Suspense fallback={<div className="w-full canvas-h" />}>
                     <LandingSectionWithBand />
                 </Suspense>
