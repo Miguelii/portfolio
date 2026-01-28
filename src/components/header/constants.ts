@@ -9,10 +9,10 @@ export const NavList: NavItem[] = [
         title: 'Work',
         url: '/work',
     }, */
-    /* {
+    {
         title: 'Clients',
         url: '/clients',
-    }, */
+    },
     /* {
         title: 'Labs',
         url: '/labs',
@@ -20,6 +20,11 @@ export const NavList: NavItem[] = [
     {
         title: 'linkedin',
         url: 'https://www.linkedin.com/in/miguelgoncalves18/',
+        external: true,
+    },
+    {
+        title: 'Github',
+        url: 'https://github.com/Miguelii',
         external: true,
     },
 ] as const

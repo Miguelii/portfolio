@@ -1,7 +1,7 @@
-import { loadEnv } from '@/utils/load-envs'
+import { loadSystemEnvs } from '@/utils/load-system-envs'
 import type { NextConfig } from 'next'
 
-loadEnv()
+loadSystemEnvs()
 
 const buildTimestamp = Date.now().toString()
 
@@ -20,10 +20,13 @@ const nextConfig: NextConfig = {
         optimizePackageImports: [
             'motion',
             'three',
+            '@radix-ui/react-hover-card',
             '@react-three/drei',
             '@react-three/fiber',
             '@react-three/rapier',
             'meshline',
+            'jiti',
+            'lenis'
         ],
     },
     images: {

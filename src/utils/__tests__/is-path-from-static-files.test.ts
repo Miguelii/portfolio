@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isPathFromStaticFiles } from '../is-path-from-static-files.ts'
+import { isPathFromStaticFiles } from '../is-path-from-static-files'
 
 describe('isPathFromStaticFiles', () => {
     describe('Next.js internal routes', () => {

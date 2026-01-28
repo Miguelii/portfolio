@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { addCSPToResponse } from './utils/add-csp-to-response'
+import { setCSP } from './utils/set-csp'
 
 export async function proxy(request: NextRequest) {
     const pathname = request.nextUrl.pathname
@@ -13,7 +13,7 @@ export async function proxy(request: NextRequest) {
     })
 
     // Handler to add the Content Security Policy (CSP) to the response
-    addCSPToResponse(response, pathname)
+    setCSP(response, pathname)
 
     return response
 }
