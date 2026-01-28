@@ -114,7 +114,7 @@ export default function RootLayout({ children }: Props) {
             <VercelAnalytics />
             <VercelSpeedInsights />
             <ReactLenis root>
-                <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+                <body className={`${geistSans.variable} ${geistMono.variable} bg-background font-sans antialiased text-primary! min-h-screen flex flex-col`}>
                     <a
                         tabIndex={0}
                         aria-label="Skip to content"
@@ -126,8 +126,8 @@ export default function RootLayout({ children }: Props) {
                     </a>
                     <ProvidersWrapper>
                         <CookieConsent />
-                        <div className="min-h-[calc(100vh-240px)] w-full">
-                            <Header />
+                        <Header />
+                        <div className="flex-1 w-full">
                             <ViewTransition>{children}</ViewTransition>
                         </div>
                         <Footer />
