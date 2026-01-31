@@ -8,12 +8,11 @@ export const setCSP = (response: NextResponse, pathname: string) => {
     if (isPathFromStaticFiles(pathname)) {
         response.headers.set('Content-Security-Policy', staticCsp)
 
-        if(pathname.startsWith(NEXT_IMAGE_PATH)) {
+        if (pathname.startsWith(NEXT_IMAGE_PATH)) {
             response.headers.set('Cache-Control', 'public, max-age=31536000, must-revalidate')
         } else {
             response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
         }
-
     } else {
         response.headers.set('Content-Security-Policy', csp)
         response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
@@ -23,14 +22,17 @@ export const setCSP = (response: NextResponse, pathname: string) => {
     response.headers.set('Referrer-Policy', 'no-referrer')
     response.headers.set('X-Content-Type-Options', 'nosniff')
     response.headers.set('X-Ua-Compatible', 'IE=edge')
-    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload')
+    response.headers.set(
+        'Strict-Transport-Security',
+        'max-age=31536000; includeSubDomains; preload'
+    )
     response.headers.set('X-Xss-Protection', '1; mode=block')
 
     return response
 }
 
 const generateCSP = () => {
-    const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+    //const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
     const csp = `
         default-src 'self';
         style-src 'self' 

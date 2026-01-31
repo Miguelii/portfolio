@@ -8,24 +8,26 @@ import { ProjectsSectionItem } from '@/features/projects/components/projects-sec
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
 
+const PATH = '/open-source'
+
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
-const META_TITLE = `Work`
+const META_TITLE = 'Open Source'
 
 const META_DESCRIPTION =
-    'Explore professional work projects by Miguel Gonçalves. From multi-tenant SaaS platforms to booking systems serving millions of users worldwide, built with Next.js, React, TypeScript, and modern web technologies.'
+    'Freelance projects by Miguel Gonçalves. Custom websites and web applications for clients, with focus on SEO, performanc and modern design using Next.js and React.'
 
 export const metadata: Metadata = {
     title: META_TITLE,
     description: META_DESCRIPTION,
     alternates: {
-        canonical: `${WEBSITE_URL}/work`,
+        canonical: `${WEBSITE_URL}${PATH}`,
     },
     openGraph: {
         title: META_TITLE,
         description: META_DESCRIPTION,
         type: 'website',
-        url: `${WEBSITE_URL}/work`,
+        url: `${WEBSITE_URL}${PATH}`,
     },
     twitter: {
         title: META_TITLE,
@@ -34,28 +36,25 @@ export const metadata: Metadata = {
     },
 }
 
-export default function WorkPage() {
-    const projects = ProjectService.getAllWorkProjects()
+export default function OpenSourcePage() {
+    const projects = ProjectService.getAllOssProjects()
 
     return (
         <>
             <BreadcrumbSchema
                 items={[
                     { name: 'Home', url: WEBSITE_URL },
-                    { name: 'Work', url: `${WEBSITE_URL}/work` },
+                    { name: META_TITLE, url: `${WEBSITE_URL}${PATH}` },
                 ]}
             />
             <main
                 id="main"
                 className="main-bottom-padding main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
             >
-                <span className="block text-neutral font-normal text-p-small">Projects</span>
+                <span className="block text-neutral font-normal text-p-small">Open Source</span>
 
-                <div className="flex flex-col gap-5 justify-center h-full mb-4">
-                    <h1 className="text-primary text-h1">
-                        Some of the work projects I’m proud to have architected, developed and
-                        delivered.
-                    </h1>
+                <div className="flex flex-col gap-5 justify-center h-full">
+                    <h1 className="text-primary text-h1">Open Source & Developer Tools</h1>
                 </div>
 
                 <section className="flex flex-col gap-12 ">

@@ -43,4 +43,17 @@ export default class ProjectService {
                 return a.order - b.order
             })
     }
+
+    /**
+     * Retrieves all OSS projects, sorted by order param.
+     * @returns {Project[]} Sorted list of all projects.
+     */
+    static getAllOssProjects(): Project[] {
+        const data = this?.experience ?? []
+        return data
+            .filter((e) => e.type === ProjectType.OSS)
+            .sort((a, b) => {
+                return a.order - b.order
+            })
+    }
 }

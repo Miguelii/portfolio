@@ -114,7 +114,9 @@ export default function RootLayout({ children }: Props) {
             <VercelAnalytics />
             <VercelSpeedInsights />
             <ReactLenis root>
-                <body className={`${geistSans.variable} ${geistMono.variable} bg-background font-sans antialiased text-primary! min-h-screen flex flex-col`}>
+                <body
+                    className={`${geistSans.variable} ${geistMono.variable} bg-background font-sans antialiased text-primary! min-h-screen flex flex-col`}
+                >
                     <a
                         tabIndex={0}
                         aria-label="Skip to content"

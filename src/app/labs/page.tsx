@@ -8,9 +8,11 @@ import { ProjectsSectionItem } from '@/features/projects/components/projects-sec
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
 
+const PATH = '/labs'
+
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
-const META_TITLE = `Labs`
+const META_TITLE = 'Labs'
 
 const META_DESCRIPTION =
     'Explore ideas, experiments, and unfinished thoughts. Explorations web applications built with Next.js, React, and TypeScript.'
@@ -19,13 +21,13 @@ export const metadata: Metadata = {
     title: META_TITLE,
     description: META_DESCRIPTION,
     alternates: {
-        canonical: `${WEBSITE_URL}/labs`,
+        canonical: `${WEBSITE_URL}${PATH}`,
     },
     openGraph: {
         title: META_TITLE,
         description: META_DESCRIPTION,
         type: 'website',
-        url: `${WEBSITE_URL}/labs`,
+        url: `${WEBSITE_URL}${PATH}`,
     },
     twitter: {
         title: META_TITLE,
@@ -42,7 +44,7 @@ export default function LabsPage() {
             <BreadcrumbSchema
                 items={[
                     { name: 'Home', url: WEBSITE_URL },
-                    { name: 'Labs', url: `${WEBSITE_URL}/labs` },
+                    { name: META_TITLE, url: `${WEBSITE_URL}${PATH}` },
                 ]}
             />
             <main

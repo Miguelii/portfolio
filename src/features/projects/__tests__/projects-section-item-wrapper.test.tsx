@@ -11,7 +11,6 @@ describe('ProjectsSectionItemWrapper', () => {
     //@ts-expect-error no need to mock everthing
     const mockProject: Project = {
         id: '1',
-        label: 'Project',
         title: 'Test Project',
         description: 'Test description',
         link: 'https://example.com',
@@ -20,7 +19,6 @@ describe('ProjectsSectionItemWrapper', () => {
     //@ts-expect-error no need to mock everthing
     const mockProjectWithoutLink: Project = {
         id: '2',
-        label: 'Project',
         title: 'Test Project',
         description: 'Test description',
     }

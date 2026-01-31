@@ -6,9 +6,11 @@ import * as motion from 'motion/react-client'
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
 
+const PATH = '/privacy-notice'
+
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
-const META_TITLE = `Privacy Notice`
+const META_TITLE = 'Privacy Notice'
 
 const META_DESCRIPTION =
     'Privacy Notice to understand how personal data is collected, used, and protected on this website. Your privacy is important to us.'
@@ -17,13 +19,13 @@ export const metadata: Metadata = {
     title: META_TITLE,
     description: META_DESCRIPTION,
     alternates: {
-        canonical: `${WEBSITE_URL}/privacy-notice`,
+        canonical: `${WEBSITE_URL}${PATH}`,
     },
     openGraph: {
         title: META_TITLE,
         description: META_DESCRIPTION,
         type: 'website',
-        url: `${WEBSITE_URL}/privacy-notice`,
+        url: `${WEBSITE_URL}${PATH}`,
     },
     twitter: {
         title: META_TITLE,
@@ -38,7 +40,7 @@ export default function PrivacyNoticePage() {
             <BreadcrumbSchema
                 items={[
                     { name: 'Home', url: WEBSITE_URL },
-                    { name: 'Labs', url: `${WEBSITE_URL}/privacy-notice` },
+                    { name: META_TITLE, url: `${WEBSITE_URL}${PATH}` },
                 ]}
             />
 

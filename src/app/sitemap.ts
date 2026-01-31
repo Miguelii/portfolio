@@ -14,23 +14,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly',
             priority: 1,
         },
-        /* {
-            url: `${WEBSITE_URL}/work`,
+        {
+            url: `${WEBSITE_URL}/open-source`,
             lastModified: new Date(),
-            changeFrequency: 'monthly',
+            changeFrequency: 'weekly',
             priority: 0.8,
-        }, */
+        },
         {
             url: `${WEBSITE_URL}/labs`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.7,
+            priority: 0.5,
         },
         {
             url: `${WEBSITE_URL}/clients`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.7,
+            priority: 0.8,
         },
         {
             url: `${WEBSITE_URL}/privacy-notice`,

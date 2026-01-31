@@ -18,7 +18,6 @@ describe('ProjectsSectionItem', () => {
     //@ts-expect-error no need to mock everthing
     const mockProject: Project = {
         id: '1',
-        label: 'E-Commerce Platform',
         title: 'Modern Shopping Experience',
         description:
             'A full-featured e-commerce platform with <strong>React</strong> and <strong>Node.js</strong>',
@@ -26,11 +25,6 @@ describe('ProjectsSectionItem', () => {
         img: '/assets/ecommerce.png',
         link: 'https://example.com/project',
     }
-
-    /* it('should render project label', () => {
-        render(<ProjectsSectionItem {...mockProject} />)
-        expect(screen.getByText('E-Commerce Platform')).toBeInTheDocument()
-    }) */
 
     it('should render project title', () => {
         render(<ProjectsSectionItem {...mockProject} />)
@@ -47,10 +41,7 @@ describe('ProjectsSectionItem', () => {
         render(<ProjectsSectionItem {...mockProject} />)
         const image = screen.getByTestId('project-image')
         expect(image).toBeInTheDocument()
-        expect(image).toHaveAttribute(
-            'alt',
-            'Modern Shopping Experience - E-Commerce Platform screenshot'
-        )
+        expect(image).toHaveAttribute('alt', 'Modern Shopping Experience screenshot')
     })
 
     it('should not render image when img is not provided', () => {

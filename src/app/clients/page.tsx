@@ -8,9 +8,11 @@ import { ProjectsSectionItem } from '@/features/projects/components/projects-sec
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 24h
 
+const PATH = '/clients'
+
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
-const META_TITLE = `Clients`
+const META_TITLE = 'Clients'
 
 const META_DESCRIPTION =
     'Freelance projects by Miguel Gonçalves. Custom websites and web applications for clients, with focus on SEO, performanc and modern design using Next.js and React.'
@@ -19,13 +21,13 @@ export const metadata: Metadata = {
     title: META_TITLE,
     description: META_DESCRIPTION,
     alternates: {
-        canonical: `${WEBSITE_URL}/clients`,
+        canonical: `${WEBSITE_URL}${PATH}`,
     },
     openGraph: {
         title: META_TITLE,
         description: META_DESCRIPTION,
         type: 'website',
-        url: `${WEBSITE_URL}/clients`,
+        url: `${WEBSITE_URL}${PATH}`,
     },
     twitter: {
         title: META_TITLE,
@@ -42,7 +44,7 @@ export default function ClientsPage() {
             <BreadcrumbSchema
                 items={[
                     { name: 'Home', url: WEBSITE_URL },
-                    { name: 'Clients', url: `${WEBSITE_URL}/clients` },
+                    { name: META_TITLE, url: `${WEBSITE_URL}${PATH}` },
                 ]}
             />
             <main

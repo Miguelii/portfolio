@@ -49,7 +49,7 @@ export const ProjectsSectionItem = memo(function ProjectsSectionItem(project: Pr
                         {project.img && (
                             <Image
                                 src={`${project.img}?v=${buildId}`}
-                                alt={`${project.title} - ${project.label} screenshot`}
+                                alt={`${project.title} screenshot`}
                                 width={800}
                                 height={150}
                                 className="object-cover bg-transparent h-[150px] md:h-[150px] w-full md:w-[250px] lg:h-[180px] lg:w-[350px] shrink-0 flex"

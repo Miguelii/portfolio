@@ -3,51 +3,6 @@ import { ProjectType } from '@/types/ProjectTypeEnum'
 
 export const ProjectsData: Project[] = [
     {
-        id: 'nda-01',
-        title: 'Online Booking Platform - Lead',
-        description:
-            '<p><strong>Lead developer</strong> for a worldwide appointment scheduling booking platform in the public sector. <br/>Serving <strong>3M+ users worldwide</strong>, the app reduces phone line wait times by <strong>over 90%.</strong></p>',
-        techStack: ['#next.js', '#react.js', '#typescript', '#tailwind'],
-        order: 1,
-        type: ProjectType.WORK,
-        label: 'Web App',
-    },
-    {
-        id: 'nda-02',
-        title: 'Multi-Tenant Client Portal - Lead',
-        description:
-            '<p><strong>Lead developer</strong> for a multi-tenant SaaS client portal in the utilities sector, serving 20+ companies. Each with its own theme and fully integrated with a headless CMS.</p>Serving <strong>1M+ users nationwide.</strong>',
-        techStack: [
-            '#next.js',
-            '#react.js',
-            '#typescript',
-            '#tailwind',
-            '#supabase',
-            '#craftercms',
-        ],
-        order: 2,
-        type: ProjectType.WORK,
-        label: 'Web App',
-    },
-    {
-        id: 'nda-03',
-        title: 'CMS‑Powered Website & Portal - Lead',
-        description:
-            '<p><strong>Lead developer</strong> responsible for the full-stack development of a public website (powered by a headless CMS), a private client portal and an admin back office.</p>',
-        techStack: [
-            '#next.js',
-            '#react.js',
-            '#typescript',
-            '#tailwind',
-            '#supabase',
-            '#craftercms',
-        ],
-        order: 3,
-        type: ProjectType.WORK,
-        label: 'Web App',
-    },
-
-    {
         id: 'feedxboost',
         title: 'FeedxBoost - Founder',
         description:
@@ -57,7 +12,6 @@ export const ProjectsData: Project[] = [
         type: ProjectType.CLIENT,
         img: '/assets/feed_x_boost.webp',
         link: 'https://feedxboost.com/',
-        label: 'Web App',
     },
     {
         id: 'dinis-cunha',
@@ -69,7 +23,6 @@ export const ProjectsData: Project[] = [
         type: ProjectType.CLIENT,
         img: '/assets/dinis.webp',
         link: 'https://www.dinis-cunha.pt/en',
-        label: 'Website',
     },
     {
         id: 'luisa-mendes',
@@ -81,9 +34,7 @@ export const ProjectsData: Project[] = [
         type: ProjectType.CLIENT,
         img: '/assets/luis_mendes.webp',
         link: 'https://luisamendes.vercel.app/',
-        label: 'Website',
     },
-
     {
         id: 'Nuvē',
         title: 'Nuvē - Premium Cars',
@@ -94,6 +45,16 @@ export const ProjectsData: Project[] = [
         type: ProjectType.LABS,
         img: '/assets/nuve_cars.webp',
         link: 'https://nuve-cars.vercel.app',
-        label: 'Website',
+    },
+    {
+        id: 'Next.js + CrafterCMS Starter kit',
+        title: 'Next.js + CrafterCMS Starter kit',
+        description:
+            'Migrated the official <b>CrafterCMS Next.js Blueprint</b> to the latest <b>Next.js</b> and <b>React.js</b> stack. Introducing <b>App Router, Server-Side Rendering (SSR), TypeScript, Tailwind CSS</b> and several performance and code quality improvements to help developers get started.',
+        techStack: ['#next.js', '#react.js', '#typescript', '#tailwind', '#craftercms'],
+        order: 1,
+        type: ProjectType.OSS,
+        img: '/assets/crafter_next.webp',
+        link: 'https://github.com/Miguelii/craftercms-nextjs-blueprint',
     },
 ]

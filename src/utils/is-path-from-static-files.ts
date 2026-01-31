@@ -1,4 +1,3 @@
-
 export const NEXT_STATIC_PATH = '/_next/static'
 
 export const NEXT_IMAGE_PATH = '/_next/image'

@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
             '@react-three/rapier',
             'meshline',
             'jiti',
-            'lenis'
+            'lenis',
         ],
     },
     images: {
