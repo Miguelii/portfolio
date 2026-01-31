@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import ProjectsSectionItemWrapper from '../components/projects-section-item-wrapper'
-import type { Project } from '@/types/Project'
+import type { Project } from '@/features/projects/types/Project'
 
 vi.mock('@next/third-parties/google', () => ({
     sendGTMEvent: vi.fn(),

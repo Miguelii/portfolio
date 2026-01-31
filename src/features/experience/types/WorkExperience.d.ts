@@ -7,6 +7,9 @@ export type WorkExperience = {
     positions: Array<{
         jobTitle: string
         timeLabel?: string
-        achievements?: string[]
+        achievements?: Array<{
+            id: string
+            text: string
+        }>
     }>
 }

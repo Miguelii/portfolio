@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { WorkExperienceItem } from '../components/experience-section-item'
-import type { WorkExperience } from '@/types/WorkExperience'
+import type { WorkExperience } from '@/features/experience/types/WorkExperience'
 import { ClientEnv } from '@/env/client'
 
 vi.mock('next/image', () => ({
@@ -27,7 +27,16 @@ describe('WorkExperienceItem', () => {
         positions: [
             {
                 jobTitle: 'Software Engineer | Front-End',
-                achievements: ['Led development of new features', 'Mentored junior developers'],
+                achievements: [
+                    {
+                        id: '1',
+                        text: 'Led development of new features',
+                    },
+                    {
+                        id: '2',
+                        text: 'Mentored junior developers',
+                    },
+                ],
             },
         ],
     }

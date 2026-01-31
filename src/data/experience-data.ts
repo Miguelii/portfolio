@@ -1,5 +1,5 @@
 import { ClientEnv } from '@/env/client'
-import type { WorkExperience } from '@/types/WorkExperience'
+import type { WorkExperience } from '@/features/experience/types/WorkExperience'
 
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
@@ -14,7 +14,10 @@ export const ExperiencesData: WorkExperience[] = [
             {
                 jobTitle: 'Associate Software Engineer | Front-End',
                 achievements: [
-                    'Currently at FanDuel, building cool, innovative and high-impact products for the sports betting / finance world.',
+                    {
+                        id: 'achievements-blip-1',
+                        text: 'Currently at FanDuel, building cool, innovative and high-impact products for the sports betting / finance world.',
+                    },
                 ],
             },
         ],
@@ -29,11 +32,26 @@ export const ExperiencesData: WorkExperience[] = [
                 jobTitle: 'Software Engineer | Full-Stack',
                 timeLabel: 'May 2023 - Set 2025 · 2 yrs 5 mos',
                 achievements: [
-                    'Lead Developer for the Web Team, specializing in building client portals and public websites.',
-                    'Delivered products that have reached over million users worldwide, primarily using <b>React.js, Next.js and TypeScript.</b>',
-                    'Responsible for applications architecture, good practices and technical decisions.',
-                    'Engaged directly with clients through meetings and delivered training sessions on the products we developed.',
-                    'Mentored junior developers through code reviews and pair programming.',
+                    {
+                        text: 'Lead Developer for the Web Team, specializing in building client portals and public websites.',
+                        id: 'achievement-cgi-1',
+                    },
+                    {
+                        text: 'Delivered products that have reached over million users worldwide, primarily using <b>React.js, Next.js and TypeScript.</b>',
+                        id: 'achievement-cgi-2',
+                    },
+                    {
+                        text: 'Responsible for applications architecture, good practices and technical decisions.',
+                        id: 'achievement-cgi-3',
+                    },
+                    {
+                        text: 'Engaged directly with clients through meetings and delivered training sessions on the products we developed.',
+                        id: 'achievement-cgi-4',
+                    },
+                    {
+                        text: 'Mentored junior developers through code reviews and pair programming.',
+                        id: 'achievement-cgi-5',
+                    },
                 ],
             },
             {

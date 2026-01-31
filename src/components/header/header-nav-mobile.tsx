@@ -1,13 +1,13 @@
 'use client'
 
-import { type NavItem } from '@/types/NavItem'
+import { type NavItem } from '@/components/header/types/NavItem'
 import { normalizePath } from '@/utils/normalize-path'
 import { AnimatePresence, motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/utils/cn'
 import Link from 'next/link'
 import { CloseIcon } from '../icons/close-icon'
-import { useHeaderNavMobileAnimations } from './use-header-nav-mobile-animations'
+import { useHeaderNavMobileAnimations } from './hooks/use-header-nav-mobile-animations'
 import { sendGTMEvent } from '@next/third-parties/google'
 
 type Props = {

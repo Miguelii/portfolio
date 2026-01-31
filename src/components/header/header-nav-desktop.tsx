@@ -1,6 +1,6 @@
 'use client'
 
-import { type NavItem } from '@/types/NavItem'
+import { type NavItem } from '@/components/header/types/NavItem'
 import { cn } from '@/utils/cn'
 import { normalizePath } from '@/utils/normalize-path'
 import Link from 'next/link'

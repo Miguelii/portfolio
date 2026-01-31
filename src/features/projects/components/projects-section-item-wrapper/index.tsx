@@ -1,6 +1,6 @@
 'use client'
 
-import type { Project } from '@/types/Project'
+import type { Project } from '@/features/projects/types/Project'
 import { sendGTMEvent } from '@next/third-parties/google'
 import Link from 'next/link'
 import type { PropsWithChildren } from 'react'

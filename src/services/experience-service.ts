@@ -1,5 +1,5 @@
 import { ExperiencesData } from '@/data/experience-data'
-import type { WorkExperience } from '@/types/WorkExperience'
+import type { WorkExperience } from '@/features/experience/types/WorkExperience'
 
 export default class ExperienceService {
     private static experience: WorkExperience[] = ExperiencesData

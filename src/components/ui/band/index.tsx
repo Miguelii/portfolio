@@ -14,9 +14,9 @@ import {
     useRopeJoint,
     useSphericalJoint,
 } from '@react-three/rapier'
-import type { GLTFResult } from '@/types/GLTFResult'
+import type { GLTFResult } from '@/components/ui/band/types/GLTFResult'
 import { BandLighting } from './band-lighting'
-import type { BandProps } from './types'
+import type { BandProps } from './types/BandProps'
 
 useGLTF.preload('/models/card.glb')
 

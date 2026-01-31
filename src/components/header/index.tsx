@@ -6,7 +6,7 @@ import { sendGTMEvent } from '@next/third-parties/google'
 import { MenuIcon } from 'lucide-react'
 import HeaderNavDesktop from './header-nav-desktop'
 import HeaderNavMobile from './header-nav-mobile'
-import { NavList } from './constants'
+import { NavList } from './utils/constants'
 import Image from 'next/image'
 import { getBuildId } from '@/utils/get-build-id'
 

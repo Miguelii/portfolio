@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { ProjectsSectionItem } from '../components/projects-section-item'
-import type { Project } from '@/types/Project'
+import type { Project } from '@/features/projects/types/Project'
 
 vi.mock('next/image', () => ({
     default: ({ src, alt }: { src: string; alt: string }) => (

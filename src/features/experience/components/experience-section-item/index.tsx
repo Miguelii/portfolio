@@ -1,5 +1,5 @@
 import { LinkPreview } from '@/components/ui/link-preview'
-import type { WorkExperience } from '@/types/WorkExperience'
+import type { WorkExperience } from '@/features/experience/types/WorkExperience'
 import { cn } from '@/utils/cn'
 import { getBuildId } from '@/utils/get-build-id'
 import Image from 'next/image'
@@ -77,15 +77,15 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(experience: W
 
                                 {hasAchievements && (
                                     <ul className="space-y-2">
-                                        {pos?.achievements?.map((achievement, i) => (
+                                        {pos?.achievements?.map((item) => (
                                             <li
-                                                key={`achievement-${i}`}
+                                                key={`work-item-achievement-${item.id}`}
                                                 className="flex items-center gap-2 text-neutral text-p-regular"
                                             >
                                                 <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
                                                 <span
                                                     dangerouslySetInnerHTML={{
-                                                        __html: achievement,
+                                                        __html: item.text,
                                                     }}
                                                 />
                                             </li>

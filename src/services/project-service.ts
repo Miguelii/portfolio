@@ -1,6 +1,6 @@
 import { ProjectsData } from '@/data/projects-data'
-import type { Project } from '@/types/Project'
-import { ProjectType } from '@/types/ProjectTypeEnum'
+import type { Project } from '@/features/projects/types/Project'
+import { ProjectType } from '@/features/projects/types/ProjectTypeEnum'
 
 export default class ProjectService {
     private static experience: Project[] = ProjectsData
