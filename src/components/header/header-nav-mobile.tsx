@@ -35,8 +35,8 @@ export default function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Rea
                     aria-label="Mobile navigation menu"
                 >
                     <div className="w-full pt-2 pr-5 justify-end flex md:hidden">
-                        <button
-                            className="w-12 h-12 items-center justify-center flex md:hidden shrink-0"
+                        <CloseIcon
+                            className="w-12 h-12 shrink-0"
                             onClick={() => {
                                 toggleMenu()
                                 sendGTMEvent({
@@ -49,9 +49,7 @@ export default function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Rea
                             }
                             aria-expanded={isMenuOpen}
                             aria-controls="mobile-nav-menu"
-                        >
-                            <CloseIcon className="w-12 h-12 shrink-0" />
-                        </button>
+                        />
                     </div>
 
                     <nav className="flex-1 flex flex-col justify-center items-center text-center space-y-8">

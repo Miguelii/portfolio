@@ -3,12 +3,12 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { sendGTMEvent } from '@next/third-parties/google'
-import { MenuIcon } from 'lucide-react'
 import HeaderNavDesktop from './header-nav-desktop'
 import HeaderNavMobile from './header-nav-mobile'
 import { NavList } from './utils/constants'
 import Image from 'next/image'
 import { getBuildId } from '@/utils/get-build-id'
+import { MenuIcon } from '../icons/menu-icon'
 
 const buildId = getBuildId()
 
@@ -45,7 +45,7 @@ export default function Header() {
                         navList={NavList}
                     />
 
-                    <button
+                    <MenuIcon
                         className="w-12 h-12 items-center justify-center flex md:hidden flex-shrink-0"
                         onClick={() => {
                             toggleMenu()
@@ -57,9 +57,7 @@ export default function Header() {
                         aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                         aria-expanded={isMenuOpen}
                         aria-controls="mobile-nav-menu"
-                    >
-                        <MenuIcon className="w-6 h-6 shrink-0" />
-                    </button>
+                    />
 
                     <HeaderNavDesktop navList={NavList} />
                 </nav>

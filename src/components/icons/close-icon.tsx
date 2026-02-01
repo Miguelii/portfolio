@@ -11,7 +11,7 @@ export interface XIconHandle {
     stopAnimation: () => void
 }
 
-interface XIconProps extends HTMLAttributes<HTMLDivElement> {
+interface XIconProps extends HTMLAttributes<HTMLButtonElement> {
     size?: number
 }
 
@@ -41,7 +41,7 @@ const CloseIcon = forwardRef<XIconHandle, XIconProps>(
         })
 
         const handleMouseEnter = useCallback(
-            (e: React.MouseEvent<HTMLDivElement>) => {
+            (e: React.MouseEvent<HTMLButtonElement>) => {
                 if (!isControlledRef.current) {
                     controls.start('animate')
                 } else {
@@ -52,7 +52,7 @@ const CloseIcon = forwardRef<XIconHandle, XIconProps>(
         )
 
         const handleMouseLeave = useCallback(
-            (e: React.MouseEvent<HTMLDivElement>) => {
+            (e: React.MouseEvent<HTMLButtonElement>) => {
                 if (!isControlledRef.current) {
                     controls.start('normal')
                 } else {
@@ -61,36 +61,45 @@ const CloseIcon = forwardRef<XIconHandle, XIconProps>(
             },
             [controls, onMouseLeave]
         )
+
         return (
-            <div
-                className={cn(
-                    `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-                    className
-                )}
+            <button
+                className="w-12 h-12 items-center justify-center flex md:hidden shrink-0"
+                onClick={props.onClick ?? undefined}
+                aria-label={props['aria-label']}
+                aria-expanded={props['aria-expanded']}
+                aria-controls={props['aria-controls']}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 {...props}
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={size}
-                    height={size}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                <div
+                    className={cn(
+                        `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
+                        className
+                    )}
                 >
-                    <motion.path variants={pathVariants} animate={controls} d="M18 6 6 18" />
-                    <motion.path
-                        transition={{ delay: 0.2 }}
-                        variants={pathVariants}
-                        animate={controls}
-                        d="m6 6 12 12"
-                    />
-                </svg>
-            </div>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={size}
+                        height={size}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <motion.path variants={pathVariants} animate={controls} d="M18 6 6 18" />
+                        <motion.path
+                            transition={{ delay: 0.2 }}
+                            variants={pathVariants}
+                            animate={controls}
+                            d="m6 6 12 12"
+                        />
+                    </svg>
+                </div>
+            </button>
         )
     }
 )
