@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useEffectEvent } from 'react'
-import { motion } from 'framer-motion'
 import { usePreloaderAnimations } from '../../hooks/use-preloader-animations'
+import { motion } from 'motion/react'
 
 const words = ['Hello', 'Bonjour', 'Ciao', 'やあ', 'Hallå', 'Guten tag', 'Hallo', 'Olá']
 

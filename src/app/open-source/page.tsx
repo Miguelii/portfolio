@@ -15,7 +15,7 @@ const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 const META_TITLE = 'Open Source'
 
 const META_DESCRIPTION =
-    'Freelance projects by Miguel Gonçalves. Custom websites and web applications for clients, with focus on SEO, performanc and modern design using Next.js and React.'
+    'Open source projects and engineering tools built to help developers build faster, more reliable, and modern web applications.'
 
 export const metadata: Metadata = {
     title: META_TITLE,
@@ -54,7 +54,7 @@ export default function OpenSourcePage() {
                 <span className="block text-neutral font-normal text-p-small">Open Source</span>
 
                 <div className="flex flex-col gap-5 justify-center h-full">
-                    <h1 className="text-primary text-h1">Open Source & Developer Tools</h1>
+                    <h1 className="text-primary text-h1">Crafting tools for the SWE community</h1>
                 </div>
 
                 <section className="flex flex-col gap-12 ">
