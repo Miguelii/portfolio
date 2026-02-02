@@ -6,18 +6,6 @@ export const NavList: NavItem[] = [
         url: '/',
     },
     {
-        title: 'OSS',
-        url: '/open-source',
-    },
-    {
-        title: 'Clients',
-        url: '/clients',
-    },
-    /* {
-        title: 'Labs',
-        url: '/labs',
-    }, */
-    {
         title: 'linkedin',
         url: 'https://www.linkedin.com/in/miguelgoncalves18/',
         external: true,

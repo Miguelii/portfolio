@@ -45,7 +45,7 @@ export default class ProjectService {
     }
 
     /**
-     * Retrieves all OSS projects, sorted by order param.
+     * Retrieves all Open-Source projects, sorted by order param.
      * @returns {Project[]} Sorted list of all projects.
      */
     static getAllOssProjects(): Project[] {

@@ -15,18 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
-            url: `${WEBSITE_URL}/open-source`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
-            url: `${WEBSITE_URL}/labs`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.5,
-        },
-        {
             url: `${WEBSITE_URL}/clients`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
