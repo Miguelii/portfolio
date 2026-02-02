@@ -1,26 +1,26 @@
 import * as motion from 'motion/react-client'
 import type { AboutParagraph } from './types/AboutParagraph'
 
+const paragraphs: AboutParagraph[] = [
+    {
+        id: 'intro',
+        text: `<strong>Software Engineer (Front-End)</strong> building products used by millions of users worldwide.`,
+    },
+    {
+        id: 'stack',
+        text: `Mainly working with <strong>JavaScript/TypeScript</strong>, specializing in <strong>React.js</strong> and <strong>Next.js</strong>.`,
+    },
+    {
+        id: 'stack-v2',
+        text: `Focused on performance, clean architecture and best practices, with active open-source contributions to the React world.`,
+    },
+    {
+        id: 'passion',
+        text: `I&apos;m passionate about creating products that make a real impact on people’s lives through code.`,
+    },
+] as const
+
 export function AboutSection() {
-    const startYear = 2022
-    const currentYear = new Date().getFullYear()
-    const yearDiff = currentYear - startYear
-
-    const paragraphs: AboutParagraph[] = [
-        {
-            id: 'intro',
-            text: `Software Engineer (Front-End) with a background in <strong>Computer Science Engineering</strong> and over <strong>${yearDiff}+ years</strong> of experience building SaaS products used by millions of users worldwide.`,
-        },
-        {
-            id: 'stack',
-            text: `Specialized in <strong>JavaScript</strong> and <strong>TypeScript</strong>, with strong expertise in <strong>React.js</strong> and <strong>Next.js</strong>, always focused on performance, clean architecture, and best practices.`,
-        },
-        {
-            id: 'passion',
-            text: `I&apos;m passionate about creating products that make a real impact on people’s lives through code.`,
-        },
-    ]
-
     return (
         <section className="flex flex-col gap-12 container-padding border-b border-b-divider">
             <motion.h2
