@@ -26,7 +26,7 @@ type ButtonProps = LinkProps | ActionButtonProps
 
 type VARIANT = 'primary' | 'secondary'
 
-export default function Button(props: ButtonProps) {
+export function Button(props: ButtonProps) {
     const VARIANTS = {
         primary: {
             inner: 'bg-neutral text-white/0',

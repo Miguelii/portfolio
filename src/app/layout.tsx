@@ -3,15 +3,15 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
 import { ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
-import ProvidersWrapper from '@/providers/providers-wrapper'
-import Header from '@/components/header'
 import { ClientEnv } from '@/env/client'
 import { getBuildId } from '@/utils/get-build-id'
 import { CookieConsent } from '@/components/cookie-consent'
-import Footer from '@/components/footer'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { SpeedInsights as VercelSpeedInsights } from '@vercel/speed-insights/next'
 import { HeadMetadata } from '@/components/head-metadata'
+import { Header } from '@/components/header'
+import { ProvidersWrapper } from '@/providers/providers-wrapper'
+import { Footer } from '@/components/footer'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',

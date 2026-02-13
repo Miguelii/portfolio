@@ -16,7 +16,7 @@ type Props = {
     navList: NavItem[]
 }
 
-export default function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Props>) {
+export function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Props>) {
     const currPath = usePathname()
 
     const { menuVariants, itemVariants } = useHeaderNavMobileAnimations()

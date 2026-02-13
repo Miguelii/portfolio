@@ -6,10 +6,10 @@ import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createCookieConsentAction } from '@/actions/create-cookie-consent-action'
 import { cn } from '../../utils/cn'
-import Button from '../ui/button'
 import { tryCatch } from '../../utils/try-catch'
 import { sendGTMEvent } from '@next/third-parties/google'
 import CookieConsentManager from '@/utils/cookie-consent-manager'
+import { Button } from '../ui/button'
 
 export function CookieConsent() {
     const [isOpen, setIsOpen] = useState(false)

@@ -11,7 +11,7 @@ type Props = {
     navList: NavItem[]
 }
 
-export default function HeaderNavDesktop({ navList }: Readonly<Props>) {
+export function HeaderNavDesktop({ navList }: Readonly<Props>) {
     const currPath = usePathname()
 
     return (

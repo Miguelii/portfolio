@@ -13,7 +13,7 @@ type Props = PropsWithChildren<{
     className?: string
 }>
 
-export default function ProjectsSectionItemWrapper({ children, project, className }: Props) {
+export function ProjectsSectionItemWrapper({ children, project, className }: Props) {
     if (project.link) {
         return (
             <Link

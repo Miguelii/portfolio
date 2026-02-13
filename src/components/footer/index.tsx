@@ -3,7 +3,7 @@ import { SocialItem } from '../ui/social-item'
 import { LinkedinIcon } from '../icons/linkedin-icon'
 import { GithubIcon } from '../icons/github-icon'
 
-export default function Footer() {
+export function Footer() {
     return (
         <section className="border-t border-t-divider w-full flex">
             <footer className="main-container mx-auto w-full h-fit sm:h-24 border-x border-x-divider py-8 sm:py-0 px-5 md:px-10 flex flex-col gap-6 sm:gap-0 sm:flex-row justify-between items-start sm:items-center">

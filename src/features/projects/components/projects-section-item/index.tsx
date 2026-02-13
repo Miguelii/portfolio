@@ -4,8 +4,8 @@ import { cn } from '@/utils/cn'
 import { getBuildId } from '@/utils/get-build-id'
 import type { Project } from '@/features/projects/types/Project'
 import Image from 'next/image'
-import ProjectsSectionItemWrapper from '../projects-section-item-wrapper'
 import { memo } from 'react'
+import { ProjectsSectionItemWrapper } from '../projects-section-item-wrapper'
 
 const buildId = getBuildId()
 

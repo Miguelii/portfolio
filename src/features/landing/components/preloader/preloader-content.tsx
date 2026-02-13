@@ -6,7 +6,7 @@ import { motion } from 'motion/react'
 
 const words = ['Hello', 'Bonjour', 'Ciao', 'やあ', 'Hallå', 'Guten tag', 'Hallo', 'Olá']
 
-export default function PreloaderContent() {
+export function PreloaderContent() {
     const { slideUp, opacity, setDimension, setIndex, index, dimension, curve } =
         usePreloaderAnimations()
 

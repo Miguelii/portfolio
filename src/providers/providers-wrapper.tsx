@@ -4,7 +4,7 @@ import { PreloaderProvider } from './preloader-provider'
 
 type Props = PropsWithChildren
 
-export default function ProvidersWrapper({ children }: Props) {
+export function ProvidersWrapper({ children }: Props) {
     return (
         <HistoryProvider>
             <PreloaderProvider>{children}</PreloaderProvider>
