@@ -7,7 +7,7 @@ import { use, useEffect, useState } from 'react'
 
 const BandCanvas = dynamic(() => import('@/components/ui/band'), {
     ssr: false,
-    loading: () => <div className="w-full canvas-h" />,
+    loading: () => <div className="w-full canvas-h bg-background" />,
 })
 
 export function LandingSectionWithBand() {
@@ -27,9 +27,9 @@ export function LandingSectionWithBand() {
         <div className="w-full flex-1 mx-auto p-5 md:p-8 lg:p-10 border-b border-b-divider">
             <section className="h-[540px] relative flex flex-col justify-center">
                 <motion.div
-                    initial={{ x: -25, opacity: 1 }}
-                    animate={shouldAnimate ? { x: 0, opacity: 1 } : { x: -25, opacity: 0 }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    initial={{ x: -30, opacity: 0 }}
+                    animate={shouldAnimate ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
+                    transition={{ duration: 0.6, delay: shouldAnimate ? 0.8 : 0 }}
                     className="flex flex-col w-full max-w-lg 2xl:max-w-2xl gap-4 justify-center"
                 >
                     <motion.h1
@@ -46,7 +46,7 @@ export function LandingSectionWithBand() {
 
                     <motion.p
                         initial={{ x: -30, opacity: 0 }}
-                        animate={shouldAnimate ? { x: 0, opacity: 1 } : { x: -30, opacity: 0 }}
+                        animate={shouldAnimate ? { x: 0, opacity: 1 } : { x: -25, opacity: 0 }}
                         transition={{ duration: 0.6, delay: shouldAnimate ? 0.8 : 0 }}
                         className="text-p-large font-medium text-neutral leading-relaxed"
                     >

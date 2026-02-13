@@ -24,7 +24,13 @@ extend({ MeshLineGeometry, MeshLineMaterial })
 
 const BandCanvas = memo(function BandCanvas() {
     return (
-        <Canvas camera={{ fov: 25, position: [0, 0, 16] }} className="z-[900]">
+        <Canvas
+            camera={{ fov: 25, position: [0, 0, 16] }}
+            className="z-[900]"
+            style={{ contain: 'strict' }}
+            dpr={[1, 2]}
+            gl={{ antialias: true, alpha: true }}
+        >
             <Physics colliders={false} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
                 <Band />
             </Physics>

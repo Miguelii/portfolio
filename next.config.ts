@@ -44,6 +44,7 @@ const nextConfig: NextConfig = {
                 pathname: '/models/**',
             },
         ],
+        minimumCacheTTL: 2678400, // 31 days
     },
     env: {
         NEXT_PUBLIC_BUILD_TIMESTAMP: buildTimestamp,
