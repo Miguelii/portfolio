@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { ProjectsSectionItem } from '../components/projects-section-item'
 import type { Project } from '@/features/projects/types/Project'
+import { ProjectsSectionItem } from '../components/projects-section-item'
 
 vi.mock('next/image', () => ({
     default: ({ src, alt }: { src: string; alt: string }) => (
@@ -10,9 +10,12 @@ vi.mock('next/image', () => ({
     ),
 }))
 
-vi.mock('../components/projects-section-item-wrapper', () => ({
-    default: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-}))
+vi.mock(import('../components/projects-section-item-wrapper'), async (importOriginal) => {
+    const actual = await importOriginal()
+    return {
+        ...actual,
+    }
+})
 
 describe('ProjectsSectionItem', () => {
     //@ts-expect-error no need to mock everthing
