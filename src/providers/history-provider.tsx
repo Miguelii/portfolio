@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useState, useLayoutEffect, type PropsWithChildren } from 'react'
+import { createContext, useState, useLayoutEffect, type PropsWithChildren, useMemo } from 'react'
 import { usePathname } from 'next/navigation'
 import { useIsMounted } from '@/hooks/use-is-mounted'
 
@@ -20,11 +20,12 @@ export const HistoryProvider = ({ children }: HistoryProviderProps) => {
 
     useLayoutEffect(() => {
         if (isMounted()) {
-            if (pathname !== history[history.length - 1])
-                setHistory((prevHistory) => [...prevHistory, pathname])
+            if (pathname !== history.at(-1)) setHistory((prevHistory) => [...prevHistory, pathname])
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pathname, isMounted])
 
-    return <HistoryContext.Provider value={{ history }}>{children}</HistoryContext.Provider>
+    const value: HistoryContextProps = useMemo(() => ({ history }), [history])
+
+    return <HistoryContext.Provider value={value}>{children}</HistoryContext.Provider>
 }

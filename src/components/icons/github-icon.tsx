@@ -3,17 +3,8 @@
 import { cn } from '@/utils/cn'
 import type { Variants } from 'motion/react'
 import { motion, useAnimation } from 'motion/react'
-import type { HTMLAttributes } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
-
-export interface GithubIconHandle {
-    startAnimation: () => void
-    stopAnimation: () => void
-}
-
-interface GithubIconProps extends HTMLAttributes<HTMLDivElement> {
-    size?: number
-}
+import type { IconHandle, IconProps } from './types'
 
 const bodyVariants: Variants = {
     normal: {
@@ -60,7 +51,7 @@ const tailVariants: Variants = {
     },
 }
 
-const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
+const GithubIcon = forwardRef<IconHandle, IconProps>(
     ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
         const bodyControls = useAnimation()
         const tailControls = useAnimation()
@@ -83,36 +74,40 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
         })
 
         const handleMouseEnter = useCallback(
-            async (e: React.MouseEvent<HTMLDivElement>) => {
-                if (!isControlledRef.current) {
+            async (e: React.MouseEvent<HTMLButtonElement>) => {
+                if (isControlledRef.current) {
+                    onMouseEnter?.(e)
+                } else {
                     bodyControls.start('animate')
                     await tailControls.start('draw')
                     tailControls.start('wag')
-                } else {
-                    onMouseEnter?.(e)
                 }
             },
             [bodyControls, onMouseEnter, tailControls]
         )
 
         const handleMouseLeave = useCallback(
-            (e: React.MouseEvent<HTMLDivElement>) => {
-                if (!isControlledRef.current) {
+            (e: React.MouseEvent<HTMLButtonElement>) => {
+                if (isControlledRef.current) {
+                    onMouseLeave?.(e)
+                } else {
                     bodyControls.start('normal')
                     tailControls.start('normal')
-                } else {
-                    onMouseLeave?.(e)
                 }
             },
             [bodyControls, tailControls, onMouseLeave]
         )
 
         return (
-            <div
+            <button
                 className={cn(
                     `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
                     className
                 )}
+                onClick={props.onClick ?? undefined}
+                aria-label={props['aria-label']}
+                aria-expanded={props['aria-expanded']}
+                aria-controls={props['aria-controls']}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 {...props}
@@ -141,7 +136,7 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
                         d="M9 18c-4.51 2-5-2-7-2"
                     />
                 </svg>
-            </div>
+            </button>
         )
     }
 )

@@ -3,16 +3,19 @@
 import { cn } from '@/utils/cn'
 import type { Variants } from 'motion/react'
 import { motion, useAnimation } from 'motion/react'
-import type { HTMLAttributes } from 'react'
 import { forwardRef, useImperativeHandle, useRef } from 'react'
+import type { IconHandle, IconProps } from './types'
 
-export interface MenuIconHandle {
-    startAnimation: () => void
-    stopAnimation: () => void
+const getRotation = (custom: number) => {
+    if (custom === 1) return 45
+    if (custom === 3) return -45
+    return 0
 }
 
-interface MenuIconProps extends HTMLAttributes<HTMLButtonElement> {
-    size?: number
+const getY = (custom: number) => {
+    if (custom === 1) return 6
+    if (custom === 3) return -6
+    return 0
 }
 
 const lineVariants: Variants = {
@@ -22,8 +25,8 @@ const lineVariants: Variants = {
         opacity: 1,
     },
     animate: (custom: number) => ({
-        rotate: custom === 1 ? 45 : custom === 3 ? -45 : 0,
-        y: custom === 1 ? 6 : custom === 3 ? -6 : 0,
+        rotate: getRotation(custom),
+        y: getY(custom),
         opacity: custom === 2 ? 0 : 1,
         transition: {
             type: 'spring',
@@ -33,79 +36,77 @@ const lineVariants: Variants = {
     }),
 }
 
-const MenuIcon = forwardRef<MenuIconHandle, MenuIconProps>(
-    ({ className, size = 28, ...props }, ref) => {
-        const controls = useAnimation()
-        const isControlledRef = useRef(false)
+const MenuIcon = forwardRef<IconHandle, IconProps>(({ className, size = 28, ...props }, ref) => {
+    const controls = useAnimation()
+    const isControlledRef = useRef(false)
 
-        useImperativeHandle(ref, () => {
-            isControlledRef.current = true
+    useImperativeHandle(ref, () => {
+        isControlledRef.current = true
 
-            return {
-                startAnimation: () => controls.start('animate'),
-                stopAnimation: () => controls.start('normal'),
-            }
-        })
+        return {
+            startAnimation: () => controls.start('animate'),
+            stopAnimation: () => controls.start('normal'),
+        }
+    })
 
-        return (
-            <button
-                className="w-12 h-12 items-center justify-center flex md:hidden flex-shrink-0"
-                onClick={props.onClick ?? undefined}
-                aria-label={props['aria-label']}
-                aria-expanded={props['aria-expanded']}
-                aria-controls={props['aria-controls']}
-                {...props}
+    return (
+        <button
+            className="w-12 h-12 items-center justify-center flex md:hidden flex-shrink-0"
+            onClick={props.onClick ?? undefined}
+            aria-label={props['aria-label']}
+            aria-expanded={props['aria-expanded']}
+            aria-controls={props['aria-controls']}
+            {...props}
+        >
+            <div
+                className={cn(
+                    `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
+                    className
+                )}
             >
-                <div
-                    className={cn(
-                        `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-                        className
-                    )}
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={size}
+                    height={size}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width={size}
-                        height={size}
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    >
-                        <motion.line
-                            x1="4"
-                            y1="6"
-                            x2="20"
-                            y2="6"
-                            variants={lineVariants}
-                            animate={controls}
-                            custom={1}
-                        />
-                        <motion.line
-                            x1="4"
-                            y1="12"
-                            x2="20"
-                            y2="12"
-                            variants={lineVariants}
-                            animate={controls}
-                            custom={2}
-                        />
-                        <motion.line
-                            x1="4"
-                            y1="18"
-                            x2="20"
-                            y2="18"
-                            variants={lineVariants}
-                            animate={controls}
-                            custom={3}
-                        />
-                    </svg>
-                </div>
-            </button>
-        )
-    }
-)
+                    <motion.line
+                        x1="4"
+                        y1="6"
+                        x2="20"
+                        y2="6"
+                        variants={lineVariants}
+                        animate={controls}
+                        custom={1}
+                    />
+                    <motion.line
+                        x1="4"
+                        y1="12"
+                        x2="20"
+                        y2="12"
+                        variants={lineVariants}
+                        animate={controls}
+                        custom={2}
+                    />
+                    <motion.line
+                        x1="4"
+                        y1="18"
+                        x2="20"
+                        y2="18"
+                        variants={lineVariants}
+                        animate={controls}
+                        custom={3}
+                    />
+                </svg>
+            </div>
+        </button>
+    )
+})
 
 MenuIcon.displayName = 'MenuIcon'
 

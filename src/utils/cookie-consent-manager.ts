@@ -1,6 +1,7 @@
 'use client'
 
 import type { CookieConsent } from '@/types/CookieConsent'
+import { Logger } from './logger'
 
 // client side logic
 
@@ -26,7 +27,11 @@ export default class CookieConsentManager {
 
             return json
         } catch (error) {
-            console.error('Error getting cookie consent:', error)
+            Logger({
+                level: 'error',
+                error,
+                context: 'getCookieConsent',
+            })
             return null
         }
     }

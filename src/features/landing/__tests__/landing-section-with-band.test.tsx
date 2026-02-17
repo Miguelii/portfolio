@@ -12,7 +12,7 @@ vi.mock('next/dynamic', () => ({
 }))
 
 vi.mock('motion/react-client', async (importOriginal) => {
-    const actual = (await importOriginal()) as Record<string, PropsWithChildren>
+    const actual: Record<string, PropsWithChildren> = await importOriginal()
     return {
         ...actual,
         default: {

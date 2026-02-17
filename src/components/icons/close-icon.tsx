@@ -3,17 +3,8 @@
 import { cn } from '@/utils/cn'
 import type { Variants } from 'motion/react'
 import { motion, useAnimation } from 'motion/react'
-import type { HTMLAttributes } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
-
-export interface XIconHandle {
-    startAnimation: () => void
-    stopAnimation: () => void
-}
-
-interface XIconProps extends HTMLAttributes<HTMLButtonElement> {
-    size?: number
-}
+import type { IconHandle, IconProps } from './types'
 
 const pathVariants: Variants = {
     normal: {
@@ -26,7 +17,7 @@ const pathVariants: Variants = {
     },
 }
 
-const CloseIcon = forwardRef<XIconHandle, XIconProps>(
+const CloseIcon = forwardRef<IconHandle, IconProps>(
     ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
         const controls = useAnimation()
         const isControlledRef = useRef(false)
@@ -42,10 +33,10 @@ const CloseIcon = forwardRef<XIconHandle, XIconProps>(
 
         const handleMouseEnter = useCallback(
             (e: React.MouseEvent<HTMLButtonElement>) => {
-                if (!isControlledRef.current) {
-                    controls.start('animate')
-                } else {
+                if (isControlledRef.current) {
                     onMouseEnter?.(e)
+                } else {
+                    controls.start('animate')
                 }
             },
             [controls, onMouseEnter]
@@ -53,10 +44,10 @@ const CloseIcon = forwardRef<XIconHandle, XIconProps>(
 
         const handleMouseLeave = useCallback(
             (e: React.MouseEvent<HTMLButtonElement>) => {
-                if (!isControlledRef.current) {
-                    controls.start('normal')
-                } else {
+                if (isControlledRef.current) {
                     onMouseLeave?.(e)
+                } else {
+                    controls.start('normal')
                 }
             },
             [controls, onMouseLeave]

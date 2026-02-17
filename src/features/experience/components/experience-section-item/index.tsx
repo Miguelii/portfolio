@@ -41,7 +41,10 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(experience: W
                     const hasAchievements = (pos?.achievements?.length ?? 0) > 0
 
                     return (
-                        <div key={index} className="flex gap-3 sm:gap-6 relative">
+                        <div
+                            key={`work-exp-pos-${index}-${pos.jobTitle}`}
+                            className="flex gap-3 sm:gap-6 relative"
+                        >
                             <div className="flex flex-col items-center w-13 shrink-0 relative">
                                 {positionsLength > 1 && (
                                     <>

@@ -52,8 +52,8 @@ const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
     const card = useRef<RapierRigidBody>(null)
 
     // states
-    const [dragged, drag] = useState<THREE.Vector3 | false>(false)
-    const [hovered, hover] = useState<boolean>(false)
+    const [dragged, setDragged] = useState<THREE.Vector3 | false>(false)
+    const [hovered, setHovered] = useState<boolean>(false)
 
     useEffect(() => {
         if (hovered) {
@@ -159,7 +159,7 @@ const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
     const handleGrabCard = useCallback((e: ThreeEvent<PointerEvent>) => {
         const target = e.target as HTMLElement
         target.releasePointerCapture(e.pointerId)
-        drag(false)
+        setDragged(false)
     }, [])
 
     const handleReleaseCard = useCallback(
@@ -174,7 +174,7 @@ const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
             target.setPointerCapture(e.pointerId)
 
             // Executa a função drag
-            drag(new THREE.Vector3().copy(e.point).sub(vec.copy(newCardLoc)))
+            setDragged(new THREE.Vector3().copy(e.point).sub(vec.copy(newCardLoc)))
         },
         [vec]
     )
@@ -239,8 +239,8 @@ const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
                         scale={2.75}
                         position={[-0.01, -3, -0.05]}
                         rotation={[0, -Math.PI / 2, 0]}
-                        onPointerOver={() => hover(true)}
-                        onPointerOut={() => hover(false)}
+                        onPointerOver={() => setHovered(true)}
+                        onPointerOut={() => setHovered(false)}
                         onPointerUp={(e) => handleGrabCard(e)}
                         onPointerDown={(e) => handleReleaseCard(e)}
                     >

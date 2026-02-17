@@ -1,11 +1,11 @@
 'use client'
 
-import { type NavItem } from '@/components/header/types/NavItem'
 import { cn } from '@/utils/cn'
 import { normalizePath } from '@/utils/normalize-path'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { sendGTMEvent } from '@next/third-parties/google'
+import type { NavItem } from './types'
 
 type Props = {
     navList: NavItem[]

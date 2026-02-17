@@ -1,5 +1,5 @@
 import * as motion from 'motion/react-client'
-import type { AboutParagraph } from './types/AboutParagraph'
+import type { AboutParagraph } from './types'
 
 const paragraphs: AboutParagraph[] = [
     {

@@ -2,7 +2,7 @@ import { ExperiencesData } from '@/data/experience-data'
 import type { WorkExperience } from '@/features/experience/types/WorkExperience'
 
 export default class ExperienceService {
-    private static experience: WorkExperience[] = ExperiencesData
+    private static readonly experience: WorkExperience[] = ExperiencesData
 
     /**
      * Retrieves all work experience, sorted by period in descending order (most recent first).
