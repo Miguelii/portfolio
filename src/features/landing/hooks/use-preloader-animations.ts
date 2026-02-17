@@ -4,8 +4,8 @@ import { useState } from 'react'
 export const usePreloaderAnimations = () => {
     const [index, setIndex] = useState(0)
     const [dimension, setDimension] = useState({
-        width: typeof window !== 'undefined' ? window.innerWidth : 1440,
-        height: typeof window !== 'undefined' ? window.innerHeight : 900,
+        width: globalThis?.window === undefined ? 1440 : window.innerWidth,
+        height: globalThis?.window === undefined ? 900 : window.innerHeight,
     })
 
     const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`

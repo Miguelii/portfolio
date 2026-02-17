@@ -1,6 +1,5 @@
 'use client'
 
-import { type NavItem } from '@/components/header/types/NavItem'
 import { normalizePath } from '@/utils/normalize-path'
 import { AnimatePresence, motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
@@ -9,6 +8,7 @@ import Link from 'next/link'
 import { CloseIcon } from '../icons/close-icon'
 import { useHeaderNavMobileAnimations } from './hooks/use-header-nav-mobile-animations'
 import { sendGTMEvent } from '@next/third-parties/google'
+import type { NavItem } from './types'
 
 type Props = {
     isMenuOpen: boolean
@@ -61,9 +61,11 @@ export function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Pr
                             const isSelected = itemPathNormalized === currPathNormalized
 
                             return (
-                                <motion.div variants={itemVariants} key={`mobile-nav-${index}`}>
+                                <motion.div
+                                    variants={itemVariants}
+                                    key={`mobile-nav-item-${itemPathNormalized}-${index}-${isSelected}`}
+                                >
                                     <Link
-                                        key={`mobile-nav-item-${itemPathNormalized}-${index}-${isSelected}`}
                                         href={item.url}
                                         prefetch={!item.external}
                                         aria-current={isSelected ? 'page' : undefined}

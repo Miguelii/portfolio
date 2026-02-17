@@ -14,7 +14,7 @@ export function LandingSectionWithBand() {
     const context = use(PreloaderContext)
     const isPreloaderLoading = context?.isLoading ?? false
     const showPreloader = context?.showPreloader ?? false
-    const [shouldAnimate, setShouldAnimate] = useState(!showPreloader ? true : false)
+    const [shouldAnimate, setShouldAnimate] = useState(!showPreloader)
 
     useEffect(() => {
         if (!showPreloader) return

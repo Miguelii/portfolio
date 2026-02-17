@@ -3,7 +3,7 @@ import type { Project } from '@/features/projects/types/Project'
 import { ProjectType } from '@/features/projects/types/ProjectTypeEnum'
 
 export default class ProjectService {
-    private static experience: Project[] = ProjectsData
+    private static readonly experience: Project[] = ProjectsData
 
     /**
      * Retrieves all work projects, sorted by order param.

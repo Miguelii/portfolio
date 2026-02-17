@@ -12,7 +12,7 @@ type Props = {
 
 export const PreloaderContext = createContext<Props | undefined>(undefined)
 
-export function PreloaderProvider({ children }: PropsWithChildren) {
+export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
     const currPath = usePathname()
     const { history } = use(HistoryContext)
 

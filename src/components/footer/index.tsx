@@ -27,7 +27,7 @@ export function Footer() {
                         className="w-12 h-12 flex items-center justify-center"
                         eventName="footer_social_linkedin"
                     >
-                        <LinkedinIcon className="w-8 h-8 shrink-0" />
+                        <LinkedinIcon className="contents" size={18} />
                     </SocialItem>
                     <SocialItem
                         href="https://github.com/Miguelii"
@@ -35,7 +35,7 @@ export function Footer() {
                         className="w-12 h-12 flex items-center justify-center"
                         eventName="footer_social_github"
                     >
-                        <GithubIcon className="w-8 h-8 shrink-0" />
+                        <GithubIcon className="contents" size={18} />
                     </SocialItem>
                 </div>
             </footer>

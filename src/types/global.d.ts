@@ -1,5 +1,10 @@
-interface Window {
-    dataLayer: unknown[]
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    gtag: (...args: any[]) => void
+export {}
+
+declare global {
+    var dataLayer: unknown[]
+    var gtag: (
+        command: 'config' | 'set' | 'event' | 'consent',
+        targetId: string,
+        config?: Record<string, unknown>
+    ) => void
 }

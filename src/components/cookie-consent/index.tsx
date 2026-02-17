@@ -13,9 +13,9 @@ import { Button } from '../ui/button'
 
 export function CookieConsent() {
     const [isOpen, setIsOpen] = useState(false)
-    const [hide, setHideState] = useState(false)
+    const [hide, setHide] = useState(false)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [isPending, startTransition] = useTransition()
+    const [_, startTransition] = useTransition()
     const router = useRouter()
 
     const currPath = usePathname()
@@ -26,27 +26,25 @@ export function CookieConsent() {
 
     const handler = (allow: boolean) => {
         setIsOpen(false)
-        setHideState(true)
+        setHide(true)
 
         startTransition(async () => {
-            Promise.all([
-                tryCatch(async () => {
-                    // 1. updates google dataLayer analytics values
-                    window?.gtag('consent', 'update', {
-                        ad_storage: allow ? 'granted' : 'denied',
-                        analytics_storage: allow ? 'granted' : 'denied',
-                    })
+            await tryCatch(async () => {
+                // 1. updates google dataLayer analytics values
+                globalThis?.gtag('consent', 'update', {
+                    ad_storage: allow ? 'granted' : 'denied',
+                    analytics_storage: allow ? 'granted' : 'denied',
+                })
 
-                    // 2. sends event google analytics
-                    sendGTMEvent({
-                        event: 'consentUpdated',
-                        value: allow ? 'granted' : 'denied',
-                    })
+                // 2. sends event google analytics
+                sendGTMEvent({
+                    event: 'consentUpdated',
+                    value: allow ? 'granted' : 'denied',
+                })
 
-                    // 3. Create cookie
-                    createCookieConsentAction({ allowAnalytics: allow })
-                }),
-            ])
+                // 3. Create cookie
+                createCookieConsentAction({ allowAnalytics: allow })
+            })
             router.refresh()
         })
     }
@@ -56,11 +54,11 @@ export function CookieConsent() {
             () => {
                 const hasCookieConsent = consentCookie != null
 
-                setIsOpen(hasCookieConsent ? false : true)
+                setIsOpen(!hasCookieConsent)
                 if (hasCookieConsent) {
                     setIsOpen(false)
                     setTimeout(() => {
-                        setHideState(true)
+                        setHide(true)
                     }, 700)
                 }
             },
@@ -77,9 +75,9 @@ export function CookieConsent() {
         <div
             className={cn(
                 'fixed z-[999] bottom-0 left-0 right-0 p-4 sm:p-0 sm:left-4 sm:bottom-4 w-full sm:max-w-md duration-700',
-                !isOpen
-                    ? 'transition-[opacity,transform] translate-y-8 opacity-0'
-                    : 'transition-[opacity,transform] translate-y-0 opacity-100',
+                isOpen
+                    ? 'transition-[opacity,transform] translate-y-0 opacity-100'
+                    : 'transition-[opacity,transform] translate-y-8 opacity-0',
                 hide && 'hidden'
             )}
         >
@@ -102,7 +100,7 @@ export function CookieConsent() {
                             <br />
                             <span className="text-xs items-center ">
                                 By clicking <span className="font-normal text-primary">Accept</span>
-                                ,you agree to our use of cookies.
+                                <span>,you agree to our use of cookies.</span>
                             </span>
                         </p>
                     </div>

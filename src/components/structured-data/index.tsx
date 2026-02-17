@@ -64,7 +64,9 @@ export function WebSiteSchema() {
     )
 }
 
-export function BreadcrumbSchema({ items }: { items: Array<{ name: string; url: string }> }) {
+export function BreadcrumbSchema({
+    items,
+}: Readonly<{ items: Array<{ name: string; url: string }> }>) {
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',

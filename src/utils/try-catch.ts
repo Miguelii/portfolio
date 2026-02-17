@@ -1,3 +1,5 @@
+import { Logger } from './logger'
+
 export type Result<T, E = Error> = {
     data: T | null
     error: E | null
@@ -11,10 +13,11 @@ export async function tryCatch<T, E = Error>(
         const data = await fn()
         return { data, error: null }
     } catch (error) {
-        console.error(`[tryCatch Error] ${context ? `in ${context}:` : ''}`, {
-            message: error instanceof Error ? error.message : error,
-            stack: error instanceof Error ? error.stack : undefined,
-            timestamp: new Date().toISOString(),
+        Logger({
+            level: 'error',
+            error,
+            context,
+            prefix: '[tryCatch]',
         })
         return { data: null, error: error as E }
     }
