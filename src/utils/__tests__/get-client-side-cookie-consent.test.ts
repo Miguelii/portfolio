@@ -11,7 +11,7 @@ describe('getClientSideCookieConsent', () => {
 
     it('returns null if document is undefined', () => {
         const originalDocument = globalThis.document
-        // @ts-expect-error
+        // @ts-expect-error - Simulate document being undefined
         delete globalThis.document
 
         const result = getClientSideCookieConsent()
