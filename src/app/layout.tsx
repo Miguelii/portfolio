@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import { ViewTransition } from 'react'
+import { Suspense, ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
 import { ClientEnv } from '@/env/client'
 import { getBuildId } from '@/utils/get-build-id'
@@ -12,6 +12,7 @@ import { HeadMetadata } from '@/components/head-metadata'
 import { Header } from '@/components/header'
 import { ProvidersWrapper } from '@/providers/providers-wrapper'
 import { Footer } from '@/components/footer'
+import { GtmScript } from '@/components/gtm-script'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -107,10 +108,13 @@ export const metadata: Metadata = {
 
 type Props = LayoutProps<'/'>
 
-export default function RootLayout({ children }: Props) {
+export default async function RootLayout({ children }: Props) {
     return (
         <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
             <HeadMetadata />
+            <Suspense>
+                <GtmScript />
+            </Suspense>
             <VercelAnalytics />
             <VercelSpeedInsights />
             <ReactLenis root>
