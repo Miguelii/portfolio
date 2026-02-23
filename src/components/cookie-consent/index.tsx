@@ -8,8 +8,8 @@ import { createCookieConsentAction } from '@/actions/create-cookie-consent-actio
 import { cn } from '../../utils/cn'
 import { tryCatch } from '../../utils/try-catch'
 import { sendGTMEvent } from '@next/third-parties/google'
-import CookieConsentManager from '@/utils/cookie-consent-manager'
 import { Button } from '../ui/button'
+import { getClientSideCookieConsent } from '@/utils/get-client-side-cookie-consent'
 
 export function CookieConsent() {
     const [isOpen, setIsOpen] = useState(false)
@@ -20,7 +20,7 @@ export function CookieConsent() {
 
     const currPath = usePathname()
 
-    const consentCookie = CookieConsentManager.getCookieConsent()
+    const consentCookie = getClientSideCookieConsent()
 
     const isHomePage = currPath === '/'
 

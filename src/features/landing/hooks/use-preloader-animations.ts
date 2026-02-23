@@ -1,3 +1,5 @@
+'use client'
+
 import { type Variants } from 'motion'
 import { useState } from 'react'
 

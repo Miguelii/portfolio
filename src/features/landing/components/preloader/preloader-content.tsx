@@ -36,7 +36,7 @@ export function PreloaderContent() {
             exit="exit"
             className="fixed top-0 left-0 z-[99] flex h-screen w-screen items-center justify-center bg-neutral-dark"
         >
-            {dimension.width > 0 && (
+            {dimension?.width > 0 && (
                 <>
                     <motion.p
                         style={{ minHeight: '63px' }}
@@ -55,6 +55,7 @@ export function PreloaderContent() {
                         aria-hidden="true"
                     >
                         <motion.path
+                            suppressHydrationWarning
                             fill={'var(--neutral-dark)'}
                             variants={curve}
                             initial="initial"
