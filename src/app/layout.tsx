@@ -112,9 +112,7 @@ export default async function RootLayout({ children }: Props) {
     return (
         <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
             <HeadMetadata />
-            <Suspense>
-                <GtmScript />
-            </Suspense>
+            <GtmScript />
             <VercelAnalytics />
             <VercelSpeedInsights />
             <ReactLenis root>
