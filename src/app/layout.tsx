@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import { Suspense, ViewTransition } from 'react'
+import { ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
 import { ClientEnv } from '@/env/client'
 import { getBuildId } from '@/utils/get-build-id'
