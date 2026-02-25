@@ -1,12 +1,7 @@
 import { GTM_ID } from '@/utils/constants'
-import { getServerSideCookieConsent } from '@/utils/get-server-side-cookie-consent'
 import Script from 'next/script'
 
-export async function GtmScript() {
-    const consentCookie = await getServerSideCookieConsent()
-
-    const allowAnalytics = consentCookie?.analytics === true
-
+export function GtmScript() {
     return (
         <>
             <Script
@@ -25,8 +20,8 @@ export async function GtmScript() {
 					gtag('js', new Date());
 
                     gtag('consent', 'default', {
-                        'ad_storage': '${allowAnalytics ? 'granted' : 'denied'}',
-                        'analytics_storage': '${allowAnalytics ? 'granted' : 'denied'}',
+                        'ad_storage': 'denied',
+                        'analytics_storage': 'denied',
                     });
 
                     gtag('config', '${GTM_ID}', { 
