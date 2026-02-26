@@ -21,7 +21,7 @@ export default function NotFound() {
             </head>
             <main
                 id="main"
-                className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider container-padding lg:pt-6! mb-14 lg:mb-24"
+                className="main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider container-padding lg:pt-6! pb-14 lg:pb-24!"
             >
                 <div className="relative flex flex-col items-center justify-center h-full overflow-hidden">
                     {/* Video — full size, behind everything */}
@@ -30,7 +30,7 @@ export default function NotFound() {
                         autoPlay
                         loop
                         playsInline
-                        className="w-full object-scale-down z-[9] bg-background h-[350px] lg:h-[500px]"
+                        className="w-full object-scale-down z-[9] bg-background h-[350px] lg:h-[400px]"
                         poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%ffffff00'%3E%3C/rect%3E%3C/svg%3E"
                     >
                         <source src={VIDEO_URL} type="video/mp4" />
@@ -39,13 +39,13 @@ export default function NotFound() {
                     {/* 404 overlay */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                         <div className="flex items-center justify-center w-full">
-                            <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none z-10 left-[0%] lg:left-[10%] top-[25%] absolute [text-shadow:4px_4px_0px_rgba(0,0,0,0.4)]">
+                            <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none z-10 left-[0%] lg:left-[8%] top-[20%] absolute [text-shadow:4px_4px_0px_rgba(0,0,0,0.4)]">
                                 4
                             </span>
                             <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none">
                                 0
                             </span>
-                            <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none z-10 right-[2%] lg:right-[12%] top-[25%] absolute [text-shadow:4px_4px_0px_rgba(0,0,0,0.4)]">
+                            <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none z-10 right-[2%] lg:right-[10%] top-[20%] absolute [text-shadow:4px_4px_0px_rgba(0,0,0,0.4)]">
                                 4
                             </span>
                         </div>
