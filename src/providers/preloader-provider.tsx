@@ -1,6 +1,14 @@
 'use client'
 
-import { createContext, use, useEffect, useMemo, useState, type PropsWithChildren } from 'react'
+import {
+    createContext,
+    use,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+    type PropsWithChildren,
+} from 'react'
 import { HistoryContext } from './history-provider'
 import { usePathname } from 'next/navigation'
 
@@ -22,13 +30,14 @@ export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
 
     const [isLoading, setIsLoading] = useState(showPreloader)
 
+    const hasRun = useRef(false)
+
     useEffect(() => {
-        if (!showPreloader) return
+        if (!showPreloader || hasRun.current) return
+        hasRun.current = true
 
         const timer = setTimeout(() => {
             setIsLoading(false)
-            document.body.style.cursor = 'default'
-            window.scrollTo(0, 0)
         }, 2000)
 
         return () => clearTimeout(timer)

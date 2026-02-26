@@ -10,12 +10,15 @@ vi.mock('next/image', () => ({
     ),
 }))
 
-vi.mock(import('../components/projects-section-item-wrapper'), async (importOriginal) => {
-    const actual = await importOriginal()
-    return {
-        ...actual,
+vi.mock(
+    import('../components/projects-section-item/projects-section-item-wrapper'),
+    async (importOriginal) => {
+        const actual = await importOriginal()
+        return {
+            ...actual,
+        }
     }
-})
+)
 
 describe('ProjectsSectionItem', () => {
     //@ts-expect-error no need to mock everthing

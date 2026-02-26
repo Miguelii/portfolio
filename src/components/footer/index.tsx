@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { SocialItem } from '../ui/social-item'
-import { LinkedinIcon } from '../icons/linkedin-icon'
-import { GithubIcon } from '../icons/github-icon'
+import { SocialItem } from '@/components/ui/social-item'
+import { LinkedinIcon } from '@/components/icons/linkedin-icon'
+import { GithubIcon } from '@/components/icons/github-icon'
 
 export function Footer() {
     return (

@@ -6,7 +6,7 @@ import { sendGTMEvent } from '@next/third-parties/google'
 import { NavList } from './utils/constants'
 import Image from 'next/image'
 import { getBuildId } from '@/utils/get-build-id'
-import { MenuIcon } from '../icons/menu-icon'
+import { MenuIcon } from '@/components/icons/menu-icon'
 import { HeaderNavDesktop } from './header-nav-desktop'
 import { HeaderNavMobile } from './header-nav-mobile'
 

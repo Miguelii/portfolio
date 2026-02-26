@@ -14,9 +14,8 @@ import {
     useRopeJoint,
     useSphericalJoint,
 } from '@react-three/rapier'
-import type { GLTFResult } from '@/components/ui/band/types/GLTFResult'
 import { BandLighting } from './band-lighting'
-import type { BandProps } from './types/BandProps'
+import type { BandProps, GLTFResult } from './types'
 
 useGLTF.preload('/models/card.glb')
 
@@ -39,7 +38,10 @@ const BandCanvas = memo(function BandCanvas() {
     )
 })
 
-// Main Component
+type RapierRigidBodyWithLerped = RapierRigidBody & {
+    lerped: THREE.Vector3
+}
+
 const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
     // 3d Model geometry and materials
     const { nodes, materials } = useGLTF('/models/card.glb') as unknown as GLTFResult
@@ -56,9 +58,10 @@ const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
     const [hovered, setHovered] = useState<boolean>(false)
 
     useEffect(() => {
-        if (hovered) {
-            document.body.style.cursor = dragged ? 'grabbing' : 'grab'
-            return () => void (document.body.style.cursor = 'auto')
+        if (!hovered) return
+        document.body.style.cursor = dragged ? 'grabbing' : 'grab'
+        return () => {
+            document.body.style.cursor = 'auto'
         }
     }, [hovered, dragged])
 
@@ -126,25 +129,24 @@ const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
         // lerp fix, when dragging
         if (j3.current && j2.current && j1.current && band.current && fixed.current) {
             ;[j1, j2].forEach((ref) => {
+                if (!ref.current) return
+
                 // @ts-expect-error lerping
-                if (ref.current && !ref.current.lerped) {
+                if (!ref.current.lerped) {
                     // @ts-expect-error lerping
                     ref.current.lerped = new THREE.Vector3().copy(ref.current.translation())
-
-                    const clampedDistance = Math.max(
-                        0.1,
-                        Math.min(
-                            1,
-                            // @ts-expect-error lerping
-                            ref.current.lerped.distanceTo(ref.current.translation())
-                        )
-                    )
-                    // @ts-expect-error lerping
-                    ref.current.lerped.lerp(
-                        ref.current.translation(),
-                        delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
-                    )
                 }
+
+                const lerped = (ref.current as RapierRigidBodyWithLerped).lerped
+
+                const clampedDistance = Math.max(
+                    0.1,
+                    Math.min(1, lerped.distanceTo(ref.current.translation()))
+                )
+                lerped.lerp(
+                    ref.current.translation(),
+                    delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
+                )
             })
         }
 

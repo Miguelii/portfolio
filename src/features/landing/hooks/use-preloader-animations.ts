@@ -11,7 +11,7 @@ const opacity: Variants = {
         opacity: 0.75,
         transition: { duration: 1, delay: 0.2 },
     },
-} as const
+}
 
 const slideUp: Variants = {
     initial: {
@@ -21,7 +21,7 @@ const slideUp: Variants = {
         top: '-100vh',
         transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
-} as const
+}
 
 export const usePreloaderAnimations = () => {
     const [index, setIndex] = useState(0)

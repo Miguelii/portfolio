@@ -1,5 +1,5 @@
-import { PersonSchema, WebSiteSchema } from '../structured-data'
-import { getBuildId } from '../../utils/get-build-id'
+import { PersonSchema, WebSiteSchema } from '@/components/structured-data'
+import { getBuildId } from '@/utils/get-build-id'
 
 const buildId = getBuildId()
 

@@ -1,7 +1,7 @@
 import * as motion from 'motion/react-client'
 import ExperienceService from '@/services/experience-service'
-import { useExperienceSectionAnimations } from '../../hooks/use-experience-section-animations'
-import { WorkExperienceItem } from '../experience-section-item'
+import { useExperienceSectionAnimations } from '@/features/experience/hooks/use-experience-section-animations'
+import { WorkExperienceItem } from './experience-section-item'
 
 export function ExperienceSection() {
     const workExperienceData = ExperienceService.getAllWorkExperience()

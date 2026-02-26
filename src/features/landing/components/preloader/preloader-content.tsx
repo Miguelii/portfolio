@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { usePreloaderAnimations } from '../../hooks/use-preloader-animations'
+import { usePreloaderAnimations } from '@/features/landing/hooks/use-preloader-animations'
 import { motion } from 'motion/react'
 
 const words = ['Hello', 'Bonjour', 'Ciao', 'やあ', 'Hallå', 'Guten tag', 'Hallo', 'Olá'] as const
@@ -41,6 +41,7 @@ export function PreloaderContent() {
                         initial="initial"
                         animate="enter"
                         aria-hidden="true"
+                        exit="exit"
                     >
                         <span className="mr-2 block h-[10px] w-[10px] rounded-full bg-background"></span>
                         {words[index]}

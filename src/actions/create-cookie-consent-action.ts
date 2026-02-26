@@ -2,8 +2,8 @@
 
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
-import { GTM_ID_WITHOUT_G } from '../utils/constants'
-import { tryCatch } from '../utils/try-catch'
+import { GTM_ID_WITHOUT_G } from '@/utils/constants'
+import { tryCatch } from '@/utils/try-catch'
 import { Logger } from '@/utils/logger'
 
 type Props = {

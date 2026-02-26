@@ -5,10 +5,10 @@ import { useEffect, useEffectEvent, useState, useTransition } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createCookieConsentAction } from '@/actions/create-cookie-consent-action'
-import { cn } from '../../utils/cn'
-import { tryCatch } from '../../utils/try-catch'
+import { cn } from '@/utils/cn'
+import { tryCatch } from '@/utils/try-catch'
 import { sendGTMEvent } from '@next/third-parties/google'
-import { Button } from '../ui/button'
+import { Button } from '@/components/ui/button'
 import { getClientSideCookieConsent } from '@/utils/get-client-side-cookie-consent'
 
 export function CookieConsent() {

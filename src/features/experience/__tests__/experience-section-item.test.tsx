@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { WorkExperienceItem } from '../components/experience-section-item'
+import { WorkExperienceItem } from '../components/experience-section/experience-section-item'
 import type { WorkExperience } from '@/features/experience/types/WorkExperience'
 import { ClientEnv } from '@/env/client'
 
