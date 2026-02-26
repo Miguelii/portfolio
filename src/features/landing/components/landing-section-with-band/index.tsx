@@ -3,7 +3,7 @@
 import { PreloaderContext } from '@/providers/preloader-provider'
 import * as motion from 'motion/react-client'
 import dynamic from 'next/dynamic'
-import { use, useEffect, useState } from 'react'
+import { use } from 'react'
 
 const BandCanvas = dynamic(() => import('@/components/ui/band'), {
     ssr: false,
@@ -14,14 +14,8 @@ export function LandingSectionWithBand() {
     const context = use(PreloaderContext)
     const isPreloaderLoading = context?.isLoading ?? false
     const showPreloader = context?.showPreloader ?? false
-    const [shouldAnimate, setShouldAnimate] = useState(!showPreloader)
 
-    useEffect(() => {
-        if (!showPreloader) return
-        if (!isPreloaderLoading) {
-            setShouldAnimate(true)
-        }
-    }, [isPreloaderLoading, showPreloader])
+    const shouldAnimate = !showPreloader || !isPreloaderLoading
 
     return (
         <div className="w-full flex-1 mx-auto p-5 md:p-8 lg:p-10 border-b border-b-divider">
@@ -36,7 +30,7 @@ export function LandingSectionWithBand() {
                         role="presentation"
                         aria-hidden="true"
                         style={{ willChange: 'transform' }}
-                        initial={{ x: -0 }}
+                        initial={{ x: 0 }}
                         animate={shouldAnimate ? { x: 0, opacity: 1 } : { x: 0, opacity: 0 }}
                         transition={{ duration: 0.8, delay: shouldAnimate ? 0.6 : 0 }}
                         className="text-hero text-start w-full"
@@ -58,10 +52,10 @@ export function LandingSectionWithBand() {
                     <motion.div
                         className="hidden lg:block absolute -inset-10"
                         initial={{ opacity: 0 }}
-                        animate={shouldAnimate ? { opacity: 1 } : { opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         transition={{
                             duration: 0.4,
-                            delay: !shouldAnimate || !showPreloader ? 0 : 0.8,
+                            delay: showPreloader === false ? 0 : 0.8,
                         }}
                     >
                         <div className="relative w-full canvas-h">

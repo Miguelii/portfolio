@@ -1,31 +1,28 @@
 'use client'
 
-import { useEffect, useEffectEvent } from 'react'
+import { useEffect } from 'react'
 import { usePreloaderAnimations } from '../../hooks/use-preloader-animations'
 import { motion } from 'motion/react'
 
-const words = ['Hello', 'Bonjour', 'Ciao', 'やあ', 'Hallå', 'Guten tag', 'Hallo', 'Olá']
+const words = ['Hello', 'Bonjour', 'Ciao', 'やあ', 'Hallå', 'Guten tag', 'Hallo', 'Olá'] as const
 
 export function PreloaderContent() {
     const { slideUp, opacity, setDimension, setIndex, index, dimension, curve } =
         usePreloaderAnimations()
 
-    const initDimensionOnRender = useEffectEvent(() => {
-        setDimension({ width: window.innerWidth, height: window.innerHeight })
-    })
+    useEffect(() => {
+        const handler = () => setDimension({ width: window.innerWidth, height: window.innerHeight })
+
+        handler()
+
+        window.addEventListener('resize', handler)
+        return () => window.removeEventListener('resize', handler)
+    }, [setDimension])
 
     useEffect(() => {
-        initDimensionOnRender()
-    }, [])
-
-    useEffect(() => {
-        if (index == words.length - 1) return
-        setTimeout(
-            () => {
-                setIndex(index + 1)
-            },
-            index == 0 ? 1000 : 150
-        )
+        if (index >= words.length - 1) return
+        const timeout = setTimeout(() => setIndex(index + 1), index === 0 ? 1000 : 150)
+        return () => clearTimeout(timeout)
     }, [index, setIndex])
 
     return (
@@ -36,11 +33,10 @@ export function PreloaderContent() {
             exit="exit"
             className="fixed top-0 left-0 z-[99] flex h-dvh w-screen items-center justify-center bg-neutral-dark"
         >
-            {dimension?.width > 0 && (
+            {dimension.width > 0 && (
                 <>
                     <motion.p
-                        style={{ minHeight: '63px' }}
-                        className="absolute z-[1] flex items-center text-background text-[42px]"
+                        className="min-h-[63px] absolute z-[1] flex items-center text-background text-[42px]"
                         variants={opacity}
                         initial="initial"
                         animate="enter"
