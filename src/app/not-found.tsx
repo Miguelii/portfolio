@@ -39,13 +39,13 @@ export default function NotFound() {
                     {/* 404 overlay */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                         <div className="flex items-center justify-center w-full">
-                            <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none z-10 left-[0%] lg:left-[8%] top-[20%] absolute [text-shadow:4px_4px_0px_rgba(0,0,0,0.4)]">
+                            <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none z-10 left-[0%] lg:left-[7%] xl:left-[10%] top-[20%] xl:top-[18%] absolute [text-shadow:4px_4px_0px_rgba(0,0,0,0.4)]">
                                 4
                             </span>
                             <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none">
                                 0
                             </span>
-                            <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none z-10 right-[2%] lg:right-[10%] top-[20%] absolute [text-shadow:4px_4px_0px_rgba(0,0,0,0.4)]">
+                            <span className="text-8xl md:text-[15vw] font-black leading-none text-primary select-none z-10 right-[2%] lg:right-[9%] xl:right-[12%] top-[20%] xl:top-[18%] absolute [text-shadow:4px_4px_0px_rgba(0,0,0,0.4)]">
                                 4
                             </span>
                         </div>
