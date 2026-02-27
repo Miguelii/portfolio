@@ -1,0 +1,96 @@
+import { describe, expect, it, vi, beforeEach } from 'vitest'
+import { renderHook, act } from '@testing-library/react'
+import { useMediaQuery } from '../use-media-query'
+
+const createMatchMediaMock = (matches: boolean) => {
+    const listeners: ((e: MediaQueryListEvent) => void)[] = []
+
+    return {
+        matches,
+        addEventListener: vi.fn((_: string, cb: (e: MediaQueryListEvent) => void) => {
+            listeners.push(cb)
+        }),
+        removeEventListener: vi.fn((_: string, cb: (e: MediaQueryListEvent) => void) => {
+            const index = listeners.indexOf(cb)
+            if (index > -1) listeners.splice(index, 1)
+        }),
+        trigger: (newMatches: boolean) => {
+            listeners.forEach((cb) => cb({ matches: newMatches } as MediaQueryListEvent))
+        },
+    }
+}
+
+describe('useMediaQuery', () => {
+    beforeEach(() => {
+        vi.restoreAllMocks()
+        vi.unstubAllGlobals()
+    })
+
+    it('should return false before the effect runs', () => {
+        vi.stubGlobal('matchMedia', vi.fn().mockReturnValue(createMatchMediaMock(true)))
+
+        const { result } = renderHook(() => useMediaQuery('(min-width: 1024px)'))
+
+        // useState initial value is false before effect
+        expect(typeof result.current).toBe('boolean')
+    })
+
+    it('should return true when query matches', () => {
+        vi.stubGlobal('matchMedia', vi.fn().mockReturnValue(createMatchMediaMock(true)))
+
+        const { result } = renderHook(() => useMediaQuery('(min-width: 1024px)'))
+
+        expect(result.current).toBe(true)
+    })
+
+    it('should return false when query does not match', () => {
+        vi.stubGlobal('matchMedia', vi.fn().mockReturnValue(createMatchMediaMock(false)))
+
+        const { result } = renderHook(() => useMediaQuery('(min-width: 1024px)'))
+
+        expect(result.current).toBe(false)
+    })
+
+    it('should update when the media query match changes', () => {
+        const mock = createMatchMediaMock(false)
+        vi.stubGlobal('matchMedia', vi.fn().mockReturnValue(mock))
+
+        const { result } = renderHook(() => useMediaQuery('(min-width: 1024px)'))
+        expect(result.current).toBe(false)
+
+        act(() => {
+            mock.trigger(true)
+        })
+
+        expect(result.current).toBe(true)
+    })
+
+    it('should remove event listener on unmount', () => {
+        const mock = createMatchMediaMock(true)
+        vi.stubGlobal('matchMedia', vi.fn().mockReturnValue(mock))
+
+        const { unmount } = renderHook(() => useMediaQuery('(min-width: 1024px)'))
+
+        expect(mock.addEventListener).toHaveBeenCalledOnce()
+
+        unmount()
+
+        expect(mock.removeEventListener).toHaveBeenCalledOnce()
+    })
+
+    it('should re-run effect when query changes', () => {
+        const mock = createMatchMediaMock(false)
+        vi.stubGlobal('matchMedia', vi.fn().mockReturnValue(mock))
+
+        const { rerender } = renderHook(({ query }) => useMediaQuery(query), {
+            initialProps: { query: '(min-width: 1024px)' },
+        })
+
+        expect(mock.addEventListener).toHaveBeenCalledTimes(1)
+
+        rerender({ query: '(min-width: 768px)' })
+
+        expect(mock.addEventListener).toHaveBeenCalledTimes(2)
+        expect(mock.removeEventListener).toHaveBeenCalledTimes(1)
+    })
+})

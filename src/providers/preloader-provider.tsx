@@ -14,7 +14,6 @@ import { usePathname } from 'next/navigation'
 
 type Props = {
     isLoading: boolean
-    setIsLoading: (loading: boolean) => void
     showPreloader: boolean
 }
 
@@ -24,9 +23,9 @@ export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
     const currPath = usePathname()
     const { history } = use(HistoryContext)
 
-    const historyIsEmpty = history.length === 0
-
-    const showPreloader = historyIsEmpty && currPath !== '/' ? false : historyIsEmpty
+    // Lazy initializer runs once at mount: preloader only shows when the very
+    // first page of the session is '/', never on subsequent navigations to '/'.
+    const [showPreloader] = useState(() => history.length === 0 && currPath === '/')
 
     const [isLoading, setIsLoading] = useState(showPreloader)
 
@@ -43,10 +42,7 @@ export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
         return () => clearTimeout(timer)
     }, [showPreloader])
 
-    const value: Props = useMemo(
-        () => ({ isLoading, setIsLoading, showPreloader }),
-        [isLoading, setIsLoading, showPreloader]
-    )
+    const value: Props = useMemo(() => ({ isLoading, showPreloader }), [isLoading, showPreloader])
 
     return <PreloaderContext.Provider value={value}>{children}</PreloaderContext.Provider>
 }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { isPathFromStaticFiles } from '../is-path-from-static-files'
+import { BAND_CARD_MODEL_URL } from '../constants'
 
 describe('isPathFromStaticFiles', () => {
     describe('Next.js internal routes', () => {
@@ -30,7 +31,7 @@ describe('isPathFromStaticFiles', () => {
         })
 
         it('should return true for /models routes', () => {
-            expect(isPathFromStaticFiles('/models/model.glb')).toBe(true)
+            expect(isPathFromStaticFiles(BAND_CARD_MODEL_URL)).toBe(true)
         })
 
         it('should return true for robots.txt', () => {

@@ -5,6 +5,8 @@ import * as motion from 'motion/react-client'
 import dynamic from 'next/dynamic'
 import { use } from 'react'
 import { useLandingSectionDelay } from '@/features/landing/hooks/use-landing-section-delay'
+import { useMediaQuery } from '@/hooks/use-media-query'
+import { BAND_MIN_WIDTH } from '@/utils/constants'
 
 const BandCanvas = dynamic(() => import('@/components/ui/band'), {
     ssr: false,
@@ -17,6 +19,7 @@ export function LandingSectionWithBand() {
     const showPreloader = context?.showPreloader ?? false
 
     const shouldAnimate = !showPreloader || !isPreloaderLoading
+    const isDesktop = useMediaQuery(`(min-width: ${BAND_MIN_WIDTH})`)
 
     const { TITLE_DIV_DELAY, H1_DELAY, P_DELAY, CANVAS_DELAY } =
         useLandingSectionDelay(showPreloader)
@@ -31,13 +34,10 @@ export function LandingSectionWithBand() {
                     className="flex flex-col w-full max-w-lg 2xl:max-w-2xl gap-4 justify-center"
                 >
                     <motion.h1
-                        role="presentation"
-                        aria-hidden="true"
-                        style={{ willChange: 'transform' }}
                         initial={{ x: 0 }}
                         animate={shouldAnimate ? { x: 0, opacity: 1 } : { x: 0, opacity: 0 }}
                         transition={{ duration: 0.8, delay: shouldAnimate ? H1_DELAY : 0 }}
-                        className="text-hero text-start w-full"
+                        className="text-hero text-start w-full text-balance"
                     >
                         Crafting Experiences, Delivering Results
                     </motion.h1>
@@ -52,14 +52,14 @@ export function LandingSectionWithBand() {
                     </motion.p>
                 </motion.div>
 
-                {shouldAnimate && (
+                {isDesktop && (
                     <motion.div
-                        className="hidden lg:block absolute -inset-10"
+                        className="absolute -inset-10"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{
                             duration: 0.4,
-                            delay: showPreloader ? CANVAS_DELAY : 0,
+                            delay: shouldAnimate ? CANVAS_DELAY : 0,
                         }}
                     >
                         <div className="relative w-full canvas-h">

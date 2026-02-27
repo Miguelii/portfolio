@@ -2,6 +2,11 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { LandingSectionWithBand } from '../components/landing-section-with-band'
 import type { PropsWithChildren } from 'react'
+import * as useMediaQueryModule from '@/hooks/use-media-query'
+
+vi.mock('@/hooks/use-media-query', () => ({
+    useMediaQuery: () => true,
+}))
 
 vi.mock('next/dynamic', () => ({
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -36,8 +41,15 @@ describe('LandingSectionWithBand', () => {
         ).toBeInTheDocument()
     })
 
-    it('should render BandCanvas by default', () => {
+    it('should render BandCanvas when isDesktop is true', () => {
+        vi.spyOn(useMediaQueryModule, 'useMediaQuery').mockReturnValue(true)
         render(<LandingSectionWithBand />)
         expect(screen.getByTestId('band-canvas')).toBeInTheDocument()
+    })
+
+    it('should not render BandCanvas when isDesktop is false', () => {
+        vi.spyOn(useMediaQueryModule, 'useMediaQuery').mockReturnValue(false)
+        render(<LandingSectionWithBand />)
+        expect(screen.queryByTestId('band-canvas')).not.toBeInTheDocument()
     })
 })

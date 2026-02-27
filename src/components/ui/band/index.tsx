@@ -16,8 +16,9 @@ import {
 } from '@react-three/rapier'
 import { BandLighting } from './band-lighting'
 import type { BandProps, GLTFResult } from './types'
+import { BAND_CARD_MODEL_URL } from '@/utils/constants'
 
-useGLTF.preload('/models/card.glb')
+useGLTF.preload(BAND_CARD_MODEL_URL)
 
 extend({ MeshLineGeometry, MeshLineMaterial })
 
@@ -44,7 +45,7 @@ type RapierRigidBodyWithLerped = RapierRigidBody & {
 
 const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
     // 3d Model geometry and materials
-    const { nodes, materials } = useGLTF('/models/card.glb') as unknown as GLTFResult
+    const { nodes, materials } = useGLTF(BAND_CARD_MODEL_URL) as unknown as GLTFResult
 
     const band = useRef<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>>>(null)
     const fixed = useRef<RapierRigidBody>(null)
@@ -124,7 +125,7 @@ const Band = memo(function Band({ maxSpeed = 50, minSpeed = 10 }: BandProps) {
         if (fixed.current) curve.points[3].copy(fixed.current.translation())
 
         // @ts-expect-error geometry points
-        if (band.current) band.current.geometry.setPoints(curve.getPoints(32))
+        if (band.current) band.current.geometry.setPoints(curve.getPoints(16))
 
         // lerp fix, when dragging
         if (j3.current && j2.current && j1.current && band.current && fixed.current) {
