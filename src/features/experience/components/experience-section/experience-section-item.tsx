@@ -25,7 +25,7 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(experience: W
                 />
                 <div className="flex flex-col gap-1">
                     <span className="font-bold text-p-regular">{experience.company}</span>
-                    <span className="text-neutral text-p-small font-medium">
+                    <span className="text-neutral text-p-smallest font-medium">
                         {experience.totalTime}
                     </span>
                 </div>
@@ -72,7 +72,7 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(experience: W
                                         {pos.jobTitle}
                                     </span>
                                     {pos.timeLabel && (
-                                        <span className="text-neutral text-p-small font-medium">
+                                        <span className="text-neutral text-p-smallest font-medium">
                                             {pos.timeLabel}
                                         </span>
                                     )}
@@ -83,7 +83,7 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(experience: W
                                         {pos?.achievements?.map((item) => (
                                             <li
                                                 key={`work-item-achievement-${item.id}`}
-                                                className="flex items-center gap-2 text-neutral text-p-regular"
+                                                className="flex items-center gap-2 text-neutral text-p-smallest"
                                             >
                                                 <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
                                                 <span
