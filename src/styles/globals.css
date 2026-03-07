@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import './theme-colors.css';
+@import './theme-typographic.css';
+
+a {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+}
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+body {
+    /* Prevents CLS from animations */
+    &.no-scroll {
+        overflow: hidden;
+        height: 100vh;
+    }
+}
+
+::selection {
+    background: var(--neutral) !important;
+    color: var(--background) !important;
+}
+
+.container-padding {
+    @apply p-5 md:p-10;
+}
+
+.main-container {
+    @apply max-w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-[1440px] w-full mx-auto;
+}
+
+.main-bottom-padding {
+    @apply pb-15 md:pb-20 lg:pb-24;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.2s;
+}
+
+.project-section-grid {
+    @apply grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8 md:gap-4;
+}
+
+.canvas-h {
+    @apply h-[350px] md:h-[400px] lg:h-[620px];
+}
+
+.not-found-h {
+    @apply min-h-[calc(100vh-159px)];
+}
+
+/* 
+* Dont allow touch on canvas, better experience for mobile users
+*/
+canvas {
+    touch-action: none !important;
+}
