@@ -23,7 +23,7 @@ export function LandingSectionWithBand() {
     return (
         <div className="w-full flex-1 mx-auto px-5 pb-8 pt-12 md:p-8 lg:p-10 border-b border-b-divider">
             <section className="lg:h-[540px] relative flex flex-col justify-center">
-                <motion.div className="flex flex-col w-full max-w-lg 2xl:max-w-2xl gap-4 justify-center">
+                <motion.div className="flex flex-col w-full max-w-full md:max-w-lg 2xl:max-w-2xl gap-4 justify-center">
                     <motion.h1
                         initial={{ y: -30, opacity: 0, filter: 'blur(8px)' }}
                         animate={
