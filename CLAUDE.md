@@ -144,7 +144,6 @@ Defined in global CSS; use these variables rather than hardcoded colors:
 ```
 --background:    #fbfbfd
 --primary:       #262626
---red:           #ff7070
 --neutral:       #737373
 --divider:       #e5e5e7
 --neutral-dark:  #1d1d1d
