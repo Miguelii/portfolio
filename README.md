@@ -1,6 +1,15 @@
-# Miguel Gonçalves — Developer Portfolio 💻🚀
+# Miguel Goncalves — Developer Portfolio
 
-🌐 Live: [miguelgoncalves.dev](https://www.miguelgoncalves.dev)
+Live at [miguelgoncalves.dev](https://www.miguelgoncalves.dev)
+
+## Stack
+
+- **Next.js 16** with App Router and Turbopack
+- **Sanity** as headless CMS with an embedded Studio at `/studio`
+- **Three.js** with React Three Fiber, Drei, and Rapier for 3D scenes
+- **Motion** for animations
+- **Tailwind CSS 4**
+- **Vitest** and Testing Library for tests
 
 ## License
 
