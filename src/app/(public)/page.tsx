@@ -1,0 +1,36 @@
+import { ExperienceSection } from '@/features/experience/components/experience-section'
+import { LandingSection } from '@/features/landing/components/landing-section'
+import { ProfilePageSchema } from '@/components/structured-data'
+import { AboutSection } from '@/components/about'
+import { Suspense } from 'react'
+import { Preloader } from '@/features/landing/components/preloader'
+import { getAboutSection } from '@/sanity/api/get-about-section'
+import { getLandingSection } from '@/sanity/api/get-landing-section'
+import { BandLazy } from '@/features/landing/components/band-lazy'
+
+// sanityClientFetch controls the revalidate time
+export const dynamic = 'force-static'
+
+export default async function Home() {
+    const landingSection = getLandingSection()
+    const aboutSection = getAboutSection()
+
+    return (
+        <>
+            <ProfilePageSchema />
+            <main
+                id="main"
+                className="main-bottom-padding main-container border-x border-x-divider"
+            >
+                <Preloader />
+                <LandingSection modelPromise={landingSection}>
+                    <Suspense fallback={<div className="w-full canvas-h" />}>
+                        <BandLazy />
+                    </Suspense>
+                </LandingSection>
+                <AboutSection modelPromise={aboutSection} />
+                <ExperienceSection />
+            </main>
+        </>
+    )
+}

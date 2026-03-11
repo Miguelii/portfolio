@@ -1,9 +1,17 @@
+import { useMemo } from 'react'
+
 export const useLandingSectionDelay = (showPreloader: boolean) => {
-    const H1_DELAY = showPreloader ? 0.6 : 0
+    const H1_DELAY = useMemo(() => {
+        return showPreloader ? 0.6 : 0
+    }, [showPreloader])
 
-    const P_DELAY = showPreloader ? 0.8 : 0
+    const P_DELAY = useMemo(() => {
+        return showPreloader ? 0.8 : 0
+    }, [showPreloader])
 
-    const CANVAS_DELAY = showPreloader ? 0.8 : 0
+    const CANVAS_DELAY = useMemo(() => {
+        return showPreloader ? 0.8 : 0
+    }, [showPreloader])
 
     return {
         H1_DELAY,

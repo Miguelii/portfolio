@@ -48,12 +48,14 @@ const generateCSP = () => {
             https://accounts.google.com
             https://www.googletagmanager.com
             https://*.vercel-scripts.com
+            https://core.sanity-cdn.com
             'unsafe-inline' 'unsafe-eval';
         img-src 'self' 
             https://avatar.vercel.sh
             https://www.google.pt
             blob: data: 
-            https://*.googletagmanager.com;
+            https://*.googletagmanager.com
+            https://avatars.githubusercontent.com;
         font-src 'self'
             https://fonts.gstatic.com;
         frame-src 'self' 
@@ -72,7 +74,10 @@ const generateCSP = () => {
             https://stats.g.doubleclick.net
             blob:
             https://*.googletagmanager.com
-            https://accounts.google.com;
+            https://accounts.google.com
+            https://*.api.sanity.io
+            https://sanity-cdn.com
+            wss://*.api.sanity.io;
         form-action 'self';
         frame-ancestors 'self'
             https://*.vercel-scripts.com;
