@@ -3,12 +3,13 @@ import { Button } from '@/components/ui/button'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import type { PropsWithChildren } from 'react'
+import { NOT_FOUND_VIDEO_URL } from '@/lib/constants'
 
 export const revalidate = 86400 // 24h
 
 const buildId = getBuildId()
 
-const VIDEO_URL = `/assets/ezgif-482d65a8fea8d1e7.mp4?${buildId}`
+const VIDEO_URL = `${NOT_FOUND_VIDEO_URL}?${buildId}`
 
 export default function NotFound() {
     return (

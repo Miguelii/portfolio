@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest'
-import { BAND_CARD_MODEL_URL, GTM_ID, GTM_ID_WITHOUT_G, HOME_PAGE_URL } from '@/lib/constants'
+import {
+    BAND_CARD_MODEL_URL,
+    GTM_ID,
+    GTM_ID_WITHOUT_G,
+    HOME_PAGE_URL,
+    motionPressProps,
+    NEXT_IMAGE_PATH,
+    NEXT_STATIC_PATH,
+    NOT_FOUND_VIDEO_URL,
+    STATIC_PREFIXES,
+} from '@/lib/constants'
 
 describe('constants', () => {
     it('should define GTM_ID correctly', () => {
@@ -20,5 +30,27 @@ describe('constants', () => {
 
     it('should define HOME_PAGE_URL as the root path', () => {
         expect(HOME_PAGE_URL).toBe('/')
+    })
+
+    it('should define motionPressProps', () => {
+        expect(motionPressProps).toBeDefined()
+        expect(motionPressProps.whileTap).toEqual({ scale: 0.96 })
+        expect(motionPressProps.transition).toEqual({ type: 'spring', stiffness: 500, damping: 20 })
+    })
+
+    it('should define STATIC_PREFIXES', () => {
+        expect(STATIC_PREFIXES).toBeDefined()
+    })
+
+    it('should define NEXT_IMAGE_PATH', () => {
+        expect(NEXT_IMAGE_PATH).toBe('/_next/image')
+    })
+
+    it('should define NEXT_STATIC_PATH', () => {
+        expect(NEXT_STATIC_PATH).toBe('/_next/static')
+    })
+
+    it('should define NOT_FOUND_VIDEO_URL', () => {
+        expect(NOT_FOUND_VIDEO_URL).toBeDefined()
     })
 })

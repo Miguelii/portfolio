@@ -34,3 +34,5 @@ export const motionPressProps: {
     whileTap: { scale: 0.96 },
     transition: { type: 'spring', stiffness: 500, damping: 20 },
 } as const
+
+export const NOT_FOUND_VIDEO_URL = `/assets/ezgif-482d65a8fea8d1e7.mp4` as const
