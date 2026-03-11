@@ -4,6 +4,12 @@ import { WorkExperienceItem } from '../components/experience-section/experience-
 import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'
 import type { PortableTextBlock } from '@portabletext/react'
 
+vi.mock('@/env/client', () => ({
+    ClientEnv: {
+        NEXT_PUBLIC_WEBSITE_URL: 'https://www.miguelgoncalves.dev',
+    },
+}))
+
 vi.mock('next/image', () => ({
     default: ({ src, alt }: { src: string; alt: string }) => (
         // eslint-disable-next-line @next/next/no-img-element

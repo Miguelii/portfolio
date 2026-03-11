@@ -16,22 +16,22 @@ export function BandLazy() {
     const { CANVAS_DELAY } = useLandingSectionDelay(showPreloader)
 
     return (
-        <>
-            {shouldAnimate && (
-                <motion.div
-                    className="px-10 md:px-0 mt-6 lg:mt-0 relative lg:absolute lg:left-[35%] xl:left-[60%] 2xl:left-[45%] xl:-inset-10 w-full xl:w-auto"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                        duration: 0.4,
-                        delay: showPreloader ? CANVAS_DELAY : 0,
-                    }}
-                >
-                    <div className="relative w-full canvas-h">
+        <div className="px-10 md:px-0 mt-6 lg:mt-0 relative lg:absolute lg:left-[35%] xl:left-[60%] 2xl:left-[45%] xl:-inset-10 w-full xl:w-auto">
+            <div className="relative w-full canvas-h">
+                {shouldAnimate && (
+                    <motion.div
+                        className="absolute inset-0"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                            duration: 0.4,
+                            delay: showPreloader ? CANVAS_DELAY : 0,
+                        }}
+                    >
                         <BandCanvas />
-                    </div>
-                </motion.div>
-            )}
-        </>
+                    </motion.div>
+                )}
+            </div>
+        </div>
     )
 }

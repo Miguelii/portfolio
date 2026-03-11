@@ -55,4 +55,12 @@ describe('BandLazy', () => {
         render(<BandLazy />)
         expect(screen.queryByTestId('band-canvas')).not.toBeInTheDocument()
     })
+
+    it('should always reserve space with canvas-h wrapper', () => {
+        mockPreloaderContext.shouldAnimate = false
+
+        const { container } = render(<BandLazy />)
+        const wrapper = container.querySelector('.canvas-h')
+        expect(wrapper).toBeInTheDocument()
+    })
 })

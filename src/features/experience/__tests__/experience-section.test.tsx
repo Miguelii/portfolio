@@ -4,6 +4,12 @@ import { describe, expect, it, vi } from 'vitest'
 import { ExperienceSection } from '../components/experience-section'
 import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'
 
+vi.mock('@/env/client', () => ({
+    ClientEnv: {
+        NEXT_PUBLIC_WEBSITE_URL: 'https://www.miguelgoncalves.dev',
+    },
+}))
+
 vi.mock('@/lib/haptic', () => ({ haptic: vi.fn(), supportsHaptic: true }))
 
 describe('ExperienceSection', () => {

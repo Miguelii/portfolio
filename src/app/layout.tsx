@@ -12,6 +12,7 @@ const geistSans = Geist({
     subsets: ['latin'],
     display: 'swap',
     preload: true,
+    adjustFontFallback: true,
 })
 
 const geistMono = Geist_Mono({
@@ -19,6 +20,7 @@ const geistMono = Geist_Mono({
     subsets: ['latin'],
     display: 'swap',
     preload: true,
+    adjustFontFallback: true,
 })
 
 export const viewport: Viewport = {
@@ -31,7 +33,7 @@ export const viewport: Viewport = {
 export const DEFAULT_META_TITLE = 'Miguel Gonçalves - Software Engineer (Full-Stack)'
 
 export const DEFAULT_META_DESCRIPTION =
-    'Miguel Gonçalves, Full-Stack Software Engineer, specializing in high-performance SaaS applications with React.js, Next.js, Remix, JavaScript, TypeScript and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
+    'Miguel Gonçalves, Full-Stack Software Engineer, specializing in high-performance SaaS applications with React.js, Next.js, JavaScript, TypeScript and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
 
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
 
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
         'Next.js',
         'TypeScript',
         'SaaS Development',
-        'Remix',
+        'Sanity CMS',
         'Node.js',
         'Tailwind CSS',
     ],

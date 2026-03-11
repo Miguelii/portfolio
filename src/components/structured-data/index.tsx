@@ -20,7 +20,7 @@ export function PersonSchema() {
             'TypeScript',
             'JavaScript',
             'Node.js',
-            'Remix',
+            'Sanity CMS',
             'Tailwind CSS',
             'Supabase',
             'Web Development',
@@ -28,7 +28,7 @@ export function PersonSchema() {
             'Software Engineering',
         ],
         description:
-            'Full-Stack Software Engineer specializing in modern SaaS applications using React.js, Next.js, Remix, JavaScript, TypeScript, and Node.js.',
+            'Full-Stack Software Engineer specializing in modern SaaS applications using React.js, Next.js, JavaScript, TypeScript, and Node.js.',
     }
 
     return (
