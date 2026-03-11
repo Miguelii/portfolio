@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
             'meshline',
             'jiti',
             'lenis',
+            '@portabletext/react',
+            '@sanity/image-url',
+            '@sanity/vision',
+            'next-sanity',
+            'sanity',
         ],
     },
     images: {

@@ -1,16 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '@/styles/globals.css'
-import { ViewTransition } from 'react'
-import { ReactLenis } from 'lenis/react'
 import { ClientEnv } from '@/env/client'
-import { CookieConsent } from '@/components/cookie-consent'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { SpeedInsights as VercelSpeedInsights } from '@vercel/speed-insights/next'
 import { HeadMetadata } from '@/components/head-metadata'
-import { Header } from '@/components/header'
-import { ProvidersWrapper } from '@/providers/providers-wrapper'
-import { Footer } from '@/components/footer'
 import { GtmScript } from '@/components/gtm-script'
 
 const geistSans = Geist({
@@ -104,29 +98,11 @@ export default async function RootLayout({ children }: Props) {
             <GtmScript />
             <VercelAnalytics />
             <VercelSpeedInsights />
-            <ReactLenis root>
-                <body
-                    className={`${geistSans.variable} ${geistMono.variable} bg-background font-sans antialiased text-primary! min-h-screen flex flex-col`}
-                >
-                    <a
-                        tabIndex={0}
-                        aria-label="Skip to content"
-                        className="sr-only sr-only-focusable"
-                        id="acessibilitynav"
-                        href="#main"
-                    >
-                        Skip to content
-                    </a>
-                    <ProvidersWrapper>
-                        <CookieConsent />
-                        <Header />
-                        <div className="flex-1 w-full">
-                            <ViewTransition>{children}</ViewTransition>
-                        </div>
-                        <Footer />
-                    </ProvidersWrapper>
-                </body>
-            </ReactLenis>
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} bg-background font-sans antialiased text-primary! min-h-screen flex flex-col`}
+            >
+                {children}
+            </body>
         </html>
     )
 }

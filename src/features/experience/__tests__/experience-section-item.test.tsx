@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { WorkExperienceItem } from '../components/experience-section/experience-section-item'
-import type { WorkExperience } from '@/features/experience/types/WorkExperience'
-import { ClientEnv } from '@/env/client'
+import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'
+import type { PortableTextBlock } from '@portabletext/react'
 
 vi.mock('next/image', () => ({
     default: ({ src, alt }: { src: string; alt: string }) => (
@@ -15,26 +15,68 @@ vi.mock('@/components/ui/link-preview', () => ({
     LinkPreview: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }))
 
-describe('WorkExperienceItem', () => {
-    const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
+vi.mock('@portabletext/react', () => ({
+    PortableText: ({ value }: { value: PortableTextBlock[] }) => {
+        const text = value
+            .flatMap((block) =>
+                'children' in block
+                    ? (block.children as Array<{ text: string }>).map((c) => c.text)
+                    : []
+            )
+            .join('')
+        return <span>{text}</span>
+    },
+}))
 
-    const mockExperience: WorkExperience = {
+describe('WorkExperienceItem', () => {
+    const mockExperience: NonNullable<WorkExperienceSectionDTO>['items'][number] = {
+        id: '1',
         totalTime: 'Sep 2025 - Present',
         company: 'Blip - Portugal',
         logoUrl: '/assets/blip_pt_logo.webp',
-        url: 'https://www.blip.pt/',
-        previewUrl: `${WEBSITE_URL}/assets/blip_web.webp`,
+        previewUrl: '##BASE_URL##/assets/blip_web.webp',
         positions: [
             {
+                id: 'pos-1',
                 jobTitle: 'Software Engineer | Front-End',
                 achievements: [
                     {
-                        id: '1',
-                        text: 'Led development of new features',
+                        id: 'ach-1',
+                        text: [
+                            {
+                                _type: 'block',
+                                _key: 'block-1',
+                                children: [
+                                    {
+                                        _type: 'span',
+                                        _key: 'span-1',
+                                        text: 'Led development of new features',
+                                        marks: [],
+                                    },
+                                ],
+                                markDefs: [],
+                                style: 'normal',
+                            },
+                        ],
                     },
                     {
-                        id: '2',
-                        text: 'Mentored junior developers',
+                        id: 'ach-2',
+                        text: [
+                            {
+                                _type: 'block',
+                                _key: 'block-2',
+                                children: [
+                                    {
+                                        _type: 'span',
+                                        _key: 'span-2',
+                                        text: 'Mentored junior developers',
+                                        marks: [],
+                                    },
+                                ],
+                                markDefs: [],
+                                style: 'normal',
+                            },
+                        ],
                     },
                 ],
             },
@@ -43,12 +85,12 @@ describe('WorkExperienceItem', () => {
 
     it('should render company name', () => {
         render(<WorkExperienceItem {...mockExperience} />)
-        expect(screen.getByText(mockExperience.company)).toBeInTheDocument()
+        expect(screen.getByText(mockExperience.company!)).toBeInTheDocument()
     })
 
     it('should render totalTime information', () => {
         render(<WorkExperienceItem {...mockExperience} />)
-        expect(screen.getByText(mockExperience.totalTime)).toBeInTheDocument()
+        expect(screen.getByText(mockExperience.totalTime!)).toBeInTheDocument()
     })
 
     it('should render all achievements', () => {

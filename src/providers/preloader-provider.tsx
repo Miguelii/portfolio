@@ -16,9 +16,14 @@ import { HOME_PAGE_URL } from '@/lib/constants'
 type Props = {
     isLoading: boolean
     showPreloader: boolean
+    shouldAnimate: boolean
 }
 
-export const PreloaderContext = createContext<Props | undefined>(undefined)
+export const PreloaderContext = createContext<Props>({
+    isLoading: false,
+    showPreloader: false,
+    shouldAnimate: true,
+})
 
 export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
     const currPath = usePathname()
@@ -43,7 +48,14 @@ export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
         return () => clearTimeout(timer)
     }, [showPreloader])
 
-    const value: Props = useMemo(() => ({ isLoading, showPreloader }), [isLoading, showPreloader])
+    const isPreloaderLoading = isLoading ?? false
+
+    const shouldAnimate = !showPreloader || !isPreloaderLoading
+
+    const value: Props = useMemo(
+        () => ({ isLoading, showPreloader, shouldAnimate }),
+        [isLoading, showPreloader, shouldAnimate]
+    )
 
     return <PreloaderContext.Provider value={value}>{children}</PreloaderContext.Provider>
 }

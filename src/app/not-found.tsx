@@ -1,5 +1,8 @@
 import { getBuildId } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import type { PropsWithChildren } from 'react'
 
 export const revalidate = 86400 // 24h
 
@@ -9,7 +12,7 @@ const VIDEO_URL = `/assets/ezgif-482d65a8fea8d1e7.mp4?${buildId}`
 
 export default function NotFound() {
     return (
-        <>
+        <WithFooterAndHeader>
             <head>
                 <link
                     id="preload-not-found-video"
@@ -58,6 +61,16 @@ export default function NotFound() {
                     </div>
                 </div>
             </main>
+        </WithFooterAndHeader>
+    )
+}
+
+function WithFooterAndHeader({ children }: PropsWithChildren) {
+    return (
+        <>
+            <Header />
+            <div className="flex-1 w-full">{children}</div>
+            <Footer />
         </>
     )
 }
