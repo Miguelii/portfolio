@@ -20,21 +20,10 @@ describe('usePreloaderAnimations', () => {
         expect(result.current.index).toBe(0)
     })
 
-    it('should have default dimension initially', () => {
-        Object.defineProperty(globalThis, 'innerWidth', {
-            writable: true,
-            configurable: true,
-            value: 1440,
-        })
-        Object.defineProperty(globalThis, 'innerHeight', {
-            writable: true,
-            configurable: true,
-            value: 900,
-        })
-
+    it('should have zero dimension initially before client mount', () => {
         const { result } = renderHook(() => usePreloaderAnimations())
 
-        expect(result.current.dimension.width).toBe(1440)
-        expect(result.current.dimension.height).toBe(900)
+        expect(result.current.dimension.width).toBe(0)
+        expect(result.current.dimension.height).toBe(0)
     })
 })

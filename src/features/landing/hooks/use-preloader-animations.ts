@@ -19,10 +19,10 @@ const opacity: Variants = {
 
 const slideUp: Variants = {
     initial: {
-        top: 0,
+        y: 0,
     },
     exit: {
-        top: '-100vh',
+        y: '-100vh',
         transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
 }
@@ -30,10 +30,7 @@ const slideUp: Variants = {
 export const usePreloaderAnimations = () => {
     const [index, setIndex] = useState(0)
 
-    const [dimension, setDimension] = useState({
-        width: globalThis?.window === undefined ? 1440 : window.innerWidth,
-        height: globalThis?.window === undefined ? 900 : window.innerHeight,
-    })
+    const [dimension, setDimension] = useState({ width: 0, height: 0 })
 
     const { initialPath, targetPath } = useMemo(
         () => ({
