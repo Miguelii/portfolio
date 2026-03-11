@@ -19,7 +19,7 @@ export function BandLazy() {
         <>
             {shouldAnimate && (
                 <motion.div
-                    className="px-10 md:px-0 mt-6 lg:mt-0 relative lg:absolute lg:left-[35%] xl:-inset-10 w-full xl:w-auto"
+                    className="px-10 md:px-0 mt-6 lg:mt-0 relative lg:absolute lg:left-[35%] xl:left-[60%] 2xl:left-[45%] xl:-inset-10 w-full xl:w-auto"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{

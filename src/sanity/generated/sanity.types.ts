@@ -13,6 +13,82 @@
  */
 
 // Source: schema.json
+export type WorkExperienceSection = {
+    _id: string
+    _type: 'workExperienceSection'
+    _createdAt: string
+    _updatedAt: string
+    _rev: string
+    title?: string
+    items?: Array<{
+        company?: string
+        logoUrl?: string
+        previewUrl?: string
+        totalTime?: string
+        positions?: Array<{
+            jobTitle?: string
+            timeLabel?: string
+            achievements?: Array<{
+                text?: Array<{
+                    children?: Array<{
+                        marks?: Array<string>
+                        text?: string
+                        _type: 'span'
+                        _key: string
+                    }>
+                    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+                    listItem?: 'bullet' | 'number'
+                    markDefs?: Array<{
+                        href?: string
+                        _type: 'link'
+                        _key: string
+                    }>
+                    level?: number
+                    _type: 'block'
+                    _key: string
+                }>
+                _type: 'achievement'
+                _key: string
+            }>
+            _type: 'position'
+            _key: string
+        }>
+        _type: 'workExperienceItem'
+        _key: string
+    }>
+}
+
+export type PrivacyNoticeSection = {
+    _id: string
+    _type: 'privacyNoticeSection'
+    _createdAt: string
+    _updatedAt: string
+    _rev: string
+    title?: string
+    paragraphs?: Array<{
+        text?: Array<{
+            children?: Array<{
+                marks?: Array<string>
+                text?: string
+                _type: 'span'
+                _key: string
+            }>
+            style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+            listItem?: 'bullet' | 'number'
+            markDefs?: Array<{
+                href?: string
+                _type: 'link'
+                _key: string
+            }>
+            level?: number
+            _type: 'block'
+            _key: string
+        }>
+        _type: 'paragraph'
+        _key: string
+    }>
+}
+
 export type LandingSection = {
     _id: string
     _type: 'landingSection'
@@ -31,7 +107,6 @@ export type AboutSection = {
     _rev: string
     title?: string
     paragraphs?: Array<{
-        key?: string
         text?: Array<{
             children?: Array<{
                 marks?: Array<string>
@@ -174,6 +249,8 @@ export type Slug = {
 }
 
 export type AllSanitySchemaTypes =
+    | WorkExperienceSection
+    | PrivacyNoticeSection
     | LandingSection
     | AboutSection
     | SanityImagePaletteSwatch

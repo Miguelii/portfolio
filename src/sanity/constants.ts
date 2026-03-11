@@ -2,8 +2,15 @@ import type { StructureResolver } from 'sanity/structure'
 
 export const apiVersion = '2026-03-11' as const
 
+export const revalidateTime = 86400 // 24 hours in seconds
+
 /** Document types that should be singletons (only one instance allowed) */
-const SINGLETONS = new Set(['aboutSection', 'landingSection'])
+const SINGLETONS = new Set([
+    'aboutSection',
+    'landingSection',
+    'privacyNoticeSection',
+    'workExperienceSection',
+])
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
@@ -21,6 +28,26 @@ export const structure: StructureResolver = (S) =>
                 .title('About Section')
                 .id('aboutSection')
                 .child(S.document().schemaType('aboutSection').documentId('aboutSection')),
+
+            // Singleton: Work Experience Section
+            S.listItem()
+                .title('Work Experience Section')
+                .id('workExperienceSection')
+                .child(
+                    S.document()
+                        .schemaType('workExperienceSection')
+                        .documentId('workExperienceSection')
+                ),
+
+            // Singleton: Privacy Notice Section
+            S.listItem()
+                .title('Privacy Notice Section')
+                .id('privacyNoticeSection')
+                .child(
+                    S.document()
+                        .schemaType('privacyNoticeSection')
+                        .documentId('privacyNoticeSection')
+                ),
 
             S.divider(),
 

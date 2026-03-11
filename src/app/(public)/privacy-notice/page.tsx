@@ -2,9 +2,11 @@ import { ClientEnv } from '@/env/client'
 import { BreadcrumbSchema } from '@/components/structured-data'
 import type { Metadata } from 'next'
 import * as motion from 'motion/react-client'
+import { getPrivacyNoticeSection } from '@/sanity/api/get-privacy-notice-section'
+import { PortableText } from '@portabletext/react'
 
+// sanityClientFetch controls the revalidate time
 export const dynamic = 'force-static'
-export const revalidate = 86400 // 24h
 
 const PATH = '/privacy-notice'
 
@@ -34,7 +36,11 @@ export const metadata: Metadata = {
     },
 }
 
-export default function PrivacyNoticePage() {
+export default async function PrivacyNoticePage() {
+    const model = await getPrivacyNoticeSection()
+
+    const date = model?._updatedAt?.split('T')[0] ?? new Date().toISOString().split('T')[0]
+
     return (
         <>
             <BreadcrumbSchema
@@ -49,7 +55,7 @@ export default function PrivacyNoticePage() {
                 className="main-bottom-padding main-container flex flex-col gap-6 max-w-3xl border-x border-x-divider min-h-[calc(100vh-130px)] container-padding"
             >
                 <div className="flex flex-col gap-5 justify-center h-full">
-                    <h1 className="text-primary text-h1">Privacy Notice</h1>
+                    <h1 className="text-primary text-h1">{model?.title}</h1>
                 </div>
 
                 <motion.div
@@ -59,23 +65,12 @@ export default function PrivacyNoticePage() {
                     transition={{ delay: 0.4 }}
                     className="flex flex-col gap-2  text-neutral max-w-[1000px] items-start text-p-regular"
                 >
-                    <p>
-                        We fully respect the privacy of visitors to this website. We do not collect,
-                        store, or share any personal data.
-                    </p>
-                    <p>
-                        This website is for informational purposes only. We only use Google
-                        analytical cookies for statistical purposes, namely to analyze traffic and
-                        improve the user experience. No personal data is collected for commercial or
-                        marketing purposes.
-                    </p>
-                    <p>
-                        If, in the future, features are added that involve data collection, this
-                        policy will be updated to reflect the new privacy practices.
-                    </p>
-                    <p>If you have any questions about this notice, please contact us.</p>
+                    {model?.paragraphs.map((block) => (
+                        <PortableText key={block.id} value={block.text} />
+                    ))}
                     <p className="mt-2">
-                        <span className="font-bold">Last update: </span>19/01/2025
+                        <span className="font-bold">Last update: </span>
+                        {date}
                     </p>
                 </motion.div>
             </main>

@@ -1,10 +1,15 @@
 import * as motion from 'motion/react-client'
-import ExperienceService from '@/services/experience-service'
 import { useExperienceSectionAnimations } from '@/features/experience/hooks/use-experience-section-animations'
 import { WorkExperienceItem } from './experience-section-item'
+import { use } from 'react'
+import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'
 
-export function ExperienceSection() {
-    const workExperienceData = ExperienceService.getAllWorkExperience()
+type Props = {
+    modelPromise: Promise<WorkExperienceSectionDTO>
+}
+
+export function ExperienceSection({ modelPromise }: Props) {
+    const model = use(modelPromise)
 
     const { container, item } = useExperienceSectionAnimations()
 
@@ -17,7 +22,7 @@ export function ExperienceSection() {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 viewport={{ once: true, amount: 0.3 }}
             >
-                Work Experience
+                {model?.title}
             </motion.h2>
 
             <motion.div
@@ -27,7 +32,7 @@ export function ExperienceSection() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
             >
-                {workExperienceData?.map((itemData, index) => (
+                {model?.items?.map((itemData, index) => (
                     <motion.div
                         key={`work-experience-${itemData.company}_${index}`}
                         variants={item}

@@ -7,6 +7,8 @@ import { Preloader } from '@/features/landing/components/preloader'
 import { getAboutSection } from '@/sanity/api/get-about-section'
 import { getLandingSection } from '@/sanity/api/get-landing-section'
 import { BandLazy } from '@/features/landing/components/band-lazy'
+import { getWorkExperienceSection } from '@/sanity/api/get-work-experience-section'
+import { QuoteCard } from '@/components/quote'
 
 // sanityClientFetch controls the revalidate time
 export const dynamic = 'force-static'
@@ -14,6 +16,7 @@ export const dynamic = 'force-static'
 export default async function Home() {
     const landingSection = getLandingSection()
     const aboutSection = getAboutSection()
+    const experienceSection = getWorkExperienceSection()
 
     return (
         <>
@@ -29,7 +32,8 @@ export default async function Home() {
                     </Suspense>
                 </LandingSection>
                 <AboutSection modelPromise={aboutSection} />
-                <ExperienceSection />
+                <QuoteCard />
+                <ExperienceSection modelPromise={experienceSection} />
             </main>
         </>
     )

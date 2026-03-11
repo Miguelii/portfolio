@@ -2,7 +2,7 @@ import { render, screen, act } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { type PropsWithChildren } from 'react'
 import { LandingSection } from '../components/landing-section'
-import type { LandingSectionQuery } from '@/sanity/api/get-landing-section'
+import type { LandingSectionDTO } from '@/sanity/api/get-landing-section'
 
 vi.mock('motion/react-client', async (importOriginal) => {
     const actual: Record<string, PropsWithChildren> = await importOriginal()
@@ -16,7 +16,7 @@ vi.mock('motion/react-client', async (importOriginal) => {
     }
 })
 
-const MOCK_MODEL: LandingSectionQuery = {
+const MOCK_MODEL: LandingSectionDTO = {
     title: 'Crafting Experiences, Delivering Results',
     subtitle: 'Delivered products that have reached over a million users worldwide.',
 }

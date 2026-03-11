@@ -1,10 +1,10 @@
 import * as motion from 'motion/react-client'
 import { PortableText } from '@portabletext/react'
-import type { AboutSectionQuery } from '@/sanity/api/get-about-section'
+import type { AboutSectionDTO } from '@/sanity/api/get-about-section'
 import { use } from 'react'
 
 type Props = {
-    modelPromise: Promise<AboutSectionQuery>
+    modelPromise: Promise<AboutSectionDTO>
 }
 
 export function AboutSection({ modelPromise }: Props) {

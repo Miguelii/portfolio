@@ -4,10 +4,10 @@ import { PreloaderContext } from '@/providers/preloader-provider'
 import * as motion from 'motion/react-client'
 import { use, type PropsWithChildren } from 'react'
 import { useLandingSectionDelay } from '@/features/landing/hooks/use-landing-section-delay'
-import type { LandingSectionQuery } from '@/sanity/api/get-landing-section'
+import type { LandingSectionDTO } from '@/sanity/api/get-landing-section'
 
 type Props = PropsWithChildren<{
-    modelPromise: Promise<LandingSectionQuery>
+    modelPromise: Promise<LandingSectionDTO>
 }>
 
 export function LandingSection({ modelPromise, children }: Props) {

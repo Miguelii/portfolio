@@ -1,18 +1,24 @@
 import { LinkPreview } from '@/components/ui/link-preview'
-import type { WorkExperience } from '@/features/experience/types/WorkExperience'
-import { cn } from '@/lib/utils'
-import { getBuildId } from '@/lib/utils'
+import { ClientEnv } from '@/env/client'
+import { cn, getBuildId } from '@/lib/utils'
+import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'
+import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import { memo } from 'react'
 
 const buildId = getBuildId()
 
-export const WorkExperienceItem = memo(function WorkExperienceItem(experience: WorkExperience) {
+export const WorkExperienceItem = memo(function WorkExperienceItem(
+    experience: NonNullable<WorkExperienceSectionDTO>['items'][number]
+) {
+    const previewUrl =
+        experience.previewUrl?.replaceAll('##BASE_URL##', ClientEnv.NEXT_PUBLIC_WEBSITE_URL) ?? ''
+
     return (
         <div className="flex flex-col gap-5">
             <LinkPreview
-                url={experience.url ?? experience.previewUrl}
-                imageSrc={experience.previewUrl}
+                url={previewUrl}
+                imageSrc={previewUrl}
                 className={cn('flex flex-row gap-3 sm:gap-3 items-start justify-start w-fit')}
             >
                 <Image
@@ -86,11 +92,7 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(experience: W
                                                 className="flex items-center gap-2 text-neutral text-p-smallest"
                                             >
                                                 <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
-                                                <span
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: item.text,
-                                                    }}
-                                                />
+                                                <PortableText key={item.id} value={item.text} />
                                             </li>
                                         ))}
                                     </ul>
