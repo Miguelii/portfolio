@@ -20,6 +20,7 @@ This project uses automated code quality tools to maintain consistency:
 - **Knip:** Detects unused files, exports, and dependencies
 - **TypeScript:** Provides type safety
 - **Husky:** Runs pre-commit hooks automatically
+- **SonarQube Cloud:** Continuous code analysis for bugs, vulnerabilities, and code smells
 
 ## License
 
