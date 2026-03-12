@@ -19,7 +19,7 @@ npm run generate:types   # Generate Sanity TypeScript types (schema.json + sanit
 ## Tech Stack
 
 - **Framework**: Next.js 16 with App Router, React 19, TypeScript 5
-- **Styling**: Tailwind CSS 4, `tailwind-merge`, `class-variance-authority`, `clsx`
+- **Styling**: Tailwind CSS 4, `tailwind-merge`, `clsx`
 - **Animation**: Motion (Framer Motion successor), React Lenis (smooth scroll)
 - **3D**: Three.js, `@react-three/fiber`, `@react-three/drei`, `@react-three/rapier`
 - **CMS**: Sanity (embedded Studio), GROQ queries, Portable Text, `@portabletext/react`

@@ -14,9 +14,9 @@ import {
     useRopeJoint,
     useSphericalJoint,
 } from '@react-three/rapier'
-import type { GLTFResult } from './types'
 import { BAND_CARD_MODEL_URL } from '@/lib/constants'
 import { getBuildId } from '@/lib/utils'
+import type { GLTFResult } from '@/types/gltf-result'
 
 const buildId = getBuildId()
 
