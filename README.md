@@ -21,7 +21,6 @@ This project uses automated code quality tools to maintain consistency:
 - **TypeScript:** Provides type safety
 - **Husky:** Runs pre-commit hooks automatically
 
-
 ## License
 
 This project is open-source and available under the [MIT license](./LICENSE).
