@@ -11,7 +11,7 @@ import { ClientEnv } from '@/env/client'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { schema } from '@/sanity/schemaTypes'
-import { apiVersion, structure } from '@/sanity/constants'
+import { apiVersion, structure } from '@/sanity/lib/constants'
 
 export default defineConfig({
     basePath: '/studio',

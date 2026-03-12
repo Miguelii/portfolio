@@ -14,9 +14,9 @@ import {
     useRopeJoint,
     useSphericalJoint,
 } from '@react-three/rapier'
-import type { GLTFResult } from './types'
 import { BAND_CARD_MODEL_URL } from '@/lib/constants'
 import { getBuildId } from '@/lib/utils'
+import type { GLTFMaterials, GLTFNodes } from '@/types/gltf-result'
 
 const buildId = getBuildId()
 
@@ -63,7 +63,10 @@ const Band = memo(function Band() {
     const maxSpeed = 50
     const minSpeed = 50
 
-    const { nodes, materials } = useGLTF(GLB_MODEL_URL) as unknown as GLTFResult
+    const { nodes, materials } = useGLTF(GLB_MODEL_URL) as unknown as {
+        nodes: GLTFNodes
+        materials: GLTFMaterials
+    }
 
     const band = useRef<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>>>(null)
     const fixed = useRef<RapierRigidBody>(null)

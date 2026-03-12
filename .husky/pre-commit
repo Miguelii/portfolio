@@ -1,0 +1,5 @@
+npm run generate:types
+npm run prettier
+git diff --quiet || git add -A
+npm run check
+npm run knip

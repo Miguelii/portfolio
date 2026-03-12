@@ -28,7 +28,6 @@ const nextConfig: NextConfig = {
             'jiti',
             'lenis',
             '@portabletext/react',
-            '@sanity/image-url',
             '@sanity/vision',
             'next-sanity',
             'sanity',

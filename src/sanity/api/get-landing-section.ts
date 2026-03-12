@@ -1,7 +1,7 @@
 import { tryCatch } from '@/lib/try-catch'
 import { sanityClientFetch } from '@/sanity/lib/client'
 import type { LandingSection } from '../generated/sanity.types'
-import { LANDING_SECTION_GROQ } from '../querys/landing-section.groq'
+import { LANDING_SECTION_GROQ } from '../queries/landing-section.groq'
 
 export type LandingSectionDTO = {
     title: LandingSection['title']
