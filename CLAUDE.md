@@ -13,19 +13,22 @@ npm run prettier         # Format all files with Prettier
 npm run typecheck        # TypeScript type checking (no emit)
 npm run test             # Run tests with Vitest
 npm run check            # lint + typecheck + test
+npm run knip             # Detect unused files, exports, and dependencies
 npm run generate:types   # Generate Sanity TypeScript types (schema.json + sanity.types.ts)
+npm run prepare          # Install Husky git hooks
 ```
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 with App Router, React 19, TypeScript 5
-- **Styling**: Tailwind CSS 4, `tailwind-merge`, `clsx`
-- **Animation**: Motion (Framer Motion successor), React Lenis (smooth scroll)
-- **3D**: Three.js, `@react-three/fiber`, `@react-three/drei`, `@react-three/rapier`
-- **CMS**: Sanity (embedded Studio), GROQ queries, Portable Text, `@portabletext/react`
-- **Validation**: Zod, `@t3-oss/env-nextjs` for env vars
-- **Testing**: Vitest, `@testing-library/react`, jsdom
-- **Analytics**: Vercel Analytics, Vercel Speed Insights
+- **Framework**: Next.js 16 (App Router) with React 19 and TypeScript 5
+- **Styling**: Tailwind CSS 4 with `tailwind-merge` and `clsx` for conditional classes
+- **Animation**: Motion (successor to Framer Motion) for scroll-triggered animations, React Lenis for smooth scrolling
+- **3D Graphics**: Three.js ecosystem — `@react-three/fiber` for the React renderer, `@react-three/drei` for helpers, `@react-three/rapier` for physics simulation
+- **CMS**: Sanity with an embedded Studio, GROQ for queries, and Portable Text (`@portabletext/react`) for rich content
+- **Validation**: Zod schemas via `@t3-oss/env-nextjs` for type-safe environment variables
+- **Testing**: Vitest with `@testing-library/react` and jsdom
+- **Analytics**: Vercel Analytics and Speed Insights
+- **AI Tooling**: Claude Code with Vercel's agent skills (`vercel-composition-patterns`, `vercel-react-best-practices`, `web-design-guidelines`)
 
 ## Project Structure
 
@@ -111,6 +114,17 @@ Some document types are singletons (only one instance allowed). Configured in `s
 ### Rich text
 
 Paragraph fields use Portable Text (`type: 'array', of: [{ type: 'block' }]`). Render with `<PortableText value={...} />` from `@portabletext/react`.
+
+## Code Quality Tools
+
+This project uses automated code quality tools to maintain consistency:
+
+- **Prettier**: Ensures consistent code formatting
+- **Knip**: Detects unused files, exports, and dependencies
+- **TypeScript**: Provides type safety
+- **Husky**: Runs pre-commit hooks automatically
+
+The pre-commit hook (`.husky/pre-commit`) runs in order: `generate:types` → `prettier` → `check` (lint + typecheck + test) → `knip`. All steps must pass for a commit to succeed.
 
 ## Code Style
 
