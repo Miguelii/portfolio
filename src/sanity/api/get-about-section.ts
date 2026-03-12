@@ -1,6 +1,6 @@
 import { tryCatch } from '@/lib/try-catch'
 import { sanityClientFetch } from '@/sanity/lib/client'
-import { ABOUT_SECTION_GROQ } from '@/sanity/querys/about-parahraph.groq'
+import { ABOUT_SECTION_GROQ } from '@/sanity/queries/about-parahraph.groq'
 import type { AboutSection } from '../generated/sanity.types'
 import type { PortableTextBlock } from '@portabletext/react'
 

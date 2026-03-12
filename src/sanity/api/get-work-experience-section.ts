@@ -1,6 +1,6 @@
 import { tryCatch } from '@/lib/try-catch'
 import { sanityClientFetch } from '@/sanity/lib/client'
-import { WORK_EXPERIENCE_SECTION_GROQ } from '@/sanity/querys/work-experience-section.groq'
+import { WORK_EXPERIENCE_SECTION_GROQ } from '@/sanity/queries/work-experience-section.groq'
 import type { WorkExperienceSection } from '../generated/sanity.types'
 import type { PortableTextBlock } from '@portabletext/react'
 

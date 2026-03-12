@@ -97,13 +97,13 @@ The typegen config lives in `sanity.cli.ts` under the `typegen` key. Never edit 
 
 ### Singletons
 
-Some document types are singletons (only one instance allowed). Configured in `src/sanity/constants.ts` via the Structure Builder. Current singletons: `aboutSection`, `landingSection`, `privacyNoticeSection`.
+Some document types are singletons (only one instance allowed). Configured in `src/sanity/lib/constants.ts` via the Structure Builder. Current singletons: `aboutSection`, `landingSection`, `privacyNoticeSection`.
 
 ### Adding a new content type
 
 1. Define the schema in `src/sanity/schemaTypes/index.ts` and add it to the `types` array
 2. **MANDATORY**: Run `npm run generate:types` immediately after defining/changing a schema — the API and query files depend on the generated types and will fail without this step
-3. If singleton, add the name to the `SINGLETONS` set and add a `S.listItem()` entry in `src/sanity/constants.ts`
+3. If singleton, add the name to the `SINGLETONS` set and add a `S.listItem()` entry in `src/sanity/lib/constants.ts`
 4. Create a GROQ query file in `src/sanity/querys/<name>.groq.ts` exporting a GROQ string constant (see existing files for examples)
 5. Create a data fetching file in `src/sanity/api/get-<name>.ts` that:
    - Exports a query result type named `<SchemaName>DTO` (e.g. `LandingSectionDTO`, `AboutSectionDTO`) derived from the generated Sanity types

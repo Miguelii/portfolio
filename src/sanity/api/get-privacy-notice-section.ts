@@ -1,6 +1,6 @@
 import { tryCatch } from '@/lib/try-catch'
 import { sanityClientFetch } from '@/sanity/lib/client'
-import { PRIVACY_NOTICE_SECTION_GROQ } from '@/sanity/querys/privacy-notice-section.groq'
+import { PRIVACY_NOTICE_SECTION_GROQ } from '@/sanity/queries/privacy-notice-section.groq'
 import type { PrivacyNoticeSection } from '../generated/sanity.types'
 import type { PortableTextBlock } from '@portabletext/react'
 

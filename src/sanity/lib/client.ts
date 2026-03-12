@@ -1,6 +1,6 @@
 import { ClientEnv } from '@/env/client'
 import { createClient } from 'next-sanity'
-import { apiVersion, revalidateTime } from '@/sanity/constants'
+import { apiVersion, revalidateTime } from '@/sanity/lib/constants'
 
 const options = { next: { revalidate: revalidateTime } }
 
