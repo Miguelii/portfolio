@@ -1,0 +1,58 @@
+'use client'
+
+import { type Variants } from 'motion'
+import { useMemo, useState } from 'react'
+
+const opacity: Variants = {
+    initial: {
+        opacity: 0,
+    },
+    enter: {
+        opacity: 0.75,
+        transition: { duration: 1, delay: 0.2 },
+    },
+    exit: {
+        opacity: 0,
+        transition: { duration: 0.48, ease: [0.76, 0, 0.24, 1] },
+    },
+}
+
+const slideUp: Variants = {
+    initial: {
+        y: 0,
+    },
+    exit: {
+        y: '-100vh',
+        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+    },
+}
+
+export const usePreloaderAnimations = () => {
+    const [index, setIndex] = useState(0)
+
+    const [dimension, setDimension] = useState({ width: 0, height: 0 })
+
+    const { initialPath, targetPath } = useMemo(
+        () => ({
+            initialPath: `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`,
+            targetPath: `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`,
+        }),
+        [dimension.width, dimension.height]
+    )
+
+    const curve: Variants = useMemo(
+        () => ({
+            initial: {
+                d: initialPath,
+                transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
+            },
+            exit: {
+                d: targetPath,
+                transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
+            },
+        }),
+        [initialPath, targetPath]
+    )
+
+    return { opacity, slideUp, setDimension, setIndex, index, dimension, curve } as const
+}

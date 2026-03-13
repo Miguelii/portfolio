@@ -1,0 +1,38 @@
+import type { QuoteSectionDTO } from '@/sanity/api/get-quote-section'
+import * as motion from 'motion/react-client'
+import { use } from 'react'
+
+type Props = {
+    modelPromise: Promise<QuoteSectionDTO>
+}
+
+export function QuoteCard({ modelPromise }: Props) {
+    const model = use(modelPromise)
+
+    const hasQuote = model?.quote != null && model?.quote?.trim() !== ''
+
+    // If we dont have a quote, we dont show the component
+    if (!hasQuote) return
+
+    return (
+        <section className="below-fold container-padding px-0! border-b border-b-divider">
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.4 }}
+                className="p-8 md:p-14 flex flex-col gap-4 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 rounded-none shadow-xl"
+            >
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    className="text-background/85 text-h2 leading-snug font-bold"
+                >
+                    &quot;{model?.quote}&quot;
+                </motion.h2>
+            </motion.div>
+        </section>
+    )
+}
