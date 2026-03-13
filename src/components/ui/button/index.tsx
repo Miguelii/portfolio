@@ -33,18 +33,18 @@ type ButtonProps = LinkProps | ActionButtonProps
 
 type VARIANT = 'primary' | 'secondary'
 
-export function Button(props: ButtonProps) {
-    const VARIANTS = {
-        primary: {
-            inner: 'bg-neutral text-white/0',
-            outer: 'text-background hover:bg-primary bg-primary',
-        },
-        secondary: {
-            inner: 'bg-primary text-white/0',
-            outer: 'text-background hover:bg-neutral bg-neutral',
-        },
-    }
+const VARIANTS = {
+    primary: {
+        inner: 'bg-neutral text-white/0',
+        outer: 'text-background hover:bg-primary bg-primary',
+    },
+    secondary: {
+        inner: 'bg-primary text-white/0',
+        outer: 'text-background hover:bg-neutral bg-neutral',
+    },
+}
 
+export function Button(props: ButtonProps) {
     const { label, variant = 'primary', className } = props
 
     const currVariant = VARIANTS[variant]

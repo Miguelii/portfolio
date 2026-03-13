@@ -29,7 +29,7 @@ export default async function Home() {
                 <LandingSection modelPromise={landingSection}>
                     <Suspense
                         fallback={
-                            <div className="px-10 md:px-0 mt-6 lg:mt-0 relative lg:absolute lg:left-[35%] xl:left-[60%] 2xl:left-[45%] xl:-inset-10 w-full xl:w-auto">
+                            <div className="canvas-container">
                                 <div className="relative w-full canvas-h" />
                             </div>
                         }

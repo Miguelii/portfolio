@@ -2,16 +2,32 @@
 
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
+import { z } from 'zod'
 import { GTM_ID_WITHOUT_G } from '@/lib/constants'
 import { tryCatch } from '@/lib/try-catch'
 import { Logger } from '@/lib/logger'
 
-type Props = {
-    allowAnalytics: boolean
-}
+const cookieConsentSchema = z.object({
+    allowAnalytics: z.boolean(),
+})
 
-export async function createCookieConsentAction({ allowAnalytics }: Props) {
-    const { error } = await tryCatch(async () => {
+type Props = z.infer<typeof cookieConsentSchema>
+
+export async function createCookieConsentAction(input: Props) {
+    const parsed = cookieConsentSchema.safeParse(input)
+
+    if (!parsed.success) {
+        Logger({
+            level: 'error',
+            error: new Error(parsed.error.message),
+            context: 'createCookieConsentAction',
+        })
+        return
+    }
+
+    const { allowAnalytics } = parsed.data
+
+    await tryCatch(async () => {
         const cookieStore = await cookies()
 
         cookieStore.set({
@@ -32,13 +48,5 @@ export async function createCookieConsentAction({ allowAnalytics }: Props) {
         }
 
         revalidatePath('/', 'layout')
-    })
-
-    if (error) {
-        Logger({
-            level: 'error',
-            error,
-            context: 'createCookieConsentAction',
-        })
-    }
+    }, 'createCookieConsentAction')
 }
