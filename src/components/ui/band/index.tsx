@@ -61,7 +61,7 @@ const bandLighting = (
 // rerender-memo: memoized to prevent re-renders from BandCanvas
 const Band = memo(function Band() {
     const maxSpeed = 50
-    const minSpeed = 10
+    const minSpeed = 50
 
     const { nodes, materials } = useGLTF(GLB_MODEL_URL) as unknown as {
         nodes: GLTFNodes
@@ -69,7 +69,6 @@ const Band = memo(function Band() {
     }
 
     const band = useRef<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>>>(null)
-    const settlingFrames = useRef(0)
     const fixed = useRef<RapierRigidBody>(null)
     const j1 = useRef<RapierRigidBody>(null)
     const j2 = useRef<RapierRigidBody>(null)
@@ -79,31 +78,20 @@ const Band = memo(function Band() {
     const [drag, setDrag] = useState<THREE.Vector3 | false>(false)
     const [hover, setHover] = useState<boolean>(false)
 
-    // rerender-dependencies: use boolean instead of full drag object to reduce effect runs
-    const isDragging = drag !== false
-
     useEffect(() => {
         if (hover) {
-            document.body.style.cursor = isDragging ? 'grabbing' : 'grab'
-            return () => {
-                document.body.style.cursor = 'auto'
-            }
+            document.body.style.cursor = drag ? 'grabbing' : 'grab'
+            return () => void (document.body.style.cursor = 'auto')
         }
-    }, [hover, isDragging])
+    }, [hover, drag])
 
     // rerender-use-ref-transient-values: vectors allocated once, mutated in useFrame
-    const { ang, rot, vec, dir, prevPoints } = useMemo(
+    const { ang, rot, vec, dir } = useMemo(
         () => ({
             ang: new THREE.Vector3(),
             rot: new THREE.Vector3(),
             vec: new THREE.Vector3(),
             dir: new THREE.Vector3(),
-            prevPoints: [
-                new THREE.Vector3(),
-                new THREE.Vector3(),
-                new THREE.Vector3(),
-                new THREE.Vector3(),
-            ],
         }),
         []
     )
@@ -111,13 +99,6 @@ const Band = memo(function Band() {
     const { width, height } = useThree((state) => state.size)
     const isMobile = width < 1024
     const isSmallScreen = !isMobile && width < 1280
-
-    // js-cache-property-access: memoize position array to avoid recreation on every render
-    const groupPosition = useMemo(() => {
-        if (isMobile) return [0, 8.5, 0] as const
-        if (isSmallScreen) return [5, 8.5, 0] as const
-        return [3.5, 8.5, 0] as const
-    }, [isMobile, isSmallScreen])
 
     // @ts-expect-error rope join
     useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 2])
@@ -147,12 +128,6 @@ const Band = memo(function Band() {
     const resolution = useMemo(() => new THREE.Vector2(width, height), [width, height])
 
     useFrame((state, delta) => {
-        // Skip geometry updates during physics settling (~30 frames)
-        if (settlingFrames.current < 30) {
-            settlingFrames.current++
-            return
-        }
-
         if (drag) {
             vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
             dir.copy(vec).sub(state.camera.position).normalize()
@@ -175,16 +150,14 @@ const Band = memo(function Band() {
             }
             // @ts-expect-error lerping
             const lerped = ref.current.lerped as THREE.Vector3
-            const distance = lerped.distanceTo(ref.current.translation())
-            if (distance < 0.05) {
-                lerped.copy(ref.current.translation())
-            } else {
-                const clampedDistance = Math.max(0.1, Math.min(1, distance))
-                lerped.lerp(
-                    ref.current.translation(),
-                    delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
-                )
-            }
+            const clampedDistance = Math.max(
+                0.1,
+                Math.min(1, lerped.distanceTo(ref.current.translation()))
+            )
+            lerped.lerp(
+                ref.current.translation(),
+                delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
+            )
         })
 
         if (j3.current) curve.points[0].copy(j3.current.translation())
@@ -194,20 +167,14 @@ const Band = memo(function Band() {
         if (j1.current) curve.points[2].copy(j1.current.lerped ?? j1.current.translation())
         if (fixed.current) curve.points[3].copy(fixed.current.translation())
 
-        // Only update geometry when curve points moved meaningfully
-        const moved = curve.points.some((p, i) => p.distanceToSquared(prevPoints[i]) > 0.0001)
-        if (band.current && moved) {
-            // @ts-expect-error geometry points
-            band.current.geometry.setPoints(curve.getPoints(32))
-            curve.points.forEach((p, i) => prevPoints[i].copy(p))
-        }
+        // @ts-expect-error geometry points
+        if (band.current) band.current.geometry.setPoints(curve.getPoints(32))
 
-        // force card to always face front (dead zone to prevent micro-jitter at rest)
+        // force card to always face front
         if (card.current) {
             ang.copy(card.current.angvel())
             rot.copy(card.current.rotation())
-            const yCorrection = Math.abs(rot.y) > 0.01 ? rot.y * 0.25 : 0
-            card.current.setAngvel({ x: ang.x, y: ang.y - yCorrection, z: ang.z }, true)
+            card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z }, true)
         }
     })
 
@@ -218,67 +185,72 @@ const Band = memo(function Band() {
         setDrag(false)
     }, [])
 
-    const handleReleaseCard = useCallback((e: ThreeEvent<PointerEvent>) => {
-        const target = e.target as HTMLElement
-        const newCardLoc = card.current ? card.current.translation() : new THREE.Vector3(0, 0, 0)
-        target.setPointerCapture(e.pointerId)
-        setDrag(new THREE.Vector3().copy(e.point).sub(newCardLoc))
-    }, [])
+    const handleReleaseCard = useCallback(
+        (e: ThreeEvent<PointerEvent>) => {
+            const target = e.target as HTMLElement
+            const newCardLoc = card.current
+                ? card.current.translation()
+                : new THREE.Vector3(0, 0, 0)
+            target.setPointerCapture(e.pointerId)
+            setDrag(new THREE.Vector3().copy(e.point).sub(vec.copy(newCardLoc)))
+        },
+        [vec]
+    )
 
     return (
         <>
-            <group position={groupPosition}>
+            <group position={isMobile ? [0, 8.5, 0] : isSmallScreen ? [5, 8.5, 0] : [3.5, 8.5, 0]}>
                 <RigidBody
                     type="fixed"
                     colliders={false}
                     canSleep={true}
                     ref={fixed}
-                    angularDamping={4}
-                    linearDamping={4}
+                    angularDamping={2}
+                    linearDamping={2}
                 >
                     <BallCollider args={[0.1]} />
                 </RigidBody>
                 <RigidBody
                     type="dynamic"
-                    position={[0, -2, 0]}
+                    position={[1, 0, 0]}
                     colliders={false}
                     ref={j1}
                     canSleep={true}
-                    angularDamping={4}
-                    linearDamping={4}
+                    angularDamping={2}
+                    linearDamping={2}
                 >
                     <BallCollider args={[0.1]} />
                 </RigidBody>
                 <RigidBody
                     type="dynamic"
                     colliders={false}
-                    position={[0, -4, 0]}
+                    position={[2, 0, 0]}
                     ref={j2}
                     canSleep={true}
-                    angularDamping={4}
-                    linearDamping={4}
+                    angularDamping={2}
+                    linearDamping={2}
                 >
                     <BallCollider args={[0.1]} />
                 </RigidBody>
                 <RigidBody
-                    position={[0, -6, 0]}
+                    position={[3, 0, 0]}
                     colliders={false}
                     ref={j3}
                     canSleep={true}
                     type="dynamic"
-                    angularDamping={4}
-                    linearDamping={4}
+                    angularDamping={2}
+                    linearDamping={2}
                 >
                     <BallCollider args={[0.1]} />
                 </RigidBody>
                 <RigidBody
-                    position={[0, -7.4, 0]}
+                    position={[4, 0, 0]}
                     ref={card}
                     type={drag ? 'kinematicPosition' : 'dynamic'}
                     colliders={false}
                     canSleep={false}
-                    angularDamping={4}
-                    linearDamping={4}
+                    angularDamping={2}
+                    linearDamping={2}
                 >
                     <CuboidCollider position={[0, -1, 0]} args={[1.4, 1.95, 0.01]} />
                     <group
