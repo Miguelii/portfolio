@@ -78,7 +78,7 @@ public/
 - **App Router** with Server Components by default; Client Components only where interactivity is needed
 - **Route groups**: `(public)` for the site, `(sanity)` for the embedded Studio at `/studio`
 - **Static generation** with revalidation (no API routes — content from Sanity + static data files)
-- **3D rendering**: Band component uses Three.js + Rapier physics + GLSL shaders (`.glsl` files loaded via raw-loader in Turbopack config)
+- **3D rendering**: Band component uses Three.js + Rapier physics + GLSL shaders (`.glsl` files loaded via raw-loader in Turbopack config). See `docs/band.md` for optimization details and physics tuning notes. **Rule**: whenever `src/components/ui/band/index.tsx` is modified, update `docs/band.md` to reflect the changes
 - **Animations**: scroll-triggered via Motion library; custom hooks encapsulate animation logic per section
 - **Environment**: validated at runtime via Zod schemas in `src/env/client.ts` and `src/env/server.ts`
 
