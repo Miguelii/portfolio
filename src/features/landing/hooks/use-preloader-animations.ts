@@ -37,7 +37,7 @@ export const usePreloaderAnimations = () => {
             initialPath: `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`,
             targetPath: `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`,
         }),
-        [dimension]
+        [dimension.width, dimension.height]
     )
 
     const curve: Variants = useMemo(
