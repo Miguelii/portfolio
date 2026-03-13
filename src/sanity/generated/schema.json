@@ -355,6 +355,50 @@
         }
     },
     {
+        "name": "quoteSection",
+        "type": "document",
+        "attributes": {
+            "_id": {
+                "type": "objectAttribute",
+                "value": {
+                    "type": "string"
+                }
+            },
+            "_type": {
+                "type": "objectAttribute",
+                "value": {
+                    "type": "string",
+                    "value": "quoteSection"
+                }
+            },
+            "_createdAt": {
+                "type": "objectAttribute",
+                "value": {
+                    "type": "string"
+                }
+            },
+            "_updatedAt": {
+                "type": "objectAttribute",
+                "value": {
+                    "type": "string"
+                }
+            },
+            "_rev": {
+                "type": "objectAttribute",
+                "value": {
+                    "type": "string"
+                }
+            },
+            "quote": {
+                "type": "objectAttribute",
+                "value": {
+                    "type": "string"
+                },
+                "optional": true
+            }
+        }
+    },
+    {
         "name": "privacyNoticeSection",
         "type": "document",
         "attributes": {
