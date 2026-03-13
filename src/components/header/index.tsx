@@ -4,13 +4,18 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { sendGTMEvent } from '@next/third-parties/google'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { getBuildId } from '@/lib/utils'
 import { MenuIcon } from '@/components/icons/menu-icon'
 import { HeaderNavDesktop } from './header-nav-desktop'
-import { HeaderNavMobile } from './header-nav-mobile'
 import { HOME_PAGE_URL } from '@/lib/constants'
 import { NavList } from './constants'
 import { haptic } from '@/lib/haptic'
+
+const HeaderNavMobile = dynamic(
+    () => import('./header-nav-mobile').then((mod) => ({ default: mod.HeaderNavMobile })),
+    { ssr: false }
+)
 
 const buildId = getBuildId()
 
@@ -52,7 +57,7 @@ export function Header() {
                     />
 
                     <MenuIcon
-                        className="w-12 h-12 items-center justify-center flex md:hidden flex-shrink-0"
+                        className="w-12 h-12 items-center justify-center flex md:hidden shrink-0"
                         onClick={() => {
                             haptic()
                             toggleMenu()

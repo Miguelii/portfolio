@@ -1,6 +1,6 @@
 import { ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
-import { CookieConsent } from '@/components/cookie-consent'
+import { CookieConsentLazy } from '@/components/cookie-consent/cookie-consent-lazy'
 import { Header } from '@/components/header'
 import { ProvidersWrapper } from '@/providers/providers-wrapper'
 import { Footer } from '@/components/footer'
@@ -20,7 +20,7 @@ export default async function PublicLayout({ children }: Props) {
                 Skip to content
             </a>
             <ProvidersWrapper>
-                <CookieConsent />
+                <CookieConsentLazy />
                 <Header />
                 <div className="flex-1 w-full">
                     <ViewTransition>{children}</ViewTransition>

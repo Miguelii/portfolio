@@ -15,7 +15,7 @@ export function QuoteCard({ modelPromise }: Props) {
     if (!hasQuote) return
 
     return (
-        <section className="container-padding px-0! border-b border-b-divider">
+        <section className="below-fold container-padding px-0! border-b border-b-divider">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

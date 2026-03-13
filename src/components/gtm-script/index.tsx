@@ -8,11 +8,11 @@ export function GtmScript() {
                 id="gtm-script"
                 async
                 src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
-                strategy="afterInteractive"
+                strategy="lazyOnload"
             />
             <Script
                 id="google-analytics"
-                strategy="afterInteractive"
+                strategy="lazyOnload"
                 dangerouslySetInnerHTML={{
                     __html: `
 					window.dataLayer = window.dataLayer || [];

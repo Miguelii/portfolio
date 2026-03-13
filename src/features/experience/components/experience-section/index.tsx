@@ -14,7 +14,7 @@ export function ExperienceSection({ modelPromise }: Props) {
     const { container, item } = useExperienceSectionAnimations()
 
     return (
-        <section className="flex flex-col gap-5 md:gap-8 lg:gap-12 container-padding border-b-0 border-b-divider">
+        <section className="below-fold flex flex-col gap-5 md:gap-8 lg:gap-12 container-padding border-b-0 border-b-divider">
             <motion.h2
                 className="text-h2"
                 initial={{ opacity: 0, y: -20 }}

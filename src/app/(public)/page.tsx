@@ -4,6 +4,7 @@ import { ProfilePageSchema } from '@/components/structured-data'
 import { AboutSection } from '@/components/about'
 import { Suspense } from 'react'
 import { Preloader } from '@/features/landing/components/preloader'
+import { PreloaderShell } from '@/features/landing/components/preloader/preloader-shell'
 import { getAboutSection } from '@/sanity/api/get-about-section'
 import { getLandingSection } from '@/sanity/api/get-landing-section'
 import { BandLazy } from '@/features/landing/components/band-lazy'
@@ -27,6 +28,7 @@ export default async function Home() {
                 id="main"
                 className="main-bottom-padding main-container border-x border-x-divider"
             >
+                <PreloaderShell />
                 <Preloader />
                 <LandingSection modelPromise={landingSection}>
                     <Suspense

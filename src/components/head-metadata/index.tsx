@@ -15,7 +15,7 @@ export function HeadMetadata() {
                     as="fetch"
                     href={`${BAND_CARD_MODEL_URL}?v=${buildId}`}
                     crossOrigin="anonymous"
-                    fetchPriority="high"
+                    fetchPriority="low"
                 />
                 <PersonSchema />
                 <WebSiteSchema />

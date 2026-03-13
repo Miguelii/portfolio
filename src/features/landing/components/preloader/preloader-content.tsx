@@ -31,19 +31,19 @@ export function PreloaderContent() {
             variants={slideUp}
             initial="initial"
             exit="exit"
-            className="fixed inset-0 z-[99] flex h-screen w-screen items-center justify-center bg-neutral-dark"
+            className="fixed inset-0 z-99 flex h-screen w-screen items-center justify-center bg-neutral-dark"
         >
             {dimension.width > 0 && (
                 <>
                     <motion.p
-                        className="min-h-[63px] absolute z-[1] flex items-center text-background text-[42px]"
+                        className="min-h-15.75 absolute z-1 flex items-center text-background text-[42px]"
                         variants={opacity}
                         initial="initial"
                         animate="enter"
                         aria-hidden="true"
                         exit="exit"
                     >
-                        <span className="mr-2 block h-[10px] w-[10px] rounded-full bg-background"></span>
+                        <span className="mr-2 block h-2.5 w-2.5 rounded-full bg-background"></span>
                         {words[index]}
                     </motion.p>
                     <svg
