@@ -9,6 +9,7 @@ const SINGLETONS = new Set([
     'aboutSection',
     'landingSection',
     'privacyNoticeSection',
+    'quoteSection',
     'workExperienceSection',
 ])
 
@@ -38,6 +39,12 @@ export const structure: StructureResolver = (S) =>
                         .schemaType('workExperienceSection')
                         .documentId('workExperienceSection')
                 ),
+
+            // Singleton: Quote Section
+            S.listItem()
+                .title('Quote Section')
+                .id('quoteSection')
+                .child(S.document().schemaType('quoteSection').documentId('quoteSection')),
 
             // Singleton: Privacy Notice Section
             S.listItem()

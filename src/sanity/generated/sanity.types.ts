@@ -58,6 +58,15 @@ export type WorkExperienceSection = {
     }>
 }
 
+export type QuoteSection = {
+    _id: string
+    _type: 'quoteSection'
+    _createdAt: string
+    _updatedAt: string
+    _rev: string
+    quote?: string
+}
+
 export type PrivacyNoticeSection = {
     _id: string
     _type: 'privacyNoticeSection'
@@ -250,6 +259,7 @@ export type Slug = {
 
 export type AllSanitySchemaTypes =
     | WorkExperienceSection
+    | QuoteSection
     | PrivacyNoticeSection
     | LandingSection
     | AboutSection
