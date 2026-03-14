@@ -17,6 +17,7 @@ import {
 import { BAND_CARD_MODEL_URL } from '@/lib/constants'
 import { getBuildId } from '@/lib/utils'
 import type { GLTFMaterials, GLTFNodes } from '@/types/gltf-result'
+import { useMediaQuery } from '@/hooks/use-media-query'
 
 const buildId = getBuildId()
 
@@ -97,8 +98,8 @@ const Band = memo(function Band() {
     )
 
     const { width, height } = useThree((state) => state.size)
-    const isMobile = width < 1024
-    const isSmallScreen = !isMobile && width < 1280
+
+    const isMobile = useMediaQuery('(max-width: 1023px)')
 
     // @ts-expect-error rope join
     useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 2])
@@ -199,7 +200,7 @@ const Band = memo(function Band() {
 
     return (
         <>
-            <group position={isMobile ? [0, 8.5, 0] : isSmallScreen ? [5, 8.5, 0] : [3.5, 8.5, 0]}>
+            <group position={isMobile ? [0, 8.5, 0] : [3.5, 8.5, 0]}>
                 <RigidBody
                     type="fixed"
                     colliders={false}
