@@ -16,7 +16,7 @@ export function BandLazy() {
     const { CANVAS_DELAY } = useLandingSectionDelay(showPreloader)
 
     return (
-        <div className="canvas-container">
+        <section className="canvas-container">
             <div className="relative w-full canvas-h">
                 {shouldAnimate && (
                     <motion.div
@@ -32,6 +32,6 @@ export function BandLazy() {
                     </motion.div>
                 )}
             </div>
-        </div>
+        </section>
     )
 }

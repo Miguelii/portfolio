@@ -33,9 +33,9 @@ export default async function Home() {
                 <LandingSection modelPromise={landingSection}>
                     <Suspense
                         fallback={
-                            <div className="canvas-container">
+                            <section className="canvas-container">
                                 <div className="relative w-full canvas-h" />
-                            </div>
+                            </section>
                         }
                     >
                         <BandLazy />
