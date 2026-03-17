@@ -16,11 +16,12 @@ Live at [miguelgoncalves.dev](https://www.miguelgoncalves.dev)
 
 This project uses automated code quality tools to maintain consistency:
 
-- **Prettier:** Ensures consistent code formatting
-- **Knip:** Detects unused files, exports, and dependencies
-- **TypeScript:** Provides type safety
-- **Husky:** Runs pre-commit hooks automatically
-- **SonarQube Cloud:** Continuous code analysis for bugs, vulnerabilities, and code smells
+- **Prettier**: Ensures consistent code formatting
+- **Vitest**: Unit testing
+- **Knip**: Detects unused files, exports, and dependencies
+- **TypeScript**: Provides type safety
+- **Husky**: Runs pre-commit hooks automatically
+- **SonarQube Cloud**: Continuous code analysis for bugs, vulnerabilities, and code smells
 
 ## License
 
