@@ -16,7 +16,7 @@ export const STATIC_PREFIXES = [
     '/script',
 ]
 
-export const GTM_ID = 'G-GRCH01BRT9'
+export const GTM_ID = 'G-N6QNF85PTV'
 
 export const GTM_ID_WITHOUT_G: GTMWithoutPrefix<typeof GTM_ID> = GTM_ID.replace(
     'G-',

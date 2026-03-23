@@ -13,7 +13,7 @@ import {
 
 describe('constants', () => {
     it('should define GTM_ID correctly', () => {
-        expect(GTM_ID).toBe('G-GRCH01BRT9')
+        expect(GTM_ID).toBe('G-N6QNF85PTV')
     })
 
     it('should derive GTM_ID_WITHOUT_G from GTM_ID', () => {
