@@ -13,49 +13,41 @@ import { HistoryContext } from './history-provider'
 import { usePathname } from 'next/navigation'
 import { HOME_PAGE_URL } from '@/lib/constants'
 
-type Props = {
-    isLoading: boolean
-    showPreloader: boolean
-    shouldAnimate: boolean
-}
+/**
+ * Preloader lifecycle:
+ * - `idle`     — no preloader needed, content visible immediately
+ * - `loading`  — preloader overlay is showing (first visit to home)
+ * - `complete` — preloader finished, content animates in with entrance delays
+ */
+export type PreloaderPhase = 'idle' | 'loading' | 'complete'
 
-export const PreloaderContext = createContext<Props>({
-    isLoading: false,
-    showPreloader: false,
-    shouldAnimate: true,
-})
+export const PreloaderContext = createContext<PreloaderPhase>('idle')
 
 export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
     const currPath = usePathname()
     const { history } = use(HistoryContext)
 
-    // Lazy initializer runs once at mount: preloader only shows when the very
-    // first page of the session is HOME_PAGE_URL, never on subsequent navigations to HOME_PAGE_URL.
-    const [showPreloader] = useState(() => history.length === 0 && currPath === HOME_PAGE_URL)
+    // Preloader only shows on the very first page load when it's the home page
+    const needsPreloader = history.length === 0 && currPath === HOME_PAGE_URL
 
-    const [isLoading, setIsLoading] = useState(showPreloader)
+    const [phase, setPhase] = useState<PreloaderPhase>(() => (needsPreloader ? 'loading' : 'idle'))
 
     const hasRun = useRef(false)
 
     useEffect(() => {
-        if (!showPreloader || hasRun.current) return
+        if (phase !== 'loading' || hasRun.current) return
         hasRun.current = true
 
         const timer = setTimeout(() => {
-            setIsLoading(false)
+            setPhase('complete')
         }, 2000)
 
         return () => clearTimeout(timer)
-    }, [showPreloader])
+    }, [phase])
 
-    const isPreloaderLoading = isLoading ?? false
+    const values = useMemo(() => {
+        return phase
+    }, [phase])
 
-    const shouldAnimate = !showPreloader || !isPreloaderLoading
-
-    const value: Props = useMemo(
-        () => ({ isLoading, showPreloader, shouldAnimate }),
-        [isLoading, showPreloader, shouldAnimate]
-    )
-
-    return <PreloaderContext.Provider value={value}>{children}</PreloaderContext.Provider>
+    return <PreloaderContext value={values}>{children}</PreloaderContext>
 }

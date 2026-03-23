@@ -2,10 +2,11 @@ import { describe, expect, it, vi, afterEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import type { PropsWithChildren } from 'react'
 import { PreloaderContext } from '@/providers/preloader-provider'
+import type { PreloaderPhase } from '@/providers/preloader-provider'
 import { Preloader } from '@/features/landing/components/preloader'
 
 vi.mock('motion/react', () => ({
-    AnimatePresence: ({ children }: PropsWithChildren) => <>{children}</>,
+    AnimatePresence: ({ children }: PropsWithChildren) => children,
     motion: {
         div: (props: Record<string, unknown>) => <div {...props} />,
         p: (props: Record<string, unknown>) => <p {...props} />,
@@ -25,14 +26,8 @@ vi.mock('@/features/landing/hooks/use-preloader-animations', () => ({
     }),
 }))
 
-function Wrapper({ children, isLoading = false }: PropsWithChildren<{ isLoading?: boolean }>) {
-    return (
-        <PreloaderContext
-            value={{ isLoading, showPreloader: isLoading, shouldAnimate: !isLoading }}
-        >
-            {children}
-        </PreloaderContext>
-    )
+function Wrapper({ children, phase = 'idle' }: PropsWithChildren<{ phase?: PreloaderPhase }>) {
+    return <PreloaderContext value={phase}>{children}</PreloaderContext>
 }
 
 afterEach(() => {
@@ -60,15 +55,15 @@ describe('Preloader', () => {
         ).not.toThrow()
     })
 
-    it('should not render PreloaderContent when isLoading is false', () => {
+    it('should not render PreloaderContent when phase is idle', () => {
         render(<Preloader />, { wrapper: ({ children }) => <Wrapper>{children}</Wrapper> })
 
         expect(screen.queryByText('Hello')).toBeNull()
     })
 
-    it('should render PreloaderContent when isLoading is true', () => {
+    it('should render PreloaderContent when phase is loading', () => {
         render(<Preloader />, {
-            wrapper: ({ children }) => <Wrapper isLoading>{children}</Wrapper>,
+            wrapper: ({ children }) => <Wrapper phase="loading">{children}</Wrapper>,
         })
 
         const elements = screen.queryAllByRole('generic', { hidden: true })

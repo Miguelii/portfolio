@@ -17,12 +17,13 @@ function removePreloaderShell() {
 }
 
 export function Preloader() {
-    const context = use(PreloaderContext)
-    const isLoading = context?.isLoading ?? false
+    const phase = use(PreloaderContext)
 
     useEffect(() => {
         removePreloaderShell()
     }, [])
 
-    return <AnimatePresence mode="wait">{isLoading && <PreloaderContent />}</AnimatePresence>
+    return (
+        <AnimatePresence mode="wait">{phase === 'loading' && <PreloaderContent />}</AnimatePresence>
+    )
 }

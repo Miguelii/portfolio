@@ -57,7 +57,7 @@ export function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Pr
                     </div>
 
                     <nav className="flex-1 flex flex-col justify-center items-center text-center space-y-8">
-                        {navList?.map((item, index) => {
+                        {navList?.map((item) => {
                             const currPathNormalized = normalizePath(currPath || HOME_PAGE_URL)
 
                             const itemPathNormalized = normalizePath(item.url)
@@ -67,7 +67,7 @@ export function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Pr
                             return (
                                 <motion.div
                                     variants={itemVariants}
-                                    key={`mobile-nav-item-${itemPathNormalized}-${index}-${isSelected}`}
+                                    key={`mobile-nav-item-${itemPathNormalized}-${isSelected}`}
                                 >
                                     <MotionLink
                                         href={item.url}

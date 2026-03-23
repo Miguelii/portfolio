@@ -8,11 +8,12 @@ Personal dev portfolio built with Next.js. Showcases work experience, projects, 
 npm run dev              # Start dev server (Turbopack)
 npm run build            # Production build (Turbopack)
 npm run start            # Start production server
-npm run lint             # Run ESLint
-npm run prettier         # Format all files with Prettier
-npm run typecheck        # TypeScript type checking (no emit)
-npm run test             # Run tests with Vitest
-npm run check            # lint + typecheck + test
+pnpm lint                # Lint with oxlint (via vite-plus)
+pnpm fmt                 # Format with oxfmt (via vite-plus)
+pnpm typecheck           # TypeScript type checking (no emit)
+pnpm test                # Run tests with Vitest (via vite-plus)
+pnpm test:watch          # Run tests in watch mode
+pnpm check               # lint + typecheck + test
 npm run knip             # Detect unused files, exports, and dependencies
 npm run generate:types   # Generate Sanity TypeScript types (schema.json + sanity.types.ts)
 npm run prepare          # Install Husky git hooks
@@ -26,7 +27,8 @@ npm run prepare          # Install Husky git hooks
 - **3D Graphics**: Three.js ecosystem — `@react-three/fiber` for the React renderer, `@react-three/drei` for helpers, `@react-three/rapier` for physics simulation
 - **CMS**: Sanity with an embedded Studio, GROQ for queries, and Portable Text (`@portabletext/react`) for rich content
 - **Validation**: Zod schemas via `@t3-oss/env-nextjs` for type-safe environment variables
-- **Testing**: Vitest with `@testing-library/react` and jsdom
+- **Toolchain**: Vite-plus (unified toolchain — oxlint for linting, oxfmt for formatting, Vitest for testing)
+- **Testing**: Vitest (via vite-plus) with `@testing-library/react` and jsdom
 - **Analytics**: Vercel Analytics and Speed Insights
 - **AI Tooling**: Claude Code with Vercel's agent skills (`vercel-composition-patterns`, `vercel-react-best-practices`, `web-design-guidelines`)
 
@@ -119,16 +121,16 @@ Paragraph fields use Portable Text (`type: 'array', of: [{ type: 'block' }]`). R
 
 This project uses automated code quality tools to maintain consistency:
 
-- **Prettier**: Ensures consistent code formatting
+- **Vite-plus**: Unified toolchain — oxlint for linting, oxfmt for formatting, Vitest for testing
 - **Knip**: Detects unused files, exports, and dependencies
 - **TypeScript**: Provides type safety
 - **Husky**: Runs pre-commit hooks automatically
 
-The pre-commit hook (`.husky/pre-commit`) runs in order: `generate:types` → `prettier` → `check` (lint + typecheck + test) → `knip`. All steps must pass for a commit to succeed.
+The pre-commit hook (`.husky/pre-commit`) runs in order: `generate:types` → `fmt` → `check` (lint + typecheck + test) → `knip`. All steps must pass for a commit to succeed.
 
 ## Code Style
 
-Enforced by Prettier and ESLint (Next.js Core Web Vitals + TypeScript):
+Enforced by oxfmt and oxlint (via vite-plus):
 
 - 4-space indentation
 - No semicolons
@@ -138,7 +140,7 @@ Enforced by Prettier and ESLint (Next.js Core Web Vitals + TypeScript):
 - Consistent type imports (`import type { ... }`)
 - **Always use `@/` path alias** for imports — never use relative paths (`../`, `../../`). Example: `@/features/landing/hooks/use-landing-section-delay` instead of `../hooks/use-landing-section-delay`
 
-Run `npm run prettier` after making changes, or ensure your editor auto-formats on save.
+Run `pnpm fmt` after making changes, or ensure your editor auto-formats on save.
 
 ## Environment Variables
 
@@ -167,7 +169,7 @@ Defined in global CSS; use these variables rather than hardcoded colors:
 
 ## Testing
 
-Tests live in `__tests__` directories co-located with the code they test. Run `npm run test` (Vitest with jsdom). Use `@testing-library/react` for component tests.
+Tests live in `__tests__` directories co-located with the code they test. Run `pnpm test` (Vitest via vite-plus with jsdom). Use `@testing-library/react` for component tests.
 
 ## Path Alias
 

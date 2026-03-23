@@ -16,8 +16,10 @@ Live at [miguelgoncalves.dev](https://www.miguelgoncalves.dev)
 
 This project uses automated code quality tools to maintain consistency:
 
-- **Prettier**: Ensures consistent code formatting
-- **Vitest**: Unit testing
+- **vite-plus**: Unified toolchain that bundles linting, formatting and testing:
+    - **oxlint**: Rust-based linter (replaces ESLint)
+    - **oxfmt**: Rust-based code formatter (replaces Prettier)
+    - **Vitest**: Unit testing with jsdom environment
 - **Knip**: Detects unused files, exports, and dependencies
 - **TypeScript**: Provides type safety
 - **Husky**: Runs pre-commit hooks automatically

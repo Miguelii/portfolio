@@ -3,10 +3,7 @@ import { describe, expect, it, vi, beforeEach } from 'vitest'
 import type { PropsWithChildren } from 'react'
 import { BandLazy } from '@/features/landing/components/band-lazy'
 
-const mockPreloaderContext = {
-    shouldAnimate: true,
-    showPreloader: false,
-}
+let mockPhase = 'idle'
 
 vi.mock('next/dynamic', () => ({
     default: () => {
@@ -29,35 +26,34 @@ vi.mock('@/providers/preloader-provider', () => ({
     PreloaderContext: {
         $$typeof: Symbol.for('react.context'),
         get _currentValue() {
-            return mockPreloaderContext
+            return mockPhase
         },
         get _currentValue2() {
-            return mockPreloaderContext
+            return mockPhase
         },
-        Provider: ({ children }: PropsWithChildren) => <>{children}</>,
+        Provider: ({ children }: PropsWithChildren) => children,
     },
 }))
 
 describe('BandLazy', () => {
     beforeEach(() => {
-        mockPreloaderContext.shouldAnimate = true
-        mockPreloaderContext.showPreloader = false
+        mockPhase = 'idle'
     })
 
-    it('should render BandCanvas when shouldAnimate is true', () => {
+    it('should render BandCanvas when phase is idle', () => {
         render(<BandLazy />)
         expect(screen.getByTestId('band-canvas')).toBeInTheDocument()
     })
 
-    it('should not render BandCanvas when shouldAnimate is false', () => {
-        mockPreloaderContext.shouldAnimate = false
+    it('should not render BandCanvas when phase is loading', () => {
+        mockPhase = 'loading'
 
         render(<BandLazy />)
         expect(screen.queryByTestId('band-canvas')).not.toBeInTheDocument()
     })
 
     it('should always reserve space with canvas-h wrapper', () => {
-        mockPreloaderContext.shouldAnimate = false
+        mockPhase = 'loading'
 
         const { container } = render(<BandLazy />)
         const wrapper = container.querySelector('.canvas-h')
