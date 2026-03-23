@@ -7,8 +7,8 @@ import { defineCliConfig } from 'sanity/cli'
 
 export default defineCliConfig({
     api: {
-        projectId: ClientEnv.NEXT_PUBLIC_SANITY_PROJECT_ID,
-        dataset: ClientEnv.NEXT_PUBLIC_SANITY_DATASET,
+        projectId: ClientEnv.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+        dataset: ClientEnv.NEXT_PUBLIC_SANITY_DATASET!,
     },
     typegen: {
         path: './src/**/*.{ts,tsx}',

@@ -1,8 +1,8 @@
 import type { StructureResolver } from 'sanity/structure'
 
-export const apiVersion = '2026-03-11' as const
+export const SANITY_API_VERSION = '2026-03-11' as const
 
-export const revalidateTime = 86400 // 24 hours in seconds
+export const SANITY_QUERY_REVALIDATE_TIME_H = 172800 // 48 hours in seconds
 
 /** Document types that should be singletons (only one instance allowed) */
 const SINGLETONS = new Set([

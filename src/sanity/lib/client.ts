@@ -1,13 +1,13 @@
 import { ClientEnv } from '@/env/client'
 import { createClient } from 'next-sanity'
-import { apiVersion, revalidateTime } from '@/sanity/lib/constants'
+import { SANITY_API_VERSION, SANITY_QUERY_REVALIDATE_TIME_H } from '@/sanity/lib/constants'
 
-const options = { next: { revalidate: revalidateTime } }
+const options = { next: { revalidate: SANITY_QUERY_REVALIDATE_TIME_H } }
 
 const client = createClient({
-    projectId: ClientEnv.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    dataset: ClientEnv.NEXT_PUBLIC_SANITY_DATASET,
-    apiVersion: apiVersion,
+    projectId: ClientEnv.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+    dataset: ClientEnv.NEXT_PUBLIC_SANITY_DATASET!,
+    apiVersion: SANITY_API_VERSION,
     useCdn: false,
 })
 

@@ -5,7 +5,7 @@ import { Footer } from '@/components/footer'
 import type { PropsWithChildren } from 'react'
 import { NOT_FOUND_VIDEO_URL } from '@/lib/constants'
 
-export const revalidate = 86400 // 24h
+export const revalidate = 172800 // 48h
 
 const buildId = getBuildId()
 
@@ -54,7 +54,7 @@ export default function NotFound() {
                             autoPlay
                             loop
                             playsInline
-                            className="object-contain bg-background h-[220px] lg:h-[320px] w-auto"
+                            className="object-contain bg-background h-55 lg:h-80 w-auto"
                             poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%ffffff00'%3E%3C/rect%3E%3C/svg%3E"
                         >
                             <source src={VIDEO_URL} type="video/mp4" />

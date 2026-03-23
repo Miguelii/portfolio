@@ -6,8 +6,8 @@ export const ClientEnv = createEnv({
     client: {
         NEXT_PUBLIC_VERCEL_URL: z.string().nullish(), // nullish becase its not available on localhost, only on vercel
         NEXT_PUBLIC_WEBSITE_URL: z.string(),
-        NEXT_PUBLIC_SANITY_DATASET: z.string(),
-        NEXT_PUBLIC_SANITY_PROJECT_ID: z.string(),
+        NEXT_PUBLIC_SANITY_DATASET: z.string().nullish(),
+        NEXT_PUBLIC_SANITY_PROJECT_ID: z.string().nullish(),
     },
     runtimeEnv: {
         NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
