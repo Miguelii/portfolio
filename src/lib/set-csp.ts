@@ -1,6 +1,6 @@
 import type { NextResponse } from 'next/server'
 import { isPathFromStaticFiles } from '@/lib/utils'
-import { NEXT_IMAGE_PATH, NEXT_STATIC_PATH } from '@/lib/constants'
+import { NEXT_IMAGE_PATH } from '@/lib/constants'
 
 export const setCSP = (response: NextResponse, pathname: string) => {
     const csp = generateCSP()
@@ -9,13 +9,11 @@ export const setCSP = (response: NextResponse, pathname: string) => {
     if (isPathFromStaticFiles(pathname)) {
         response.headers.set('Content-Security-Policy', staticCsp)
 
-        if (pathname.startsWith(NEXT_STATIC_PATH)) {
-            // Let Next.js handle its own chunk caching — overriding with immutable
-            // causes stale chunk errors after deploys or HMR in Next.js 16+
-        } else if (pathname.startsWith(NEXT_IMAGE_PATH)) {
+        if (pathname.startsWith(NEXT_IMAGE_PATH)) {
             response.headers.set('Cache-Control', 'public, max-age=31536000, must-revalidate')
         } else {
-            response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+            // Let Next.js handle its own chunk caching
+            // overriding causes stale chunk errors after deploys or HMR in Next.js 16+
         }
     } else {
         response.headers.set('Content-Security-Policy', csp)
@@ -36,7 +34,6 @@ export const setCSP = (response: NextResponse, pathname: string) => {
 }
 
 const generateCSP = () => {
-    //const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
     const csp = `
         default-src 'self';
         style-src 'self' 

@@ -86,13 +86,5 @@ describe('setCSP', () => {
 
             expect(mockResponse.headers.get('Cache-Control')).toBeNull()
         })
-
-        it('should set long-term cache with immutable for non-Next.js static assets', () => {
-            setCSP(mockResponse, '/models/card.glb')
-
-            expect(mockResponse.headers.get('Cache-Control')).toBe(
-                'public, max-age=31536000, immutable'
-            )
-        })
     })
 })
