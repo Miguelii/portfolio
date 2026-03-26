@@ -35,7 +35,7 @@ export function Header() {
                         prefetch={false}
                         onClick={() => {
                             haptic()
-                            sendGTMEvent({ event: 'buttonClicked', value: 'logo' })
+                            sendGTMEvent({ event: 'logo_click', value: 'logo' })
                         }}
                     >
                         <Image
@@ -62,7 +62,7 @@ export function Header() {
                             haptic()
                             toggleMenu()
                             sendGTMEvent({
-                                event: 'buttonClicked',
+                                event: 'header_menu_click',
                                 value: 'header_mobile_open_menu',
                             })
                         }}

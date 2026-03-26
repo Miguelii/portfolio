@@ -13,7 +13,7 @@ export function HeadMetadata() {
                     id="preload-glb-model"
                     rel="preload"
                     as="fetch"
-                    href={`${BAND_CARD_MODEL_URL}?v=${buildId}`}
+                    href={BAND_CARD_MODEL_URL}
                     crossOrigin="anonymous"
                     fetchPriority="low"
                 />

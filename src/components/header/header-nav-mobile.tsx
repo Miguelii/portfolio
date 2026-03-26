@@ -44,7 +44,7 @@ export function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Pr
                                 haptic()
                                 toggleMenu()
                                 sendGTMEvent({
-                                    event: 'buttonClicked',
+                                    event: 'header_nav_click',
                                     value: 'header_mobile_close_menu',
                                 })
                             }}
@@ -83,7 +83,7 @@ export function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Pr
                                             haptic()
                                             toggleMenu()
                                             sendGTMEvent({
-                                                event: 'buttonClicked',
+                                                event: 'header_nav_click',
                                                 value: `header_nav_mobile_${item.title}`,
                                             })
                                         }}

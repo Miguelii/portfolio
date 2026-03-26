@@ -31,7 +31,7 @@ export const SocialItem = ({ href, children, ariaLabel, className, eventName }: 
             )}
             onClick={() => {
                 haptic()
-                if (eventName) sendGTMEvent({ event: 'buttonClicked', value: eventName })
+                if (eventName) sendGTMEvent({ event: 'social_item_click', value: eventName })
             }}
             {...motionPressProps}
         >

@@ -15,13 +15,8 @@ import {
     useSphericalJoint,
 } from '@react-three/rapier'
 import { BAND_CARD_MODEL_URL } from '@/lib/constants'
-import { getBuildId } from '@/lib/utils'
 import type { GLTFMaterials, GLTFNodes } from '@/types/gltf-result'
 import { useMediaQuery } from '@/hooks/use-media-query'
-
-const buildId = getBuildId()
-
-const GLB_MODEL_URL = `${BAND_CARD_MODEL_URL}?v=${buildId}`
 
 extend({ MeshLineGeometry, MeshLineMaterial })
 
@@ -64,7 +59,7 @@ const Band = memo(function Band() {
     const maxSpeed = 50
     const minSpeed = 50
 
-    const { nodes, materials } = useGLTF(GLB_MODEL_URL) as unknown as {
+    const { nodes, materials } = useGLTF(BAND_CARD_MODEL_URL) as unknown as {
         nodes: GLTFNodes
         materials: GLTFMaterials
     }
@@ -313,6 +308,6 @@ const BandCanvas = memo(function BandCanvas() {
     )
 })
 
-useGLTF.preload(GLB_MODEL_URL)
+useGLTF.preload(BAND_CARD_MODEL_URL)
 
 export default BandCanvas

@@ -42,7 +42,7 @@ export function HeaderNavDesktop({ navList }: Readonly<Props>) {
                         onClick={() => {
                             haptic()
                             sendGTMEvent({
-                                event: 'buttonClicked',
+                                event: 'header_nav_click',
                                 value: `header_nav_desktop_${item.title}`,
                             })
                         }}

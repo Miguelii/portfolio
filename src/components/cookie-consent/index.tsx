@@ -39,7 +39,7 @@ export function CookieConsent() {
 
                 // 2. sends event google analytics
                 sendGTMEvent({
-                    event: 'consentUpdated',
+                    event: 'consent_updated',
                     value: allow ? 'granted' : 'denied',
                 })
 
