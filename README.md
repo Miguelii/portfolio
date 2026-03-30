@@ -10,7 +10,7 @@ Live at [miguelgoncalves.dev](https://www.miguelgoncalves.dev)
 - **Motion** for animations
 - **Tailwind CSS 4**
 - **Vitest** and Testing Library for tests
-- **AI Tooling:** Claude Code with Vercel's agent skills
+- **AI Tooling:** Claude Code with multiple agent skills
 
 ## Code Quality Tools
 
