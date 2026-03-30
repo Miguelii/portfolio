@@ -174,11 +174,3 @@ Tests live in `__tests__` directories co-located with the code they test. Run `p
 ## Path Alias
 
 `@/*` maps to `src/*` — always use this alias for imports within the project.
-
-## Skills & Guidelines
-
-The following skills are located in `.claude/skills/` and `.agents/skills/` and **must be followed** when working on this project:
-
-- **`vercel-composition-patterns`** — Apply when writing or refactoring components. Avoid boolean prop proliferation; use compound components, context providers, and React 19 APIs.
-- **`vercel-react-best-practices`** — Apply when writing any React/Next.js code. Follow the 57 performance rules covering waterfall elimination, bundle optimization, server-side performance, re-render optimization, and more.
-- **`web-design-guidelines`** — Apply when reviewing or writing UI code. Fetch latest guidelines from the source URL defined in the skill and audit files for compliance.
