@@ -74,12 +74,15 @@ const Band = memo(function Band() {
     const [drag, setDrag] = useState<THREE.Vector3 | false>(false)
     const [hover, setHover] = useState<boolean>(false)
 
-    useEffect(() => {
-        if (hover) {
-            document.body.style.cursor = drag ? 'grabbing' : 'grab'
-            return () => void (document.body.style.cursor = 'auto')
-        }
-    }, [hover, drag])
+    useEffect(
+        function BandHoverAndDrag() {
+            if (hover) {
+                document.body.style.cursor = drag ? 'grabbing' : 'grab'
+                return () => void (document.body.style.cursor = 'auto')
+            }
+        },
+        [hover, drag]
+    )
 
     // rerender-use-ref-transient-values: vectors allocated once, mutated in useFrame
     const { ang, rot, vec, dir } = useMemo(

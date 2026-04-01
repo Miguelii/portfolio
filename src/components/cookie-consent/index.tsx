@@ -68,7 +68,7 @@ export function CookieConsent() {
         )
     })
 
-    useEffect(() => {
+    useEffect(function showCookieConsent() {
         onConnected()
     }, [])
 

@@ -19,7 +19,7 @@ function removePreloaderShell() {
 export function Preloader() {
     const phase = use(PreloaderContext)
 
-    useEffect(() => {
+    useEffect(function removePreloader() {
         removePreloaderShell()
     }, [])
 

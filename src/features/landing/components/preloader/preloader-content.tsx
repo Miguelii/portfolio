@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { usePreloaderAnimations } from '@/features/landing/hooks/use-preloader-animations'
 import { motion } from 'motion/react'
+import { useEventListener } from 'usehooks-ts'
 
 const words = ['Hello', 'Bonjour', 'Ciao', 'やあ', 'Hallå', 'Guten tag', 'Hallo', 'Olá'] as const
 
@@ -10,20 +11,27 @@ export function PreloaderContent() {
     const { slideUp, opacity, setDimension, setIndex, index, dimension, curve } =
         usePreloaderAnimations()
 
-    useEffect(() => {
-        const handler = () => setDimension({ width: window.innerWidth, height: window.innerHeight })
-
-        handler()
-
-        window.addEventListener('resize', handler)
-        return () => window.removeEventListener('resize', handler)
+    const handler = useCallback(() => {
+        setDimension({ width: window.innerWidth, height: window.innerHeight })
     }, [setDimension])
 
-    useEffect(() => {
-        if (index >= words.length - 1) return
-        const timeout = setTimeout(() => setIndex(index + 1), index === 0 ? 1000 : 150)
-        return () => clearTimeout(timeout)
-    }, [index, setIndex])
+    useEventListener('resize', handler)
+
+    useEffect(
+        function callHandlerForInitialValue() {
+            handler()
+        },
+        [handler]
+    )
+
+    useEffect(
+        function changeWords() {
+            if (index >= words.length - 1) return
+            const timeout = setTimeout(() => setIndex(index + 1), index === 0 ? 1000 : 150)
+            return () => clearTimeout(timeout)
+        },
+        [index, setIndex]
+    )
 
     return (
         <motion.div

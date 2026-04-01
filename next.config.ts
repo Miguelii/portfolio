@@ -31,6 +31,7 @@ const nextConfig: NextConfig = {
             '@sanity/vision',
             'next-sanity',
             'sanity',
+            'usehooks-ts',
         ],
     },
     images: {
