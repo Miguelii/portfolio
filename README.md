@@ -1,6 +1,6 @@
 # Miguel Goncalves — Developer Portfolio
 
-Live at [miguelgoncalves.dev](https://www.miguelgoncalves.dev)
+Live at [miguel-goncalves.pt](https://miguel-goncalves.pt)
 
 ## Stack
 
