@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { WorkExperienceItem } from '@/features/experience/components/experience-section/experience-section-item'
+import { WorkExperienceItem } from '@/components/experience-section/experience-section-item'
 import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'
 import type { PortableTextBlock } from '@portabletext/react'
 
 vi.mock('@/env/client', () => ({
     ClientEnv: {
-        NEXT_PUBLIC_WEBSITE_URL: 'https://www.miguelgoncalves.dev',
+        NEXT_PUBLIC_WEBSITE_URL: 'https://miguel-goncalves.pt',
     },
 }))
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render } from '@testing-library/react'
-import { PreloaderShell } from '@/features/landing/components/preloader/preloader-shell'
+import { PreloaderShell } from '@/components/preloader/preloader-shell'
 
 describe('PreloaderShell', () => {
     it('should render with id "preloader-shell"', () => {

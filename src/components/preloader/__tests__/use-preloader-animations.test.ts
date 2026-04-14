@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { renderHook } from '@testing-library/react'
-import { usePreloaderAnimations } from '@/features/landing/hooks/use-preloader-animations'
+import { usePreloaderAnimations } from '@/components/preloader/use-preloader-animations'
 
 describe('usePreloaderAnimations', () => {
     it('should return all animation variants and state setters', () => {

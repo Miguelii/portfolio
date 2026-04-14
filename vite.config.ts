@@ -43,7 +43,7 @@ export default defineConfig({
             'react/react-in-jsx-scope': 'off',
             'import/no-unassigned-import': 'off',
             'import/max-dependencies': ['warn', { max: 15 }],
-            'eslint/max-lines-per-function': ['warn', { max: 200 }],
+            'eslint/max-lines-per-function': ['warn', { max: 250 }],
             'eslint/eqeqeq': 'off',
             'eslint/no-inline-comments': 'off',
             'eslint/eslint/no-inline-comments': 'off',

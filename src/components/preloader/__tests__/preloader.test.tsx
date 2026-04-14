@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import type { PropsWithChildren } from 'react'
 import { PreloaderContext } from '@/providers/preloader-provider'
 import type { PreloaderPhase } from '@/providers/preloader-provider'
-import { Preloader } from '@/features/landing/components/preloader'
+import { Preloader } from '@/components/preloader'
 
 vi.mock('motion/react', () => ({
     AnimatePresence: ({ children }: PropsWithChildren) => children,

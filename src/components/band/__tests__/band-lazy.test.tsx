@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 import type { PropsWithChildren } from 'react'
-import { BandLazy } from '@/features/landing/components/band-lazy'
+import { BandLazy } from '@/components/band/band-lazy'
 
 let mockPhase = 'idle'
 

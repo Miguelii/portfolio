@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect } from 'react'
-import { usePreloaderAnimations } from '@/features/landing/hooks/use-preloader-animations'
+import { usePreloaderAnimations } from '@/components/preloader/use-preloader-animations'
 import { motion } from 'motion/react'
 import { useEventListener } from 'usehooks-ts'
 

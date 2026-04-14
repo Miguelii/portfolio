@@ -1,5 +1,5 @@
 import * as motion from 'motion/react-client'
-import { useExperienceSectionAnimations } from '@/features/experience/hooks/use-experience-section-animations'
+import { useExperienceSectionAnimations } from '@/components/experience-section/use-experience-section-animations'
 import { WorkExperienceItem } from './experience-section-item'
 import { use } from 'react'
 import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'

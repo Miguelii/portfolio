@@ -1,7 +1,7 @@
 import { render, screen, act } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { type PropsWithChildren } from 'react'
-import { LandingSection } from '@/features/landing/components/landing-section'
+import { LandingSection } from '@/components/landing-section'
 import type { LandingSectionDTO } from '@/sanity/api/get-landing-section'
 
 vi.mock('motion/react-client', async (importOriginal) => {

@@ -57,17 +57,17 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(
                                         {!isLast && (
                                             <div
                                                 className={cn(
-                                                    'absolute w-[2px] bg-neutral/40 left-1/2 -translate-x-1/2 bottom-0 z-10',
+                                                    'absolute w-0.5 bg-neutral/40 left-1/2 -translate-x-1/2 bottom-0 z-10',
                                                     isFirst ? 'top-3' : 'top-0'
                                                 )}
                                             />
                                         )}
 
                                         {isLast && (
-                                            <div className="absolute w-[2px] bg-neutral/40 left-1/2 -translate-x-1/2 top-0 h-3 z-10" />
+                                            <div className="absolute w-0.5 bg-neutral/40 left-1/2 -translate-x-1/2 top-0 h-3 z-10" />
                                         )}
 
-                                        <div className="w-3 h-3 rounded-full bg-neutral mt-2 z-[11] relative shrink-0" />
+                                        <div className="w-3 h-3 rounded-full bg-neutral mt-2 z-11 relative shrink-0" />
                                     </>
                                 )}
                             </div>
@@ -91,7 +91,7 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(
                                                 key={`work-item-achievement-${item.id}`}
                                                 className="flex items-center gap-2 text-neutral text-p-smallest"
                                             >
-                                                <span className="w-1 h-1 bg-neutral rounded-full flex-shrink-0"></span>
+                                                <span className="w-1 h-1 bg-neutral rounded-full flex shrink-0"></span>
                                                 <PortableText key={item.id} value={item.text} />
                                             </li>
                                         ))}

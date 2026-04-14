@@ -1,12 +1,12 @@
 import { act, render, screen } from '@testing-library/react'
 import { Suspense } from 'react'
 import { describe, expect, it, vi } from 'vitest'
-import { ExperienceSection } from '@/features/experience/components/experience-section'
+import { ExperienceSection } from '@/components/experience-section'
 import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'
 
 vi.mock('@/env/client', () => ({
     ClientEnv: {
-        NEXT_PUBLIC_WEBSITE_URL: 'https://www.miguelgoncalves.dev',
+        NEXT_PUBLIC_WEBSITE_URL: 'https://miguel-goncalves.pt',
     },
 }))
 

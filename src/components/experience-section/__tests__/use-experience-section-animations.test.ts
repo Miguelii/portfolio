@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { useExperienceSectionAnimations } from '@/features/experience/hooks/use-experience-section-animations'
+import { useExperienceSectionAnimations } from '@/components/experience-section/use-experience-section-animations'
 
 describe('useExperienceSectionAnimations', () => {
     it('should return container and item variants', () => {

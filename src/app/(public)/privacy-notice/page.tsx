@@ -7,6 +7,7 @@ import {
     type PrivacyNoticeSectionDTO,
 } from '@/sanity/api/get-privacy-notice-section'
 import { PortableText } from '@portabletext/react'
+import { Effect } from 'effect'
 
 // sanityClientFetch controls the revalidate time
 export const dynamic = 'force-static'
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 }
 
 export default async function PrivacyNoticePage() {
-    const model: PrivacyNoticeSectionDTO = await getPrivacyNoticeSection()
+    const model: PrivacyNoticeSectionDTO = await Effect.runPromise(getPrivacyNoticeSection)
 
     const date = model?._updatedAt?.split('T')[0] ?? new Date().toISOString().split('T')[0]
 
@@ -66,7 +67,7 @@ export default async function PrivacyNoticePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 }}
-                    className="flex flex-col gap-2  text-neutral max-w-[1000px] items-start text-p-regular"
+                    className="flex flex-col gap-2 text-neutral max-w-250 items-start text-p-regular"
                 >
                     {model?.paragraphs.map((block) => (
                         <PortableText key={block.id} value={block.text} />

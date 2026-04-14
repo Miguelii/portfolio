@@ -5,7 +5,7 @@ import * as motion from 'motion/react-client'
 import { PreloaderContext } from '@/providers/preloader-provider'
 import { use } from 'react'
 
-const BandCanvas = dynamic(() => import('@/components/ui/band'), {
+const BandCanvas = dynamic(() => import('@/components/band'), {
     ssr: false,
     loading: () => <div className="w-full canvas-h bg-background" />,
 })
