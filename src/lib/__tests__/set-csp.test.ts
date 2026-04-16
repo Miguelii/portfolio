@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { NextResponse } from 'next/server'
 import { setCSP } from '@/lib/set-csp'
-import * as staticFilesModule from '@/lib/utils.server'
+import * as staticFilesModule from '@/lib/utils'
 
-vi.mock('@/lib/utils.server', () => ({
+vi.mock('@/lib/utils', () => ({
     isPathFromStaticFiles: vi.fn(),
     NEXT_IMAGE_PATH: '/_next/image',
     NEXT_STATIC_PATH: '/_next/static',

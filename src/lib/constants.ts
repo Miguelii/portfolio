@@ -2,6 +2,21 @@ import type { GTMWithoutPrefix } from '@/types/GTM'
 import { Data } from 'effect'
 import type { MotionNodeTapHandlers, Transition } from 'motion'
 
+export const NEXT_STATIC_PATH = '/_next/static'
+
+export const NEXT_IMAGE_PATH = '/_next/image'
+
+export const STATIC_PREFIXES = [
+    '/_next',
+    '/api/',
+    '/assets',
+    '/logos',
+    '/models',
+    '/favicon',
+    '/robots.txt',
+    '/script',
+]
+
 export const GTM_ID = 'G-N6QNF85PTV'
 
 export const GTM_ID_WITHOUT_G: GTMWithoutPrefix<typeof GTM_ID> = GTM_ID.replace(

@@ -2,6 +2,6 @@
     "$schema": "https://unpkg.com/knip@5/schema.json",
     "tags": ["-lintignore"],
     "entry": ["src/env/server.ts"],
-    "ignoreDependencies": ["raw-loader", "sharp"],
+    "ignoreDependencies": ["raw-loader", "sharp", "server-only"],
     "ignore": ["src/sanity/generated/**"]
 }

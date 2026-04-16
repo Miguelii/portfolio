@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 import type { CookieConsent } from '@/types/CookieConsent'
 import { Effect, pipe } from 'effect'
 import { Logger } from './logger'
-import { CookieParseError, HOME_PAGE_URL } from './constants'
+import { CookieParseError, HOME_PAGE_URL, STATIC_PREFIXES } from './constants'
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
@@ -69,4 +69,8 @@ export function normalizeWebsiteUrl(normalized = 'http://localhost:3000'): strin
     }
 
     return normalized
+}
+
+export const isPathFromStaticFiles = (pathname: string): boolean => {
+    return STATIC_PREFIXES.some((prefix) => pathname.startsWith(prefix))
 }
