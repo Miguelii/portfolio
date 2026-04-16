@@ -44,6 +44,7 @@ export default defineConfig({
             'import/no-unassigned-import': 'off',
             'import/max-dependencies': ['warn', { max: 15 }],
             'eslint/max-lines-per-function': ['warn', { max: 250 }],
+            'eslint/max-lines': ['warn', { max: 350 }],
             'eslint/eqeqeq': 'off',
             'eslint/no-inline-comments': 'off',
             'eslint/eslint/no-inline-comments': 'off',
