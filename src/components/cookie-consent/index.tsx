@@ -1,16 +1,16 @@
 'use client'
 
 import { CookieIcon } from 'lucide-react'
-import { useEffect, useEffectEvent, useState, useTransition } from 'react'
+import { useCallback, useEffect, useState, useTransition } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createCookieConsentAction } from '@/services/create-cookie-consent-action'
 import { cn, getClientSideCookieConsent } from '@/lib/utils'
-import { tryCatch } from '@/lib/try-catch'
 import { sendGTMEvent } from '@next/third-parties/google'
 import { Button } from '@/components/ui/button'
 import { HOME_PAGE_URL } from '@/lib/constants'
 import { haptic } from '@/lib/haptic'
+import { Effect, Fiber, pipe } from 'effect'
 
 export function CookieConsent() {
     const [isOpen, setIsOpen] = useState(false)
@@ -21,8 +21,6 @@ export function CookieConsent() {
 
     const currPath = usePathname()
 
-    const consentCookie = getClientSideCookieConsent()
-
     const isHomePage = currPath === HOME_PAGE_URL
 
     const handler = (allow: boolean) => {
@@ -30,47 +28,53 @@ export function CookieConsent() {
         setHide(true)
 
         startTransition(async () => {
-            await tryCatch(async () => {
-                // 1. updates google dataLayer analytics values
-                globalThis?.gtag('consent', 'update', {
-                    ad_storage: allow ? 'granted' : 'denied',
-                    analytics_storage: allow ? 'granted' : 'denied',
-                })
-
-                // 2. sends event google analytics
-                sendGTMEvent({
-                    event: 'consent_updated',
-                    value: allow ? 'granted' : 'denied',
-                })
-
-                // 3. Create cookie
-                createCookieConsentAction({ allowAnalytics: allow })
+            // 1. updates google dataLayer analytics values
+            globalThis?.gtag('consent', 'update', {
+                ad_storage: allow ? 'granted' : 'denied',
+                analytics_storage: allow ? 'granted' : 'denied',
             })
+
+            // 2. sends event google analytics
+            sendGTMEvent({
+                event: 'consent_updated',
+                value: allow ? 'granted' : 'denied',
+            })
+
+            // 3. Create cookie
+            createCookieConsentAction({ allowAnalytics: allow })
+
             router.refresh()
         })
     }
 
-    const onConnected = useEffectEvent(() => {
-        setTimeout(
-            () => {
-                const hasCookieConsent = consentCookie != null
-
-                setIsOpen(!hasCookieConsent)
-                if (hasCookieConsent) {
-                    setIsOpen(false)
-                    setTimeout(() => {
-                        setHide(true)
-                    }, 700)
-                }
-            },
+    const onConnected = useCallback(() => {
+        const program = pipe(
             // If its the home page we add a bit more delay so the banner displays after the preloader
-            isHomePage ? 3500 : 700
-        )
-    })
+            Effect.sleep(isHomePage ? 3500 : 700),
 
-    useEffect(function showCookieConsent() {
-        onConnected()
-    }, [])
+            Effect.flatMap(() => Effect.sync(() => getClientSideCookieConsent())),
+
+            Effect.flatMap((consent) =>
+                consent != null
+                    ? pipe(
+                          Effect.sync(() => setIsOpen(false)),
+                          Effect.andThen(Effect.sync(() => setHide(true)))
+                      )
+                    : Effect.sync(() => setIsOpen(true))
+            )
+        )
+
+        const fiber = Effect.runFork(program)
+
+        return () => Effect.runSync(Fiber.interrupt(fiber))
+    }, [isHomePage])
+
+    useEffect(
+        function showCookieConsent() {
+            onConnected()
+        },
+        [onConnected]
+    )
 
     return (
         <div

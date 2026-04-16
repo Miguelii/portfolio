@@ -1,9 +1,10 @@
 import { clsx } from 'clsx'
 import type { ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { HOME_PAGE_URL, STATIC_PREFIXES } from './constants'
 import type { CookieConsent } from '@/types/CookieConsent'
-import { Logger } from './logger'
+import { Logger } from '@/lib/logger'
+import { Effect, pipe } from 'effect'
+import { CookieParseError, HOME_PAGE_URL } from '@/lib/constants'
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
@@ -15,39 +16,45 @@ export const getBuildId = () => {
 
 export const normalizePath = (path: string) => path.replace(/\/$/, '') || HOME_PAGE_URL
 
-export const isPathFromStaticFiles = (pathname: string): boolean => {
-    return STATIC_PREFIXES.some((prefix) => pathname.startsWith(prefix))
-}
-
 export const getClientSideCookieConsent = (): CookieConsent | null => {
-    // We dont use `tryCatch` here because we dont want the function to be async
-    try {
-        if (typeof document === 'undefined') {
-            return null
-        }
+    return pipe(
+        Effect.sync(() => typeof document !== 'undefined'),
 
-        const consentCookie = document.cookie
-            .split('; ')
-            .find((row) => row.startsWith('cookieConsent='))
+        Effect.flatMap((isBrowser) =>
+            isBrowser
+                ? Effect.succeed(
+                      document.cookie.split('; ').find((row) => row.startsWith('cookieConsent=')) ??
+                          null
+                  )
+                : Effect.succeed(null)
+        ),
 
-        if (!consentCookie) {
-            return null
-        }
+        Effect.flatMap((consentCookie) => {
+            if (!consentCookie) return Effect.succeed(null)
 
-        const value = consentCookie.split('=')[1]
-        const decodedValue = decodeURIComponent(value)
+            return Effect.try({
+                try: () => {
+                    const value = consentCookie.split('=')[1]
+                    return JSON.parse(decodeURIComponent(value)) as CookieConsent
+                },
+                catch: (error) => new CookieParseError({ cause: error }),
+            })
+        }),
 
-        const json: CookieConsent = JSON.parse(decodedValue)
+        Effect.tapError((error) =>
+            Effect.sync(() =>
+                Logger({
+                    level: 'error',
+                    error: error,
+                    context: 'getClientSideCookieConsent',
+                })
+            )
+        ),
 
-        return json
-    } catch (error) {
-        Logger({
-            level: 'error',
-            error,
-            context: 'getCookieConsent',
-        })
-        return null
-    }
+        Effect.orElse(() => Effect.succeed(null)),
+
+        Effect.runSync
+    )
 }
 
 export function normalizeWebsiteUrl(normalized = 'http://localhost:3000'): string {

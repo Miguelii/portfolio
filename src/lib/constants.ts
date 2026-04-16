@@ -1,20 +1,6 @@
 import type { GTMWithoutPrefix } from '@/types/GTM'
+import { Data } from 'effect'
 import type { MotionNodeTapHandlers, Transition } from 'motion'
-
-export const NEXT_STATIC_PATH = '/_next/static'
-
-export const NEXT_IMAGE_PATH = '/_next/image'
-
-export const STATIC_PREFIXES = [
-    '/_next',
-    '/api/',
-    '/assets',
-    '/logos',
-    '/models',
-    '/favicon',
-    '/robots.txt',
-    '/script',
-]
 
 export const GTM_ID = 'G-N6QNF85PTV'
 
@@ -36,3 +22,12 @@ export const motionPressProps: {
 } as const
 
 export const NOT_FOUND_VIDEO_URL = `/assets/ezgif-482d65a8fea8d1e7.mp4` as const
+
+const DataDefaultTaggedError = <T extends string>(tag: T) =>
+    Data.TaggedError(tag)<{ cause: unknown; message?: string }>
+
+export class ValidationError extends DataDefaultTaggedError('ValidationError') {}
+
+export class CookieStoreError extends DataDefaultTaggedError('CookieStoreError') {}
+
+export class CookieParseError extends DataDefaultTaggedError('CookieParseError') {}

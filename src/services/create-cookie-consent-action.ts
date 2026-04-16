@@ -3,9 +3,9 @@
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { z } from 'zod'
-import { GTM_ID_WITHOUT_G } from '@/lib/constants'
-import { tryCatch } from '@/lib/try-catch'
 import { Logger } from '@/lib/logger'
+import { Effect, pipe } from 'effect'
+import { CookieStoreError, ValidationError, GTM_ID_WITHOUT_G } from '@/lib/constants'
 
 const cookieConsentSchema = z.object({
     allowAnalytics: z.boolean(),
@@ -14,39 +14,50 @@ const cookieConsentSchema = z.object({
 type Props = z.infer<typeof cookieConsentSchema>
 
 export async function createCookieConsentAction(input: Props) {
-    const parsed = cookieConsentSchema.safeParse(input)
+    return pipe(
+        Effect.try({
+            try: () => cookieConsentSchema.parse(input),
+            catch: (error) => new ValidationError({ cause: error }),
+        }),
 
-    if (!parsed.success) {
-        Logger({
-            level: 'error',
-            error: new Error(parsed.error.message),
-            context: 'createCookieConsentAction',
-        })
-        return
-    }
+        Effect.flatMap(({ allowAnalytics }) =>
+            Effect.tryPromise({
+                try: async () => {
+                    const cookieStore = await cookies()
 
-    const { allowAnalytics } = parsed.data
+                    cookieStore.set({
+                        name: 'cookieConsent',
+                        value: JSON.stringify({
+                            necessary: true,
+                            analytics: allowAnalytics,
+                        }),
+                        httpOnly: false,
+                        secure: true,
+                        sameSite: 'lax',
+                        expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+                    })
 
-    await tryCatch(async () => {
-        const cookieStore = await cookies()
+                    if (!allowAnalytics) {
+                        cookieStore.delete('stats_ga')
+                        cookieStore.delete(`stats_ga_${GTM_ID_WITHOUT_G}`)
+                    }
 
-        cookieStore.set({
-            name: 'cookieConsent',
-            value: JSON.stringify({
-                necessary: true,
-                analytics: allowAnalytics,
-            }),
-            httpOnly: false,
-            secure: true,
-            sameSite: 'lax',
-            expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // 1 year
-        })
+                    revalidatePath('/', 'layout')
+                },
+                catch: (error) => new CookieStoreError({ cause: error }),
+            })
+        ),
 
-        if (!allowAnalytics) {
-            cookieStore.delete('stats_ga')
-            cookieStore.delete(`stats_ga_${GTM_ID_WITHOUT_G}`)
-        }
+        Effect.tapError((error) =>
+            Effect.sync(() =>
+                Logger({
+                    level: 'error',
+                    error: error,
+                    context: 'createCookieConsentAction',
+                })
+            )
+        ),
 
-        revalidatePath('/', 'layout')
-    }, 'createCookieConsentAction')
+        Effect.runPromise
+    )
 }

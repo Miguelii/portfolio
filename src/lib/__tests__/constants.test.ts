@@ -5,10 +5,7 @@ import {
     GTM_ID_WITHOUT_G,
     HOME_PAGE_URL,
     motionPressProps,
-    NEXT_IMAGE_PATH,
-    NEXT_STATIC_PATH,
     NOT_FOUND_VIDEO_URL,
-    STATIC_PREFIXES,
 } from '@/lib/constants'
 
 describe('constants', () => {
@@ -36,18 +33,6 @@ describe('constants', () => {
         expect(motionPressProps).toBeDefined()
         expect(motionPressProps.whileTap).toEqual({ scale: 0.96 })
         expect(motionPressProps.transition).toEqual({ type: 'spring', stiffness: 500, damping: 20 })
-    })
-
-    it('should define STATIC_PREFIXES', () => {
-        expect(STATIC_PREFIXES).toBeDefined()
-    })
-
-    it('should define NEXT_IMAGE_PATH', () => {
-        expect(NEXT_IMAGE_PATH).toBe('/_next/image')
-    })
-
-    it('should define NEXT_STATIC_PATH', () => {
-        expect(NEXT_STATIC_PATH).toBe('/_next/static')
     })
 
     it('should define NOT_FOUND_VIDEO_URL', () => {
