@@ -1,15 +1,58 @@
-import { Logger } from '@/lib/logger'
+import { Effect } from 'effect'
+import { Logger } from './logger'
 
 export const supportsHaptic =
     typeof window !== 'undefined' ? window.matchMedia('(pointer: coarse)').matches : false
 
-/**
- * Type guard to check if navigator supports vibrate API
- */
 function hasVibrate(
     nav: Navigator
 ): nav is Navigator & { vibrate: (pattern: number | number[]) => boolean } {
     return 'vibrate' in nav && typeof nav.vibrate === 'function'
+}
+
+const vibrateEffect = (pattern: number | number[]) => Effect.try(() => navigator.vibrate(pattern))
+
+const iOSHapticEffect = Effect.acquireUseRelease(
+    Effect.try(() => {
+        const label = document.createElement('label')
+        label.ariaHidden = 'true'
+        label.style.display = 'none'
+
+        const input = document.createElement('input')
+        input.type = 'checkbox'
+        input.setAttribute('switch', '')
+        label.appendChild(input)
+        document.body.appendChild(label)
+
+        return label
+    }),
+
+    (label) => Effect.try(() => label.click()),
+
+    (label) => Effect.sync(() => label.remove())
+)
+
+const hapticEffect = (pattern: number | number[] = 50): Effect.Effect<void> => {
+    return Effect.gen(function* () {
+        if (!supportsHaptic) return
+
+        if (hasVibrate(navigator)) {
+            yield* vibrateEffect(pattern)
+            return
+        }
+
+        yield* iOSHapticEffect
+    }).pipe(
+        Effect.catchAll((error) =>
+            Effect.sync(() =>
+                Logger({
+                    level: 'error',
+                    error: error,
+                    context: 'haptic',
+                })
+            )
+        )
+    )
 }
 
 /**
@@ -25,36 +68,6 @@ function hasVibrate(
  *
  * <Button onClick={() => haptic()}>Haptic</Button>
  */
-export function haptic(pattern: number | number[] = 50) {
-    try {
-        if (!supportsHaptic) return
-
-        if (hasVibrate(navigator)) {
-            navigator.vibrate(pattern)
-            return
-        }
-
-        // iOS haptic trick via checkbox switch element
-        const label = document.createElement('label')
-        label.ariaHidden = 'true'
-        label.style.display = 'none'
-
-        const input = document.createElement('input')
-        input.type = 'checkbox'
-        input.setAttribute('switch', '')
-        label.appendChild(input)
-
-        try {
-            document.body.appendChild(label)
-            label.click()
-        } finally {
-            label.remove()
-        }
-    } catch (error) {
-        Logger({
-            level: 'error',
-            error,
-            context: 'haptic',
-        })
-    }
+export function haptic(pattern: number | number[] = 50): void {
+    Effect.runSync(hapticEffect(pattern))
 }

@@ -151,6 +151,7 @@ describe('haptic', () => {
             const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 
             const { haptic } = await import('@/lib//haptic')
+
             expect(() => haptic()).not.toThrow()
             expect(consoleSpy).toHaveBeenCalled()
         })
