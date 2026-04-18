@@ -1,8 +1,15 @@
 import { ClientEnv } from '@/env/client'
 import { createClient } from 'next-sanity'
-import { SANITY_API_VERSION, SANITY_QUERY_REVALIDATE_TIME_H } from '@/sanity/lib/constants'
+import {
+    SANITY_API_VERSION,
+    SANITY_QUERY_REVALIDATE_KEY,
+    SANITY_QUERY_REVALIDATE_TIME_H,
+} from '@/sanity/lib/constants'
+import type { NextFetchOptions } from '@/types/NextFetchOptions'
 
-const options = { next: { revalidate: SANITY_QUERY_REVALIDATE_TIME_H } }
+const options: NextFetchOptions = {
+    next: { revalidate: SANITY_QUERY_REVALIDATE_TIME_H, tags: [SANITY_QUERY_REVALIDATE_KEY] },
+}
 
 const client = createClient({
     projectId: ClientEnv.NEXT_PUBLIC_SANITY_PROJECT_ID!,
