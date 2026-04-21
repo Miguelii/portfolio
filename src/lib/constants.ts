@@ -46,3 +46,7 @@ export class ValidationError extends DataDefaultTaggedError('ValidationError') {
 export class CookieStoreError extends DataDefaultTaggedError('CookieStoreError') {}
 
 export class CookieParseError extends DataDefaultTaggedError('CookieParseError') {}
+
+export class SanityFetchError extends DataDefaultTaggedError('SanityFetchError') {}
+
+export class UnauthorizedError extends DataDefaultTaggedError('UnauthorizedError') {}

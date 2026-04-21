@@ -1,5 +1,6 @@
 import { ServerEnv } from '@/env/server'
-import { HOME_PAGE_URL } from '@/lib/constants'
+import { HOME_PAGE_URL, UnauthorizedError } from '@/lib/constants'
+import { Logger } from '@/lib/logger'
 import { verifyApiKey } from '@/lib/utils.server'
 import { SANITY_QUERY_REVALIDATE_KEY } from '@/sanity/lib/constants'
 import { Effect } from 'effect'
@@ -16,7 +17,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             const isAuthorized = yield* verifyApiKey(
                 apiKey,
                 ServerEnv.NEXT_UPDATE_CONTENT_SECRET_KEY
-            ).pipe(Effect.catchAll(() => Effect.succeed(false)))
+            ).pipe(Effect.mapError((error) => new UnauthorizedError({ cause: error })))
 
             if (!isAuthorized) {
                 return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -26,6 +27,20 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             revalidatePath(HOME_PAGE_URL, 'layout')
 
             return NextResponse.json({ status: 200 })
-        })
+        }).pipe(
+            Effect.catchAll((error) => {
+                Logger({
+                    level: 'error',
+                    error,
+                    context: `revalidateContent [${error._tag}]`,
+                })
+
+                if (error instanceof UnauthorizedError) {
+                    return Effect.succeed(NextResponse.json({ status: 403 }))
+                }
+
+                return Effect.succeed(NextResponse.json({ status: 500 }))
+            })
+        )
     )
 }

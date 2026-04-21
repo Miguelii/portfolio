@@ -4,6 +4,7 @@ import type { WorkExperienceSection } from '@/sanity/generated/sanity.types'
 import type { PortableTextBlock } from '@portabletext/react'
 import { Effect } from 'effect'
 import { Logger } from '@/lib/logger'
+import { SanityFetchError } from '@/lib/constants'
 
 type WorkExperienceSectionDTOItem = NonNullable<WorkExperienceSection['items']>[number]
 type WorkExperienceSectionDTOPosition = NonNullable<
@@ -32,15 +33,15 @@ export type WorkExperienceSectionDTO = {
 
 export const getWorkExperienceSection = Effect.tryPromise({
     try: () => sanityClientFetch<WorkExperienceSectionDTO>(WORK_EXPERIENCE_SECTION_GROQ),
-    catch: (error) => {
+    catch: (error) => new SanityFetchError({ cause: error }),
+}).pipe(
+    Effect.map((data) => data ?? null),
+    Effect.catchAll((error) => {
         Logger({
             level: 'error',
             error,
-            context: 'getWorkExperienceSection',
+            context: `getWorkExperienceSection [${error._tag}]`,
         })
-        return error
-    },
-}).pipe(
-    Effect.map((data) => data ?? null),
-    Effect.catchAll(() => Effect.succeed(null))
+        return Effect.succeed(null)
+    })
 )
