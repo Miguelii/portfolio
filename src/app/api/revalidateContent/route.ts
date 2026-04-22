@@ -34,12 +34,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
                     error,
                     context: `revalidateContent [${error._tag}]`,
                 })
-
-                if (error instanceof UnauthorizedError) {
-                    return Effect.succeed(NextResponse.json({ status: 403 }))
-                }
-
-                return Effect.succeed(NextResponse.json({ status: 500 }))
+                return Effect.succeed(NextResponse.json({ status: 503 }))
             })
         )
     )
