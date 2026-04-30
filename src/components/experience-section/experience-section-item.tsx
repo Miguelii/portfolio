@@ -12,7 +12,7 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(
     experience: NonNullable<WorkExperienceSectionDTO>['items'][number]
 ) {
     const previewUrl =
-        experience.previewUrl?.replaceAll('##BASE_URL##', ClientEnv.NEXT_PUBLIC_WEBSITE_URL) ?? ''
+        experience.previewUrl?.replaceAll('##BASE_URL##', ClientEnv.NEXT_PUBLIC_VERCEL_URL) ?? ''
 
     return (
         <div className="flex flex-col gap-5">

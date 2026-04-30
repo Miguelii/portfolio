@@ -1,6 +1,6 @@
 import { ClientEnv } from '@/env/client'
 
-const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
+const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_VERCEL_URL
 
 export function PersonSchema() {
     const personSchema = {

@@ -147,7 +147,7 @@ Run `pnpm fmt` after making changes, or ensure your editor auto-formats on save.
 | Variable | Where | Description |
 |---|---|---|
 | `NEXT_PUBLIC_VERCEL_URL` | client | Vercel deployment URL (not set on localhost) |
-| `NEXT_PUBLIC_WEBSITE_URL` | client | Full site URL (normalized: https://, no trailing slash) |
+| `NEXT_PUBLIC_VERCEL_URL` | client | Full site URL (normalized: https://, no trailing slash) |
 | `NEXT_PUBLIC_BUILD_TIMESTAMP` | auto | Injected by `next.config.ts` at build time |
 | `NEXT_PUBLIC_SANITY_PROJECT_ID` | client | Sanity project ID |
 | `NEXT_PUBLIC_SANITY_DATASET` | client | Sanity dataset name (e.g. `production`) |

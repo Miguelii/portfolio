@@ -14,7 +14,7 @@ export const dynamic = 'force-static'
 
 const PATH = '/privacy-notice'
 
-const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
+const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_VERCEL_URL
 
 const META_TITLE = 'Privacy Notice'
 

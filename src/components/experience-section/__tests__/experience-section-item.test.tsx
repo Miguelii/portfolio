@@ -6,7 +6,7 @@ import type { PortableTextBlock } from '@portabletext/react'
 
 vi.mock('@/env/client', () => ({
     ClientEnv: {
-        NEXT_PUBLIC_WEBSITE_URL: 'https://miguel-goncalves.pt',
+        NEXT_PUBLIC_VERCEL_URL: 'https://miguel-goncalves.pt',
     },
 }))
 

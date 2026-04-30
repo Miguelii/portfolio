@@ -35,7 +35,7 @@ export const DEFAULT_META_TITLE = 'Miguel Gonçalves - Software Engineer (Full-S
 export const DEFAULT_META_DESCRIPTION =
     'Miguel Gonçalves, Full-Stack Software Engineer, specializing in high-performance SaaS applications with React.js, Next.js, JavaScript, TypeScript and Node.js. View projects on LinkedIn and GitHub. Innovative, scalable solutions. All rights reserved.'
 
-const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_WEBSITE_URL
+const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_VERCEL_URL
 
 export const metadata: Metadata = {
     metadataBase: WEBSITE_URL ? new URL(WEBSITE_URL) : undefined,
