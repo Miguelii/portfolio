@@ -1,6 +1,5 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { z } from 'zod'
 import { Logger } from '@/lib/logger'
@@ -41,8 +40,6 @@ export async function createCookieConsentAction(input: Props) {
                         cookieStore.delete('stats_ga')
                         cookieStore.delete(`stats_ga_${GTM_ID_WITHOUT_G}`)
                     }
-
-                    revalidatePath('/', 'layout')
                 },
                 catch: (error) => new CookieStoreError({ cause: error }),
             })

@@ -5,8 +5,6 @@ import { Footer } from '@/components/footer'
 import type { PropsWithChildren } from 'react'
 import { NOT_FOUND_VIDEO_URL } from '@/lib/constants'
 
-export const revalidate = 172800 // 48h
-
 const buildId = getBuildId()
 
 const VIDEO_URL = `${NOT_FOUND_VIDEO_URL}?${buildId}`
