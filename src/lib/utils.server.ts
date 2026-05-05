@@ -16,7 +16,15 @@ export function verifyApiKey(
     expected: string | null
 ): Effect.Effect<boolean, ApiKeyError> {
     return Effect.gen(function* () {
-        if (!apiKey || !expected) yield* Effect.fail(new ApiKeyError({ cause: 'Invalid Request' }))
+        if (!apiKey)
+            yield* Effect.fail(
+                new ApiKeyError({ cause: 'Invalid Request', message: 'API key missing' })
+            )
+
+        if (!expected)
+            yield* Effect.fail(
+                new ApiKeyError({ cause: 'Invalid Request', message: 'Expected key missing' })
+            )
 
         if (apiKey!.length !== expected!.length)
             yield* Effect.fail(new ApiKeyError({ cause: 'Keys Mismatch' }))
