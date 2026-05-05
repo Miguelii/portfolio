@@ -10,13 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         {
             url: WEBSITE_URL,
             lastModified: new Date(),
-            changeFrequency: 'weekly',
+            changeFrequency: 'monthly',
             priority: 1,
         },
         {
             url: `${WEBSITE_URL}/privacy-notice`,
             lastModified: new Date(),
-            changeFrequency: 'monthly',
+            changeFrequency: 'yearly',
             priority: 0.3,
         },
     ]

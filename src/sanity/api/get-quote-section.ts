@@ -3,7 +3,7 @@ import type { QuoteSection } from '@/sanity/generated/sanity.types'
 import { QUOTE_SECTION_GROQ } from '@/sanity/queries/quote-section.groq'
 import { Effect } from 'effect'
 import { Logger } from '@/lib/logger'
-import { SanityFetchError } from '@/lib/constants'
+import { SanityFetchError } from '@/lib/data-tagged-errors'
 
 export type QuoteSectionDTO = {
     quote: QuoteSection['quote']

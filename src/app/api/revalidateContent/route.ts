@@ -1,5 +1,6 @@
 import { ServerEnv } from '@/env/server'
-import { HOME_PAGE_URL, UnauthorizedError } from '@/lib/constants'
+import { HOME_PAGE_URL } from '@/lib/constants'
+import { UnauthorizedError } from '@/lib/data-tagged-errors'
 import { Logger } from '@/lib/logger'
 import { verifyApiKey } from '@/lib/utils.server'
 import { SANITY_QUERY_REVALIDATE_KEY } from '@/sanity/lib/constants'

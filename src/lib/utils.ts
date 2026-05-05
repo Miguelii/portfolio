@@ -3,8 +3,9 @@ import type { ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import type { CookieConsent } from '@/types/CookieConsent'
 import { Effect, pipe } from 'effect'
-import { Logger } from './logger'
-import { CookieParseError, HOME_PAGE_URL, STATIC_PREFIXES } from './constants'
+import { Logger } from '@/lib/logger'
+import { HOME_PAGE_URL, STATIC_PREFIXES } from '@/lib/constants'
+import { CookieParseError } from '@/lib/data-tagged-errors'
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
@@ -55,20 +56,6 @@ export const getClientSideCookieConsent = (): CookieConsent | null => {
 
         Effect.runSync
     )
-}
-
-export function normalizeWebsiteUrl(normalized = 'http://localhost:3000'): string {
-    // Always returns https
-    if (!normalized.startsWith('http://') && !normalized.startsWith('https://')) {
-        normalized = `https://${normalized}`
-    }
-
-    // Always returns without final slash
-    if (normalized.endsWith('/')) {
-        normalized = normalized.slice(0, -1)
-    }
-
-    return normalized
 }
 
 export const isPathFromStaticFiles = (pathname: string): boolean => {

@@ -2,10 +2,7 @@ import 'server-only'
 
 import { timingSafeEqual } from 'node:crypto'
 import { Effect } from 'effect'
-
-class ApiKeyError extends Error {
-    readonly _tag = 'ApiKeyError'
-}
+import { ApiKeyError } from './data-tagged-errors'
 
 /**
  * Compares an API key against an expected value using a timing-safe comparison
@@ -19,10 +16,10 @@ export function verifyApiKey(
     expected: string | null
 ): Effect.Effect<boolean, ApiKeyError> {
     return Effect.gen(function* () {
-        if (!apiKey || !expected) yield* Effect.fail(new ApiKeyError('Invalid Request'))
+        if (!apiKey || !expected) yield* Effect.fail(new ApiKeyError({ cause: 'Invalid Request' }))
 
         if (apiKey!.length !== expected!.length)
-            yield* Effect.fail(new ApiKeyError('Keys Mismatch'))
+            yield* Effect.fail(new ApiKeyError({ cause: 'Keys Mismatch' }))
 
         return timingSafeEqual(Buffer.from(apiKey!), Buffer.from(expected!))
     })

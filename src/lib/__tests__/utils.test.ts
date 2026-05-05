@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import {
+    cn,
     getBuildId,
     getClientSideCookieConsent,
     isPathFromStaticFiles,
@@ -8,6 +9,24 @@ import {
 import { BAND_CARD_MODEL_URL } from '@/lib/constants'
 
 describe('utils', () => {
+    describe('cn', () => {
+        it('should merge class names', () => {
+            expect(cn('text-sm', 'font-bold')).toBe('text-sm font-bold')
+        })
+
+        it('should handle conditional classes', () => {
+            expect(cn('base', false, 'visible')).toBe('base visible')
+        })
+
+        it('should resolve tailwind conflicts (last wins)', () => {
+            expect(cn('px-4', 'px-2')).toBe('px-2')
+        })
+
+        it('should handle undefined and null values', () => {
+            expect(cn('base', undefined, null, 'end')).toBe('base end')
+        })
+    })
+
     describe('getBuildId', () => {
         it('should return NEXT_PUBLIC_BUILD_TIMESTAMP when it is defined', () => {
             vi.stubEnv('NEXT_PUBLIC_BUILD_TIMESTAMP', '1234567890')

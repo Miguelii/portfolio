@@ -3,7 +3,7 @@ import type { LandingSection } from '@/sanity/generated/sanity.types'
 import { LANDING_SECTION_GROQ } from '@/sanity/queries/landing-section.groq'
 import { Effect } from 'effect'
 import { Logger } from '@/lib/logger'
-import { SanityFetchError } from '@/lib/constants'
+import { SanityFetchError } from '@/lib/data-tagged-errors'
 
 export type LandingSectionDTO = {
     title: LandingSection['title']

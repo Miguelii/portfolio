@@ -62,4 +62,70 @@ describe('Logger', () => {
             })
         )
     })
+
+    it('should call console.warn for warn level', () => {
+        const spy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+        Logger({
+            level: 'warn',
+            error: 'Something suspicious',
+            context: 'authCheck',
+        })
+
+        expect(spy).toHaveBeenCalledOnce()
+        expect(spy).toHaveBeenCalledWith(
+            '[Logger] in authCheck:',
+            expect.objectContaining({
+                message: 'Something suspicious',
+                timestamp: expect.any(String),
+            })
+        )
+    })
+
+    it('should call console.info for info level', () => {
+        const spy = vi.spyOn(console, 'info').mockImplementation(() => {})
+
+        Logger({
+            level: 'info',
+            error: 'Server started',
+        })
+
+        expect(spy).toHaveBeenCalledOnce()
+        expect(spy).toHaveBeenCalledWith(
+            '[Logger]',
+            expect.objectContaining({
+                message: 'Server started',
+                timestamp: expect.any(String),
+            })
+        )
+    })
+
+    it('should include stack trace for Error instances', () => {
+        const spy = vi.spyOn(console, 'error').mockImplementation(() => {})
+        const error = new Error('Stack test')
+
+        Logger({ level: 'error', error })
+
+        expect(spy).toHaveBeenCalledWith(
+            '[Logger]',
+            expect.objectContaining({
+                message: 'Stack test',
+                stack: expect.stringContaining('Stack test'),
+            })
+        )
+    })
+
+    it('should have undefined stack for non-Error values', () => {
+        const spy = vi.spyOn(console, 'log').mockImplementation(() => {})
+
+        Logger({ level: 'log', error: 'plain string' })
+
+        expect(spy).toHaveBeenCalledWith(
+            '[Logger]',
+            expect.objectContaining({
+                message: 'plain string',
+                stack: undefined,
+            })
+        )
+    })
 })

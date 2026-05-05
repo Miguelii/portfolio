@@ -4,7 +4,7 @@ import type { AboutSection } from '@/sanity/generated/sanity.types'
 import type { PortableTextBlock } from '@portabletext/react'
 import { Effect } from 'effect'
 import { Logger } from '@/lib/logger'
-import { SanityFetchError } from '@/lib/constants'
+import { SanityFetchError } from '@/lib/data-tagged-errors'
 
 export type AboutSectionDTO = {
     title: AboutSection['title']
