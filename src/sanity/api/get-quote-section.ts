@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { sanityClientFetch } from '@/sanity/lib/client'
 import type { QuoteSection } from '@/sanity/generated/sanity.types'
 import { QUOTE_SECTION_GROQ } from '@/sanity/queries/quote-section.groq'

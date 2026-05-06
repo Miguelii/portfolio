@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { sanityClientFetch } from '@/sanity/lib/client'
 import type { LandingSection } from '@/sanity/generated/sanity.types'
 import { LANDING_SECTION_GROQ } from '@/sanity/queries/landing-section.groq'

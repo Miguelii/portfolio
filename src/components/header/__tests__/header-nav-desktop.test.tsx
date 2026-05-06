@@ -3,16 +3,6 @@ import { describe, expect, it, vi } from 'vitest'
 import { HeaderNavDesktop } from '@/components/header/header-nav-desktop'
 import type { NavItem } from '../types'
 
-vi.mock('next/navigation', () => ({
-    usePathname: () => '/',
-}))
-
-vi.mock('next/link', () => ({
-    default: ({ children, href }: React.PropsWithChildren<{ href: string }>) => (
-        <a href={href}>{children}</a>
-    ),
-}))
-
 vi.mock('motion/react', () => ({
     motion: {
         create: () => {
@@ -28,10 +18,6 @@ vi.mock('motion/react', () => ({
             return Component
         },
     },
-}))
-
-vi.mock('@next/third-parties/google', () => ({
-    sendGTMEvent: vi.fn(),
 }))
 
 vi.mock('@/lib/utils', () => ({

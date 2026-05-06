@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { sanityClientFetch } from '@/sanity/lib/client'
 import { PRIVACY_NOTICE_SECTION_GROQ } from '@/sanity/queries/privacy-notice-section.groq'
 import type { PrivacyNoticeSection } from '@/sanity/generated/sanity.types'

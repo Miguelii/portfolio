@@ -2,12 +2,6 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { Header } from '@/components/header'
 
-vi.mock('next/link', () => ({
-    default: ({ children, href }: React.PropsWithChildren<{ href: string }>) => (
-        <a href={href}>{children}</a>
-    ),
-}))
-
 vi.mock('next/image', () => ({
     // oxlint-disable-next-line nextjs/no-img-element - test file
     default: ({ alt, src }: { alt: string; src: string }) => <img alt={alt} src={src} />,
@@ -20,10 +14,6 @@ vi.mock('next/dynamic', () => ({
         )
         return Component
     },
-}))
-
-vi.mock('@next/third-parties/google', () => ({
-    sendGTMEvent: vi.fn(),
 }))
 
 vi.mock('@/lib/utils', () => ({
@@ -49,10 +39,6 @@ vi.mock('@/components/icons/menu-icon', () => ({
 
 vi.mock('@/components/header/header-nav-desktop', () => ({
     HeaderNavDesktop: () => <nav data-testid="desktop-nav" />,
-}))
-
-vi.mock('next/navigation', () => ({
-    usePathname: () => '/',
 }))
 
 vi.mock('motion/react', () => ({

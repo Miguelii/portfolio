@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { sanityClientFetch } from '@/sanity/lib/client'
 import { ABOUT_SECTION_GROQ } from '@/sanity/queries/about-parahraph.groq'
 import type { AboutSection } from '@/sanity/generated/sanity.types'

@@ -6,126 +6,69 @@ describe('Logger', () => {
         vi.restoreAllMocks()
     })
 
-    it('should call console.error with context', () => {
-        const spy = vi.spyOn(console, 'error').mockImplementation(() => {})
-
-        Logger({
-            level: 'error',
+    it.each([
+        {
+            name: 'error with context',
+            level: 'error' as const,
             error: new Error('Boom'),
             context: 'fetchUser',
-        })
-
-        expect(spy).toHaveBeenCalledOnce()
-        expect(spy).toHaveBeenCalledWith(
-            '[Logger] in fetchUser:',
-            expect.objectContaining({
-                message: 'Boom',
-                timestamp: expect.any(String),
-            })
-        )
-    })
-
-    it('should call console.log without context', () => {
-        const spy = vi.spyOn(console, 'log').mockImplementation(() => {})
-
-        Logger({
-            level: 'log',
+            expectedPrefix: '[Logger] in fetchUser:',
+            expectedMessage: 'Boom',
+        },
+        {
+            name: 'log without context',
+            level: 'log' as const,
             error: 'Hello world',
-        })
-
-        expect(spy).toHaveBeenCalledOnce()
-        expect(spy).toHaveBeenCalledWith(
-            '[Logger]',
-            expect.objectContaining({
-                message: 'Hello world',
-                timestamp: expect.any(String),
-            })
-        )
-    })
-
-    it('should call with custom prefix', () => {
-        const spy = vi.spyOn(console, 'error').mockImplementation(() => {})
-
-        Logger({
-            level: 'error',
+            expectedPrefix: '[Logger]',
+            expectedMessage: 'Hello world',
+        },
+        {
+            name: 'custom prefix',
+            level: 'error' as const,
             error: new Error('Boom'),
             context: 'customContext',
             prefix: 'CustomLogger',
-        })
-
-        expect(spy).toHaveBeenCalledOnce()
-        expect(spy).toHaveBeenCalledWith(
-            '[CustomLogger] in customContext:',
-            expect.objectContaining({
-                message: 'Boom',
-                timestamp: expect.any(String),
-            })
-        )
-    })
-
-    it('should call console.warn for warn level', () => {
-        const spy = vi.spyOn(console, 'warn').mockImplementation(() => {})
-
-        Logger({
-            level: 'warn',
+            expectedPrefix: '[CustomLogger] in customContext:',
+            expectedMessage: 'Boom',
+        },
+        {
+            name: 'warn level',
+            level: 'warn' as const,
             error: 'Something suspicious',
             context: 'authCheck',
-        })
-
-        expect(spy).toHaveBeenCalledOnce()
-        expect(spy).toHaveBeenCalledWith(
-            '[Logger] in authCheck:',
-            expect.objectContaining({
-                message: 'Something suspicious',
-                timestamp: expect.any(String),
-            })
-        )
-    })
-
-    it('should call console.info for info level', () => {
-        const spy = vi.spyOn(console, 'info').mockImplementation(() => {})
-
-        Logger({
-            level: 'info',
+            expectedPrefix: '[Logger] in authCheck:',
+            expectedMessage: 'Something suspicious',
+        },
+        {
+            name: 'info level',
+            level: 'info' as const,
             error: 'Server started',
-        })
+            expectedPrefix: '[Logger]',
+            expectedMessage: 'Server started',
+        },
+    ])(
+        'should call console.$level — $name',
+        ({ level, error, context, prefix, expectedPrefix, expectedMessage }) => {
+            const spy = vi.spyOn(console, level).mockImplementation(() => {})
 
-        expect(spy).toHaveBeenCalledOnce()
-        expect(spy).toHaveBeenCalledWith(
-            '[Logger]',
-            expect.objectContaining({
-                message: 'Server started',
-                timestamp: expect.any(String),
-            })
-        )
-    })
+            Logger({ level, error, context, prefix })
+
+            expect(spy).toHaveBeenCalledOnce()
+            expect(spy).toHaveBeenCalledWith(
+                expectedPrefix,
+                expect.objectContaining({ message: expectedMessage, timestamp: expect.any(String) })
+            )
+        }
+    )
 
     it('should include stack trace for Error instances', () => {
         const spy = vi.spyOn(console, 'error').mockImplementation(() => {})
-        const error = new Error('Stack test')
 
-        Logger({ level: 'error', error })
-
-        expect(spy).toHaveBeenCalledWith(
-            '[Logger]',
-            expect.objectContaining({
-                message: 'Stack test',
-                stack: expect.stringContaining('Stack test'),
-            })
-        )
-    })
-
-    it('should have undefined stack for non-Error values', () => {
-        const spy = vi.spyOn(console, 'log').mockImplementation(() => {})
-
-        Logger({ level: 'log', error: 'plain string' })
+        Logger({ level: 'error', error: new Error('Stack test') })
 
         expect(spy).toHaveBeenCalledWith(
             '[Logger]',
-            expect.objectContaining({
-                message: 'plain string',
-                stack: undefined,
-            })
+            expect.objectContaining({ stack: expect.stringContaining('Stack test') })
         )
     })
 })

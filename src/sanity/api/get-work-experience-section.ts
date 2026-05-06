@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { sanityClientFetch } from '@/sanity/lib/client'
 import { WORK_EXPERIENCE_SECTION_GROQ } from '@/sanity/queries/work-experience-section.groq'
 import type { WorkExperienceSection } from '@/sanity/generated/sanity.types'
