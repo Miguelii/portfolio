@@ -1,7 +1,7 @@
 {
     "$schema": "https://unpkg.com/knip@5/schema.json",
     "tags": ["-lintignore"],
-    "entry": ["src/env/server.ts", "src/lib/__mocks__/server-only.ts"],
+    "entry": ["src/env/server.ts"],
     "ignoreDependencies": ["raw-loader", "sharp"],
     "ignore": ["src/sanity/generated/**"]
 }
