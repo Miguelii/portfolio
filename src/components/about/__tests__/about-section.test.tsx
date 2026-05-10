@@ -66,7 +66,7 @@ describe('AboutSection', () => {
         await act(async () => {
             const result = render(
                 <Suspense fallback={null}>
-                    <AboutSection modelPromise={modelPromise as never} />
+                    <AboutSection modelPromise={modelPromise} />
                 </Suspense>
             )
             container = result.container
