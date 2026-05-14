@@ -2,12 +2,9 @@ import { ClientEnv } from '@/env/client'
 import { BreadcrumbSchema } from '@/components/structured-data'
 import type { Metadata } from 'next'
 import * as motion from 'motion/react-client'
-import {
-    getPrivacyNoticeSection,
-    type PrivacyNoticeSectionDTO,
-} from '@/sanity/api/get-privacy-notice-section'
+import { getPrivacyNoticeSection } from '@/sanity/api/get-privacy-notice-section'
 import { PortableText } from '@portabletext/react'
-import { Effect } from 'effect'
+import { runSanityService } from '@/sanity/lib/sanity-service'
 
 // sanityClientFetch controls the revalidate time
 export const dynamic = 'force-static'
@@ -41,7 +38,7 @@ export const metadata: Metadata = {
 }
 
 export default async function PrivacyNoticePage() {
-    const model: PrivacyNoticeSectionDTO = await Effect.runPromise(getPrivacyNoticeSection)
+    const model = await runSanityService(getPrivacyNoticeSection)
 
     const date = model?._updatedAt?.split('T')[0] ?? new Date().toISOString().split('T')[0]
 

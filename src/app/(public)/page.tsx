@@ -11,16 +11,16 @@ import { BandLazy } from '@/components/band/band-lazy'
 import { getWorkExperienceSection } from '@/sanity/api/get-work-experience-section'
 import { QuoteCard } from '@/components/quote'
 import { getQuoteSection } from '@/sanity/api/get-quote-section'
-import { Effect } from 'effect'
+import { runSanityService } from '@/sanity/lib/sanity-service'
 
 // sanityClientFetch controls the revalidate time
 export const dynamic = 'force-static'
 
 export default async function Home() {
-    const landingSection = Effect.runPromise(getLandingSection)
-    const aboutSection = Effect.runPromise(getAboutSection)
-    const experienceSection = Effect.runPromise(getWorkExperienceSection)
-    const quoteSection = Effect.runPromise(getQuoteSection)
+    const landingSection = runSanityService(getLandingSection)
+    const aboutSection = runSanityService(getAboutSection)
+    const experienceSection = runSanityService(getWorkExperienceSection)
+    const quoteSection = runSanityService(getQuoteSection)
 
     return (
         <>

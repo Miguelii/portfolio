@@ -3,7 +3,7 @@ import { toPlainText } from '@portabletext/react'
 import type { PortableTextBlock } from '@portabletext/react'
 import { ClientEnv } from '@/env/client'
 import { Logger } from '@/lib/logger'
-import { SanityFetchError } from '@/lib/data-tagged-errors'
+import { SanityService } from '@/sanity/lib/sanity-service'
 import { getAboutSection } from '@/sanity/api/get-about-section'
 import type { AboutSectionDTO } from '@/sanity/api/get-about-section'
 import { getLandingSection } from '@/sanity/api/get-landing-section'
@@ -119,10 +119,11 @@ export async function GET(): Promise<Response> {
                 headers: { 'Content-Type': 'text/plain; charset=utf-8' },
             })
         }).pipe(
+            Effect.provide(SanityService.Default),
             Effect.catchAllDefect((defect) => {
                 Logger({
                     level: 'error',
-                    error: new SanityFetchError({ cause: defect }),
+                    error: defect,
                     context: 'llms.txt [unexpected defect]',
                 })
                 return Effect.succeed(new Response('Internal Server Error', { status: 503 }))

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { Effect } from 'effect'
+import { runSanityService } from '@/sanity/lib/sanity-service'
 
 const mockSanityClientFetch = vi.fn()
 
@@ -13,13 +13,6 @@ vi.mock('@/sanity/queries/work-experience-section.groq', () => ({
 
 vi.mock('@/lib/logger', () => ({
     Logger: vi.fn(),
-}))
-
-vi.mock('@/lib/data-tagged-errors', () => ({
-    SanityFetchError: class SanityFetchError {
-        readonly _tag = 'SanityFetchError'
-        constructor(public props: { cause: unknown }) {}
-    },
 }))
 
 describe('getWorkExperienceSection', () => {
@@ -52,7 +45,7 @@ describe('getWorkExperienceSection', () => {
 
         const { getWorkExperienceSection } =
             await import('@/sanity/api/get-work-experience-section')
-        const result = await Effect.runPromise(getWorkExperienceSection)
+        const result = await runSanityService(getWorkExperienceSection)
 
         expect(result).toEqual(mockData)
         expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-work-experience-query')
@@ -63,7 +56,7 @@ describe('getWorkExperienceSection', () => {
 
         const { getWorkExperienceSection } =
             await import('@/sanity/api/get-work-experience-section')
-        const result = await Effect.runPromise(getWorkExperienceSection)
+        const result = await runSanityService(getWorkExperienceSection)
 
         expect(result).toBeNull()
     })
@@ -74,7 +67,7 @@ describe('getWorkExperienceSection', () => {
         const { getWorkExperienceSection } =
             await import('@/sanity/api/get-work-experience-section')
         const { Logger } = await import('@/lib/logger')
-        const result = await Effect.runPromise(getWorkExperienceSection)
+        const result = await runSanityService(getWorkExperienceSection)
 
         expect(result).toBeNull()
         expect(Logger).toHaveBeenCalledWith(

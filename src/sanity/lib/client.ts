@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { ClientEnv } from '@/env/client'
 import { createClient } from 'next-sanity'
 import {

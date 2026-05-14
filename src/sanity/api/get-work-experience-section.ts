@@ -1,12 +1,11 @@
 import 'server-only'
 
-import { sanityClientFetch } from '@/sanity/lib/client'
 import { WORK_EXPERIENCE_SECTION_GROQ } from '@/sanity/queries/work-experience-section.groq'
 import type { WorkExperienceSection } from '@/sanity/generated/sanity.types'
 import type { PortableTextBlock } from '@portabletext/react'
+import { SanityService } from '@/sanity/lib/sanity-service'
 import { Effect } from 'effect'
 import { Logger } from '@/lib/logger'
-import { SanityFetchError } from '@/lib/data-tagged-errors'
 
 type WorkExperienceSectionDTOItem = NonNullable<WorkExperienceSection['items']>[number]
 type WorkExperienceSectionDTOPosition = NonNullable<
@@ -33,17 +32,21 @@ export type WorkExperienceSectionDTO = {
     }>
 } | null
 
-export const getWorkExperienceSection = Effect.tryPromise({
-    try: () => sanityClientFetch<WorkExperienceSectionDTO>(WORK_EXPERIENCE_SECTION_GROQ),
-    catch: (error) => new SanityFetchError({ cause: error }),
-}).pipe(
-    Effect.map((data) => data ?? null),
-    Effect.catchAll((error) => {
-        Logger({
-            level: 'error',
-            error,
-            context: `getWorkExperienceSection [${error._tag}]`,
+export const getWorkExperienceSection: Effect.Effect<
+    WorkExperienceSectionDTO,
+    never,
+    SanityService
+> = Effect.gen(function* () {
+    const { fetch } = yield* SanityService
+    return yield* fetch<WorkExperienceSectionDTO>(WORK_EXPERIENCE_SECTION_GROQ).pipe(
+        Effect.map((data) => data ?? null),
+        Effect.catchAll((error) => {
+            Logger({
+                level: 'error',
+                error,
+                context: `getWorkExperienceSection [${error._tag}]`,
+            })
+            return Effect.succeed(null)
         })
-        return Effect.succeed(null)
-    })
-)
+    )
+})

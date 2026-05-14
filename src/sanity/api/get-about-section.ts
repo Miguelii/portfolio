@@ -1,12 +1,11 @@
 import 'server-only'
 
-import { sanityClientFetch } from '@/sanity/lib/client'
 import { ABOUT_SECTION_GROQ } from '@/sanity/queries/about-parahraph.groq'
 import type { AboutSection } from '@/sanity/generated/sanity.types'
 import type { PortableTextBlock } from '@portabletext/react'
 import { Effect } from 'effect'
 import { Logger } from '@/lib/logger'
-import { SanityFetchError } from '@/lib/data-tagged-errors'
+import { SanityService } from '@/sanity/lib/sanity-service'
 
 export type AboutSectionDTO = {
     title: AboutSection['title']
@@ -16,17 +15,19 @@ export type AboutSectionDTO = {
     }>
 } | null
 
-export const getAboutSection = Effect.tryPromise({
-    try: () => sanityClientFetch<AboutSectionDTO>(ABOUT_SECTION_GROQ),
-    catch: (error) => new SanityFetchError({ cause: error }),
-}).pipe(
-    Effect.map((data) => data ?? null),
-    Effect.catchAll((error) => {
-        Logger({
-            level: 'error',
-            error,
-            context: `getAboutSection [${error._tag}]`,
-        })
-        return Effect.succeed(null)
-    })
+export const getAboutSection: Effect.Effect<AboutSectionDTO, never, SanityService> = Effect.gen(
+    function* () {
+        const { fetch } = yield* SanityService
+        return yield* fetch<AboutSectionDTO>(ABOUT_SECTION_GROQ).pipe(
+            Effect.map((data) => data ?? null),
+            Effect.catchAll((error) => {
+                Logger({
+                    level: 'error',
+                    error,
+                    context: `getAboutSection [${error._tag}]`,
+                })
+                return Effect.succeed(null)
+            })
+        )
+    }
 )

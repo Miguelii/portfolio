@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { Effect } from 'effect'
+import { runSanityService } from '@/sanity/lib/sanity-service'
 
 const mockSanityClientFetch = vi.fn()
 
@@ -13,13 +13,6 @@ vi.mock('@/sanity/queries/privacy-notice-section.groq', () => ({
 
 vi.mock('@/lib/logger', () => ({
     Logger: vi.fn(),
-}))
-
-vi.mock('@/lib/data-tagged-errors', () => ({
-    SanityFetchError: class SanityFetchError {
-        readonly _tag = 'SanityFetchError'
-        constructor(public props: { cause: unknown }) {}
-    },
 }))
 
 describe('getPrivacyNoticeSection', () => {
@@ -36,7 +29,7 @@ describe('getPrivacyNoticeSection', () => {
         mockSanityClientFetch.mockResolvedValue(mockData)
 
         const { getPrivacyNoticeSection } = await import('@/sanity/api/get-privacy-notice-section')
-        const result = await Effect.runPromise(getPrivacyNoticeSection)
+        const result = await runSanityService(getPrivacyNoticeSection)
 
         expect(result).toEqual(mockData)
         expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-privacy-query')
@@ -46,7 +39,7 @@ describe('getPrivacyNoticeSection', () => {
         mockSanityClientFetch.mockResolvedValue(null)
 
         const { getPrivacyNoticeSection } = await import('@/sanity/api/get-privacy-notice-section')
-        const result = await Effect.runPromise(getPrivacyNoticeSection)
+        const result = await runSanityService(getPrivacyNoticeSection)
 
         expect(result).toBeNull()
     })
@@ -56,7 +49,7 @@ describe('getPrivacyNoticeSection', () => {
 
         const { getPrivacyNoticeSection } = await import('@/sanity/api/get-privacy-notice-section')
         const { Logger } = await import('@/lib/logger')
-        const result = await Effect.runPromise(getPrivacyNoticeSection)
+        const result = await runSanityService(getPrivacyNoticeSection)
 
         expect(result).toBeNull()
         expect(Logger).toHaveBeenCalledWith(

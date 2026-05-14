@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { Effect } from 'effect'
+import { runSanityService } from '@/sanity/lib/sanity-service'
 
 const mockSanityClientFetch = vi.fn()
 
@@ -15,13 +15,6 @@ vi.mock('@/lib/logger', () => ({
     Logger: vi.fn(),
 }))
 
-vi.mock('@/lib/data-tagged-errors', () => ({
-    SanityFetchError: class SanityFetchError {
-        readonly _tag = 'SanityFetchError'
-        constructor(public props: { cause: unknown }) {}
-    },
-}))
-
 describe('getQuoteSection', () => {
     beforeEach(() => {
         vi.clearAllMocks()
@@ -32,7 +25,7 @@ describe('getQuoteSection', () => {
         mockSanityClientFetch.mockResolvedValue(mockData)
 
         const { getQuoteSection } = await import('@/sanity/api/get-quote-section')
-        const result = await Effect.runPromise(getQuoteSection)
+        const result = await runSanityService(getQuoteSection)
 
         expect(result).toEqual(mockData)
         expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-quote-query')
@@ -42,7 +35,7 @@ describe('getQuoteSection', () => {
         mockSanityClientFetch.mockResolvedValue(null)
 
         const { getQuoteSection } = await import('@/sanity/api/get-quote-section')
-        const result = await Effect.runPromise(getQuoteSection)
+        const result = await runSanityService(getQuoteSection)
 
         expect(result).toBeNull()
     })
@@ -52,7 +45,7 @@ describe('getQuoteSection', () => {
 
         const { getQuoteSection } = await import('@/sanity/api/get-quote-section')
         const { Logger } = await import('@/lib/logger')
-        const result = await Effect.runPromise(getQuoteSection)
+        const result = await runSanityService(getQuoteSection)
 
         expect(result).toBeNull()
         expect(Logger).toHaveBeenCalledWith(
