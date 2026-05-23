@@ -2,50 +2,44 @@ name: PR Checks
 
 on:
     pull_request:
-    push:
-        branches:
-            - main
 
 env:
     FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+    NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+    NEXT_UPDATE_CONTENT_SECRET_KEY: 'sk-mock-test'
 
 jobs:
-    checks:
+    lint:
+        name: Lint & Knip
         runs-on: ubuntu-latest
-
         steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+            - uses: actions/checkout@v4
+            - uses: ./.github/actions/setup
+            - run: pnpm lint
+            - run: pnpm knip
 
-            - name: Setup pnpm
-              uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2
-              with:
-                  version: 10.24.0
+    typecheck:
+        name: Typecheck
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: ./.github/actions/setup
+            - run: pnpm build
+            - run: pnpm typecheck
 
-            - name: Setup Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 22
-                  cache: pnpm
+    unit:
+        name: Unit Tests
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: ./.github/actions/setup
+            - run: pnpm test
 
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
-
-            - name: Build
-              run: pnpm build
-              env:
-                  NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
-                  NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
-                  NEXT_UPDATE_CONTENT_SECRET_KEY: 'sk-mock-test'
-
-            - name: Lint
-              run: pnpm lint
-
-            - name: Typecheck
-              run: pnpm typecheck
-
-            - name: Test
-              run: pnpm test
-
-            - name: Knip
-              run: pnpm knip
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: ./.github/actions/setup
+            - run: pnpm build
