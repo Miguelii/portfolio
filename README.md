@@ -1,4 +1,4 @@
-# Miguel Goncalves — Developer Portfolio
+# Miguel Goncalves — Personal Website
 
 Live at [miguel-goncalves.pt](https://miguel-goncalves.pt)
 
