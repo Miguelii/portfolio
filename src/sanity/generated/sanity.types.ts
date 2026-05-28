@@ -12,7 +12,9 @@
  * ---------------------------------------------------------------------------------
  */
 
-// Source: schema.json
+export declare const internalGroqTypeReferenceTo: unique symbol
+
+// Source: src/sanity/generated/schema.json
 export type WorkExperienceSection = {
     _id: string
     _type: 'workExperienceSection'
@@ -172,6 +174,7 @@ export type SanityImageMetadata = {
     palette?: SanityImagePalette
     lqip?: string
     blurHash?: string
+    thumbHash?: string
     hasAlpha?: boolean
     isOpaque?: boolean
 }
@@ -274,4 +277,3 @@ export type AllSanitySchemaTypes =
     | SanityImageAsset
     | Geopoint
     | Slug
-export declare const internalGroqTypeReferenceTo: unique symbol
