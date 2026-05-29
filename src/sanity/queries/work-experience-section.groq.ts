@@ -1,5 +1,5 @@
 export const WORK_EXPERIENCE_SECTION_GROQ = `
-    *[_type == "workExperienceSection"][0] {
+    *[_id == "workExperienceSection"][0] {
         title,
         "items": items[] {
             "id": _key,

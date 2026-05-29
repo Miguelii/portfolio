@@ -9,8 +9,12 @@ import {
 } from '@/sanity/lib/constants'
 import type { NextFetchOptions } from '@/types/NextFetchOptions'
 
+const isDev = process.env.NODE_ENV === 'development'
+
 const options: NextFetchOptions = {
-    next: { revalidate: SANITY_QUERY_REVALIDATE_TIME, tags: [SANITY_QUERY_REVALIDATE_KEY] },
+    next: isDev
+        ? { revalidate: 0 }
+        : { revalidate: SANITY_QUERY_REVALIDATE_TIME, tags: [SANITY_QUERY_REVALIDATE_KEY] },
 }
 
 const client = createClient({
