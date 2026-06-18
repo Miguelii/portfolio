@@ -44,11 +44,9 @@ vi.mock('@/components/icons/close-icon', () => ({
     ),
 }))
 
-vi.mock('./use-header-nav-mobile-animations', () => ({
-    useHeaderNavMobileAnimations: () => ({
-        menuVariants: {},
-        itemVariants: {},
-    }),
+vi.mock('@/components/header/header-nav-mobile-animations', () => ({
+    menuVariants: {},
+    itemVariants: {},
 }))
 
 const navList: NavItem[] = [

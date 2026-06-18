@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { cn, normalizePath } from '@/lib/utils'
 import Link from 'next/link'
 import { CloseIcon } from '@/components/icons/close-icon'
-import { useHeaderNavMobileAnimations } from './use-header-nav-mobile-animations'
+import { menuVariants, itemVariants } from '@/components/header/header-nav-mobile-animations'
 import { sendGTMEvent } from '@next/third-parties/google'
 import type { NavItem } from './types'
 import { HOME_PAGE_URL, motionPressProps } from '@/lib/constants'
@@ -21,8 +21,6 @@ type Props = {
 
 export function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Props>) {
     const currPath = usePathname()
-
-    const { menuVariants, itemVariants } = useHeaderNavMobileAnimations()
 
     return (
         <AnimatePresence>

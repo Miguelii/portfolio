@@ -1,6 +1,6 @@
 import type { Variants } from 'motion/react'
 
-const container: Variants = {
+export const container: Variants = {
     hidden: {},
     visible: {
         transition: {
@@ -9,7 +9,7 @@ const container: Variants = {
     },
 }
 
-const item: Variants = {
+export const item: Variants = {
     hidden: { opacity: 0, x: -30 },
     visible: {
         opacity: 1,
@@ -20,11 +20,4 @@ const item: Variants = {
             duration: 0.6,
         },
     },
-}
-
-export const useExperienceSectionAnimations = () => {
-    return {
-        container,
-        item,
-    }
 }

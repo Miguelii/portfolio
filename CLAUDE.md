@@ -39,20 +39,28 @@ src/
   app/
     layout.tsx            # Root layout (html, body, fonts, meta, analytics)
     not-found.tsx         # Global 404 page
+    global-error.tsx      # Root-level error boundary (own html/body)
     sitemap.ts            # Sitemap generation
+    llms.txt/route.ts     # llms.txt route handler
+    api/revalidateContent/route.ts  # On-demand revalidation webhook
     (public)/             # Route group: public-facing pages
       layout.tsx          # Public layout (Header, Footer, Lenis, Providers)
-      page.tsx            # Home (force-static, 24h revalidation)
-      clients/page.tsx    # Client projects page
+      page.tsx            # Home (force-static, revalidated)
+      error.tsx           # Public segment error boundary
       privacy-notice/     # Privacy policy
     (sanity)/             # Route group: Sanity Studio
       studio/[[...tool]]/ # Embedded Sanity Studio at /studio
-  components/             # Shared UI components (Badge, Button, Header, Footer, etc.)
-  features/               # Feature modules
-    landing/              # Hero section with 3D band
-    experience/           # Work history timeline
-    projects/             # Project cards
-  hooks/                  # Custom React hooks (animations, preloader, etc.)
+  components/             # Shared UI + section components
+    ui/                   # Primitives (Button, LinkPreview, SocialItem)
+    icons/                # Animated SVG icons (shared logic in use-icon-controls.ts)
+    header/ footer/       # Layout chrome
+    landing-section/      # Hero section (renders the 3D Band)
+    band/                 # Three.js + Rapier 3D card
+    experience-section/   # Work history timeline
+    about/ quote/         # Remaining home sections
+    preloader/            # First-visit preloader
+    cookie-consent/ gtm-script/ structured-data/ head-metadata/
+  hooks/                  # Shared React hooks (use-is-mounted, use-media-query)
   providers/              # Context providers (History, Preloader)
   types/                  # TypeScript type definitions
   lib/                    # Utility functions
@@ -61,7 +69,7 @@ src/
   styles/                 # Global CSS
   sanity/
     schemaTypes/index.ts  # Document type definitions (aboutSection, landingSection)
-    querys/               # GROQ query strings (*.groq.ts)
+    queries/              # GROQ query strings (*.groq.ts)
     api/                  # Data fetching functions (getAboutSection, getLandingSection)
     generated/            # Auto-generated files (do NOT edit manually)
       schema.json         # Extracted schema (from `sanity schema extract`)
@@ -79,9 +87,9 @@ public/
 
 - **App Router** with Server Components by default; Client Components only where interactivity is needed
 - **Route groups**: `(public)` for the site, `(sanity)` for the embedded Studio at `/studio`
-- **Static generation** with revalidation (no API routes — content from Sanity + static data files)
+- **Static generation** with revalidation; one on-demand revalidation API route (`api/revalidateContent`) plus an `llms.txt` route handler
 - **3D rendering**: Band component uses Three.js + Rapier physics + GLSL shaders (`.glsl` files loaded via raw-loader in Turbopack config)
-- **Animations**: scroll-triggered via Motion library; custom hooks encapsulate animation logic per section
+- **Animations**: scroll-triggered via Motion library; static variants live in `*-animations.ts` constants per section, with stateful animation logic in custom hooks (e.g. preloader)
 - **Environment**: validated at runtime via Zod schemas in `src/env/client.ts` and `src/env/server.ts`
 
 ## Sanity CMS
@@ -106,7 +114,7 @@ Some document types are singletons (only one instance allowed). Configured in `s
 1. Define the schema in `src/sanity/schemaTypes/index.ts` and add it to the `types` array
 2. **MANDATORY**: Run `npm run generate:types` immediately after defining/changing a schema — the API and query files depend on the generated types and will fail without this step
 3. If singleton, add the name to the `SINGLETONS` set and add a `S.listItem()` entry in `src/sanity/lib/constants.ts`
-4. Create a GROQ query file in `src/sanity/querys/<name>.groq.ts` exporting a GROQ string constant (see existing files for examples)
+4. Create a GROQ query file in `src/sanity/queries/<name>.groq.ts` exporting a GROQ string constant (see existing files for examples)
 5. Create a data fetching file in `src/sanity/api/get-<name>.ts` that:
    - Exports a query result type named `<SchemaName>DTO` (e.g. `LandingSectionDTO`, `AboutSectionDTO`) derived from the generated Sanity types
    - **NEVER use raw types** (e.g. `title: string`) in query result types — always reference the generated types (e.g. `title: MySection['title']`). The only exception is `PortableTextBlock[]` from `@portabletext/react` for rich text fields, and `_key` mapped to `id` which stays as `string`

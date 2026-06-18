@@ -1,6 +1,6 @@
 import * as motion from 'motion/react-client'
-import { useExperienceSectionAnimations } from '@/components/experience-section/use-experience-section-animations'
-import { WorkExperienceItem } from './experience-section-item'
+import { container, item } from '@/components/experience-section/experience-section-animations'
+import { WorkExperienceItem } from '@/components/experience-section/experience-section-item'
 import { use } from 'react'
 import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'
 
@@ -10,8 +10,6 @@ type Props = {
 
 export function ExperienceSection({ modelPromise }: Props) {
     const model = use(modelPromise)
-
-    const { container, item } = useExperienceSectionAnimations()
 
     return (
         <section className="below-fold flex flex-col gap-5 md:gap-8 lg:gap-12 container-padding border-b-0 border-b-divider">

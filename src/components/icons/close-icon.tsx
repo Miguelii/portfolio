@@ -2,8 +2,9 @@
 
 import { cn } from '@/lib/utils'
 import { motion, useAnimation, type Variants } from 'motion/react'
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
+import { forwardRef, useCallback } from 'react'
 import type { IconHandle, IconProps } from './types'
+import { useIconControls } from './use-icon-controls'
 import { motionPressProps } from '@/lib/constants'
 
 const pathVariants: Variants = {
@@ -20,15 +21,10 @@ const pathVariants: Variants = {
 const CloseIcon = forwardRef<IconHandle, Omit<IconProps, 'size'>>(
     ({ onMouseEnter, onMouseLeave, className, ...props }, ref) => {
         const controls = useAnimation()
-        const isControlledRef = useRef(false)
 
-        useImperativeHandle(ref, () => {
-            isControlledRef.current = true
-
-            return {
-                startAnimation: () => controls.start('animate'),
-                stopAnimation: () => controls.start('normal'),
-            }
+        const isControlledRef = useIconControls(ref, {
+            start: () => controls.start('animate'),
+            stop: () => controls.start('normal'),
         })
 
         const handleMouseEnter = useCallback(
@@ -39,7 +35,7 @@ const CloseIcon = forwardRef<IconHandle, Omit<IconProps, 'size'>>(
                     controls.start('animate')
                 }
             },
-            [controls, onMouseEnter]
+            [controls, isControlledRef, onMouseEnter]
         )
 
         const handleMouseLeave = useCallback(
@@ -50,7 +46,7 @@ const CloseIcon = forwardRef<IconHandle, Omit<IconProps, 'size'>>(
                     controls.start('normal')
                 }
             },
-            [controls, onMouseLeave]
+            [controls, isControlledRef, onMouseLeave]
         )
 
         return (

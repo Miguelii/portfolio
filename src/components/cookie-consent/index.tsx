@@ -78,6 +78,12 @@ export function CookieConsent() {
 
     return (
         <div
+            // Keep the banner out of the tab order and the accessibility tree while it is
+            // visually hidden (e.g. before the open timer fires), so its buttons are not
+            // reachable by keyboard or announced by screen readers.
+            inert={!isOpen}
+            role="region"
+            aria-label="Cookie consent"
             className={cn(
                 'fixed z-999 bottom-0 left-0 right-0 p-4 sm:p-0 sm:left-4 sm:bottom-4 w-full sm:max-w-md duration-700',
                 isOpen
@@ -89,9 +95,9 @@ export function CookieConsent() {
             <div className="bg-background rounded-lg sm:rounded-md border border-divider shadow-lg">
                 <div className="grid gap-2">
                     <div className="border-b border-divider h-12 sm:h-14 flex items-center justify-between p-3 sm:p-4">
-                        <h1 className="text-base sm:text-lg font-medium text-primary">
+                        <h2 className="text-base sm:text-lg font-medium text-primary">
                             We use cookies
-                        </h1>
+                        </h2>
                         <CookieIcon className="h-4 w-4 sm:h-[1.2rem] sm:w-[1.2rem] text-neutral-dark" />
                     </div>
                     <div className="p-3 sm:p-4">

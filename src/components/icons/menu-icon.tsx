@@ -3,8 +3,9 @@
 import { cn } from '@/lib/utils'
 import type { Variants } from 'motion/react'
 import { motion, useAnimation } from 'motion/react'
-import { forwardRef, useImperativeHandle, useRef } from 'react'
+import { forwardRef } from 'react'
 import type { IconHandle, IconProps } from './types'
+import { useIconControls } from './use-icon-controls'
 import { motionPressProps } from '@/lib/constants'
 
 const getRotation = (custom: number) => {
@@ -39,15 +40,10 @@ const lineVariants: Variants = {
 
 const MenuIcon = forwardRef<IconHandle, Omit<IconProps, 'size'>>(({ className, ...props }, ref) => {
     const controls = useAnimation()
-    const isControlledRef = useRef(false)
 
-    useImperativeHandle(ref, () => {
-        isControlledRef.current = true
-
-        return {
-            startAnimation: () => controls.start('animate'),
-            stopAnimation: () => controls.start('normal'),
-        }
+    useIconControls(ref, {
+        start: () => controls.start('animate'),
+        stop: () => controls.start('normal'),
     })
 
     return (

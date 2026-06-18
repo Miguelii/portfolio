@@ -3,8 +3,9 @@
 import { cn } from '@/lib/utils'
 import type { Variants } from 'motion/react'
 import { motion, useAnimation } from 'motion/react'
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
+import { forwardRef, useCallback } from 'react'
 import type { IconHandle, IconProps } from './types'
+import { useIconControls } from './use-icon-controls'
 
 const bodyVariants: Variants = {
     normal: {
@@ -55,22 +56,17 @@ const GithubIcon = forwardRef<IconHandle, IconProps>(
     ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
         const bodyControls = useAnimation()
         const tailControls = useAnimation()
-        const isControlledRef = useRef(false)
 
-        useImperativeHandle(ref, () => {
-            isControlledRef.current = true
-
-            return {
-                startAnimation: async () => {
-                    bodyControls.start('animate')
-                    await tailControls.start('draw')
-                    tailControls.start('wag')
-                },
-                stopAnimation: () => {
-                    bodyControls.start('normal')
-                    tailControls.start('normal')
-                },
-            }
+        const isControlledRef = useIconControls(ref, {
+            start: async () => {
+                bodyControls.start('animate')
+                await tailControls.start('draw')
+                tailControls.start('wag')
+            },
+            stop: () => {
+                bodyControls.start('normal')
+                tailControls.start('normal')
+            },
         })
 
         const handleMouseEnter = useCallback(
@@ -83,7 +79,7 @@ const GithubIcon = forwardRef<IconHandle, IconProps>(
                     tailControls.start('wag')
                 }
             },
-            [bodyControls, onMouseEnter, tailControls]
+            [bodyControls, isControlledRef, onMouseEnter, tailControls]
         )
 
         const handleMouseLeave = useCallback(
@@ -95,7 +91,7 @@ const GithubIcon = forwardRef<IconHandle, IconProps>(
                     tailControls.start('normal')
                 }
             },
-            [bodyControls, tailControls, onMouseLeave]
+            [bodyControls, tailControls, isControlledRef, onMouseLeave]
         )
 
         return (

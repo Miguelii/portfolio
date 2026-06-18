@@ -3,8 +3,9 @@
 import { cn } from '@/lib/utils'
 import { motion, useAnimation } from 'motion/react'
 import type { Variants } from 'motion/react'
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
+import { forwardRef, useCallback } from 'react'
 import type { IconHandle, IconProps } from './types'
+import { useIconControls } from './use-icon-controls'
 
 const pathVariants: Variants = {
     normal: {
@@ -78,23 +79,17 @@ const LinkedinIcon = forwardRef<IconHandle, IconProps>(
         const rectControls = useAnimation()
         const circleControls = useAnimation()
 
-        const isControlledRef = useRef(false)
-
-        useImperativeHandle(ref, () => {
-            isControlledRef.current = true
-
-            return {
-                startAnimation: () => {
-                    pathControls.start('animate')
-                    rectControls.start('animate')
-                    circleControls.start('animate')
-                },
-                stopAnimation: () => {
-                    pathControls.start('normal')
-                    rectControls.start('normal')
-                    circleControls.start('normal')
-                },
-            }
+        const isControlledRef = useIconControls(ref, {
+            start: () => {
+                pathControls.start('animate')
+                rectControls.start('animate')
+                circleControls.start('animate')
+            },
+            stop: () => {
+                pathControls.start('normal')
+                rectControls.start('normal')
+                circleControls.start('normal')
+            },
         })
 
         const handleMouseEnter = useCallback(
@@ -107,7 +102,7 @@ const LinkedinIcon = forwardRef<IconHandle, IconProps>(
                     circleControls.start('animate')
                 }
             },
-            [circleControls, onMouseEnter, pathControls, rectControls]
+            [circleControls, isControlledRef, onMouseEnter, pathControls, rectControls]
         )
 
         const handleMouseLeave = useCallback(
@@ -120,7 +115,7 @@ const LinkedinIcon = forwardRef<IconHandle, IconProps>(
                     circleControls.start('normal')
                 }
             },
-            [pathControls, rectControls, circleControls, onMouseLeave]
+            [pathControls, rectControls, circleControls, isControlledRef, onMouseLeave]
         )
 
         return (
