@@ -14,7 +14,7 @@ vi.mock('motion/react', () => ({
     },
 }))
 
-vi.mock('@/features/landing/hooks/use-preloader-animations', () => ({
+vi.mock('@/components/preloader/use-preloader-animations', () => ({
     usePreloaderAnimations: () => ({
         opacity: {},
         slideUp: {},
