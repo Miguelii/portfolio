@@ -1,15 +1,6 @@
 'use client'
 
-import {
-    createContext,
-    use,
-    useEffect,
-    useMemo,
-    useRef,
-    useState,
-    type PropsWithChildren,
-} from 'react'
-import { HistoryContext } from './history-provider'
+import { createContext, useEffect, useRef, useState, type PropsWithChildren } from 'react'
 import { usePathname } from 'next/navigation'
 import { HOME_PAGE_URL } from '@/lib/constants'
 
@@ -25,12 +16,13 @@ export const PreloaderContext = createContext<PreloaderPhase>('idle')
 
 export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
     const currPath = usePathname()
-    const { history } = use(HistoryContext)
 
-    // Preloader only shows on the very first page load when it's the home page
-    const needsPreloader = history.length === 0 && currPath === HOME_PAGE_URL
-
-    const [phase, setPhase] = useState<PreloaderPhase>(() => (needsPreloader ? 'loading' : 'idle'))
+    // The preloader only shows on the very first page load when it's the home page.
+    // On the first render there is no navigation history yet, so "first load on home"
+    // reduces to the initial path being the home page; the initializer runs once.
+    const [phase, setPhase] = useState<PreloaderPhase>(() =>
+        currPath === HOME_PAGE_URL ? 'loading' : 'idle'
+    )
 
     const hasRun = useRef(false)
 
@@ -45,9 +37,5 @@ export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
         return () => clearTimeout(timer)
     }, [phase])
 
-    const values = useMemo(() => {
-        return phase
-    }, [phase])
-
-    return <PreloaderContext value={values}>{children}</PreloaderContext>
+    return <PreloaderContext value={phase}>{children}</PreloaderContext>
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { type Variants } from 'motion'
+import { type Variants } from 'motion/react'
 import { useMemo, useState } from 'react'
 
 const opacity: Variants = {
