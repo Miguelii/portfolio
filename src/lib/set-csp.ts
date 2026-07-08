@@ -16,7 +16,7 @@ export const setCSP = (response: NextResponse) => {
 
 const generateCSP = () => {
     // 'unsafe-eval' is only required in development (React Fast Refresh)
-    const scriptEvalDirective = getIsDev() ? "'unsafe-eval'" : ''
+    const scriptEvalDirective = getIsDev() ? "'unsafe-eval' 'wasm-unsafe-eval'" : ''
 
     const csp = `
         default-src 'self';
