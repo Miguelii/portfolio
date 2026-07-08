@@ -1,13 +1,8 @@
-import { getBuildId } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import type { PropsWithChildren } from 'react'
 import { NOT_FOUND_VIDEO_URL } from '@/lib/constants'
-
-const buildId = getBuildId()
-
-const VIDEO_URL = `${NOT_FOUND_VIDEO_URL}?${buildId}`
 
 export default function NotFound() {
     return (
@@ -17,7 +12,7 @@ export default function NotFound() {
                     id="preload-not-found-video"
                     rel="preload"
                     as="fetch"
-                    href={VIDEO_URL}
+                    href={NOT_FOUND_VIDEO_URL}
                     crossOrigin="anonymous"
                     fetchPriority="high"
                 />
@@ -55,7 +50,7 @@ export default function NotFound() {
                             className="object-contain bg-background h-55 lg:h-80 w-auto"
                             poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%ffffff00'%3E%3C/rect%3E%3C/svg%3E"
                         >
-                            <source src={VIDEO_URL} type="video/mp4" />
+                            <source src={NOT_FOUND_VIDEO_URL} type="video/mp4" />
                         </video>
                     </div>
                 </div>

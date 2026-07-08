@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 import type { CookieConsent } from '@/types/CookieConsent'
 import { Effect, pipe } from 'effect'
 import { Logger } from '@/lib/logger'
-import { HOME_PAGE_URL, STATIC_PREFIXES } from '@/lib/constants'
+import { HOME_PAGE_URL } from '@/lib/constants'
 import { CookieParseError } from '@/lib/data-tagged-errors'
 
 export function cn(...inputs: ClassValue[]) {
@@ -56,8 +56,4 @@ export const getClientSideCookieConsent = (): CookieConsent | null => {
 
         Effect.runSync
     )
-}
-
-export const isPathFromStaticFiles = (pathname: string): boolean => {
-    return STATIC_PREFIXES.some((prefix) => pathname.startsWith(prefix))
 }

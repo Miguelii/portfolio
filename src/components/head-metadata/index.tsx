@@ -1,8 +1,5 @@
 import { PersonSchema, WebSiteSchema } from '@/components/structured-data'
 import { BAND_CARD_MODEL_URL } from '@/lib/constants'
-import { getBuildId } from '@/lib/utils'
-
-const buildId = getBuildId()
 
 export function HeadMetadata() {
     return (
@@ -19,12 +16,7 @@ export function HeadMetadata() {
                 />
                 <PersonSchema />
                 <WebSiteSchema />
-                <link
-                    rel="icon"
-                    href={`/favicon.ico?v=${buildId}`}
-                    type="image/x-icon"
-                    sizes="32x32"
-                />
+                <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="32x32" />
             </head>
         </>
     )

@@ -32,3 +32,7 @@ export function verifyApiKey(
         return timingSafeEqual(Buffer.from(apiKey!), Buffer.from(expected!))
     })
 }
+
+export const getIsDev = (): boolean => {
+    return process.env.NODE_ENV === 'development'
+}
