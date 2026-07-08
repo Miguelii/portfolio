@@ -1,12 +1,10 @@
 import { LinkPreview } from '@/components/ui/link-preview'
 import { ClientEnv } from '@/env/client'
-import { cn, getBuildId } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import type { WorkExperienceSectionDTO } from '@/sanity/api/get-work-experience-section'
 import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import { memo } from 'react'
-
-const buildId = getBuildId()
 
 export const WorkExperienceItem = memo(function WorkExperienceItem(
     experience: NonNullable<WorkExperienceSectionDTO>['items'][number]
@@ -21,14 +19,16 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(
                 imageSrc={previewUrl}
                 className={cn('flex flex-row gap-3 sm:gap-3 items-start justify-start w-fit')}
             >
-                <Image
-                    src={`${experience.logoUrl}?v=${buildId}`}
-                    alt={`${experience.company} logo`}
-                    width={52}
-                    height={52}
-                    className="w-13 h-13 object-contain"
-                    sizes="52px"
-                />
+                {experience.logoUrl ? (
+                    <Image
+                        src={experience.logoUrl}
+                        alt={`${experience.company} logo`}
+                        width={52}
+                        height={52}
+                    />
+                ) : (
+                    <div className="w-13 h-13 bg-neutral/20 rounded-full" />
+                )}
                 <div className="flex flex-col gap-1">
                     <span className="font-bold text-p-regular">{experience.company}</span>
                     <span className="text-neutral text-p-smallest font-medium">

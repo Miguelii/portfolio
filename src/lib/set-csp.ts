@@ -1,96 +1,70 @@
 import type { NextResponse } from 'next/server'
-import { NEXT_IMAGE_PATH } from '@/lib/constants'
-import { isPathFromStaticFiles } from '@/lib/utils'
+import { getIsDev } from '@/lib/utils.server'
 
-export const setCSP = (response: NextResponse, pathname: string) => {
-    const csp = generateCSP()
-    const staticCsp = generateStaticCSP()
-
-    if (isPathFromStaticFiles(pathname)) {
-        response.headers.set('Content-Security-Policy', staticCsp)
-
-        if (pathname.startsWith(NEXT_IMAGE_PATH)) {
-            response.headers.set('Cache-Control', 'public, max-age=31536000, must-revalidate')
-        } else {
-            // Let Next.js handle its own chunk caching
-            // overriding causes stale chunk errors after deploys or HMR in Next.js 16+
-        }
-    } else {
-        response.headers.set('Content-Security-Policy', csp)
-        response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
-    }
-
-    response.headers.set('X-Frame-Options', 'DENY')
-    response.headers.set('Referrer-Policy', 'no-referrer')
-    response.headers.set('X-Content-Type-Options', 'nosniff')
-    response.headers.set('X-Ua-Compatible', 'IE=edge')
-    response.headers.set(
-        'Strict-Transport-Security',
-        'max-age=31536000; includeSubDomains; preload'
-    )
-    response.headers.set('X-Xss-Protection', '1; mode=block')
+/**
+ * Sets the page Content-Security-Policy and Cache-Control on a proxy response.
+ * Only runs for page/document requests — static assets are excluded from the
+ * proxy via matcher and get their headers from next.config.ts headers().
+ * @param response - The proxy response to decorate.
+ */
+export const setCSP = (response: NextResponse) => {
+    response.headers.set('Content-Security-Policy', generateCSP())
+    response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
 
     return response
 }
 
 const generateCSP = () => {
+    // 'unsafe-eval' is only required in development (React Fast Refresh)
+    const scriptEvalDirective = getIsDev() ? "'unsafe-eval'" : ''
+
     const csp = `
         default-src 'self';
-        style-src 'self' 
-            'unsafe-inline'
-            https://accounts.google.com;
-        script-src 'self' 
-            https://www.recaptcha.net
-            https://www.google.com
-            https://www.gstatic.com
-            https://*.googletagmanager.com 
-            https://*.google-analytics.com
-            https://accounts.google.com
-            https://www.googletagmanager.com
-            https://*.vercel-scripts.com
-            https://core.sanity-cdn.com
-            'unsafe-inline' 'unsafe-eval';
-        img-src 'self' 
-            https://avatar.vercel.sh
-            https://www.google.pt
-            blob: data: 
+        style-src 'self'
+            'unsafe-inline';
+        script-src 'self'
+            https://*.google.com
             https://*.googletagmanager.com
-            https://avatars.githubusercontent.com;
-        font-src 'self'
-            https://fonts.gstatic.com;
-        frame-src 'self' 
-            https://www.recaptcha.net
-            https://www.google.com
-            https://accounts.google.com;
+            https://*.google-analytics.com
+            https://*.vercel-scripts.com
+            https://vercel.live
+            https://*.googlesyndication.com
+            https://*.adtrafficquality.google
+            https://core.sanity-cdn.com
+            'unsafe-inline' ${scriptEvalDirective};
+        img-src 'self'
+            https://www.google.pt
+            https://*.googlesyndication.com
+            https://*.adtrafficquality.google
+            blob: data:
+            https://*.googletagmanager.com
+            https://*.google-analytics.com;
+        font-src 'self';
+        frame-src 'self'
+            https://vercel.live
+            https://*.adtrafficquality.google
+            https://*.googlesyndication.com;
         object-src 'none';
         media-src 'self';
         base-uri 'self';
-        connect-src 'self' 
+        connect-src 'self'
+            https://*.google.com
+            https://*.googlesyndication.com
             https://*.vercel-scripts.com
             https://*.adtrafficquality.google
-            https://www.googletagmanager.com
             https://*.analytics.google.com
             https://*.google-analytics.com
             https://stats.g.doubleclick.net
             blob:
             https://*.googletagmanager.com
-            https://accounts.google.com
             https://*.api.sanity.io
             https://sanity-cdn.com
             wss://*.api.sanity.io;
+        worker-src 'self';
         form-action 'self';
-        frame-ancestors 'self'
-            https://*.vercel-scripts.com;
-    `
-
-    return csp.replaceAll(/\s{2,}/g, ' ').trim()
-}
-
-const generateStaticCSP = () => {
-    const csp = `
-        default-src 'self';
-        block-all-mixed-content;
+        frame-ancestors 'none';
         upgrade-insecure-requests;
     `
-    return csp.replaceAll(/\s{2,}/g, ' ').trim()
+
+    return csp.replaceAll(/\s{2,}/gu, ' ').trim()
 }

@@ -11,10 +11,6 @@ vi.mock('@/lib/constants', () => ({
     BAND_CARD_MODEL_URL: '/models/card.glb',
 }))
 
-vi.mock('@/lib/utils', () => ({
-    getBuildId: () => 'test-build-id',
-}))
-
 describe('HeadMetadata', () => {
     it('should render preload link for GLB model', () => {
         render(<HeadMetadata />)
@@ -35,10 +31,10 @@ describe('HeadMetadata', () => {
         expect(document.querySelector('#website-schema')).toBeInTheDocument()
     })
 
-    it('should render favicon with build id', () => {
+    it('should render favicon', () => {
         render(<HeadMetadata />)
         const favicon = document.querySelector('link[rel="icon"]')
         expect(favicon).toBeInTheDocument()
-        expect(favicon).toHaveAttribute('href', '/favicon.ico?v=test-build-id')
+        expect(favicon).toHaveAttribute('href', '/favicon.ico')
     })
 })
