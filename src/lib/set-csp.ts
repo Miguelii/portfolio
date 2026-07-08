@@ -61,6 +61,7 @@ const generateCSP = () => {
             https://*.googletagmanager.com
             https://*.api.sanity.io
             https://sanity-cdn.com
+            https://api.sanity.io
             wss://*.api.sanity.io;
         worker-src 'self';
         form-action 'self';
