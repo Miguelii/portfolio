@@ -3,8 +3,6 @@ import type { NextConfig } from 'next'
 
 loadSystemEnvs()
 
-const buildTimestamp = Date.now().toString()
-
 const nextConfig: NextConfig = {
     turbopack: {
         rules: {
@@ -50,10 +48,6 @@ const nextConfig: NextConfig = {
             },
         ],
         minimumCacheTTL: 31536000, // 365 days
-    },
-    env: {
-        NEXT_PUBLIC_BUILD_TIMESTAMP:
-            process.env.NODE_ENV === 'production' ? buildTimestamp : undefined,
     },
     headers() {
         return [

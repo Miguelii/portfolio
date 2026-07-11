@@ -15,7 +15,7 @@ vi.mock('next/script', () => ({
     }) => <script id={id} src={src} dangerouslySetInnerHTML={dangerouslySetInnerHTML} />,
 }))
 
-vi.mock('@/lib/constants', () => ({
+vi.mock('@/components/gtm-script/constants', () => ({
     GTM_ID: 'G-TEST123',
 }))
 

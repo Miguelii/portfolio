@@ -11,10 +11,6 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
 }
 
-export const getBuildId = () => {
-    return process.env.NEXT_PUBLIC_BUILD_TIMESTAMP ?? '1'
-}
-
 export const normalizePath = (path: string) => path.replace(/\/$/, '') || HOME_PAGE_URL
 
 export const getClientSideCookieConsent = (): CookieConsent | null => {

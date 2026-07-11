@@ -1,5 +1,5 @@
-import { GTM_ID } from '@/lib/constants'
 import Script from 'next/script'
+import { GTM_ID } from './constants'
 
 export function GtmScript() {
     return (

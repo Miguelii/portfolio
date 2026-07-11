@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { cn, getBuildId, getClientSideCookieConsent, normalizePath } from '@/lib/utils'
-import { BAND_CARD_MODEL_URL } from '@/lib/constants'
+import { cn, getClientSideCookieConsent, normalizePath } from '@/lib/utils'
 
 describe('utils', () => {
     describe('cn', () => {
@@ -18,23 +17,6 @@ describe('utils', () => {
 
         it('should handle undefined and null values', () => {
             expect(cn('base', undefined, null, 'end')).toBe('base end')
-        })
-    })
-
-    describe('getBuildId', () => {
-        it('should return NEXT_PUBLIC_BUILD_TIMESTAMP when it is defined', () => {
-            vi.stubEnv('NEXT_PUBLIC_BUILD_TIMESTAMP', '1234567890')
-            expect(getBuildId()).toBe('1234567890')
-        })
-
-        it('should return "1" as default when NEXT_PUBLIC_BUILD_TIMESTAMP is undefined', () => {
-            vi.stubEnv('NEXT_PUBLIC_BUILD_TIMESTAMP', undefined)
-            expect(getBuildId()).toBe('1')
-        })
-
-        it('should return the environment variable value when set to any string', () => {
-            vi.stubEnv('NEXT_PUBLIC_BUILD_TIMESTAMP', 'build-id-123')
-            expect(getBuildId()).toBe('build-id-123')
         })
     })
 

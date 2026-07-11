@@ -4,8 +4,8 @@ import { cookies } from 'next/headers'
 import { z } from 'zod'
 import { Logger } from '@/lib/logger'
 import { Effect, pipe } from 'effect'
-import { GTM_ID_WITHOUT_G } from '@/lib/constants'
 import { CookieStoreError, ValidationError } from '@/lib/data-tagged-errors'
+import { GTM_ID_WITHOUT_G } from '@/components/gtm-script/constants'
 
 const cookieConsentSchema = z.object({
     allowAnalytics: z.boolean(),

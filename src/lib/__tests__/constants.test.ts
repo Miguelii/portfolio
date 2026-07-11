@@ -1,26 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import {
-    BAND_CARD_MODEL_URL,
-    GTM_ID,
-    GTM_ID_WITHOUT_G,
-    HOME_PAGE_URL,
-    motionPressProps,
-    NOT_FOUND_VIDEO_URL,
-} from '@/lib/constants'
+import { BAND_CARD_MODEL_URL, HOME_PAGE_URL, motionPressProps } from '@/lib/constants'
 
 describe('constants', () => {
-    it('should define GTM_ID correctly', () => {
-        expect(GTM_ID).toBe('G-N6QNF85PTV')
-    })
-
-    it('should derive GTM_ID_WITHOUT_G from GTM_ID', () => {
-        expect(GTM_ID_WITHOUT_G).toBe(GTM_ID.replace('G-', ''))
-    })
-
-    it('should not contain the "G-" prefix in GTM_ID_WITHOUT_G', () => {
-        expect(GTM_ID_WITHOUT_G.startsWith('G-')).toBe(false)
-    })
-
     it('should define BAND_CARD_MODEL_URL as a .glb file path', () => {
         expect(BAND_CARD_MODEL_URL).toMatch(/\.glb$/)
     })
@@ -33,9 +14,5 @@ describe('constants', () => {
         expect(motionPressProps).toBeDefined()
         expect(motionPressProps.whileTap).toEqual({ scale: 0.96 })
         expect(motionPressProps.transition).toEqual({ type: 'spring', stiffness: 500, damping: 20 })
-    })
-
-    it('should define NOT_FOUND_VIDEO_URL', () => {
-        expect(NOT_FOUND_VIDEO_URL).toBeDefined()
     })
 })
