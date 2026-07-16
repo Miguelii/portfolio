@@ -89,9 +89,9 @@ export const WorkExperienceItem = memo(function WorkExperienceItem(
                                         {pos?.achievements?.map((item) => (
                                             <li
                                                 key={`work-item-achievement-${item.id}`}
-                                                className="flex items-center gap-2 text-neutral text-p-smallest"
+                                                className="flex items-start gap-2 text-neutral text-p-smallest"
                                             >
-                                                <span className="w-1 h-1 bg-neutral rounded-full flex shrink-0"></span>
+                                                <span className="w-1 h-1 bg-neutral rounded-full flex shrink-0 mt-1.5 lg:mt-2.5"></span>
                                                 <PortableText key={item.id} value={item.text} />
                                             </li>
                                         ))}
