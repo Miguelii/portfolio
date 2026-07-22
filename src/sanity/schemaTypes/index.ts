@@ -108,25 +108,6 @@ const privacyNoticeSectionType = defineType({
     },
 })
 
-const quoteSectionType = defineType({
-    name: 'quoteSection',
-    title: 'Quote Section',
-    type: 'document',
-    fields: [
-        defineField({
-            name: 'quote',
-            title: 'Quote',
-            type: 'string',
-            validation: (rule) => rule.required(),
-        }),
-    ],
-    preview: {
-        select: {
-            title: 'quote',
-        },
-    },
-})
-
 const workExperienceSectionType = defineType({
     name: 'workExperienceSection',
     title: 'Work Experience Section',
@@ -252,7 +233,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
         aboutSectionType,
         landingSectionType,
         privacyNoticeSectionType,
-        quoteSectionType,
         workExperienceSectionType,
     ],
 }

@@ -9,8 +9,6 @@ import { getAboutSection } from '@/sanity/api/get-about-section'
 import { getLandingSection } from '@/sanity/api/get-landing-section'
 import { BandLazy } from '@/components/band/band-lazy'
 import { getWorkExperienceSection } from '@/sanity/api/get-work-experience-section'
-import { QuoteCard } from '@/components/quote'
-import { getQuoteSection } from '@/sanity/api/get-quote-section'
 import { runSanityService } from '@/sanity/lib/sanity-service'
 
 // sanityClientFetch controls the revalidate time
@@ -20,7 +18,6 @@ export default async function Home() {
     const landingSection = runSanityService(getLandingSection)
     const aboutSection = runSanityService(getAboutSection)
     const experienceSection = runSanityService(getWorkExperienceSection)
-    const quoteSection = runSanityService(getQuoteSection)
 
     return (
         <>
@@ -43,7 +40,6 @@ export default async function Home() {
                     </Suspense>
                 </LandingSection>
                 <AboutSection modelPromise={aboutSection} />
-                <QuoteCard modelPromise={quoteSection} />
                 <ExperienceSection modelPromise={experienceSection} />
             </main>
         </>
