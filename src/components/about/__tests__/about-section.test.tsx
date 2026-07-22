@@ -1,4 +1,4 @@
-import { render, screen, act } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { Suspense } from 'react'
 import { AboutSection } from '@/components/about'
@@ -30,48 +30,40 @@ const mockModel: AboutSectionDTO = {
 }
 
 describe('AboutSection', () => {
-    it('should render title from model', async () => {
+    it('should render title from model', () => {
         const modelPromise = resolvedPromise(mockModel)
 
-        await act(async () => {
-            render(
-                <Suspense fallback={null}>
-                    <AboutSection modelPromise={modelPromise} />
-                </Suspense>
-            )
-        })
+        render(
+            <Suspense fallback={null}>
+                <AboutSection modelPromise={modelPromise} />
+            </Suspense>
+        )
 
         expect(screen.getByText('About Me')).toBeInTheDocument()
     })
 
-    it('should render all paragraphs', async () => {
+    it('should render all paragraphs', () => {
         const modelPromise = resolvedPromise(mockModel)
 
-        await act(async () => {
-            render(
-                <Suspense fallback={null}>
-                    <AboutSection modelPromise={modelPromise} />
-                </Suspense>
-            )
-        })
+        render(
+            <Suspense fallback={null}>
+                <AboutSection modelPromise={modelPromise} />
+            </Suspense>
+        )
 
         const portableTexts = screen.getAllByTestId('portable-text')
         expect(portableTexts).toHaveLength(2)
     })
 
-    it('should handle null model gracefully', async () => {
+    it('should handle null model gracefully', () => {
         const modelPromise = resolvedPromise(null)
 
-        let container: HTMLElement
-        await act(async () => {
-            const result = render(
-                <Suspense fallback={null}>
-                    <AboutSection modelPromise={modelPromise} />
-                </Suspense>
-            )
-            container = result.container
-        })
+        const { container } = render(
+            <Suspense fallback={null}>
+                <AboutSection modelPromise={modelPromise} />
+            </Suspense>
+        )
 
-        expect(container!.querySelector('section')).toBeInTheDocument()
+        expect(container.querySelector('section')).toBeInTheDocument()
     })
 })
