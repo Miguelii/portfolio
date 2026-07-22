@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { Effect, Exit } from 'effect'
-import { verifyApiKey } from '@/lib/utils.server'
+import { verifyApiKey } from '../verify-api-key'
 
 vi.mock('server-only', () => ({}))
 

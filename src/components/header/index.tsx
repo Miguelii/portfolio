@@ -7,7 +7,7 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { MenuIcon } from '@/components/icons/menu-icon'
 import { HeaderNavDesktop } from './header-nav-desktop'
-import { HOME_PAGE_URL } from '@/lib/constants'
+import { COOLER_VERSION_URL } from '@/lib/constants'
 import { NavList } from './constants'
 import { haptic } from '@/lib/haptic'
 
@@ -28,7 +28,7 @@ export function Header() {
             <header className="w-full flex-1 mx-auto main-container border-x border-x-divider px-5 md:px-10">
                 <nav className="flex justify-between items-center h-16">
                     <Link
-                        href={HOME_PAGE_URL}
+                        href={COOLER_VERSION_URL}
                         prefetch={false}
                         onClick={() => {
                             haptic()

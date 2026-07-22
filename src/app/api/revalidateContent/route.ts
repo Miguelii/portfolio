@@ -1,14 +1,16 @@
 import { ServerEnv } from '@/env/server'
 import { HOME_PAGE_URL } from '@/lib/constants'
-import { UnauthorizedError } from '@/lib/data-tagged-errors'
+import { DataDefaultTaggedError } from '@/lib/data-tagged-errors'
 import { Logger } from '@/lib/logger'
-import { verifyApiKey } from '@/lib/utils.server'
 import { SANITY_QUERY_REVALIDATE_KEY } from '@/sanity/lib/constants'
 import { Effect } from 'effect'
 import { revalidatePath, revalidateTag } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
+import { verifyApiKey } from './verify-api-key'
 
 export const dynamic = 'force-dynamic'
+
+class UnauthorizedError extends DataDefaultTaggedError('UnauthorizedError') {}
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
     return Effect.runPromise(

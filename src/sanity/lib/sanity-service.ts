@@ -2,7 +2,9 @@ import 'server-only'
 
 import { Effect } from 'effect'
 import { sanityClientFetch } from '@/sanity/lib/client'
-import { SanityFetchError } from '@/lib/data-tagged-errors'
+import { DataDefaultTaggedError } from '@/lib/data-tagged-errors'
+
+class SanityFetchError extends DataDefaultTaggedError('SanityFetchError') {}
 
 export class SanityService extends Effect.Service<SanityService>()('SanityService', {
     effect: Effect.sync(() => ({

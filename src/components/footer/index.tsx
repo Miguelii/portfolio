@@ -2,6 +2,7 @@ import { SocialItem } from '@/components/ui/social-item'
 import { LinkedinIcon } from '@/components/icons/linkedin-icon'
 import { GithubIcon } from '@/components/icons/github-icon'
 import { FooterLinkClient } from './footer-link-client'
+import { GITHUB_URL, LINKEDIN_URL } from '@/lib/constants'
 
 export function Footer() {
     return (
@@ -11,12 +12,14 @@ export function Footer() {
                     <span className="text-sm font-mono">
                         &copy; {new Date().getFullYear()}. All rights reserved.
                     </span>
-                    <FooterLinkClient href="/privacy-notice">Privacy Notice</FooterLinkClient>
+                    <FooterLinkClient href="/cooler-version/privacy-notice">
+                        Privacy Notice
+                    </FooterLinkClient>
                 </div>
 
                 <div className="flex flex-row justify-center gap-2">
                     <SocialItem
-                        href="https://www.linkedin.com/in/miguelgoncalves18/"
+                        href={LINKEDIN_URL}
                         ariaLabel="see linkedin profile"
                         className="w-12 h-12 flex items-center justify-center"
                         eventName="footer_social_linkedin"
@@ -28,7 +31,7 @@ export function Footer() {
                         />
                     </SocialItem>
                     <SocialItem
-                        href="https://github.com/Miguelii"
+                        href={GITHUB_URL}
                         ariaLabel="see github profile"
                         className="w-12 h-12 flex items-center justify-center"
                         eventName="footer_social_github"

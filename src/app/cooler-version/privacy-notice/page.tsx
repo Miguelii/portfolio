@@ -9,7 +9,7 @@ import { runSanityService } from '@/sanity/lib/sanity-service'
 // sanityClientFetch controls the revalidate time
 export const dynamic = 'force-static'
 
-const PATH = '/privacy-notice'
+const PATH = '/cooler-version/privacy-notice'
 
 const WEBSITE_URL = ClientEnv.NEXT_PUBLIC_VERCEL_URL
 

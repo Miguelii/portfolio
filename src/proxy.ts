@@ -16,10 +16,8 @@ export async function proxy(request: NextRequest) {
     return response
 }
 
-// Static assets are excluded via matcher and get their headers from
-// next.config.ts headers() — served at the CDN level, no proxy invocation.
-// Must be a plain string literal: the matcher is extracted by static analysis,
-// so template literals/String.raw are silently dropped ([.] = literal dot)
 export const config = {
-    matcher: ['/((?!_next|api/|assets|models|favicon|robots[.]txt).*)'],
+    matcher: [
+        '/((?!_next|api/|assets|models|favicon|opengraph-image|twitter-image|robots[.]txt).*)',
+    ],
 }

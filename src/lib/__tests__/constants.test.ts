@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { BAND_CARD_MODEL_URL, HOME_PAGE_URL, motionPressProps } from '@/lib/constants'
+import {
+    BAND_CARD_MODEL_URL,
+    COOLER_VERSION_URL,
+    HOME_PAGE_URL,
+    motionPressProps,
+} from '@/lib/constants'
 
 describe('constants', () => {
     it('should define BAND_CARD_MODEL_URL as a .glb file path', () => {
@@ -8,6 +13,10 @@ describe('constants', () => {
 
     it('should define HOME_PAGE_URL as the root path', () => {
         expect(HOME_PAGE_URL).toBe('/')
+    })
+
+    it('should define COOLER_VERSION_URL as the portfolio path', () => {
+        expect(COOLER_VERSION_URL).toBe('/cooler-version')
     })
 
     it('should define motionPressProps', () => {

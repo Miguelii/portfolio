@@ -14,7 +14,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
-            url: `${WEBSITE_URL}/privacy-notice`,
+            url: `${WEBSITE_URL}/cooler-version`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${WEBSITE_URL}/cooler-version/privacy-notice`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.3,

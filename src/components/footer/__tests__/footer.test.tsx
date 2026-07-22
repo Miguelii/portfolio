@@ -36,6 +36,8 @@ vi.mock('@/components/footer/footer-link-client', () => ({
 
 vi.mock('@/lib/constants', () => ({
     motionPressProps: {},
+    LINKEDIN_URL: 'https://www.linkedin.com/in/test',
+    GITHUB_URL: 'https://github.com/test',
 }))
 
 vi.mock('motion/react', () => ({

@@ -5,14 +5,12 @@ import { ClientEnv } from '@/env/client'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { SpeedInsights as VercelSpeedInsights } from '@vercel/speed-insights/next'
 import { HeadMetadata } from '@/components/head-metadata'
-import { GtmScript } from '@/components/gtm-script'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
     subsets: ['latin'],
     display: 'swap',
     preload: true,
-    adjustFontFallback: true,
 })
 
 const geistMono = Geist_Mono({
@@ -20,7 +18,6 @@ const geistMono = Geist_Mono({
     subsets: ['latin'],
     display: 'swap',
     preload: true,
-    adjustFontFallback: true,
 })
 
 export const viewport: Viewport = {
@@ -97,12 +94,20 @@ export default async function RootLayout({ children }: Props) {
     return (
         <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
             <HeadMetadata />
-            <GtmScript />
             <VercelAnalytics />
             <VercelSpeedInsights />
             <body
                 className={`${geistSans.variable} ${geistMono.variable} bg-background font-sans antialiased text-primary! min-h-screen flex flex-col`}
             >
+                <a
+                    tabIndex={0}
+                    aria-label="Skip to content"
+                    className="sr-only sr-only-focusable"
+                    id="acessibilitynav"
+                    href="#main"
+                >
+                    Skip to content
+                </a>
                 {children}
             </body>
         </html>

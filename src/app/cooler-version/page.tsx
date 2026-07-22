@@ -14,7 +14,7 @@ import { runSanityService } from '@/sanity/lib/sanity-service'
 // sanityClientFetch controls the revalidate time
 export const dynamic = 'force-static'
 
-export default async function Home() {
+export default async function CoolerVersionPage() {
     const landingSection = runSanityService(getLandingSection)
     const aboutSection = runSanityService(getAboutSection)
     const experienceSection = runSanityService(getWorkExperienceSection)

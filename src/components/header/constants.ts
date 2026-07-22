@@ -1,18 +1,19 @@
+import { COOLER_VERSION_URL, GITHUB_URL, LINKEDIN_URL } from '@/lib/constants'
 import type { NavItem } from './types'
 
 export const NavList: NavItem[] = [
     {
         title: 'OO',
-        url: '/',
+        url: COOLER_VERSION_URL,
     },
     {
         title: 'linkedin',
-        url: 'https://www.linkedin.com/in/miguelgoncalves18/',
+        url: LINKEDIN_URL,
         external: true,
     },
     {
         title: 'Github',
-        url: 'https://github.com/Miguelii',
+        url: GITHUB_URL,
         external: true,
     },
 ] as const

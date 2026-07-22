@@ -1,8 +1,8 @@
 'use client'
 
-import { createContext, useEffect, useRef, useState, type PropsWithChildren } from 'react'
+import { createContext, useEffect, useState, type PropsWithChildren } from 'react'
 import { usePathname } from 'next/navigation'
-import { HOME_PAGE_URL } from '@/lib/constants'
+import { COOLER_VERSION_URL } from '@/lib/constants'
 
 /**
  * Preloader lifecycle:
@@ -17,18 +17,15 @@ export const PreloaderContext = createContext<PreloaderPhase>('idle')
 export function PreloaderProvider({ children }: Readonly<PropsWithChildren>) {
     const currPath = usePathname()
 
-    // The preloader only shows on the very first page load when it's the home page.
-    // On the first render there is no navigation history yet, so "first load on home"
-    // reduces to the initial path being the home page; the initializer runs once.
+    // The preloader only shows on the very first page load when it's the portfolio page.
+    // On the first render there is no navigation history yet, so "first load on the
+    // portfolio page" reduces to the initial path being that page; the initializer runs once.
     const [phase, setPhase] = useState<PreloaderPhase>(() =>
-        currPath === HOME_PAGE_URL ? 'loading' : 'idle'
+        currPath === COOLER_VERSION_URL ? 'loading' : 'idle'
     )
 
-    const hasRun = useRef(false)
-
     useEffect(() => {
-        if (phase !== 'loading' || hasRun.current) return
-        hasRun.current = true
+        if (phase !== 'loading') return
 
         const timer = setTimeout(() => {
             setPhase('complete')

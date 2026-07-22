@@ -24,6 +24,7 @@ vi.mock('@/lib/utils', () => ({
 
 vi.mock('@/lib/constants', () => ({
     HOME_PAGE_URL: '/',
+    COOLER_VERSION_URL: '/cooler-version',
     motionPressProps: {},
 }))
 
