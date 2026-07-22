@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { Suspense } from 'react'
 import { describe, expect, it, vi } from 'vitest'
 import { ExperienceSection } from '@/components/experience-section'
@@ -11,6 +11,12 @@ vi.mock('@/env/client', () => ({
 }))
 
 vi.mock('@/lib/haptic', () => ({ haptic: vi.fn(), supportsHaptic: true }))
+
+function resolvedPromise<T>(value: T): Promise<T> {
+    const p = Promise.resolve(value)
+    Object.assign(p, { status: 'fulfilled', value })
+    return p
+}
 
 describe('ExperienceSection', () => {
     const mockModel: WorkExperienceSectionDTO = {
@@ -54,25 +60,21 @@ describe('ExperienceSection', () => {
         ],
     }
 
-    it('should render section title', async () => {
-        await act(async () => {
-            render(
-                <Suspense fallback={null}>
-                    <ExperienceSection modelPromise={Promise.resolve(mockModel)} />
-                </Suspense>
-            )
-        })
+    it('should render section title', () => {
+        render(
+            <Suspense fallback={null}>
+                <ExperienceSection modelPromise={resolvedPromise(mockModel)} />
+            </Suspense>
+        )
         expect(screen.getByText('Work Experience')).toBeInTheDocument()
     })
 
-    it('should render company name', async () => {
-        await act(async () => {
-            render(
-                <Suspense fallback={null}>
-                    <ExperienceSection modelPromise={Promise.resolve(mockModel)} />
-                </Suspense>
-            )
-        })
+    it('should render company name', () => {
+        render(
+            <Suspense fallback={null}>
+                <ExperienceSection modelPromise={resolvedPromise(mockModel)} />
+            </Suspense>
+        )
         expect(screen.getByText('Blip')).toBeInTheDocument()
     })
 })

@@ -72,19 +72,13 @@ describe('Header', () => {
         expect(screen.getByAltText('Miguel Goncalves signature logo')).toBeInTheDocument()
     })
 
-    it('should render desktop navigation', () => {
+    it.each([
+        ['desktop navigation', 'desktop-nav'],
+        ['mobile navigation', 'mobile-nav'],
+        ['menu icon button', 'menu-icon'],
+    ])('should render %s', (_label, testId) => {
         render(<Header />)
-        expect(screen.getByTestId('desktop-nav')).toBeInTheDocument()
-    })
-
-    it('should render mobile navigation', () => {
-        render(<Header />)
-        expect(screen.getByTestId('mobile-nav')).toBeInTheDocument()
-    })
-
-    it('should render menu icon button', () => {
-        render(<Header />)
-        expect(screen.getByTestId('menu-icon')).toBeInTheDocument()
+        expect(screen.getByTestId(testId)).toBeInTheDocument()
     })
 
     it('should toggle menu state when menu icon is clicked', () => {

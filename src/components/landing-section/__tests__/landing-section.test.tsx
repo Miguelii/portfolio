@@ -1,6 +1,6 @@
-import { render, screen, act } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import { type PropsWithChildren } from 'react'
+import { Suspense, type PropsWithChildren } from 'react'
 import { LandingSection } from '@/components/landing-section'
 import type { LandingSectionDTO } from '@/sanity/api/get-landing-section'
 
@@ -16,23 +16,33 @@ vi.mock('motion/react-client', async (importOriginal) => {
     }
 })
 
+function resolvedPromise<T>(value: T): Promise<T> {
+    const p = Promise.resolve(value)
+    Object.assign(p, { status: 'fulfilled', value })
+    return p
+}
+
 const MOCK_MODEL: LandingSectionDTO = {
     title: 'Crafting Experiences, Delivering Results',
     subtitle: 'Delivered products that have reached over a million users worldwide.',
 }
 
 describe('LandingSection', () => {
-    it('should render main heading', async () => {
-        await act(async () => {
-            return render(<LandingSection modelPromise={Promise.resolve(MOCK_MODEL)} />)
-        })
+    it('should render main heading', () => {
+        render(
+            <Suspense fallback={null}>
+                <LandingSection modelPromise={resolvedPromise(MOCK_MODEL)} />
+            </Suspense>
+        )
         expect(screen.getByText(MOCK_MODEL.title!)).toBeInTheDocument()
     })
 
-    it('should render description text', async () => {
-        await act(async () => {
-            return render(<LandingSection modelPromise={Promise.resolve(MOCK_MODEL)} />)
-        })
+    it('should render description text', () => {
+        render(
+            <Suspense fallback={null}>
+                <LandingSection modelPromise={resolvedPromise(MOCK_MODEL)} />
+            </Suspense>
+        )
         expect(screen.getByText(MOCK_MODEL.subtitle!)).toBeInTheDocument()
     })
 })
