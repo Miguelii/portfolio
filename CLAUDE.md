@@ -2,87 +2,6 @@
 
 Personal dev portfolio built with Next.js. Showcases work experience, projects, and freelance clients with 3D graphics and smooth animations.
 
-## Commands
-
-```bash
-npm run dev              # Start dev server (Turbopack)
-npm run build            # Production build (Turbopack)
-npm run start            # Start production server
-pnpm lint                # Lint with oxlint (via vite-plus)
-pnpm fmt                 # Format with oxfmt (via vite-plus)
-pnpm typecheck           # TypeScript type checking (no emit)
-pnpm test                # Run tests with Vitest (via vite-plus)
-pnpm test:watch          # Run tests in watch mode
-pnpm check               # lint + typecheck + test
-npm run knip             # Detect unused files, exports, and dependencies
-npm run generate:types   # Generate Sanity TypeScript types (schema.json + sanity.types.ts)
-npm run prepare          # Install Husky git hooks
-```
-
-## Tech Stack
-
-- **Framework**: Next.js 16 (App Router) with React 19 and TypeScript 5
-- **Styling**: Tailwind CSS 4 with `tailwind-merge` and `clsx` for conditional classes
-- **Animation**: Motion (successor to Framer Motion) for scroll-triggered animations, React Lenis for smooth scrolling
-- **3D Graphics**: Three.js ecosystem — `@react-three/fiber` for the React renderer, `@react-three/drei` for helpers, `@react-three/rapier` for physics simulation
-- **CMS**: Sanity with an embedded Studio, GROQ for queries, and Portable Text (`@portabletext/react`) for rich content
-- **Validation**: Zod schemas via `@t3-oss/env-nextjs` for type-safe environment variables
-- **Toolchain**: Vite-plus (unified toolchain — oxlint for linting, oxfmt for formatting, Vitest for testing)
-- **Testing**: Vitest (via vite-plus) with `@testing-library/react` and jsdom
-- **Analytics**: Vercel Analytics and Speed Insights
-- **AI Tooling**: Claude Code with Vercel's agent skills (`vercel-composition-patterns`, `vercel-react-best-practices`, `web-design-guidelines`)
-
-## Project Structure
-
-```
-src/
-  app/
-    layout.tsx            # Root layout (html, body, fonts, meta, analytics)
-    not-found.tsx         # Global 404 page
-    global-error.tsx      # Root-level error boundary (own html/body)
-    sitemap.ts            # Sitemap generation
-    llms.txt/route.ts     # llms.txt route handler
-    api/revalidateContent/route.ts  # On-demand revalidation webhook
-    (public)/             # Route group: public-facing pages
-      layout.tsx          # Public layout (Header, Footer, Lenis, Providers)
-      page.tsx            # Home (force-static, revalidated)
-      error.tsx           # Public segment error boundary
-      privacy-notice/     # Privacy policy
-    (sanity)/             # Route group: Sanity Studio
-      studio/[[...tool]]/ # Embedded Sanity Studio at /studio
-  components/             # Shared UI + section components
-    ui/                   # Primitives (Button, LinkPreview, SocialItem)
-    icons/                # Animated SVG icons (shared logic in use-icon-controls.ts)
-    header/ footer/       # Layout chrome
-    landing-section/      # Hero section (renders the 3D Band)
-    band/                 # Three.js + Rapier 3D card
-    experience-section/   # Work history timeline
-    about/ quote/         # Remaining home sections
-    preloader/            # First-visit preloader
-    cookie-consent/ gtm-script/ structured-data/ head-metadata/
-  hooks/                  # Shared React hooks (use-is-mounted, use-media-query)
-  providers/              # Context providers (History, Preloader)
-  types/                  # TypeScript type definitions
-  lib/                    # Utility functions
-  env/                    # Environment variable validation (client.ts, server.ts)
-  actions/                # Server actions
-  styles/                 # Global CSS
-  sanity/
-    schemaTypes/index.ts  # Document type definitions (aboutSection, landingSection)
-    queries/              # GROQ query strings (*.groq.ts)
-    api/                  # Data fetching functions (getAboutSection, getLandingSection)
-    generated/            # Auto-generated files (do NOT edit manually)
-      schema.json         # Extracted schema (from `sanity schema extract`)
-      sanity.types.ts     # TypeScript types (from `sanity typegen generate`)
-    lib/
-      client.ts           # Sanity client + sanityClientFetch<T>() wrapper
-      image.ts            # Image URL builder
-      live.ts             # Live content API
-    constants.ts          # API version, Structure Builder (singletons config)
-public/
-  models/card.glb         # 3D model used by Band component
-```
-
 ## Architecture
 
 - **App Router** with Server Components by default; Client Components only where interactivity is needed
@@ -138,47 +57,11 @@ The pre-commit hook (`.husky/pre-commit`) runs in order: `generate:types` → `f
 
 ## Code Style
 
-Enforced by oxfmt and oxlint (via vite-plus):
-
-- 4-space indentation
-- No semicolons
-- Single quotes
-- Trailing commas (ES5)
-- Max line width: 100 chars
 - Consistent type imports (`import type { ... }`)
 - **Always use `@/` path alias** for imports — never use relative paths (`../`, `../../`). Example: `@/features/landing/hooks/use-landing-section-delay` instead of `../hooks/use-landing-section-delay`
 
 Run `pnpm fmt` after making changes, or ensure your editor auto-formats on save.
 
-## Environment Variables
-
-| Variable | Where | Description |
-|---|---|---|
-| `NEXT_PUBLIC_VERCEL_URL` | client | Vercel deployment URL (not set on localhost) |
-| `NEXT_PUBLIC_VERCEL_URL` | client | Full site URL (normalized: https://, no trailing slash) |
-| `NEXT_PUBLIC_BUILD_TIMESTAMP` | auto | Injected by `next.config.ts` at build time |
-| `NEXT_PUBLIC_SANITY_PROJECT_ID` | client | Sanity project ID |
-| `NEXT_PUBLIC_SANITY_DATASET` | client | Sanity dataset name (e.g. `production`) |
-
-Add new env vars to `src/env/client.ts` or `src/env/server.ts` with a Zod schema. Never access `process.env` directly.
-
-## CSS Theme Tokens
-
-Defined in global CSS; use these variables rather than hardcoded colors:
-
-```
---background:    #fbfbfd
---primary:       #262626
---neutral:       #737373
---divider:       #e5e5e7
---neutral-dark:  #1d1d1d
---neutral-light: #fafafa
-```
-
 ## Testing
 
 Tests live in `__tests__` directories co-located with the code they test. Run `pnpm test` (Vitest via vite-plus with jsdom). Use `@testing-library/react` for component tests.
-
-## Path Alias
-
-`@/*` maps to `src/*` — always use this alias for imports within the project.

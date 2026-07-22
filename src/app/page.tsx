@@ -33,7 +33,7 @@ export default async function HomePage() {
                 <h2 className="text-primary font-medium">More</h2>
                 <div className="flex flex-col gap-2">
                     <span className="text-pretty text-neutral">
-                        You can see more of my work on on{' '}
+                        You can see all my work on{' '}
                         <Link
                             className="font-bold underline"
                             prefetch={false}
