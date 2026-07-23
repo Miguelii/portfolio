@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import '@/styles/globals.css'
 import { ClientEnv } from '@/env/client'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
@@ -8,13 +8,6 @@ import { HeadMetadata } from '@/components/head-metadata'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
-    subsets: ['latin'],
-    display: 'swap',
-    preload: true,
-})
-
-const geistMono = Geist_Mono({
-    variable: '--font-geist-mono',
     subsets: ['latin'],
     display: 'swap',
     preload: true,
@@ -97,7 +90,7 @@ export default async function RootLayout({ children }: Props) {
             <VercelAnalytics />
             <VercelSpeedInsights />
             <body
-                className={`${geistSans.variable} ${geistMono.variable} bg-background font-sans antialiased text-primary! min-h-screen flex flex-col`}
+                className={`${geistSans.variable} bg-background font-sans antialiased text-primary! min-h-screen flex flex-col`}
             >
                 <a
                     tabIndex={0}

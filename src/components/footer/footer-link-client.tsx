@@ -20,7 +20,7 @@ export function FooterLinkClient({ children, href, className }: Props) {
             onClick={() => haptic()}
             href={href}
             prefetch={false}
-            className={cn('underline text-sm font-mono hover:font-semibold', className)}
+            className={cn('underline text-sm font-semibold', className)}
             {...motionPressProps}
         >
             {children}

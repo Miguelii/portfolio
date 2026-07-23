@@ -66,16 +66,15 @@ export default async function HomePage() {
             <section className="flex flex-col gap-5">
                 <h2 className="text-primary font-medium">Cooler version</h2>
                 <span className="text-pretty text-neutral">
-                    You can find a cooler version of this website{' '}
+                    You can find a{' '}
                     <Link
                         className="font-bold underline"
-                        prefetch={false}
                         aria-label="see cooler version"
+                        prefetch={false}
                         href="/cooler-version"
                     >
-                        here
-                    </Link>
-                    .
+                        cooler version of this website here.
+                    </Link>{' '}
                 </span>
             </section>
         </main>
