@@ -21,7 +21,7 @@ export default function PublicError({ error, reset }: Props) {
         >
             <div className="flex flex-col gap-6 py-12 lg:py-20 text-center lg:text-left">
                 <div className="flex flex-col gap-3">
-                    <span className="font-mono text-p-smallest tracking-[0.2em] uppercase text-neutral">
+                    <span className="text-p-smallest tracking-[0.2em] uppercase text-neutral font-semibold">
                         Error
                     </span>
                     <h1 className="text-primary text-h1 font-bold leading-tight">
