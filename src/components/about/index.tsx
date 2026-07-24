@@ -2,6 +2,7 @@ import * as motion from 'motion/react-client'
 import { PortableText } from '@portabletext/react'
 import type { AboutSectionDTO } from '@/sanity/api/get-about-section'
 import { use } from 'react'
+import { replaceTextWithWorkYears } from '@/lib/utils'
 
 type Props = {
     modelPromise: Promise<AboutSectionDTO>
@@ -32,7 +33,7 @@ export function AboutSection({ modelPromise }: Props) {
                         viewport={{ once: true, amount: 0.3 }}
                         className="text-pretty text-neutral text-p-regular"
                     >
-                        <PortableText value={item?.text} />
+                        <PortableText value={replaceTextWithWorkYears(item?.text)} />
                     </motion.div>
                 ))}
             </div>

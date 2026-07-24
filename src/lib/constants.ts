@@ -1,5 +1,8 @@
 import type { MotionNodeTapHandlers, Transition } from 'motion'
 
+export const WORK_START_YEAR = 2022
+export const WORK_START_MONTH = 6 // Jun
+
 export const BAND_CARD_MODEL_URL = '/models/card.glb' as const
 
 export const HOME_PAGE_URL = '/' as const
