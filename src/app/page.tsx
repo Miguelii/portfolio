@@ -3,6 +3,7 @@ import { getAboutSection } from '@/sanity/api/get-about-section'
 import { runSanityService } from '@/sanity/lib/sanity-service'
 import Link from 'next/link'
 import { GITHUB_URL, LINKEDIN_URL } from '@/lib/constants'
+import { replaceTextWithWorkYears } from '@/lib/utils'
 
 // sanityClientFetch controls the revalidate time
 export const dynamic = 'force-static'
@@ -24,7 +25,10 @@ export default async function HomePage() {
                 <h2 className="text-primary font-medium">Today</h2>
                 <div className="flex flex-col gap-6 text-pretty text-neutral">
                     {about?.paragraphs?.map((paragraph) => (
-                        <PortableText key={paragraph.id} value={paragraph.text} />
+                        <PortableText
+                            key={paragraph.id}
+                            value={replaceTextWithWorkYears(paragraph.text)}
+                        />
                     ))}
                 </div>
             </section>
