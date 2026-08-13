@@ -9,7 +9,3 @@ vi.mock('next/link', () => ({
 vi.mock('next/navigation', () => ({
     usePathname: () => '/',
 }))
-
-vi.mock('@next/third-parties/google', () => ({
-    sendGTMEvent: vi.fn(),
-}))

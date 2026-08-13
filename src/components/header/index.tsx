@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { sendGTMEvent } from '@next/third-parties/google'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { MenuIcon } from '@/components/icons/menu-icon'
@@ -32,7 +31,6 @@ export function Header() {
                         prefetch={false}
                         onClick={() => {
                             haptic()
-                            sendGTMEvent({ event: 'logo_click', value: 'logo' })
                         }}
                     >
                         <Image
@@ -58,10 +56,6 @@ export function Header() {
                         onClick={() => {
                             haptic()
                             toggleMenu()
-                            sendGTMEvent({
-                                event: 'header_menu_click',
-                                value: 'header_mobile_open_menu',
-                            })
                         }}
                         aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                         aria-expanded={isMenuOpen}

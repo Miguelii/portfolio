@@ -3,7 +3,6 @@
 import { cn } from '@/lib/utils'
 import { motionPressProps } from '@/lib/constants'
 import { haptic } from '@/lib/haptic'
-import { sendGTMEvent } from '@next/third-parties/google'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import type { PropsWithChildren } from 'react'
@@ -31,7 +30,6 @@ export const SocialItem = ({ href, children, ariaLabel, className, eventName }: 
             )}
             onClick={() => {
                 haptic()
-                if (eventName) sendGTMEvent({ event: 'social_item_click', value: eventName })
             }}
             {...motionPressProps}
         >

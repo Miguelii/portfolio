@@ -6,7 +6,6 @@ import { cn, normalizePath } from '@/lib/utils'
 import Link from 'next/link'
 import { CloseIcon } from '@/components/icons/close-icon'
 import { menuVariants, itemVariants } from '@/components/header/header-nav-mobile-animations'
-import { sendGTMEvent } from '@next/third-parties/google'
 import type { NavItem } from './types'
 import { HOME_PAGE_URL, motionPressProps } from '@/lib/constants'
 import { haptic } from '@/lib/haptic'
@@ -41,10 +40,6 @@ export function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Pr
                             onClick={() => {
                                 haptic()
                                 toggleMenu()
-                                sendGTMEvent({
-                                    event: 'header_nav_click',
-                                    value: 'header_mobile_close_menu',
-                                })
                             }}
                             aria-label={
                                 isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
@@ -75,20 +70,16 @@ export function HeaderNavMobile({ isMenuOpen, toggleMenu, navList }: Readonly<Pr
                                         rel={item.external ? 'noopener noreferrer' : undefined}
                                         className={cn(
                                             'relative text-2xl lg:text-4xl font-semibold group transition-colors duration-300 block uppercase text-primary [aria-current="page"]:text-neutral',
-                                            isSelected ? '!text-neutral' : '!text-primary'
+                                            isSelected ? 'text-neutral!' : 'text-primary!'
                                         )}
                                         onClick={() => {
                                             haptic()
                                             toggleMenu()
-                                            sendGTMEvent({
-                                                event: 'header_nav_click',
-                                                value: `header_nav_mobile_${item.title}`,
-                                            })
                                         }}
                                         {...motionPressProps}
                                     >
                                         {item.title}
-                                        <span className="absolute bottom-0 left-0 w-0 h-[3px] bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.75 bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>
                                     </MotionLink>
                                 </motion.div>
                             )

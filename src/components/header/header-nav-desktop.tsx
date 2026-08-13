@@ -3,7 +3,6 @@
 import { cn, normalizePath } from '@/lib/utils'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { sendGTMEvent } from '@next/third-parties/google'
 import type { NavItem } from './types'
 import { HOME_PAGE_URL, motionPressProps } from '@/lib/constants'
 import { haptic } from '@/lib/haptic'
@@ -41,10 +40,6 @@ export function HeaderNavDesktop({ navList }: Readonly<Props>) {
                         )}
                         onClick={() => {
                             haptic()
-                            sendGTMEvent({
-                                event: 'header_nav_click',
-                                value: `header_nav_desktop_${item.title}`,
-                            })
                         }}
                         {...motionPressProps}
                     >
