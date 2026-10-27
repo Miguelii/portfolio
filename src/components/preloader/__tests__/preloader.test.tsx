@@ -8,9 +8,9 @@ import { Preloader } from '@/components/preloader'
 vi.mock('motion/react', () => ({
     AnimatePresence: ({ children }: PropsWithChildren) => children,
     motion: {
-        div: (props: Record<string, unknown>) => <div {...props} />,
-        p: (props: Record<string, unknown>) => <p {...props} />,
-        path: (props: Record<string, unknown>) => <path {...props} />,
+        div: (props: React.ComponentProps<'div'>) => <div {...props} />,
+        p: (props: React.ComponentProps<'p'>) => <p {...props} />,
+        path: (props: React.ComponentProps<'path'>) => <path {...props} />,
     },
 }))
 

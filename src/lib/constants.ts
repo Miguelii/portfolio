@@ -9,13 +9,13 @@ export const HOME_PAGE_URL = '/' as const
 
 export const COOLER_VERSION_URL = '/cooler-version' as const
 
-export const motionPressProps: {
-    whileTap: MotionNodeTapHandlers['whileTap']
-    transition: Transition
-} = {
+export const motionPressProps = {
     whileTap: { scale: 0.96 },
     transition: { type: 'spring', stiffness: 500, damping: 20 },
-} as const
+} as const satisfies {
+    whileTap: MotionNodeTapHandlers['whileTap']
+    transition: Transition
+}
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/miguelgoncalves18'
 

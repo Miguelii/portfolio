@@ -7,7 +7,7 @@ vi.mock('motion/react', () => ({
         button: ({ children, ...props }: React.PropsWithChildren) => (
             <button {...props}>{children}</button>
         ),
-        path: (props: Record<string, unknown>) => <path {...props} />,
+        path: (props: React.ComponentProps<'path'>) => <path {...props} />,
     },
     useAnimation: () => ({
         start: vi.fn(),

@@ -10,6 +10,12 @@ export function cn(...inputs: ClassValue[]) {
 
 export const normalizePath = (path: string) => path.replace(/\/$/, '') || HOME_PAGE_URL
 
+type PortableTextSpan = Extract<PortableTextBlock['children'][number], { _type: 'span' }>
+
+const isPortableTextSpan = (
+    child: PortableTextBlock['children'][number]
+): child is PortableTextSpan => child._type === 'span'
+
 export const replaceTextWithWorkYears = (blocks: PortableTextBlock[]): PortableTextBlock[] => {
     const now = new Date()
     let years = now.getFullYear() - WORK_START_YEAR
@@ -23,7 +29,7 @@ export const replaceTextWithWorkYears = (blocks: PortableTextBlock[]): PortableT
         return {
             ...block,
             children: block.children.map((child) =>
-                typeof child.text === 'string'
+                isPortableTextSpan(child)
                     ? { ...child, text: child.text.replaceAll('##YEARS_EXP##', yearsOfExperience) }
                     : child
             ),

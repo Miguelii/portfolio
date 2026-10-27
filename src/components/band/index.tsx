@@ -1,7 +1,14 @@
 'use client'
 
 import * as THREE from 'three'
-import { Canvas, extend, type ThreeEvent, useFrame, useThree } from '@react-three/fiber'
+import {
+    Canvas,
+    extend,
+    type ObjectMap,
+    type ThreeEvent,
+    useFrame,
+    useThree,
+} from '@react-three/fiber'
 import { Environment, Lightformer, useGLTF } from '@react-three/drei'
 import { MeshLineGeometry, MeshLineMaterial, raycast } from 'meshline'
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -15,10 +22,31 @@ import {
     useSphericalJoint,
 } from '@react-three/rapier'
 import { BAND_CARD_MODEL_URL } from '@/lib/constants'
-import type { GLTFMaterials, GLTFNodes } from '@/types/gltf-result'
 import { useMediaQuery } from '@/hooks/use-media-query'
 
 extend({ MeshLineGeometry, MeshLineMaterial })
+
+function parseBandModel({ nodes, materials }: ObjectMap) {
+    const { card, clamp, clip } = nodes
+    const { metal, texture } = materials
+
+    if (
+        !(card instanceof THREE.Mesh) ||
+        !(clamp instanceof THREE.Mesh) ||
+        !(clip instanceof THREE.Mesh) ||
+        !(metal instanceof THREE.MeshStandardMaterial) ||
+        !(texture instanceof THREE.MeshStandardMaterial)
+    ) {
+        throw new Error(`${BAND_CARD_MODEL_URL} is missing the band card meshes or materials`)
+    }
+
+    return { nodes: { card, clamp, clip }, materials: { metal, texture } }
+}
+
+// SAFETY: R3F replaces the DOM event target with its own pointer-capture handle
+// (set/release/hasPointerCapture), but its typings still declare the DOM EventTarget.
+const pointerCaptureTarget = (event: ThreeEvent<PointerEvent>) =>
+    event.target as EventTarget & Pick<Element, 'releasePointerCapture' | 'setPointerCapture'>
 
 // rendering-hoist-jsx: static JSX hoisted outside component — never recreated on re-render
 const bandLighting = (
@@ -59,10 +87,8 @@ const Band = memo(function Band() {
     const maxSpeed = 50
     const minSpeed = 50
 
-    const { nodes, materials } = useGLTF(BAND_CARD_MODEL_URL) as unknown as {
-        nodes: GLTFNodes
-        materials: GLTFMaterials
-    }
+    const model = useGLTF(BAND_CARD_MODEL_URL)
+    const { nodes, materials } = useMemo(() => parseBandModel(model), [model])
 
     const band = useRef<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>>>(null)
     const fixed = useRef<RapierRigidBody>(null)
@@ -126,6 +152,9 @@ const Band = memo(function Band() {
     // rerender-memo: memoized to avoid new Vector2 every render
     const resolution = useMemo(() => new THREE.Vector2(width, height), [width, height])
 
+    // smoothed rope joint positions, keyed by rigid body and mutated in useFrame
+    const [lerpedPositions] = useState(() => new WeakMap<RapierRigidBody, THREE.Vector3>())
+
     useFrame((state, delta) => {
         if (drag) {
             vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
@@ -142,13 +171,11 @@ const Band = memo(function Band() {
         // lerp j1 and j2 every frame (init once, then always update)
         ;[j1, j2].forEach((ref) => {
             if (!ref.current) return
-            // @ts-expect-error lerping
-            if (!ref.current.lerped) {
-                // @ts-expect-error lerping
-                ref.current.lerped = new THREE.Vector3().copy(ref.current.translation())
+            let lerped = lerpedPositions.get(ref.current)
+            if (!lerped) {
+                lerped = new THREE.Vector3().copy(ref.current.translation())
+                lerpedPositions.set(ref.current, lerped)
             }
-            // @ts-expect-error lerping
-            const lerped = ref.current.lerped as THREE.Vector3
             const clampedDistance = Math.max(
                 0.1,
                 Math.min(1, lerped.distanceTo(ref.current.translation()))
@@ -160,10 +187,10 @@ const Band = memo(function Band() {
         })
 
         if (j3.current) curve.points[0].copy(j3.current.translation())
-        // @ts-expect-error lerping
-        if (j2.current) curve.points[1].copy(j2.current.lerped ?? j2.current.translation())
-        // @ts-expect-error lerping
-        if (j1.current) curve.points[2].copy(j1.current.lerped ?? j1.current.translation())
+        if (j2.current)
+            curve.points[1].copy(lerpedPositions.get(j2.current) ?? j2.current.translation())
+        if (j1.current)
+            curve.points[2].copy(lerpedPositions.get(j1.current) ?? j1.current.translation())
         if (fixed.current) curve.points[3].copy(fixed.current.translation())
 
         // @ts-expect-error geometry points
@@ -179,18 +206,16 @@ const Band = memo(function Band() {
 
     // advanced-event-handler-refs: stable callbacks via useCallback
     const handleGrabCard = useCallback((e: ThreeEvent<PointerEvent>) => {
-        const target = e.target as HTMLElement
-        target.releasePointerCapture(e.pointerId)
+        pointerCaptureTarget(e).releasePointerCapture(e.pointerId)
         setDrag(false)
     }, [])
 
     const handleReleaseCard = useCallback(
         (e: ThreeEvent<PointerEvent>) => {
-            const target = e.target as HTMLElement
             const newCardLoc = card.current
                 ? card.current.translation()
                 : new THREE.Vector3(0, 0, 0)
-            target.setPointerCapture(e.pointerId)
+            pointerCaptureTarget(e).setPointerCapture(e.pointerId)
             setDrag(new THREE.Vector3().copy(e.point).sub(vec.copy(newCardLoc)))
         },
         [vec]

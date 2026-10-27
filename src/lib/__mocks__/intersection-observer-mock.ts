@@ -1,20 +1,21 @@
-class MockIntersectionObserver {
-    observe() {
-        return null
-    }
+class MockIntersectionObserver implements IntersectionObserver {
+    readonly root = null
 
-    unobserve() {
-        return null
-    }
+    readonly rootMargin = ''
 
-    disconnect() {
-        return null
-    }
+    readonly scrollMargin = ''
 
-    takeRecords() {
+    readonly thresholds: readonly number[] = []
+
+    observe() {}
+
+    unobserve() {}
+
+    disconnect() {}
+
+    takeRecords(): IntersectionObserverEntry[] {
         return []
     }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-globalThis.IntersectionObserver = MockIntersectionObserver as any
+globalThis.IntersectionObserver = MockIntersectionObserver

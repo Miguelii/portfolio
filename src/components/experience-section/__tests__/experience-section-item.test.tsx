@@ -21,18 +21,15 @@ vi.mock('@/components/ui/link-preview', () => ({
     LinkPreview: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }))
 
-vi.mock('@portabletext/react', () => ({
-    PortableText: ({ value }: { value: PortableTextBlock[] }) => {
-        const text = value
-            .flatMap((block) =>
-                'children' in block
-                    ? (block.children as Array<{ text: string }>).map((c) => c.text)
-                    : []
-            )
-            .join('')
-        return <span>{text}</span>
-    },
-}))
+vi.mock('@portabletext/react', async (importOriginal) => {
+    const actual = await importOriginal<typeof import('@portabletext/react')>()
+    return {
+        ...actual,
+        PortableText: ({ value }: { value: PortableTextBlock[] }) => (
+            <span>{actual.toPlainText(value)}</span>
+        ),
+    }
+})
 
 describe('WorkExperienceItem', () => {
     const mockExperience: NonNullable<WorkExperienceSectionDTO>['items'][number] = {

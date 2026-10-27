@@ -1,7 +1,11 @@
 {
     "$schema": "https://unpkg.com/knip@5/schema.json",
     "tags": ["-lintignore"],
-    "entry": ["src/env/server.ts"],
+    "entry": [
+        "src/env/server.ts",
+        "tools/oxlint/anti-slop/index.ts",
+        "tools/oxlint/anti-slop/effect/index.ts"
+    ],
     "ignoreDependencies": ["raw-loader", "sharp"],
-    "ignore": ["src/sanity/generated/**"]
+    "ignore": ["src/sanity/generated/**", "tools/oxlint/anti-slop/**"]
 }

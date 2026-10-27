@@ -4,7 +4,7 @@ import { GithubIcon } from '@/components/icons/github-icon'
 
 vi.mock('motion/react', () => ({
     motion: {
-        path: (props: Record<string, unknown>) => <path {...props} />,
+        path: (props: React.ComponentProps<'path'>) => <path {...props} />,
     },
     useAnimation: () => ({
         start: vi.fn(),

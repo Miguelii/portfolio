@@ -228,11 +228,11 @@ const workExperienceSectionType = defineType({
     },
 })
 
-export const schema: { types: SchemaTypeDefinition[] } = {
+export const schema = {
     types: [
         aboutSectionType,
         landingSectionType,
         privacyNoticeSectionType,
         workExperienceSectionType,
     ],
-}
+} satisfies { types: SchemaTypeDefinition[] }

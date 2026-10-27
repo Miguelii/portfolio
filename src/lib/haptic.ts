@@ -4,10 +4,8 @@ import { Logger } from './logger'
 export const supportsHaptic =
     typeof window !== 'undefined' ? window.matchMedia('(pointer: coarse)').matches : false
 
-function hasVibrate(
-    nav: Navigator
-): nav is Navigator & { vibrate: (pattern: number | number[]) => boolean } {
-    return 'vibrate' in nav && typeof nav.vibrate === 'function'
+function hasVibrate(nav: Navigator): boolean {
+    return nav.vibrate !== undefined
 }
 
 const vibrateEffect = (pattern: number | number[]) => Effect.try(() => navigator.vibrate(pattern))

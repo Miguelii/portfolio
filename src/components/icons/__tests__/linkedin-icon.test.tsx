@@ -4,9 +4,9 @@ import { LinkedinIcon } from '@/components/icons/linkedin-icon'
 
 vi.mock('motion/react', () => ({
     motion: {
-        path: (props: Record<string, unknown>) => <path {...props} />,
-        rect: (props: Record<string, unknown>) => <rect {...props} />,
-        circle: (props: Record<string, unknown>) => <circle {...props} />,
+        path: (props: React.ComponentProps<'path'>) => <path {...props} />,
+        rect: (props: React.ComponentProps<'rect'>) => <rect {...props} />,
+        circle: (props: React.ComponentProps<'circle'>) => <circle {...props} />,
     },
     useAnimation: () => ({
         start: vi.fn(),
