@@ -68,6 +68,21 @@ body {
 }
 
 /*
+* Writing code blocks (sugar-high tokens), kept close to the greyscale palette
+*/
+.code-block {
+    --sh-class: var(--primary);
+    --sh-identifier: var(--neutral-dark);
+    --sh-sign: var(--neutral);
+    --sh-property: #3f5f7f;
+    --sh-entity: #4f6f6a;
+    --sh-jsxliterals: #5b5b8a;
+    --sh-string: #5f7a4f;
+    --sh-keyword: #9a4f4f;
+    --sh-comment: #a3a3a3;
+}
+
+/*
 * Dont allow touch on canvas, better experience for mobile users
 */
 canvas {

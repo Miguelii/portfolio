@@ -31,7 +31,7 @@ describe('getAboutSection', () => {
         const result = await runSanityService(getAboutSection)
 
         expect(result).toEqual(mockData)
-        expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-about-query')
+        expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-about-query', {})
     })
 
     it('should return null when fetch returns null', async () => {

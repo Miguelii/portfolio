@@ -2,6 +2,7 @@ import { PortableText } from '@portabletext/react'
 import { getAboutSection } from '@/sanity/api/get-about-section'
 import { runSanityService } from '@/sanity/lib/sanity-service'
 import Link from 'next/link'
+import { AuthorHeader } from '@/components/author-header'
 import { GITHUB_URL, LINKEDIN_URL } from '@/lib/constants'
 import { replaceTextWithWorkYears } from '@/lib/utils'
 
@@ -14,12 +15,9 @@ export default async function HomePage() {
     return (
         <main
             id="main"
-            className="flex flex-col mx-auto max-w-173 overflow-x-hidden px-6 py-12 text-gray-1200 antialiased sm:py-32 md:overflow-x-visible md:py-28 gap-14 md:gap-20"
+            className="flex flex-col w-full mx-auto max-w-173 overflow-x-hidden px-6 py-12 text-gray-1200 antialiased sm:py-32 md:overflow-x-visible md:py-28 gap-14 md:gap-20"
         >
-            <header>
-                <h1 className="text-primary font-medium">Miguel Gonçalves</h1>
-                <p className="text-neutral ">Software Engineer</p>
-            </header>
+            <AuthorHeader />
 
             <section className="flex flex-col gap-5">
                 <h2 className="text-primary font-medium">Today</h2>
@@ -65,6 +63,22 @@ export default async function HomePage() {
                         .
                     </span>
                 </div>
+            </section>
+
+            <section className="flex flex-col gap-5">
+                <h2 className="text-primary font-medium">Writing</h2>
+                <span className="text-pretty text-neutral">
+                    Every now and then I write about the bugs that bit me, so they don&apos;t bite
+                    you.{' '}
+                    <Link
+                        className="font-bold underline"
+                        aria-label="read my writing"
+                        prefetch={false}
+                        href="/writing"
+                    >
+                        Read them here.
+                    </Link>
+                </span>
             </section>
 
             <section className="flex flex-col gap-5">

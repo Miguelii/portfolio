@@ -1,7 +1,7 @@
 import 'server-only'
 
 import { ClientEnv } from '@/env/client'
-import { createClient } from 'next-sanity'
+import { createClient, type QueryParams } from 'next-sanity'
 import {
     SANITY_API_VERSION,
     SANITY_QUERY_REVALIDATE_KEY,
@@ -29,8 +29,9 @@ const client = createClient({
  *
  * @template T - The expected return type of the query
  * @param query - A GROQ query string
+ * @param params - Values for the query's `$parameters`
  * @returns The query result typed as `T`
  */
-export async function sanityClientFetch<T>(query: string): Promise<T> {
-    return client.fetch<T>(query, {}, options)
+export async function sanityClientFetch<T>(query: string, params: QueryParams = {}): Promise<T> {
+    return client.fetch<T>(query, params, options)
 }

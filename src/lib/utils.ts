@@ -10,6 +10,24 @@ export function cn(...inputs: ClassValue[]) {
 
 export const normalizePath = (path: string) => path.replace(/\/$/, '') || HOME_PAGE_URL
 
+/** Formats an ISO date (YYYY-MM-DD) as e.g. "27 October 2026" */
+export const formatLongDate = (isoDate: string) =>
+    new Date(`${isoDate}T00:00:00Z`).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'UTC',
+    })
+
+/** URL-safe id from text, e.g. "The same applies to `use cache`" → "the-same-applies-to-use-cache" */
+export const slugify = (text: string) =>
+    text
+        .normalize('NFKD')
+        .replaceAll(/[\u0300-\u036F]/g, '')
+        .toLowerCase()
+        .replaceAll(/[^a-z0-9]+/g, '-')
+        .replaceAll(/^-|-$/g, '')
+
 type PortableTextSpan = Extract<PortableTextBlock['children'][number], { _type: 'span' }>
 
 const isPortableTextSpan = (

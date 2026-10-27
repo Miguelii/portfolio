@@ -28,7 +28,7 @@ describe('getLandingSection', () => {
         const result = await runSanityService(getLandingSection)
 
         expect(result).toEqual(mockData)
-        expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-landing-query')
+        expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-landing-query', {})
     })
 
     it('should return null when fetch returns null', async () => {

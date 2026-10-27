@@ -9,6 +9,7 @@
 
 @theme inline {
     --font-sans: var(--font-geist-sans);
+    --font-serif: var(--font-instrument-serif);
     --color-background: var(--background);
     --color-primary: var(--primary);
     --color-neutral: var(--neutral);

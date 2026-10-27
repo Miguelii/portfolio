@@ -1,6 +1,7 @@
 import 'server-only'
 
 import { Effect } from 'effect'
+import type { QueryParams } from 'next-sanity'
 import { sanityClientFetch } from '@/sanity/lib/client'
 import { DataDefaultTaggedError } from '@/lib/data-tagged-errors'
 
@@ -8,9 +9,9 @@ class SanityFetchError extends DataDefaultTaggedError('SanityFetchError') {}
 
 export class SanityService extends Effect.Service<SanityService>()('SanityService', {
     effect: Effect.sync(() => ({
-        fetch: <T>(query: string): Effect.Effect<T, SanityFetchError> =>
+        fetch: <T>(query: string, params: QueryParams = {}): Effect.Effect<T, SanityFetchError> =>
             Effect.tryPromise({
-                try: () => sanityClientFetch<T>(query),
+                try: () => sanityClientFetch<T>(query, params),
                 catch: (error) => new SanityFetchError({ cause: error }),
             }),
     })),

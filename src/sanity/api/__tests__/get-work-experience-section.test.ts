@@ -48,7 +48,7 @@ describe('getWorkExperienceSection', () => {
         const result = await runSanityService(getWorkExperienceSection)
 
         expect(result).toEqual(mockData)
-        expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-work-experience-query')
+        expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-work-experience-query', {})
     })
 
     it('should return null when fetch returns null', async () => {

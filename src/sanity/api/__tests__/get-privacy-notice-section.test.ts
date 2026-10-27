@@ -32,7 +32,7 @@ describe('getPrivacyNoticeSection', () => {
         const result = await runSanityService(getPrivacyNoticeSection)
 
         expect(result).toEqual(mockData)
-        expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-privacy-query')
+        expect(mockSanityClientFetch).toHaveBeenCalledWith('mock-privacy-query', {})
     })
 
     it('should return null when fetch returns null', async () => {

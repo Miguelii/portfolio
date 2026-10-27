@@ -15,6 +15,58 @@
 export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: src/sanity/generated/schema.json
+export type WritingPost = {
+    _id: string
+    _type: 'writingPost'
+    _createdAt: string
+    _updatedAt: string
+    _rev: string
+    title?: string
+    slug?: Slug
+    publishedAt?: string
+    summary?: string
+    body?: Array<
+        | {
+              children?: Array<{
+                  marks?: Array<string>
+                  text?: string
+                  _type: 'span'
+                  _key: string
+              }>
+              style?: 'normal' | 'h2'
+              listItem?: 'bullet' | 'number'
+              markDefs?: Array<{
+                  href?: string
+                  _type: 'link'
+                  _key: string
+              }>
+              level?: number
+              _type: 'block'
+              _key: string
+          }
+        | {
+              code?: Code
+              caption?: string
+              _type: 'codeBlock'
+              _key: string
+          }
+    >
+}
+
+export type Code = {
+    _type: 'code'
+    language?: string
+    filename?: string
+    code?: string
+    highlightedLines?: Array<number>
+}
+
+export type Slug = {
+    _type: 'slug'
+    current?: string
+    source?: string
+}
+
 export type WorkExperienceSection = {
     _id: string
     _type: 'workExperienceSection'
@@ -245,13 +297,10 @@ export type Geopoint = {
     alt?: number
 }
 
-export type Slug = {
-    _type: 'slug'
-    current?: string
-    source?: string
-}
-
 export type AllSanitySchemaTypes =
+    | WritingPost
+    | Code
+    | Slug
     | WorkExperienceSection
     | PrivacyNoticeSection
     | LandingSection
@@ -266,4 +315,3 @@ export type AllSanitySchemaTypes =
     | SanityAssetSourceData
     | SanityImageAsset
     | Geopoint
-    | Slug
